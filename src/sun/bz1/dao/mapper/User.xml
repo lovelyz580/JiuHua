@@ -1,0 +1,1655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 用户表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.User">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.User">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="UserId" jdbcType="VARCHAR" property="userid" />
+		<result column="UserName" jdbcType="VARCHAR" property="username" />
+		<result column="UserPassword" jdbcType="VARCHAR" property="userpassword" />
+		<result column="UserSalt" jdbcType="VARCHAR" property="usersalt" />
+		<result column="UserEncryptPassword" jdbcType="VARCHAR" property="userencryptpassword" />
+		<result column="UserRealName" jdbcType="VARCHAR" property="userrealname" />
+		<result column="UserSex" jdbcType="VARCHAR" property="usersex" />
+		<result column="UserPhone" jdbcType="VARCHAR" property="userphone" />
+		<result column="UserCodeId" jdbcType="VARCHAR" property="usercodeid" />
+		<result column="UserEmail" jdbcType="VARCHAR" property="useremail" />
+		<result column="UserRole" jdbcType="VARCHAR" property="userrole" />
+		<result column="UserState" jdbcType="VARCHAR" property="userstate" />
+		<result column="UserCredit" jdbcType="DOUBLE" property="usercredit" />
+		<result column="UserMoney" jdbcType="DOUBLE" property="usermoney" />
+		<result column="UserSMS" jdbcType="VARCHAR" property="usersms" />
+		<result column="UserSMSTime" jdbcType="TIMESTAMP" property="usersmstime" />
+		<result column="UserOpenId" jdbcType="VARCHAR" property="useropenid" />
+		<result column="UserPosition" jdbcType="VARCHAR" property="userposition" />
+		<result column="UserLatitude" jdbcType="DOUBLE" property="userlatitude" />
+		<result column="UserLongitude" jdbcType="DOUBLE" property="userlongitude" />
+		<result column="UserCreateUserId" jdbcType="VARCHAR" property="usercreateuserid" />
+		<result column="UserCreateTime" jdbcType="TIMESTAMP" property="usercreatetime" />
+		<result column="UserUpdateUserId" jdbcType="VARCHAR" property="userupdateuserid" />
+		<result column="UserUpdateTime" jdbcType="TIMESTAMP" property="userupdatetime" />
+		<result column="UserRemark" jdbcType="VARCHAR" property="userremark" />
+		<result column="UserInvitationUserId" jdbcType="VARCHAR" property="userinvitationuserid" />
+		<result column="UserSort" jdbcType="INTEGER" property="usersort" />
+		<result column="UserAccount" jdbcType="VARCHAR" property="useraccount" />
+		<result column="UserAccountAddress" jdbcType="VARCHAR" property="useraccountaddress" />
+	</resultMap>
+	
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.UserAndUserServiceAndUserCustomer">
+		<!-- 用户表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="UserId" jdbcType="VARCHAR" property="userid" />
+		<result column="UserName" jdbcType="VARCHAR" property="username" />
+		<result column="UserPassword" jdbcType="VARCHAR" property="userpassword" />
+		<result column="UserSalt" jdbcType="VARCHAR" property="usersalt" />
+		<result column="UserEncryptPassword" jdbcType="VARCHAR" property="userencryptpassword" />
+		<result column="UserRealName" jdbcType="VARCHAR" property="userrealname" />
+		<result column="UserSex" jdbcType="VARCHAR" property="usersex" />
+		<result column="UserPhone" jdbcType="VARCHAR" property="userphone" />
+		<result column="UserCodeId" jdbcType="VARCHAR" property="usercodeid" />
+		<result column="UserEmail" jdbcType="VARCHAR" property="useremail" />
+		<result column="UserRole" jdbcType="VARCHAR" property="userrole" />
+		<result column="UserState" jdbcType="VARCHAR" property="userstate" />
+		<result column="UserCredit" jdbcType="DOUBLE" property="usercredit" />
+		<result column="UserMoney" jdbcType="DOUBLE" property="usermoney" />
+		<result column="UserSMS" jdbcType="VARCHAR" property="usersms" />
+		<result column="UserSMSTime" jdbcType="TIMESTAMP" property="usersmstime" />
+		<result column="UserOpenId" jdbcType="VARCHAR" property="useropenid" />
+		<result column="UserPosition" jdbcType="VARCHAR" property="userposition" />
+		<result column="UserLatitude" jdbcType="DOUBLE" property="userlatitude" />
+		<result column="UserLongitude" jdbcType="DOUBLE" property="userlongitude" />
+		<result column="UserCreateUserId" jdbcType="VARCHAR" property="usercreateuserid" />
+		<result column="UserCreateTime" jdbcType="TIMESTAMP" property="usercreatetime" />
+		<result column="UserUpdateUserId" jdbcType="VARCHAR" property="userupdateuserid" />
+		<result column="UserUpdateTime" jdbcType="TIMESTAMP" property="userupdatetime" />
+		<result column="UserRemark" jdbcType="VARCHAR" property="userremark" />
+		<result column="UserInvitationUserId" jdbcType="VARCHAR" property="userinvitationuserid" />
+		<result column="UserSort" jdbcType="INTEGER" property="usersort" />
+		<result column="UserAccount" jdbcType="VARCHAR" property="useraccount" />
+		<result column="UserAccountAddress" jdbcType="VARCHAR" property="useraccountaddress" />
+		
+		<!-- 用户_维修工、安装队表 -->
+		<result column="AreaId" jdbcType="VARCHAR" property="areaid" />
+		<result column="ScaleId" jdbcType="VARCHAR" property="scaleid" />
+		<result column="UserServiceRole" jdbcType="VARCHAR" property="userservicerole" />
+		<result column="UserServiceState" jdbcType="VARCHAR" property="userservicestate" />
+		<result column="UserServiceTravelMoney" jdbcType="DOUBLE" property="userservicetravelmoney" />
+		<result column="UserServiceType" jdbcType="VARCHAR" property="userservicetype" />
+		<result column="UserServiceAdvantage" jdbcType="VARCHAR" property="userserviceadvantage" />
+		<result column="UserServiceRemark" jdbcType="VARCHAR" property="userserviceremark" />
+		<result column="AreaCode" jdbcType="VARCHAR" property="areacode" />
+		<result column="AreaName" jdbcType="VARCHAR" property="areaname" />
+		<result column="GoodId" jdbcType="VARCHAR" property="goodid" />
+		<result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+		<result column="UserYearTeam" jdbcType="VARCHAR" property="useryearteam" />
+		<result column="UserYearNumber" jdbcType="INTEGER" property="useryearnumber" />
+		<result column="UserYearPercent" jdbcType="DOUBLE" property="useryearpercent" />
+		
+		<!-- 用户_客户表 -->
+		<result column="UserCustomerCity" jdbcType="VARCHAR" property="usercustomercity" />
+		<result column="UserCustomerCompany" jdbcType="VARCHAR" property="usercustomercompany" />
+		<result column="UserCustomerOrganization" jdbcType="VARCHAR" property="usercustomerorganization" />
+		<result column="UserCustomerAddress" jdbcType="VARCHAR" property="usercustomeraddress" />
+		<result column="UserCustomerRemark" jdbcType="VARCHAR" property="usercustomerremark" />
+	</resultMap>
+
+	<!--用户 日志表-->
+	<resultMap id="UserAndLogMap" type="sun.bz1.entity.LogAndUser">
+		<!-- 用户表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="UserId" jdbcType="VARCHAR" property="userid" />
+		<result column="UserName" jdbcType="VARCHAR" property="username" />
+		<result column="UserPassword" jdbcType="VARCHAR" property="userpassword" />
+		<result column="UserSalt" jdbcType="VARCHAR" property="usersalt" />
+		<result column="UserEncryptPassword" jdbcType="VARCHAR" property="userencryptpassword" />
+		<result column="UserRealName" jdbcType="VARCHAR" property="userrealname" />
+		<result column="UserSex" jdbcType="VARCHAR" property="usersex" />
+		<result column="UserPhone" jdbcType="VARCHAR" property="userphone" />
+		<result column="UserCodeId" jdbcType="VARCHAR" property="usercodeid" />
+		<result column="UserEmail" jdbcType="VARCHAR" property="useremail" />
+		<result column="UserRole" jdbcType="VARCHAR" property="userrole" />
+		<result column="UserState" jdbcType="VARCHAR" property="userstate" />
+		<result column="UserCredit" jdbcType="DOUBLE" property="usercredit" />
+		<result column="UserMoney" jdbcType="DOUBLE" property="usermoney" />
+		<result column="UserSMS" jdbcType="VARCHAR" property="usersms" />
+		<result column="UserSMSTime" jdbcType="TIMESTAMP" property="usersmstime" />
+		<result column="UserOpenId" jdbcType="VARCHAR" property="useropenid" />
+		<result column="UserPosition" jdbcType="VARCHAR" property="userposition" />
+		<result column="UserLatitude" jdbcType="DOUBLE" property="userlatitude" />
+		<result column="UserLongitude" jdbcType="DOUBLE" property="userlongitude" />
+		<result column="UserCreateUserId" jdbcType="VARCHAR" property="usercreateuserid" />
+		<result column="UserCreateTime" jdbcType="TIMESTAMP" property="usercreatetime" />
+		<result column="UserUpdateUserId" jdbcType="VARCHAR" property="userupdateuserid" />
+		<result column="UserUpdateTime" jdbcType="TIMESTAMP" property="userupdatetime" />
+		<result column="UserRemark" jdbcType="VARCHAR" property="userremark" />
+		<result column="UserInvitationUserId" jdbcType="VARCHAR" property="userinvitationuserid" />
+
+		<!--日志表-->
+		<result column="LogId" jdbcType="VARCHAR" property="logid" />
+		<result column="LogUserId" jdbcType="VARCHAR" property="loguserid" />
+		<result column="LogCreateTime" jdbcType="TIMESTAMP" property="logcreatetime" />
+		<result column="LogState" jdbcType="VARCHAR" property="logstate" />
+		<result column="LogOther1" jdbcType="VARCHAR" property="logother1" />
+		<result column="LogOther2" jdbcType="VARCHAR" property="logother2" />
+		<result column="LogOther3" jdbcType="VARCHAR" property="logother3" />
+	</resultMap>
+	<!-- 用户金额变化列表 --> 
+	<!-- 微信小程序查询用户金额变化时用到 -->
+	<resultMap id="WechatUserMoneyMap" type="sun.bz1.entity.WechatUserMoney">
+		<result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
+		<result column="money" jdbcType="DOUBLE" property="money" />
+		<result column="CreateTime" jdbcType="TIMESTAMP" property="createtime" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, UserId, UserName, UserPassword, UserSalt, UserEncryptPassword, 
+		UserRealName, UserSex, UserPhone, UserCodeId, UserEmail, UserRole, 
+		UserState, UserCredit, UserMoney, UserSMS, UserSMSTime, UserOpenId, 
+		UserPosition, UserLatitude, UserLongitude, UserCreateUserId, UserCreateTime, 
+		UserUpdateUserId, UserUpdateTime, UserRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.User">
+		insert into user (ID, UserId, UserName, UserPassword, UserSalt, UserEncryptPassword, 
+		UserRealName, UserSex, UserPhone, UserCodeId, UserEmail, UserRole, 
+		UserState, UserCredit, UserMoney, UserSMS, UserSMSTime, UserOpenId, 
+		UserPosition, UserLatitude, UserLongitude, UserCreateUserId, UserCreateTime,
+		UserUpdateUserId, UserUpdateTime, UserRemark, UserPassword)
+		values (#{id,jdbcType=INTEGER}, 
+		#{userid,jdbcType=VARCHAR},
+		#{username,jdbcType=VARCHAR},
+		#{userpassword,jdbcType=VARCHAR},
+		#{usersalt,jdbcType=VARCHAR}, 
+		#{userencryptpassword,jdbcType=VARCHAR},
+		#{userrealname,jdbcType=VARCHAR},
+		#{usersex,jdbcType=VARCHAR}, 
+		#{userphone,jdbcType=VARCHAR}, 
+		#{usercodeid,jdbcType=VARCHAR},
+		#{useremail,jdbcType=VARCHAR}, 
+		#{userrole,jdbcType=VARCHAR},
+		#{userstate,jdbcType=VARCHAR},
+		#{usercredit,jdbcType=DOUBLE},
+		#{usermoney,jdbcType=DOUBLE},
+		#{usersms,jdbcType=VARCHAR}, 
+		#{usersmstime,jdbcType=TIMESTAMP},
+		#{useropenid,jdbcType=VARCHAR},
+		#{userposition,jdbcType=VARCHAR},
+		#{userlatitude,jdbcType=DOUBLE},
+		#{userlongitude,jdbcType=DOUBLE},
+		#{usercreateuserid,jdbcType=VARCHAR},
+		#{usercreatetime,jdbcType=TIMESTAMP},
+		#{userupdateuserid,jdbcType=VARCHAR},
+		#{userupdatetime,jdbcType=TIMESTAMP},
+		#{userremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.User">
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="userid != null">
+				UserId,
+			</if>
+			<if test="username != null">
+				UserName,
+			</if>
+			<if test="userpassword != null">
+				UserPassword,
+			</if>
+			<if test="usersalt != null">
+				UserSalt,
+			</if>
+			<if test="userencryptpassword != null">
+				UserEncryptPassword,
+			</if>
+			<if test="userrealname != null">
+				UserRealName,
+			</if>
+			<if test="usersex != null">
+				UserSex,
+			</if>
+			<if test="userphone != null">
+				UserPhone,
+			</if>
+			<if test="usercodeid != null">
+				UserCodeId,
+			</if>
+			<if test="useremail != null">
+				UserEmail,
+			</if>
+			<if test="userrole != null">
+				UserRole,
+			</if>
+			<if test="userstate != null">
+				UserState,
+			</if>
+			<if test="usercredit != null">
+				UserCredit,
+			</if>
+			<if test="usermoney != null">
+				UserMoney,
+			</if>
+			<if test="usersms != null">
+				UserSMS,
+			</if>
+			<if test="usersmstime != null">
+				UserSMSTime,
+			</if>
+			<if test="useropenid != null">
+				UserOpenId,
+			</if>
+			<if test="userposition != null">
+				UserPosition,
+			</if>
+			<if test="userlatitude != null and userlatitude != 0">
+				UserLatitude,
+			</if>
+			<if test="userlongitude != null and userlongitude != 0">
+				UserLongitude,
+			</if>
+			<if test="usercreateuserid != null">
+				UserCreateUserId,
+			</if>
+			<if test="usercreatetime != null">
+				UserCreateTime,
+			</if>
+			<if test="userupdateuserid != null">
+				UserUpdateUserId,
+			</if>
+			<if test="userupdatetime != null">
+				UserUpdateTime,
+			</if>
+			<if test="userremark != null">
+				UserRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="userpassword != null">
+				#{userpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="usersalt != null">
+				#{usersalt,jdbcType=VARCHAR},
+			</if>
+			<if test="userencryptpassword != null">
+				#{userencryptpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userrealname != null">
+				#{userrealname,jdbcType=VARCHAR},
+			</if>
+			<if test="usersex != null">
+				#{usersex,jdbcType=VARCHAR},
+			</if>
+			<if test="userphone != null">
+				#{userphone,jdbcType=VARCHAR},
+			</if>
+			<if test="usercodeid != null">
+				#{usercodeid,jdbcType=VARCHAR},
+			</if>
+			<if test="useremail != null">
+				#{useremail,jdbcType=VARCHAR},
+			</if>
+			<if test="userrole != null">
+				#{userrole,jdbcType=VARCHAR},
+			</if>
+			<if test="userstate != null">
+				#{userstate,jdbcType=VARCHAR},
+			</if>
+			<if test="usercredit != null">
+				#{usercredit,jdbcType=DOUBLE},
+			</if>
+			<if test="usermoney != null">
+				#{usermoney,jdbcType=DOUBLE},
+			</if>
+			<if test="usersms != null">
+				#{usersms,jdbcType=VARCHAR},
+			</if>
+			<if test="usersmstime != null">
+				#{usersmstime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="useropenid != null">
+				#{useropenid,jdbcType=VARCHAR},
+			</if>
+			<if test="userposition != null">
+				#{userposition,jdbcType=VARCHAR},
+			</if>
+			<if test="userlatitude != null and userlatitude != 0">
+				#{userlatitude,jdbcType=DOUBLE},
+			</if>
+			<if test="userlongitude != null and userlongitude != 0">
+				#{userlongitude,jdbcType=DOUBLE},
+			</if>
+			<if test="usercreateuserid != null">
+				#{usercreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercreatetime != null">
+				#{usercreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userupdateuserid != null">
+				#{userupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userupdatetime != null">
+				#{userupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userremark != null">
+				#{userremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.User">
+		update user
+		<set>
+			<if test="userid != null">
+				UserId = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				UserName = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="userpassword != null">
+				UserPassword = #{userpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="usersalt != null">
+				UserSalt = #{usersalt,jdbcType=VARCHAR},
+			</if>
+			<if test="userencryptpassword != null">
+				UserEncryptPassword = #{userencryptpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userrealname != null">
+				UserRealName = #{userrealname,jdbcType=VARCHAR},
+			</if>
+			<if test="usersex != null">
+				UserSex = #{usersex,jdbcType=VARCHAR},
+			</if>
+			<if test="userphone != null">
+				UserPhone = #{userphone,jdbcType=VARCHAR},
+			</if>
+			<if test="usercodeid != null">
+				UserCodeId = #{usercodeid,jdbcType=VARCHAR},
+			</if>
+			<if test="useremail != null">
+				UserEmail = #{useremail,jdbcType=VARCHAR},
+			</if>
+			<if test="userrole != null">
+				UserRole = #{userrole,jdbcType=VARCHAR},
+			</if>
+			<if test="userstate != null">
+				UserState = #{userstate,jdbcType=VARCHAR},
+			</if>
+			<if test="usercredit != null">
+				UserCredit = #{usercredit,jdbcType=DOUBLE},
+			</if>
+			<if test="usermoney != null">
+				UserMoney = #{usermoney,jdbcType=DOUBLE},
+			</if>
+			<if test="usersms != null">
+				UserSMS = #{usersms,jdbcType=VARCHAR},
+			</if>
+			<if test="usersmstime != null">
+				UserSMSTime = #{usersmstime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="useropenid != null">
+				UserOpenId = #{useropenid,jdbcType=VARCHAR},
+			</if>
+			<if test="userposition != null">
+				UserPosition = #{userposition,jdbcType=VARCHAR},
+			</if>
+			<if test="userlatitude != null and userlatitude != 0">
+				UserLatitude = #{userlatitude,jdbcType=DOUBLE},
+			</if>
+			<if test="userlongitude != null and userlongitude != 0">
+				UserLongitude = #{userlongitude,jdbcType=DOUBLE},
+			</if>
+			<if test="usercreateuserid != null">
+				UserCreateUserId = #{usercreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercreatetime != null">
+				UserCreateTime = #{usercreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userupdateuserid != null">
+				UserUpdateUserId = #{userupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userupdatetime != null">
+				UserUpdateTime = #{userupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userremark != null">
+				UserRemark = #{userremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.User">
+		update user
+		set UserId = #{userid,jdbcType=VARCHAR},
+		UserName = #{username,jdbcType=VARCHAR},
+		UserPassword = #{userpassword,jdbcType=VARCHAR},
+		UserSalt = #{usersalt,jdbcType=VARCHAR},
+		UserEncryptPassword = #{userencryptpassword,jdbcType=VARCHAR},
+		UserRealName = #{userrealname,jdbcType=VARCHAR},
+		UserSex = #{usersex,jdbcType=VARCHAR},
+		UserPhone = #{userphone,jdbcType=VARCHAR},
+		UserCodeId = #{usercodeid,jdbcType=VARCHAR},
+		UserEmail = #{useremail,jdbcType=VARCHAR},
+		UserRole = #{userrole,jdbcType=VARCHAR},
+		UserState = #{userstate,jdbcType=VARCHAR},
+		UserCredit = #{usercredit,jdbcType=DOUBLE},
+		UserMoney = #{usermoneyt,jdbcType=DOUBLE},
+		UserSMS = #{usersms,jdbcType=VARCHAR},
+		UserSMSTime = #{usersmstime,jdbcType=TIMESTAMP},
+		UserOpenId = #{useropenid,jdbcType=VARCHAR},
+		UserPosition = #{userposition,jdbcType=VARCHAR},
+		UserLatitude = #{userlatitude,jdbcType=DOUBLE},
+		UserLongitude = #{userlongitude,jdbcType=DOUBLE},
+		UserCreateUserId = #{usercreateuserid,jdbcType=VARCHAR},
+		UserCreateTime = #{usercreatetime,jdbcType=TIMESTAMP},
+		UserUpdateUserId = #{userupdateuserid,jdbcType=VARCHAR},
+		UserUpdateTime = #{userupdatetime,jdbcType=TIMESTAMP},
+		UserRemark = #{userremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from user
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from user
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from user
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据User实体添加 -->
+	<insert id="insertByUser" parameterType="sun.bz1.entity.User">
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userid != null">
+				UserId,
+			</if>
+			<if test="username != null">
+				UserName,
+			</if>
+			<if test="userpassword != null">
+				UserPassword,
+			</if>
+			<if test="usersalt != null">
+				UserSalt,
+			</if>
+			<if test="userencryptpassword != null">
+				UserEncryptPassword,
+			</if>
+			<if test="userrealname != null">
+				UserRealName,
+			</if>
+			<if test="usersex != null">
+				UserSex,
+			</if>
+			<if test="userphone != null">
+				UserPhone,
+			</if>
+			<if test="usercodeid != null">
+				UserCodeId,
+			</if>
+			<if test="useremail != null">
+				UserEmail,
+			</if>
+			<if test="userrole != null">
+				UserRole,
+			</if>
+			<if test="userstate != null">
+				UserState,
+			</if>
+			<if test="usercredit != null">
+				UserCredit,
+			</if>
+			<if test="usermoney != null">
+				UserMoney,
+			</if>
+			<if test="usersms != null">
+				UserSMS,
+			</if>
+			<if test="usersmstime != null">
+				UserSMSTime,
+			</if>
+			<if test="useropenid != null">
+				UserOpenId,
+			</if>
+			<if test="userposition != null">
+				UserPosition,
+			</if>
+			<if test="userlatitude != null and userlatitude != 0">
+				UserLatitude,
+			</if>
+			<if test="userlongitude != null and userlongitude != 0">
+				UserLongitude,
+			</if>
+			<if test="usercreateuserid != null">
+				UserCreateUserId,
+			</if>
+			<if test="usercreatetime != null">
+				UserCreateTime,
+			</if>
+			<if test="userupdateuserid != null">
+				UserUpdateUserId,
+			</if>
+			<if test="userupdatetime != null">
+				UserUpdateTime,
+			</if>
+			<if test="userremark != null">
+				UserRemark,
+			</if>
+			<if test="userinvitationuserid != null">
+				UserInvitationUserId,
+			</if>
+			<if test="usersort != null">
+				UserSort,
+			</if>
+			<if test="useraccount != null">
+				UserAccount,
+			</if>
+			<if test="useraccountaddress != null">
+				UserAccountAddress,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="userpassword != null">
+				#{userpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="usersalt != null">
+				#{usersalt,jdbcType=VARCHAR},
+			</if>
+			<if test="userencryptpassword != null">
+				#{userencryptpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userrealname != null">
+				#{userrealname,jdbcType=VARCHAR},
+			</if>
+			<if test="usersex != null">
+				#{usersex,jdbcType=VARCHAR},
+			</if>
+			<if test="userphone != null">
+				#{userphone,jdbcType=VARCHAR},
+			</if>
+			<if test="usercodeid != null">
+				#{usercodeid,jdbcType=VARCHAR},
+			</if>
+			<if test="useremail != null">
+				#{useremail,jdbcType=VARCHAR},
+			</if>
+			<if test="userrole != null">
+				#{userrole,jdbcType=VARCHAR},
+			</if>
+			<if test="userstate != null">
+				#{userstate,jdbcType=VARCHAR},
+			</if>
+			<if test="usercredit != null">
+				#{usercredit,jdbcType=DOUBLE},
+			</if>
+			<if test="usermoney != null">
+				#{usermoney,jdbcType=DOUBLE},
+			</if>
+			<if test="usersms != null">
+				#{usersms,jdbcType=VARCHAR},
+			</if>
+			<if test="usersmstime != null">
+				#{usersmstime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="useropenid != null">
+				#{useropenid,jdbcType=VARCHAR},
+			</if>
+			<if test="userposition != null">
+				#{userposition,jdbcType=VARCHAR},
+			</if>
+			<if test="userlatitude != null and userlatitude != 0">
+				#{userlatitude,jdbcType=DOUBLE},
+			</if>
+			<if test="userlongitude != null and userlongitude != 0">
+				#{userlongitude,jdbcType=DOUBLE},
+			</if>
+			<if test="usercreateuserid != null">
+				#{usercreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercreatetime != null">
+				#{usercreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userupdateuserid != null">
+				#{userupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userupdatetime != null">
+				#{userupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userremark != null">
+				#{userremark,jdbcType=VARCHAR},
+			</if>
+			<if test="userinvitationuserid != null">
+				#{userinvitationuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="usersort != null">
+				#{usersort,jdbcType=INTEGER},
+			</if>
+			<if test="useraccount != null">
+				#{useraccount,jdbcType=VARCHAR},
+			</if>
+			<if test="useraccountaddress != null">
+				#{useraccountaddress,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据User实体更新 -->
+	<update id="updateByUser" parameterType="sun.bz1.entity.User">
+		update user
+		<set>
+			<if test="userid != null">
+				UserId = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				UserName = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="userpassword != null">
+				UserPassword = #{userpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="usersalt != null">
+				UserSalt = #{usersalt,jdbcType=VARCHAR},
+			</if>
+			<if test="userencryptpassword != null">
+				UserEncryptPassword = #{userencryptpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userrealname != null">
+				UserRealName = #{userrealname,jdbcType=VARCHAR},
+			</if>
+			<if test="usersex != null">
+				UserSex = #{usersex,jdbcType=VARCHAR},
+			</if>
+			<if test="userphone != null">
+				UserPhone = #{userphone,jdbcType=VARCHAR},
+			</if>
+			<if test="usercodeid != null">
+				UserCodeId = #{usercodeid,jdbcType=VARCHAR},
+			</if>
+			<if test="useremail != null">
+				UserEmail = #{useremail,jdbcType=VARCHAR},
+			</if>
+			<if test="userrole != null">
+				UserRole = #{userrole,jdbcType=VARCHAR},
+			</if>
+			<if test="userstate != null">
+				UserState = #{userstate,jdbcType=VARCHAR},
+			</if>
+			<if test="usercredit != null">
+				UserCredit = #{usercredit,jdbcType=DOUBLE},
+			</if>
+			<if test="usermoney != null">
+				UserMoney = #{usermoney,jdbcType=DOUBLE},
+			</if>
+			<if test="usersms != null">
+				UserSMS = #{usersms,jdbcType=VARCHAR},
+			</if>
+			<if test="usersmstime != null">
+				UserSMSTime = #{usersmstime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="useropenid != null">
+				UserOpenId = #{useropenid,jdbcType=VARCHAR},
+			</if>
+			<if test="userposition != null">
+				UserPosition = #{userposition,jdbcType=VARCHAR},
+			</if>
+			<if test="userlatitude != null and userlatitude != 0">
+				UserLatitude = #{userlatitude,jdbcType=DOUBLE},
+			</if>
+			<if test="userlongitude != null and userlongitude != 0">
+				UserLongitude = #{userlongitude,jdbcType=DOUBLE},
+			</if>
+			<if test="usercreateuserid != null">
+				UserCreateUserId = #{usercreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercreatetime != null">
+				UserCreateTime = #{usercreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userupdateuserid != null">
+				UserUpdateUserId = #{userupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userupdatetime != null">
+				UserUpdateTime = #{userupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userremark != null">
+				UserRemark = #{userremark,jdbcType=VARCHAR},
+			</if>
+			<if test="userinvitationuserid != null">
+				UserInvitationUserId = #{userinvitationuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="usersort != null">
+				UserSort = #{usersort,jdbcType=INTEGER},
+			</if>
+			<if test="useraccount != null">
+				UserAccount = #{useraccount,jdbcType=VARCHAR},
+			</if>
+			<if test="useraccountaddress != null">
+				UserAccountAddress = #{useraccountaddress,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据User实体的手机号码更新 -->
+	<update id="updateByUserPhone" parameterType="sun.bz1.entity.User">
+		update user
+		<set>
+			<if test="userid != null">
+				UserId = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				UserName = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="userpassword != null">
+				UserPassword = #{userpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="usersalt != null">
+				UserSalt = #{usersalt,jdbcType=VARCHAR},
+			</if>
+			<if test="userencryptpassword != null">
+				UserEncryptPassword = #{userencryptpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userrealname != null">
+				UserRealName = #{userrealname,jdbcType=VARCHAR},
+			</if>
+			<if test="usersex != null">
+				UserSex = #{usersex,jdbcType=VARCHAR},
+			</if>
+			<if test="userphone != null">
+				UserPhone = #{userphone,jdbcType=VARCHAR},
+			</if>
+			<if test="usercodeid != null">
+				UserCodeId = #{usercodeid,jdbcType=VARCHAR},
+			</if>
+			<if test="useremail != null">
+				UserEmail = #{useremail,jdbcType=VARCHAR},
+			</if>
+			<if test="userrole != null">
+				UserRole = #{userrole,jdbcType=VARCHAR},
+			</if>
+			<if test="userstate != null">
+				UserState = #{userstate,jdbcType=VARCHAR},
+			</if>
+			<if test="usercredit != null">
+				UserCredit = #{usercredit,jdbcType=DOUBLE},
+			</if>
+			<if test="usermoney != null">
+				UserMoney = #{usermoney,jdbcType=DOUBLE},
+			</if>
+			<if test="usersms != null">
+				UserSMS = #{usersms,jdbcType=VARCHAR},
+			</if>
+			<if test="usersmstime != null">
+				UserSMSTime = #{usersmstime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="useropenid != null">
+				UserOpenId = #{useropenid,jdbcType=VARCHAR},
+			</if>
+			<if test="userposition != null">
+				UserPosition = #{userposition,jdbcType=VARCHAR},
+			</if>
+			<if test="userlatitude != null and userlatitude != 0">
+				UserLatitude = #{userlatitude,jdbcType=DOUBLE},
+			</if>
+			<if test="userlongitude != null and userlongitude != 0">
+				UserLongitude = #{userlongitude,jdbcType=DOUBLE},
+			</if>
+			<if test="usercreateuserid != null">
+				UserCreateUserId = #{usercreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercreatetime != null">
+				UserCreateTime = #{usercreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userupdateuserid != null">
+				UserUpdateUserId = #{userupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userupdatetime != null">
+				UserUpdateTime = #{userupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userremark != null">
+				UserRemark = #{userremark,jdbcType=VARCHAR},
+			</if>
+			<if test="userinvitationuserid != null">
+				UserInvitationUserId = #{userinvitationuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="usersort != null">
+				UserSort = #{usersort,jdbcType=INTEGER},
+			</if>
+			<if test="useraccount != null">
+				UserAccount = #{useraccount,jdbcType=VARCHAR},
+			</if>
+			<if test="useraccountaddress != null">
+				UserAccountAddress = #{useraccountaddress,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userphone != null and userphone != ''">
+					and UserPhone = #{userphone,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountByUnionData" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultType="java.lang.Integer">
+		select count(*) from user a 
+			left join user_service b on a.UserId = b.UserId 
+			left join user_customer c on a.UserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userid != null and userid != ''">
+					and a.UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="userrole != null and userrole != ''">
+					and a.UserRole = #{userrole,jdbcType=VARCHAR}
+				</if>
+				<if test="userphone != null and userphone != ''">
+					and a.UserPhone = #{userphone,jdbcType=VARCHAR}
+				</if>
+				<if test="userstate != null and userstate != ''">
+					and a.UserState = #{userstate,jdbcType=VARCHAR}
+				</if>
+				<if test="userinvitationuserid != null and userinvitationuserid != ''">
+					and a.UserInvitationUserId = #{userinvitationuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicerole != null and userservicerole != ''">
+					and b.UserServiceRole = #{userservicerole,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicestate != null and userservicestate != ''">
+					and b.UserServiceState = #{userservicestate,jdbcType=VARCHAR}
+				</if>
+				<!-- 根据用户身份类别查询(KH:客户/WX:维修工或安装队) -->
+				<if test="selectuserrole != null and selectuserrole != '' and 
+						selectuserrole == 'KH'">
+					and a.UserRole = 'KH,'
+				</if>
+				<if test="selectuserrole != null and selectuserrole != '' and 
+						selectuserrole == 'WX'">
+					and a.UserRole = 'WX,' OR a.UserRole = 'AZ,' 
+					OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,'
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesByUnionData" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultMap="SeniorResultMap">
+		select * from user a 
+			left join user_service b on a.UserId = b.UserId 
+			left join user_customer c on a.UserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userid != null and userid != ''">
+					and a.UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="userrole != null and userrole != ''">
+					and a.UserRole = #{userrole,jdbcType=VARCHAR}
+				</if>
+				<if test="userphone != null and userphone != ''">
+					and a.UserPhone = #{userphone,jdbcType=VARCHAR}
+				</if>
+				<if test="userstate != null and userstate != ''">
+					and a.UserState = #{userstate,jdbcType=VARCHAR}
+				</if>
+				<if test="userinvitationuserid != null and userinvitationuserid != ''">
+					and a.UserInvitationUserId = #{userinvitationuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicerole != null and userservicerole != ''">
+					and b.UserServiceRole = #{userservicerole,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicestate != null and userservicestate != ''">
+					and b.UserServiceState = #{userservicestate,jdbcType=VARCHAR}
+				</if>
+				<!-- 根据用户身份类别查询(KH:客户/WX:维修工或安装队) -->
+				<if test="selectuserrole != null and selectuserrole != '' and 
+						selectuserrole == 'KH'">
+					and a.UserRole = 'KH,'
+				</if>
+				<if test="selectuserrole != null and selectuserrole != '' and 
+						selectuserrole == 'WX'">
+					and a.UserRole = 'WX,' OR a.UserRole = 'AZ,' 
+					OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,'
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 小程序首页排序 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountByUnionDataOrderBySort" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultType="java.lang.Integer">
+		select count(*) from user a
+		left join user_service b on a.UserId = b.UserId
+		left join user_customer c on a.UserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userid != null and userid != ''">
+					and a.UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="userrole != null and userrole != ''">
+					and a.UserRole like CONCAT('%',#{userrole,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userphone != null and userphone != ''">
+					and a.UserPhone = #{userphone,jdbcType=VARCHAR}
+				</if>
+				<if test="userstate != null and userstate != ''">
+					and a.UserState = #{userstate,jdbcType=VARCHAR}
+				</if>
+				<if test="userinvitationuserid != null and userinvitationuserid != ''">
+					and a.UserInvitationUserId = #{userinvitationuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicerole != null and userservicerole != ''">
+					and b.UserServiceRole = #{userservicerole,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicestate != null and userservicestate != ''">
+					and b.UserServiceState = #{userservicestate,jdbcType=VARCHAR}
+				</if>
+				<if test="areacode != null and areacode != ''">
+					and b.AreaCode like CONCAT('%',#{areacode,jdbcType=VARCHAR},'%')
+				</if>
+				<!-- 根据用户身份类别查询(KH:客户/WX:维修工或安装队) -->
+				<if test="selectuserrole != null and selectuserrole != '' and
+						selectuserrole == 'KH'">
+					and a.UserRole = 'KH,'
+				</if>
+				<if test="selectuserrole != null and selectuserrole != '' and
+						selectuserrole == 'WX'">
+					and (a.UserRole = 'WX,'
+					OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,')
+				</if>
+				<if test="selectuserrole != null and selectuserrole != '' and
+						selectuserrole == 'AZ'">
+					and (a.UserRole = 'AZ,'
+					OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,')
+				</if>
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 小程序首页排序-->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesByUnionDataOrderBySort" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultMap="SeniorResultMap">
+		select * from user a
+		left join user_service b on a.UserId = b.UserId
+		left join user_customer c on a.UserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userid != null and userid != ''">
+					and a.UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="userrole != null and userrole != ''">
+					and a.UserRole like CONCAT('%',#{userrole,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userphone != null and userphone != ''">
+					and a.UserPhone = #{userphone,jdbcType=VARCHAR}
+				</if>
+				<if test="userstate != null and userstate != ''">
+					and a.UserState = #{userstate,jdbcType=VARCHAR}
+				</if>
+				<if test="userinvitationuserid != null and userinvitationuserid != ''">
+					and a.UserInvitationUserId = #{userinvitationuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicerole != null and userservicerole != ''">
+					and b.UserServiceRole = #{userservicerole,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicestate != null and userservicestate != ''">
+					and b.UserServiceState = #{userservicestate,jdbcType=VARCHAR}
+				</if>
+				<if test="areacode != null and areacode != ''">
+					and b.AreaCode like CONCAT('%',#{areacode,jdbcType=VARCHAR},'%')
+				</if>
+				<!-- 根据用户身份类别查询(KH:客户/WX:维修工或安装队) -->
+				<if test="selectuserrole != null and selectuserrole != '' and
+						selectuserrole == 'KH'">
+					and a.UserRole = 'KH,'
+				</if>
+				<if test="selectuserrole != null and selectuserrole != '' and
+						selectuserrole == 'WX'">
+					and (a.UserRole = 'WX,'
+					OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,')
+				</if>
+				<if test="selectuserrole != null and selectuserrole != '' and
+						selectuserrole == 'AZ'">
+					and (a.UserRole = 'AZ,'
+					OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,')
+				</if>
+			</trim>
+		</where>
+		order by a.UserSort is null, a.UserSort asc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountBySelectData" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultType="java.lang.Integer">
+		select count(*) from user a 
+			left join user_service b on a.UserId = b.UserId 
+			left join user_customer c on a.UserId = c.UserId
+		where  a.UserPassword IS NOT NULL
+				<if test="userid != null and userid != ''">
+					and a.UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="username != null and username != ''">
+					and (a.UserName like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userrealname != null and userrealname != ''">
+					or a.UserRealName like CONCAT('%',#{userrealname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userphone != null and userphone != ''">
+					or a.UserPhone like CONCAT('%',#{userphone,jdbcType=VARCHAR},'%'))
+				</if>
+				<if test="userrole != null and userrole != ''">
+					and a.UserRole like CONCAT('%',#{userrole,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userstate != null and userstate != ''">
+					and a.UserState = #{userstate,jdbcType=VARCHAR}
+				</if>
+				<if test="usercredit != null and usercredit != ''">
+					and a.UserCredit = #{usercredit,jdbcType=VARCHAR}
+				</if>
+				<if test="userinvitationuserid != null and userinvitationuserid != ''">
+					and a.UserInvitationUserId = #{userinvitationuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="scaleid != null and scaleid != ''">
+					and b.ScaleId = #{scaleid,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicerole != null and userservicerole != ''">
+					and b.UserServiceRole = #{userservicerole,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicetype != null and userservicetype != ''">
+					and b.UserServiceType like CONCAT('%',#{userservicetype,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userserviceadvantage != null and userserviceadvantage != ''">
+					and b.UserServiceAdvantage like CONCAT('%',#{userserviceadvantage,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="areacode != null and areacode != ''">
+					and b.AreaCode like CONCAT('%',#{areacode,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="goodid != null and goodid != ''">
+					and b.GoodId like CONCAT('%', #{goodid,jdbcType=VARCHAR},'%')
+				</if>
+                <if test="areacodelist != null and areacodelist.size > 0">
+                    and
+                    <foreach collection="areacodelist" index="index" item="tag" open=""
+                             separator="or" close="">
+                        b.AreaCode like CONCAT('%',#{tag,jdbcType=VARCHAR},'%')
+                    </foreach>
+                </if>
+				<if test="userservicestate != null and userservicestate != ''">
+					and b.UserServiceState = #{userservicestate,jdbcType=VARCHAR}
+				</if>
+				<!-- 根据用户身份类别查询(KH:客户/WX:维修工或安装队) -->
+				<if test="selectuserrole != null and selectuserrole != '' and 
+						selectuserrole == 'KH'">
+					and a.UserRole = 'KH,'
+				</if>
+				<if test="selectuserrole != null and selectuserrole != '' and 
+						selectuserrole == 'WX'">
+					and a.UserRole = 'WX,'
+					OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,'
+				</if>
+				<if test="selectuserrole != null and selectuserrole != '' and
+								selectuserrole == 'AZ'">
+					and a.UserRole = 'AZ,'
+					OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,'
+				</if>
+	</select>
+	
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesBySelectData" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultMap="SeniorResultMap">
+		select * from user a 
+			left join user_service b on a.UserId = b.UserId 
+			left join user_customer c on a.UserId = c.UserId
+		where  a.UserPassword IS NOT NULL
+				<if test="userid != null and userid != ''">
+					and a.UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="username != null and username != ''">
+					and (a.UserName like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userrealname != null and userrealname != ''">
+					or a.UserRealName like CONCAT('%',#{userrealname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userphone != null and userphone != ''">
+					or a.UserPhone like CONCAT('%',#{userphone,jdbcType=VARCHAR},'%'))
+				</if>
+				<if test="userrole != null and userrole != ''">
+					and a.UserRole like CONCAT('%',#{userrole,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userstate != null and userstate != ''">
+					and a.UserState = #{userstate,jdbcType=VARCHAR}
+				</if>
+				<if test="usercredit != null and usercredit != ''">
+					and a.UserCredit = #{usercredit,jdbcType=VARCHAR}
+				</if>
+				<if test="userinvitationuserid != null and userinvitationuserid != ''">
+					and a.UserInvitationUserId = #{userinvitationuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="scaleid != null and scaleid != ''">
+					and b.ScaleId = #{scaleid,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicerole != null and userservicerole != ''">
+					and b.UserServiceRole = #{userservicerole,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicetype != null and userservicetype != ''">
+					and b.UserServiceType like CONCAT('%',#{userservicetype,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userserviceadvantage != null and userserviceadvantage != ''">
+					and b.UserServiceAdvantage like CONCAT('%',#{userserviceadvantage,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="areacode != null and areacode != ''">
+					and b.AreaCode like CONCAT('%',#{areacode,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="areacodelist != null and areacodelist.size > 0">
+                    and
+				<foreach collection="areacodelist" index="index" item="tag" open=""
+						 separator="or" close="">
+					 b.AreaCode like CONCAT('%',#{tag,jdbcType=VARCHAR},'%')
+				</foreach>
+				</if>
+                <if test="usercreditmin != null and usercreditmin != '' ">
+                    and a.UserCredit &gt;= #{usercreditmin,jdbcType=VARCHAR} <!-- 大于等于 -->
+                </if>
+                <if test="usercreditmax != null and usercreditmax != '' ">
+                    and a.UserCredit &lt;= #{usercreditmax,jdbcType=VARCHAR} <!-- 小于等于 -->
+                </if>
+				<if test="userservicestate != null and userservicestate != ''">
+					and b.UserServiceState = #{userservicestate,jdbcType=VARCHAR}
+				</if>
+				<!-- 根据用户身份类别查询(KH:客户/WX:维修工或安装队) -->
+				<if test="selectuserrole != null and selectuserrole != '' and 
+						selectuserrole == 'KH'">
+					and a.UserRole = 'KH,'
+				</if>
+				<if test="selectuserrole != null and selectuserrole != '' and
+								selectuserrole == 'WX'">
+					and (a.UserRole = 'WX,'
+					OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,')
+				</if>
+				<if test="selectuserrole != null and selectuserrole != '' and
+										selectuserrole == 'AZ'">
+					and (a.UserRole = 'AZ,'
+					OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,')
+				</if>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountBySelectDataNewUser" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultType="java.lang.Integer">
+		select count(*) from user a
+		left join user_service b on a.UserId = b.UserId
+		left join user_customer c on a.UserId = c.UserId
+		where  a.UserPassword IS NOT NULL
+
+		<if test="userid != null and userid != ''">
+			and a.UserId = #{userid,jdbcType=VARCHAR}
+		</if>
+		<if test="userlist != null and userlist.size > 0">
+			and
+			<foreach collection="userlist" index="index" item="tag" open=""
+					 separator="or" close="">
+				a.UserId = #{tag,jdbcType=VARCHAR}
+			</foreach>
+		</if>
+		<if test="userservicestate != null and userservicestate != ''">
+			and b.UserServiceState = #{userservicestate,jdbcType=VARCHAR}
+		</if>
+		<if test="areacode != null and areacode != ''">
+			and b.AreaCode like CONCAT('%',#{areacode,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userrealname != null and userrealname != ''">
+			and ( a.UserRealName like CONCAT('%',#{userrealname,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="username != null and username != ''">
+			or a.UserName like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="areaname != null and areaname != ''">
+			or b.AreaName like CONCAT('%',#{areaname,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="goodsname != null and goodsname != ''">
+			or b.GoodsName like CONCAT('%', #{goodsname,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userphone != null and userphone != ''">
+			or a.UserPhone like CONCAT('%',#{userphone,jdbcType=VARCHAR},'%'))
+		</if>
+
+		<!-- 根据用户身份类别查询(KH:客户/WX:维修工或安装队) -->
+		<if test="selectuserrole != null and selectuserrole != '' and
+						selectuserrole == 'WX'">
+			and (a.UserRole = 'WX,'
+			OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,')
+		</if>
+		<if test="selectuserrole != null and selectuserrole != '' and
+								selectuserrole == 'AZ'">
+			and (a.UserRole = 'AZ,'
+			OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,')
+		</if>
+	</select>
+
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesBySelectDataNewUser" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultMap="SeniorResultMap">
+		select * from user a
+		left join user_service b on a.UserId = b.UserId
+		left join user_customer c on a.UserId = c.UserId
+		where  a.UserPassword IS NOT NULL
+		<if test="userid != null and userid != ''">
+			and a.UserId = #{userid,jdbcType=VARCHAR}
+		</if>
+		<if test="userlist != null and userlist.size > 0">
+			and(
+			<foreach collection="userlist" index="index" item="tag" open=""
+					 separator="or" close="">
+				a.UserId = #{tag,jdbcType=VARCHAR}
+			</foreach>)
+		</if>
+		<if test="userservicestate != null and userservicestate != ''">
+			and b.UserServiceState = #{userservicestate,jdbcType=VARCHAR}
+		</if>
+		<if test="areacode != null and areacode != ''">
+			and b.AreaCode like CONCAT('%',#{areacode,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userrealname != null and userrealname != ''">
+			and ( a.UserRealName like CONCAT('%',#{userrealname,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="username != null and username != ''">
+			or a.UserName like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="areaname != null and areaname != ''">
+			or b.AreaName like CONCAT('%',#{areaname,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="goodsname != null and goodsname != ''">
+			or b.GoodsName like CONCAT('%', #{goodsname,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userphone != null and userphone != ''">
+			or a.UserPhone like CONCAT('%',#{userphone,jdbcType=VARCHAR},'%'))
+		</if>
+		<!-- 根据用户身份类别查询(KH:客户/WX:维修工或安装队) -->
+		<if test="selectuserrole != null and selectuserrole != '' and
+						selectuserrole == 'WX'">
+			and (a.UserRole = 'WX,'
+			OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,')
+		</if>
+		<if test="selectuserrole != null and selectuserrole != '' and
+								selectuserrole == 'AZ'">
+			and (a.UserRole = 'AZ,'
+			OR a.UserRole = 'WX,AZ,' OR a.UserRole = 'AZ,WX,')
+		</if>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 客户-生成报表 -->
+	<!-- 数量 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesCountBySelectDataKHReport" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultType="java.lang.Integer">
+		SELECT count(*) FROM user u where u.UserRole ="KH,"
+		<if test="userrealname != null and userrealname != ''">
+			and (u.UserRealName like CONCAT('%',#{userrealname,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userphone != null and userphone != ''">
+			or u.UserPhone like CONCAT('%', #{userphone,jdbcType=VARCHAR},'%'))
+		</if>
+
+	</select>
+
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 客户-生成报表 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesBySelectDataKHReport" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultMap="SeniorResultMap">
+		SELECT u.UserId userid, u.UserPhone userphone, u.UserRealName userrealname, "客户" userrole,
+		(select count(*) from log l where l.LogUserId = u.UserId) loginnumber,
+		(select count(*) from order_table ot where ot.OrderCreateUserId = u.UserId and ot.OrderType ="PD") pdnumber,
+		(select count(*) from order_table ot where ot.OrderCreateUserId = u.UserId and ot.OrderType ="QD") qdnumber,
+		(select count(*) from order_table ot  left join order_detail od on ot.OrderId = od.OrderId  where ot.OrderCreateUserId = u.UserId) projectnumber,
+		IFNULL((select SUM(ot.OrderInterceptTotalMoney) from order_table ot where ot.OrderCreateUserId = u.UserId and ot.OrderType = "PD" and ot.OrderState = "DDJS"),0) pdfinishnumber,
+		IFNULL((select SUM(ot.OrderInterceptTotalMoney) from order_table ot where ot.OrderCreateUserId = u.UserId and ot.OrderType = "PD" and ot.OrderState != "DDJS"),0) pdunfinishednumber,
+		IFNULL((select SUM(ot.OrderPriceTotalMoney) from order_table ot where ot.OrderCreateUserId = u.UserId and ot.OrderType = "QD" and ot.OrderState = "DDJS"),0) qdfinishnumber,
+		IFNULL((select SUM(ot.OrderPriceTotalMoney) from order_table ot where ot.OrderCreateUserId = u.UserId and ot.OrderType = "QD" and ot.OrderState != "DDJS"),0) qdunfinishednumber,
+		IFNULL((select (sum( CASE WHEN ot.OrderType = "PD" THEN ot.OrderInterceptTotalMoney ELSE 0 END ) + sum(
+		CASE WHEN ot.OrderType = "QD" THEN ot.OrderPriceTotalMoney ELSE 0 END ) ) - SUM(
+		ot.OrderPriceTotalMoney) from order_table ot where ot.OrderCreateUserId = u.UserId  and ot.OrderState = "DDJS"),0) profittotalmoney,
+		(select count(*) from order_table ot left join apply_check ac on ot.OrderId = ac.OrderId where ot.OrderCreateUserId = u.UserId and ac.ApplyCheckState = "HG") hgnumber,
+		(select count(*) from order_table ot left join apply_check ac on ot.OrderId = ac.OrderId where ot.OrderCreateUserId = u.UserId and ac.ApplyCheckState != "HG" and ac.ApplyCheckState != "SQYS") bhgnumber,
+		(select count(*) from user u2 where u2.UserInvitationUserId = u.UserId) recommendnumber,
+		(select u1.UserRealName from user u1 where u.UserInvitationUserId = u1.UserId) userinvitationusername,
+		u.UserCredit usercredit FROM user u where u.UserRole ="KH,"
+
+		<if test="userrealname != null and userrealname != ''">
+			and (u.UserRealName like CONCAT('%',#{userrealname,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userphone != null and userphone != ''">
+			or u.UserPhone like CONCAT('%', #{userphone,jdbcType=VARCHAR},'%'))
+		</if>
+
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 维修-生成报表 -->
+	<!-- 数量 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesCountBySelectDataWXReport" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultType="java.lang.Integer">
+		SELECT count(*) FROM user u
+		left join user_service us on u.UserId = us.UserId
+		where (u.UserRole ="WX," or u.UserRole ="WX,AZ," or u.UserRole ="AZ,WX," or u.UserRole ="AZ,")
+		<if test="areacode != null and areacode != ''">
+			and us.AreaCode like CONCAT('%',#{areacode,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="goodid != null and goodid != ''">
+			and us.GoodId like CONCAT('%', #{goodid,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userrole != null and userrole != ''">
+			and u.UserRole like CONCAT('%',#{userrole,jdbcType=VARCHAR},'%')
+		</if>
+
+
+	</select>
+
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 维修-生成报表 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesBySelectDataWXReport" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultMap="SeniorResultMap">
+		SELECT u.UserId userid,u.UserPhone userphone, u.UserRealName userrealname, CASE WHEN u.UserRole = "WX," THEN "维修"
+		WHEN u.UserRole = "AZ," THEN "安装" ELSE "维修、安装" END userrole ,
+		(select count(*) from log l where l.LogUserId = u.UserId) loginnumber,
+		(select count(*) from order_table ot where ot.OrderServiceUserId = u.UserId and ot.OrderType ="PD") pdnumber,
+		(select count(*) from order_table ot where ot.OrderServiceUserId = u.UserId and ot.OrderType ="QD") qdnumber,
+		(select count(*) from order_table ot  left join order_detail od on ot.OrderId = od.OrderId  where ot.OrderServiceUserId = u.UserId) projectnumber,
+		IFNULL((select SUM(ot.OrderPriceTotalMoney) from order_table ot where ot.OrderServiceUserId = u.UserId and ot.OrderType = "PD" and ot.OrderState = "DDJS"),0) pdfinishnumber,
+		IFNULL((select SUM(ot.OrderPriceTotalMoney) from order_table ot where ot.OrderServiceUserId = u.UserId and ot.OrderType = "PD" and ot.OrderState != "DDJS"),0) pdunfinishednumber,
+		IFNULL((select SUM(ot.OrderPriceTotalMoney) from order_table ot where ot.OrderServiceUserId = u.UserId and ot.OrderType = "QD" and ot.OrderState = "DDJS"),0) qdfinishnumber,
+		IFNULL((select SUM(ot.OrderPriceTotalMoney) from order_table ot where ot.OrderServiceUserId = u.UserId and ot.OrderType = "QD" and ot.OrderState != "DDJS"),0) qdunfinishednumber,
+		(select count(*) from order_table ot left join apply_check ac on ot.OrderId = ac.OrderId where ot.OrderServiceUserId = u.UserId and ac.ApplyCheckState = "HG") hgnumber,
+		(select count(*) from order_table ot left join apply_check ac on ot.OrderId = ac.OrderId where ot.OrderServiceUserId = u.UserId and ac.ApplyCheckState != "HG" and ac.ApplyCheckState != "SQYS") bhgnumber,
+		(select count(*) from user u2 where u2.UserInvitationUserId = u.UserId) recommendnumber,
+		(select u1.UserRealName from user u1 where u.UserInvitationUserId = u1.UserId) userinvitationusername,
+		u.UserCredit usercredit FROM user u
+		left join user_service us on u.UserId = us.UserId
+		where (u.UserRole ="WX," or u.UserRole ="WX,AZ," or u.UserRole ="AZ,WX," or u.UserRole ="AZ,")
+		<if test="areacode != null and areacode != ''">
+			and us.AreaCode like CONCAT('%',#{areacode,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="goodid != null and goodid != ''">
+			and us.GoodId like CONCAT('%', #{goodid,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userrole != null and userrole != ''">
+			and u.UserRole like CONCAT('%',#{userrole,jdbcType=VARCHAR},'%')
+		</if>
+
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<!-- 根据LogAndUser实体联表模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectLogAndUserCount" parameterType="sun.bz1.entity.LogAndUser" resultType="java.lang.Integer">
+		select count(*) from log b
+		left join user a on b.LogUserId = a.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userid != null and userid != ''">
+					and a.UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="username != null and username != ''">
+					or a.UserName like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userrealname != null and userrealname != ''">
+					or a.UserRealName like CONCAT('%',#{userrealname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userphone != null and userphone != ''">
+					or a.UserPhone like CONCAT('%',#{userphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userrole != null and userrole != ''">
+					and a.UserRole like CONCAT('%',#{userrole,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userstate != null and userstate != ''">
+					and a.UserState = #{userstate,jdbcType=VARCHAR}
+				</if>
+				<if test="userinvitationuserid != null and userinvitationuserid != ''">
+					and a.UserInvitationUserId = #{userinvitationuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="logstate != null and logstate != ''">
+					and b.LogState = #{logstate,jdbcType=VARCHAR}
+				</if>
+
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据LogAndUser实体联表模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectLogAndUser" parameterType="sun.bz1.entity.LogAndUser" resultMap="UserAndLogMap">
+		select * from log b
+		left join user a on b.LogUserId = a.UserId
+		<where>
+		<trim suffixOverrides="and|or">
+			<if test="userid != null and userid != ''">
+			and a.UserId = #{userid,jdbcType=VARCHAR}
+		</if>
+		<if test="username != null and username != ''">
+			or a.UserName like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userrealname != null and userrealname != ''">
+			or a.UserRealName like CONCAT('%',#{userrealname,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userphone != null and userphone != ''">
+			or a.UserPhone like CONCAT('%',#{userphone,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userrole != null and userrole != ''">
+			and a.UserRole like CONCAT('%',#{userrole,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userstate != null and userstate != ''">
+			and a.UserState = #{userstate,jdbcType=VARCHAR}
+		</if>
+		<if test="userinvitationuserid != null and userinvitationuserid != ''">
+			and a.UserInvitationUserId = #{userinvitationuserid,jdbcType=VARCHAR}
+		</if>
+		<if test="logstate != null and logstate != ''">
+			and b.LogState = #{logstate,jdbcType=VARCHAR}
+		</if>
+
+		  order by b.LogCreateTime desc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+		</trim>
+		</where>
+	</select>
+	
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 -->
+	<!-- 平台派单时用到 -->
+	<select id="selectBackDistributionServiceUser" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultMap="SeniorResultMap">
+		select * from user a 
+			left join user_service b on a.UserId = b.UserId
+		where a.UserState = 'PZ' and b.UserServiceState = 'Y'
+			<if test="userrole != null and userrole == 'WX,'">
+				and (a.UserRole = 'WX,' or a.UserRole = 'WX,AZ,' or a.UserRole = 'AZ,WX,')
+			</if>
+			<if test="userrole != null and userrole == 'AZ,'">
+				and (a.UserRole = 'AZ,' or a.UserRole = 'WX,AZ,' or a.UserRole = 'AZ,WX,')
+			</if>
+			<if test="areaid != null and areaid != ''">
+				and b.AreaId like CONCAT('%',#{areaid,jdbcType=VARCHAR},'%') 
+			</if>
+			<if test="areacode != null and areacode != ''">
+				and b.AreaCode like CONCAT('%',#{areacode,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="goodid != null and goodid != ''">
+				and b.GoodId like CONCAT('%',#{goodid,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="scaleid != null and scaleid != ''">
+				and b.ScaleId  = #{scaleid,jdbcType=VARCHAR}
+			</if>
+		<if test="useryearteam != null and useryearteam != ''">
+			and b.UserYearTeam  = #{useryearteam,jdbcType=VARCHAR}
+		</if>
+			<if test="userservicerole != null and userservicerole != ''">
+				and a.UserRole like CONCAT('%',#{userservicerole,jdbcType=VARCHAR},'%')
+			</if>
+	</select>
+	
+	<!-- 客户金额变化列表 --> 
+	<!-- 微信小程序查询用户金额变化时用到 -->
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="wechatSelectCustomerMoneyListCountByUnionData" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultType="java.lang.Integer">
+		select count(*) from ( 
+  			select OrderProjectName as ProjectName, UserCustomerIncomeMoney as Money, UserCustomerIncomeMoneyCreateTime as CreateTime 
+  				from user_customer_income_money a LEFT JOIN order_table b on a.OrderId = b.OrderId 
+  			where a.UserCustomerIncomeMoneyUserId = #{userid,jdbcType=VARCHAR}
+  			 union all 
+ 	 		select OrderProjectName as ProjectName, UserCustomerExpenditureMoney as Money, UserCustomerExpenditureMoneyCreateTime as CreateTime 
+ 	 			from user_customer_expenditure_money c LEFT JOIN order_table d on c.OrderId = d.OrderId 
+ 	 		where c.UserCustomerExpenditureMoneyUserId = #{userid,jdbcType=VARCHAR}
+		) tableData order by CreateTime
+	</select>
+	
+	<!-- 客户金额变化列表 --> 
+	<!-- 微信小程序查询用户金额变化时用到 -->
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="wechatSelectCustomerMoneyListByUnionData" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultMap="WechatUserMoneyMap">
+		select * from ( 
+  			select OrderProjectName as ProjectName, UserCustomerIncomeMoney as Money, UserCustomerIncomeMoneyCreateTime as CreateTime 
+  				from user_customer_income_money a LEFT JOIN order_table b on a.OrderId = b.OrderId 
+  			where a.UserCustomerIncomeMoneyUserId = #{userid,jdbcType=VARCHAR}
+  			 union all 
+ 	 		select OrderProjectName as ProjectName, UserCustomerExpenditureMoney as Money, UserCustomerExpenditureMoneyCreateTime as CreateTime 
+ 	 			from user_customer_expenditure_money c LEFT JOIN order_table d on c.OrderId = d.OrderId 
+ 	 		where c.UserCustomerExpenditureMoneyUserId = #{userid,jdbcType=VARCHAR}
+		) tableData order by CreateTime
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 维修工、安装队金额变化列表 --> 
+	<!-- 微信小程序查询用户金额变化时用到 -->
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="wechatSelectServiceMoneyListCountByUnionData" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultType="java.lang.Integer">
+		select count(*) from ( 
+  			select OrderProjectName as ProjectName, UserServiceIncomeMoney as Money, UserServiceIncomeMoneyCreateTime as CreateTime 
+  				from user_service_income_money a LEFT JOIN order_table b on a.OrderId = b.OrderId 
+  			where a.UserServiceIncomeMoneyUserId = #{userid,jdbcType=VARCHAR} 
+  			 union all 
+ 	 		select OrderProjectName as ProjectName, UserServiceExpenditureMoney as Money, UserServiceExpenditureMoneyCreateTime as CreateTime 
+ 	 			from user_service_expenditure_money c LEFT JOIN order_table d on c.OrderId = d.OrderId 
+ 	 		where c.UserServiceExpenditureMoneyUserId = #{userid,jdbcType=VARCHAR} 
+		) tableData order by CreateTime
+	</select>
+	
+	<!-- 维修工、安装队金额变化列表 --> 
+	<!-- 微信小程序查询用户金额变化时用到 -->
+	<!-- 根据UserAndUserServiceAndUserCustomer实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="wechatSelectServiceMoneyListByUnionData" parameterType="sun.bz1.entity.UserAndUserServiceAndUserCustomer" resultMap="WechatUserMoneyMap">
+		select * from ( 
+  			select OrderProjectName as ProjectName, UserServiceIncomeMoney as Money, UserServiceIncomeMoneyCreateTime as CreateTime 
+  				from user_service_income_money a LEFT JOIN order_table b on a.OrderId = b.OrderId 
+  			where a.UserServiceIncomeMoneyUserId = #{userid,jdbcType=VARCHAR}
+  			 union all 
+ 	 		select OrderProjectName as ProjectName, UserServiceExpenditureMoney as Money, UserServiceExpenditureMoneyCreateTime as CreateTime 
+ 	 			from user_service_expenditure_money c LEFT JOIN order_table d on c.OrderId = d.OrderId 
+ 	 		where c.UserServiceExpenditureMoneyUserId = #{userid,jdbcType=VARCHAR}
+		) tableData order by CreateTime
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据User实体删除 -->
+	<delete id="deleteByUser" parameterType="sun.bz1.entity.User">
+		delete from user
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+	
+</mapper>

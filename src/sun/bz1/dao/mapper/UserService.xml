@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 用户_维修工、安装队表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.UserService">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.UserServiceEntity">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="UserId" jdbcType="VARCHAR" property="userid" />
+		<result column="AreaId" jdbcType="VARCHAR" property="areaid" />
+		<result column="ScaleId" jdbcType="VARCHAR" property="scaleid" />
+		<result column="UserServiceRole" jdbcType="VARCHAR" property="userservicerole" />
+		<result column="UserServiceState" jdbcType="VARCHAR" property="userservicestate" />
+		<result column="UserServiceTravelMoney" jdbcType="DOUBLE" property="userservicetravelmoney" />
+		<result column="UserServiceType" jdbcType="VARCHAR" property="userservicetype" />
+		<result column="UserServiceAdvantage" jdbcType="VARCHAR" property="userserviceadvantage" />
+		<result column="UserServiceRemark" jdbcType="VARCHAR" property="userserviceremark" />
+		<result column="AreaCode" jdbcType="VARCHAR" property="areacode" />
+		<result column="AreaName" jdbcType="VARCHAR" property="areaname" />
+		<result column="GoodId" jdbcType="VARCHAR" property="goodid" />
+		<result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+		<result column="UserYearTeam" jdbcType="VARCHAR" property="useryearteam" />
+		<result column="UserYearNumber" jdbcType="INTEGER" property="useryearnumber" />
+		<result column="UserYearPercent" jdbcType="DOUBLE" property="useryearpercent" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, UserId, AreaId, ScaleId, UserServiceRole, UserServiceState, 
+		UserServiceTravelMoney, UserServiceType, UserServiceAdvantage, UserServiceRemark,AreaCode,AreaName,GoodId,GoodsName,UserYearTeam,UserYearNumber,UserYearPercent
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.UserServiceEntity">
+		insert into user_service (ID, UserId, AreaId, ScaleId, UserServiceState, UserServiceRole,
+		UserServiceTravelMoney, UserServiceType, UserServiceAdvantage,UserServiceRemark,AreaCode,GoodsName,GoodId,GoodsName,UserYearTeam,UserYearNumber,UserYearPercent)
+		values (#{id,jdbcType=INTEGER}, 
+		#{userid,jdbcType=VARCHAR},
+		#{areaid,jdbcType=VARCHAR},
+		#{scaleid,jdbcType=VARCHAR}, 
+		#{userservicerole,jdbcType=VARCHAR},
+		#{userservicestate,jdbcType=VARCHAR},
+		#{userservicetravelmoney,jdbcType=DOUBLE},
+		#{userservicetype,jdbcType=VARCHAR},
+		#{userserviceadvantage,jdbcType=VARCHAR},
+		#{userserviceremark,jdbcType=VARCHAR},
+		#{areacode,jdbcType=VARCHAR},
+		#{areaname,jdbcType=VARCHAR},
+		#{goodid,jdbcType=VARCHAR},
+		#{goodsname,jdbcType=VARCHAR},
+		#{useryearteam,jdbcType=VARCHAR},
+		#{useryearnumber,jdbcType=INTEGER},
+		#{useryearpercent,jdbcType=DOUBLE})
+
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.UserServiceEntity">
+		insert into user_service
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="userid != null">
+				UserId,
+			</if>
+			<if test="areaid != null">
+				AreaId,
+			</if>
+			<if test="scaleid != null">
+				ScaleId,
+			</if>
+			<if test="userservicerole != null">
+				UserServiceRole,
+			</if>
+			<if test="userservicestate != null">
+				UserServiceState,
+			</if>
+			<if test="userservicetravelmoney != null">
+				UserServiceTravelMoney,
+			</if>
+			<if test="userservicetype != null">
+				UserServiceType,
+			</if>
+			<if test="userserviceadvantage != null">
+				UserServiceAdvantage,
+			</if>
+			<if test="userserviceremark != null">
+				UserServiceRemark,
+			</if>
+			<if test="areacode != null">
+				AreaCode,
+			</if>
+			<if test="goodid != null">
+				GoodId,
+			</if>
+			<if test="useryearteam != null">
+				UserYearTeam,
+			</if>
+			<if test="areaname != null">
+				AreaName,
+			</if>
+			<if test="goodsname != null">
+				GoodsName,
+			</if>
+			<if test="useryearnumber != null">
+				UserYearNumber,
+			</if>
+			<if test="useryearpercent != null">
+				UserYearPercent,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="areaid != null">
+				#{areaid,jdbcType=VARCHAR},
+			</if>
+			<if test="scaleid != null">
+				#{scaleid,jdbcType=VARCHAR},
+			</if>
+			<if test="userservicerole != null">
+				#{userservicerole,jdbcType=VARCHAR},
+			</if>
+			<if test="userservicestate != null">
+				#{userservicestate,jdbcType=VARCHAR},
+			</if>
+			<if test="userservicetravelmoney != null">
+				#{userservicetravelmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="userservicetype != null">
+				#{userservicetype,jdbcType=VARCHAR},
+			</if>
+			<if test="userserviceadvantage != null">
+				#{userserviceadvantage,jdbcType=VARCHAR},
+			</if>
+			<if test="userserviceremark != null">
+				#{userserviceremark,jdbcType=VARCHAR},
+			</if>
+			<if test="areacode != null">
+				#{areacode,jdbcType=VARCHAR},
+			</if>
+			<if test="goodid != null">
+				#{goodid,jdbcType=VARCHAR},
+			</if>
+			<if test="useryearteam != null">
+				#{useryearteam,jdbcType=VARCHAR},
+			</if>
+			<if test="areaname != null">
+				#{areaname,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsname != null">
+				#{goodsname,jdbcType=VARCHAR},
+			</if>
+			<if test="useryearnumber != null">
+				#{useryearnumber,jdbcType=INTEGER},
+			</if>
+			<if test="useryearpercent != null">
+				#{useryearpercent,jdbcType=DOUBLE},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.UserServiceEntity">
+		update user_service
+		<set>
+			<if test="userid != null">
+				UserId = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="areaid != null">
+				AreaId = #{areaid,jdbcType=VARCHAR},
+			</if>
+			<if test="scaleid != null">
+				ScaleId = #{scaleid,jdbcType=VARCHAR},
+			</if>
+			<if test="userservicerole != null">
+				UserServiceRole = #{userservicerole,jdbcType=VARCHAR},
+			</if>
+			<if test="userservicestate != null">
+				UserServiceState = #{userservicestate,jdbcType=VARCHAR},
+			</if>
+			<if test="userservicetravelmoney != null">
+				UserServiceTravelMoney = #{userservicetravelmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="userservicetype != null">
+				UserServiceType = #{userservicetype,jdbcType=VARCHAR},
+			</if>
+			<if test="userserviceadvantage != null">
+				UserServiceAdvantage = #{userserviceadvantage,jdbcType=VARCHAR},
+			</if>
+			<if test="userserviceremark != null">
+				UserServiceRemark = #{userserviceremark,jdbcType=VARCHAR},
+			</if>
+			<if test="areacode != null">
+				AreaCode = #{areacode,jdbcType=VARCHAR},
+			</if>
+			<if test="goodid != null">
+				GoodId = #{goodid,jdbcType=VARCHAR},
+			</if>
+			<if test="useryearteam != null">
+				UserYearTeam = #{useryearteam,jdbcType=VARCHAR},
+			</if>
+			<if test="areaname != null">
+				AreaName = #{areaname,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsname != null">
+				GoodsName = #{goodsname,jdbcType=VARCHAR},
+			</if>
+			<if test="useryearnumber != null">
+				UserYearNumber = #{useryearnumber,jdbcType=INTEGER},
+			</if>
+			<if test="useryearpercent != null">
+				UserYearPercent = #{useryearpercent,jdbcType=DOUBLE},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.UserServiceEntity">
+		update user_service
+		set UserId = #{userid,jdbcType=VARCHAR},
+		AreaId = #{areaid,jdbcType=VARCHAR},
+		ScaleId = #{scaleid,jdbcType=VARCHAR},
+		UserServiceRole = #{userservicerole,jdbcType=VARCHAR},
+		UserServiceState = #{userservicestate,jdbcType=VARCHAR},
+		UserServiceTravelMoney = #{userservicetravelmoney,jdbcType=DOUBLE},
+		UserServiceType = #{userservicetype,jdbcType=VARCHAR},
+		UserServiceAdvantage = #{userserviceadvantage,jdbcType=VARCHAR},
+		UserServiceRemark = #{userserviceremark,jdbcType=VARCHAR},
+		AreaCode = #{areacode,jdbcType=VARCHAR},
+		GoodId = #{goodid,jdbcType=VARCHAR},
+		UserYearTeam = #{userYearTeam,jdbcType=VARCHAR}
+		AreaName = #{areaname,jdbcType=VARCHAR},
+		GoodsName = #{goodsname,jdbcType=VARCHAR},
+		UserYearNumber = #{useryearnumber,jdbcType=INTEGER}
+		UserYearPercent = #{useryearpercent,jdbcType=DOUBLE}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from user_service
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from user_service
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from user_service
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据UserService实体添加 -->
+	<insert id="insertByUserService" parameterType="sun.bz1.entity.UserServiceEntity">
+		insert into user_service
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userid != null">
+				UserId,
+			</if>
+			<if test="areaid != null">
+				AreaId,
+			</if>
+			<if test="scaleid != null">
+				ScaleId,
+			</if>
+			<if test="userservicerole != null">
+				UserServiceRole,
+			</if>
+			<if test="userservicestate != null">
+				UserServiceState,
+			</if>
+			<if test="userservicetravelmoney != null">
+				UserServiceTravelMoney,
+			</if>
+			<if test="userservicetype != null">
+				UserServiceType,
+			</if>
+			<if test="userserviceadvantage != null">
+				UserServiceAdvantage,
+			</if>
+			<if test="userserviceremark != null">
+				UserServiceRemark,
+			</if>
+			<if test="areacode != null">
+				AreaCode,
+			</if>
+			<if test="goodid != null">
+				GoodId,
+			</if>
+			<if test="useryearteam != null">
+				UserYearTeam,
+			</if>
+			<if test="areaname != null">
+				AreaName,
+			</if>
+			<if test="goodsname != null">
+				GoodsName,
+			</if>
+			<if test="useryearnumber != null">
+				UserYearNumber,
+			</if>
+			<if test="useryearpercent != null">
+				UserYearPercent,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="areaid != null">
+				#{areaid,jdbcType=VARCHAR},
+			</if>
+			<if test="scaleid != null">
+				#{scaleid,jdbcType=VARCHAR},
+			</if>
+			<if test="userservicerole != null">
+				#{userservicerole,jdbcType=VARCHAR},
+			</if>
+			<if test="userservicestate != null">
+				#{userservicestate,jdbcType=VARCHAR},
+			</if>
+			<if test="userservicetravelmoney != null">
+				#{userservicetravelmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="userservicetype != null">
+				#{userservicetype,jdbcType=VARCHAR},
+			</if>
+			<if test="userserviceadvantage != null">
+				#{userserviceadvantage,jdbcType=VARCHAR},
+			</if>
+			<if test="userserviceremark != null">
+				#{userserviceremark,jdbcType=VARCHAR},
+			</if>
+			<if test="areacode != null">
+				#{areacode,jdbcType=VARCHAR},
+			</if>
+			<if test="goodid != null">
+				#{goodid,jdbcType=VARCHAR},
+			</if>
+			<if test="useryearteam != null">
+				#{useryearteam,jdbcType=VARCHAR},
+			</if>
+			<if test="areaname != null">
+				#{areaname,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsname != null">
+				#{goodsname,jdbcType=VARCHAR},
+			</if>
+			<if test="useryearnumber != null">
+				#{useryearnumber,jdbcType=INTEGER},
+			</if>
+			<if test="useryearpercent != null">
+				#{useryearpercent,jdbcType=DOUBLE},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据UserService实体更新 -->
+	<update id="updateByUserService" parameterType="sun.bz1.entity.UserServiceEntity">
+		update user_service
+		<set>
+			<if test="userid != null">
+				UserId = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="areaid != null">
+				AreaId = #{areaid,jdbcType=VARCHAR},
+			</if>
+			<if test="scaleid != null">
+				ScaleId = #{scaleid,jdbcType=VARCHAR},
+			</if>
+			<if test="userservicerole != null">
+				UserServiceRole = #{userservicerole,jdbcType=VARCHAR},
+			</if>
+			<if test="userservicestate != null">
+				UserServiceState = #{userservicestate,jdbcType=VARCHAR},
+			</if>
+			<if test="userservicetravelmoney != null">
+				UserServiceTravelMoney = #{userservicetravelmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="userservicetype != null">
+				UserServiceType = #{userservicetype,jdbcType=VARCHAR},
+			</if>
+			<if test="userserviceadvantage != null">
+				UserServiceAdvantage = #{userserviceadvantage,jdbcType=VARCHAR},
+			</if>
+			<if test="userserviceremark != null">
+				UserServiceRemark = #{userserviceremark,jdbcType=VARCHAR},
+			</if>
+			<if test="areacode != null">
+				AreaCode = #{areacode,jdbcType=VARCHAR},
+			</if>
+			<if test="goodid != null">
+				GoodId = #{goodid,jdbcType=VARCHAR},
+			</if>
+			<if test="useryearteam != null">
+				UserYearTeam = #{useryearteam,jdbcType=VARCHAR},
+			</if>
+			<if test="areaname != null">
+				AreaName = #{areaname,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsname != null">
+				GoodsName = #{goodsname,jdbcType=VARCHAR},
+			</if>
+			<if test="useryearnumber != null">
+				UserYearNumber = #{useryearnumber,jdbcType=INTEGER},
+			</if>
+			<if test="useryearpercent != null">
+				UserYearPercent = #{useryearpercent,jdbcType=DOUBLE},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据UserService实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByUserService" parameterType="sun.bz1.entity.UserServiceEntity" resultType="java.lang.Integer">
+		select count(*) from user_service
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicerole != null and userservicerole != ''">
+					and UserServiceRole = #{userservicerole,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicestate != null and userservicestate != ''">
+					and UserServiceState = #{userservicestate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据UserService实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectByUserService" parameterType="sun.bz1.entity.UserServiceEntity" resultMap="BaseResultMap">
+		select * from user_service
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicerole != null and userservicerole != ''">
+					and UserServiceRole = #{userservicerole,jdbcType=VARCHAR}
+				</if>
+				<if test="userservicestate != null and userservicestate != ''">
+					and UserServiceState = #{userservicestate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据UserService实体删除 -->
+	<delete id="deleteByUserService" parameterType="sun.bz1.entity.UserServiceEntity">
+		delete from user_service
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+	
+</mapper>

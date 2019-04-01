@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 拦标价表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.Intercept">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.Intercept">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="InterceptId" jdbcType="VARCHAR" property="interceptid" />
+		<result column="GoodsId" jdbcType="VARCHAR" property="goodsid" />
+		<result column="ProjectId" jdbcType="VARCHAR" property="projectid" />
+		<result column="InterceptType" jdbcType="VARCHAR" property="intercepttype" />
+		<result column="InterceptMoney" jdbcType="DOUBLE" property="interceptmoney" />
+		<result column="InterceptRealMoney" jdbcType="DOUBLE" property="interceptrealmoney" />
+		<result column="InterceptState" jdbcType="VARCHAR" property="interceptstate" />
+		<result column="InterceptCreateUserId" jdbcType="VARCHAR" property="interceptcreateuserid" />
+		<result column="InterceptCreateTime" jdbcType="TIMESTAMP" property="interceptcreatetime" />
+		<result column="InterceptUpdateUserId" jdbcType="VARCHAR" property="interceptupdateuserid" />
+		<result column="InterceptUpdateTime" jdbcType="TIMESTAMP" property="interceptupdatetime" />
+		<result column="InterceptRemark" jdbcType="VARCHAR" property="interceptremark" />
+	</resultMap>
+	
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.InterceptAndGoodsAndProject">
+		<!-- 拦标价表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="InterceptId" jdbcType="VARCHAR" property="interceptid" />
+		<result column="GoodsId" jdbcType="VARCHAR" property="goodsid" />
+		<result column="ProjectId" jdbcType="VARCHAR" property="projectid" />
+		<result column="InterceptType" jdbcType="VARCHAR" property="intercepttype" />
+		<result column="InterceptMoney" jdbcType="DOUBLE" property="interceptmoney" />
+		<result column="InterceptRealMoney" jdbcType="DOUBLE" property="interceptrealmoney" />
+		<result column="InterceptState" jdbcType="VARCHAR" property="interceptstate" />
+		<result column="InterceptCreateUserId" jdbcType="VARCHAR" property="interceptcreateuserid" />
+		<result column="InterceptCreateTime" jdbcType="TIMESTAMP" property="interceptcreatetime" />
+		<result column="InterceptUpdateUserId" jdbcType="VARCHAR" property="interceptupdateuserid" />
+		<result column="InterceptUpdateTime" jdbcType="TIMESTAMP" property="interceptupdatetime" />
+		<result column="InterceptRemark" jdbcType="VARCHAR" property="interceptremark" />
+		
+		<!-- 产品表 -->
+		<result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+		<result column="GoodsType" jdbcType="VARCHAR" property="goodstype" />
+		<result column="GoodsState" jdbcType="VARCHAR" property="goodsstate" />
+		<result column="GoodsRemark" jdbcType="VARCHAR" property="goodsremark" />
+		
+		<!-- 项目表 -->
+		<result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
+		<result column="ProjectType" jdbcType="VARCHAR" property="projecttype" />
+		<result column="ProjectState" jdbcType="VARCHAR" property="projectstate" />
+		<result column="ProjectRemark" jdbcType="VARCHAR" property="projectremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, InterceptId, GoodsId, ProjectId, InterceptType, InterceptMoney, InterceptRealMoney,
+		InterceptState, InterceptCreateUserId, InterceptCreateTime, InterceptUpdateUserId, 
+		InterceptUpdateTime, InterceptRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.Intercept">
+		insert into intercept (ID, InterceptId, GoodsId, ProjectId, InterceptType, 
+		InterceptMoney, InterceptRealMoney, InterceptState, InterceptCreateUserId, 
+		InterceptCreateTime, InterceptUpdateUserId, InterceptUpdateTime, InterceptRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{interceptid,jdbcType=VARCHAR},
+		#{goodsid,jdbcType=VARCHAR},
+		#{projectid,jdbcType=VARCHAR}, 
+		#{intercepttype,jdbcType=VARCHAR}, 
+		#{interceptmoney,jdbcType=DOUBLE},
+		#{interceptrealmoney,jdbcType=DOUBLE},
+		#{interceptstate,jdbcType=VARCHAR},
+		#{interceptcreateuserid,jdbcType=VARCHAR},
+		#{interceptcreatetime,jdbcType=TIMESTAMP},
+		#{interceptupdateuserid,jdbcType=VARCHAR},
+		#{interceptupdatetime,jdbcType=TIMESTAMP},
+		#{interceptremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.Intercept">
+		insert into intercept
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="interceptid != null">
+				InterceptId,
+			</if>
+			<if test="goodsid != null">
+				GoodsId,
+			</if>
+			<if test="projectid != null">
+				ProjectId,
+			</if>
+			<if test="intercepttype != null">
+				InterceptType,
+			</if>
+			<if test="interceptmoney != null">
+				InterceptMoney,
+			</if>
+			<if test="interceptrealmoney != null">
+				InterceptRealMoney,
+			</if>
+			<if test="interceptstate != null">
+				InterceptState,
+			</if>
+			<if test="interceptcreateuserid != null">
+				InterceptCreateUserId,
+			</if>
+			<if test="interceptcreatetime != null">
+				InterceptCreateTime,
+			</if>
+			<if test="interceptupdateuserid != null">
+				InterceptUpdateUserId,
+			</if>
+			<if test="interceptupdatetime != null">
+				InterceptUpdateTime,
+			</if>
+			<if test="interceptremark != null">
+				InterceptRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="interceptid != null">
+				#{interceptid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsid != null">
+				#{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectid != null">
+				#{projectid,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttype != null">
+				#{intercepttype,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptmoney != null">
+				#{interceptmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="interceptrealmoney != null">
+				#{interceptrealmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="interceptstate != null">
+				#{interceptstate,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptcreateuserid != null">
+				#{interceptcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptcreatetime != null">
+				#{interceptcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="interceptupdateuserid != null">
+				#{interceptupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptupdatetime != null">
+				#{interceptupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="interceptremark != null">
+				#{interceptremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.Intercept">
+		update intercept
+		<set>
+			<if test="interceptid != null">
+				InterceptId = #{interceptid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsid != null">
+				GoodsId = #{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectid != null">
+				ProjectId = #{projectid,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttype != null">
+				InterceptType = #{intercepttype,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptmoney != null">
+				InterceptMoney = #{interceptmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="interceptrealmoney != null">
+				InterceptRealMoney = #{interceptrealmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="interceptstate != null">
+				InterceptState = #{interceptstate,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptcreateuserid != null">
+				InterceptCreateUserId = #{interceptcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptcreatetime != null">
+				InterceptCreateTime = #{interceptcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="interceptupdateuserid != null">
+				InterceptUpdateUserId = #{interceptupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptupdatetime != null">
+				InterceptUpdateTime = #{interceptupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="interceptremark != null">
+				InterceptRemark = #{interceptremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.Intercept">
+		update intercept
+		set InterceptId = #{interceptid,jdbcType=VARCHAR},
+		GoodsId = #{goodsid,jdbcType=VARCHAR},
+		ProjectId = #{projectid,jdbcType=VARCHAR},
+		InterceptType = #{intercepttype,jdbcType=VARCHAR},
+		InterceptMoney = #{interceptmoney,jdbcType=DOUBLE},
+		InterceptRealMoney = #{interceptrealmoney,jdbcType=DOUBLE},
+		InterceptState = #{interceptstate,jdbcType=VARCHAR},
+		InterceptCreateUserId = #{interceptcreateuserid,jdbcType=VARCHAR},
+		InterceptCreateTime = #{interceptcreatetime,jdbcType=TIMESTAMP},
+		InterceptUpdateUserId = #{interceptupdateuserid,jdbcType=VARCHAR},
+		InterceptUpdateTime = #{interceptupdatetime,jdbcType=TIMESTAMP},
+		InterceptRemark = #{interceptremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from intercept
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from intercept
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from intercept
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据Intercept实体添加 -->
+	<insert id="insertByIntercept" parameterType="sun.bz1.entity.Intercept">
+		insert into intercept
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="interceptid != null">
+				InterceptId,
+			</if>
+			<if test="goodsid != null">
+				GoodsId,
+			</if>
+			<if test="projectid != null">
+				ProjectId,
+			</if>
+			<if test="intercepttype != null">
+				InterceptType,
+			</if>
+			<if test="interceptmoney != null">
+				InterceptMoney,
+			</if>
+			<if test="interceptrealmoney != null">
+				InterceptRealMoney,
+			</if>
+			<if test="interceptstate != null">
+				InterceptState,
+			</if>
+			<if test="interceptcreateuserid != null">
+				InterceptCreateUserId,
+			</if>
+			<if test="interceptcreatetime != null">
+				InterceptCreateTime,
+			</if>
+			<if test="interceptupdateuserid != null">
+				InterceptUpdateUserId,
+			</if>
+			<if test="interceptupdatetime != null">
+				InterceptUpdateTime,
+			</if>
+			<if test="interceptremark != null">
+				InterceptRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="interceptid != null">
+				#{interceptid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsid != null">
+				#{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectid != null">
+				#{projectid,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttype != null">
+				#{intercepttype,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptmoney != null">
+				#{interceptmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="interceptrealmoney != null">
+				#{interceptrealmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="interceptstate != null">
+				#{interceptstate,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptcreateuserid != null">
+				#{interceptcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptcreatetime != null">
+				#{interceptcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="interceptupdateuserid != null">
+				#{interceptupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptupdatetime != null">
+				#{interceptupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="interceptremark != null">
+				#{interceptremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据Intercept实体更新 -->
+	<update id="updateByIntercept" parameterType="sun.bz1.entity.Intercept">
+		update intercept
+		<set>
+			<if test="interceptid != null">
+				InterceptId = #{interceptid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsid != null">
+				GoodsId = #{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectid != null">
+				ProjectId = #{projectid,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttype != null">
+				InterceptType = #{intercepttype,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptmoney != null">
+				InterceptMoney = #{interceptmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="interceptrealmoney != null">
+				InterceptRealMoney = #{interceptrealmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="interceptstate != null">
+				InterceptState = #{interceptstate,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptcreateuserid != null">
+				InterceptCreateUserId = #{interceptcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptcreatetime != null">
+				InterceptCreateTime = #{interceptcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="interceptupdateuserid != null">
+				InterceptUpdateUserId = #{interceptupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="interceptupdatetime != null">
+				InterceptUpdateTime = #{interceptupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="interceptremark != null">
+				InterceptRemark = #{interceptremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="interceptid != null and interceptid != ''">
+					and InterceptId = #{interceptid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据InterceptAndGoodsAndProject实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountByUnionData" parameterType="sun.bz1.entity.InterceptAndGoodsAndProject" resultType="java.lang.Integer">
+		select count(*) from intercept a 
+			inner join goods b on a.GoodsId = b.GoodsId
+			inner join project c on a.ProjectId = c.ProjectId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="interceptid != null and interceptid != ''">
+					and a.InterceptId = #{interceptid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and a.GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="projectid != null and projectid != ''">
+					and a.ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+				<if test="intercepttype != null and intercepttype != ''">
+					and a.InterceptType = #{intercepttype,jdbcType=VARCHAR}
+				</if>
+				<if test="interceptstate != null and interceptstate != ''">
+					and a.InterceptState = #{interceptstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectinterceptcreatestarttime != null and selectinterceptcreatestarttime != '' 
+						and selectinterceptcreateendtime != null and selectinterceptcreateendtime != ''">
+					and a.InterceptCreateTime &gt;= #{selectinterceptcreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.InterceptCreateTime &lt;= #{selectinterceptcreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="goodstype != null and goodstype != ''">
+					and b.GoodsType = #{goodstype,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsstate != null and goodsstate != ''">
+					and b.GoodsState = #{goodsstate,jdbcType=VARCHAR}
+				</if>
+				<if test="projecttype != null and projecttype != ''">
+					and c.ProjectType = #{projecttype,jdbcType=VARCHAR}
+				</if>
+				<if test="projectstate != null and projectstate != ''">
+					and c.ProjectState = #{projectstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据InterceptAndGoodsAndProject实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesByUnionData" parameterType="sun.bz1.entity.InterceptAndGoodsAndProject" resultMap="SeniorResultMap">
+		select * from intercept a 
+			inner join goods b on a.GoodsId = b.GoodsId
+			inner join project c on a.ProjectId = c.ProjectId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="interceptid != null and interceptid != ''">
+					and a.InterceptId = #{interceptid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and a.GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="projectid != null and projectid != ''">
+					and a.ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+				<if test="intercepttype != null and intercepttype != ''">
+					and a.InterceptType = #{intercepttype,jdbcType=VARCHAR}
+				</if>
+				<if test="interceptstate != null and interceptstate != ''">
+					and a.InterceptState = #{interceptstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectinterceptcreatestarttime != null and selectinterceptcreatestarttime != '' 
+						and selectinterceptcreateendtime != null and selectinterceptcreateendtime != ''">
+					and a.InterceptCreateTime &gt;= #{selectinterceptcreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.InterceptCreateTime &lt;= #{selectinterceptcreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="goodstype != null and goodstype != ''">
+					and b.GoodsType = #{goodstype,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsstate != null and goodsstate != ''">
+					and b.GoodsState = #{goodsstate,jdbcType=VARCHAR}
+				</if>
+				<if test="projecttype != null and projecttype != ''">
+					and c.ProjectType = #{projecttype,jdbcType=VARCHAR}
+				</if>
+				<if test="projectstate != null and projectstate != ''">
+					and c.ProjectState = #{projectstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据InterceptAndGoodsAndProject实体联表模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountBySelectData" parameterType="sun.bz1.entity.InterceptAndGoodsAndProject" resultType="java.lang.Integer">
+		select count(*) from intercept a 
+			inner join goods b on a.GoodsId = b.GoodsId
+			inner join project c on a.ProjectId = c.ProjectId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="interceptid != null and interceptid != ''">
+					and a.InterceptId = #{interceptid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and a.GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="projectid != null and projectid != ''">
+					and a.ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+				<if test="intercepttype != null and intercepttype != ''">
+					and a.InterceptType = #{intercepttype,jdbcType=VARCHAR}
+				</if>
+				<if test="interceptstate != null and interceptstate != ''">
+					and a.InterceptState = #{interceptstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectinterceptcreatestarttime != null and selectinterceptcreatestarttime != '' 
+						and selectinterceptcreateendtime != null and selectinterceptcreateendtime != ''">
+					and a.InterceptCreateTime &gt;= #{selectinterceptcreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.InterceptCreateTime &lt;= #{selectinterceptcreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="goodsname != null and goodsname != ''">
+					or b.GoodsName like CONCAT('%',#{goodsname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="goodstype != null and goodstype != ''">
+					and b.GoodsType = #{goodstype,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsstate != null and goodsstate != ''">
+					and b.GoodsState = #{goodsstate,jdbcType=VARCHAR}
+				</if>
+				<if test="projectname != null and projectname != ''">
+					or c.ProjectName like CONCAT('%',#{projectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="projecttype != null and projecttype != ''">
+					and c.ProjectType = #{projecttype,jdbcType=VARCHAR}
+				</if>
+				<if test="projectstate != null and projectstate != ''">
+					and c.ProjectState = #{projectstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据InterceptAndGoodsAndProject实体联表模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesBySelectData" parameterType="sun.bz1.entity.InterceptAndGoodsAndProject" resultMap="SeniorResultMap">
+		select * from intercept a 
+			inner join goods b on a.GoodsId = b.GoodsId
+			inner join project c on a.ProjectId = c.ProjectId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="interceptid != null and interceptid != ''">
+					and a.InterceptId = #{interceptid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and a.GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="projectid != null and projectid != ''">
+					and a.ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+				<if test="intercepttype != null and intercepttype != ''">
+					and a.InterceptType = #{intercepttype,jdbcType=VARCHAR}
+				</if>
+				<if test="interceptstate != null and interceptstate != ''">
+					and a.InterceptState = #{interceptstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectinterceptcreatestarttime != null and selectinterceptcreatestarttime != '' 
+						and selectinterceptcreateendtime != null and selectinterceptcreateendtime != ''">
+					and a.InterceptCreateTime &gt;= #{selectinterceptcreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.InterceptCreateTime &lt;= #{selectinterceptcreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="goodsname != null and goodsname != ''">
+					or b.GoodsName like CONCAT('%',#{goodsname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="goodstype != null and goodstype != ''">
+					and b.GoodsType = #{goodstype,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsstate != null and goodsstate != ''">
+					and b.GoodsState = #{goodsstate,jdbcType=VARCHAR}
+				</if>
+				<if test="projectname != null and projectname != ''">
+					or c.ProjectName like CONCAT('%',#{projectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="projecttype != null and projecttype != ''">
+					and c.ProjectType = #{projecttype,jdbcType=VARCHAR}
+				</if>
+				<if test="projectstate != null and projectstate != ''">
+					and c.ProjectState = #{projectstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+</mapper>

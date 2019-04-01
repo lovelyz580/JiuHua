@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--分享视频表-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.ShareVideo">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.ShareVideo">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ShareVideoId" jdbcType="VARCHAR" property="sharevideoid" />
+    <result column="ShareVideoName" jdbcType="VARCHAR" property="sharevideoname" />
+    <result column="ShareVideoUrl" jdbcType="VARCHAR" property="sharevideourl" />
+    <result column="ShareVideoSkipUrl" jdbcType="VARCHAR" property="sharevideoskipurl" />
+    <result column="ShareVideoState" jdbcType="VARCHAR" property="sharevideostate" />
+    <result column="ShareVideoRemark" jdbcType="VARCHAR" property="sharevideoremark" />
+    <result column="ShareVideoType" jdbcType="VARCHAR" property="sharevideotype" />
+    <result column="ShareVideoCreateTime" jdbcType="TIMESTAMP" property="sharevideocreatetime" />
+    <result column="ShareVideoOther1" jdbcType="VARCHAR" property="sharevideoother1" />
+    <result column="ShareVideoOther2" jdbcType="VARCHAR" property="sharevideoother2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ShareVideoId, ShareVideoName, ShareVideoUrl, ShareVideoSkipUrl, ShareVideoState, 
+    ShareVideoRemark, ShareVideoType, ShareVideoCreateTime, ShareVideoOther1, ShareVideoOther2
+  </sql>
+  <insert id="insert" parameterType="sun.bz1.entity.ShareVideo">
+    insert into share_video (ID, ShareVideoId, ShareVideoName,
+    ShareVideoUrl, ShareVideoSkipUrl, ShareVideoState,
+    ShareVideoRemark, ShareVideoType, ShareVideoCreateTime,
+    ShareVideoOther1, ShareVideoOther2)
+    values (#{id,jdbcType=INTEGER}, #{sharevideoid,jdbcType=VARCHAR}, #{sharevideoname,jdbcType=VARCHAR},
+    #{sharevideourl,jdbcType=VARCHAR}, #{sharevideoskipurl,jdbcType=VARCHAR}, #{sharevideostate,jdbcType=VARCHAR},
+    #{sharevideoremark,jdbcType=VARCHAR}, #{sharevideotype,jdbcType=VARCHAR}, #{sharevideocreatetime,jdbcType=TIMESTAMP},
+    #{sharevideoother1,jdbcType=VARCHAR}, #{sharevideoother2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sun.bz1.entity.ShareVideo">
+    insert into share_video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="sharevideoid != null">
+        ShareVideoId,
+      </if>
+      <if test="sharevideoname != null">
+        ShareVideoName,
+      </if>
+      <if test="sharevideourl != null">
+        ShareVideoUrl,
+      </if>
+      <if test="sharevideoskipurl != null">
+        ShareVideoSkipUrl,
+      </if>
+      <if test="sharevideostate != null">
+        ShareVideoState,
+      </if>
+      <if test="sharevideoremark != null">
+        ShareVideoRemark,
+      </if>
+      <if test="sharevideotype != null">
+        ShareVideoType,
+      </if>
+      <if test="sharevideocreatetime != null">
+        ShareVideoCreateTime,
+      </if>
+      <if test="sharevideoother1 != null">
+        ShareVideoOther1,
+      </if>
+      <if test="sharevideoother2 != null">
+        ShareVideoOther2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sharevideoid != null">
+        #{sharevideoid,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoname != null">
+        #{sharevideoname,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideourl != null">
+        #{sharevideourl,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoskipurl != null">
+        #{sharevideoskipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideostate != null">
+        #{sharevideostate,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoremark != null">
+        #{sharevideoremark,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideotype != null">
+        #{sharevideotype,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideocreatetime != null">
+        #{sharevideocreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sharevideoother1 != null">
+        #{sharevideoother1,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoother2 != null">
+        #{sharevideoother2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.ShareVideo">
+    update share_video
+    <set>
+      <if test="sharevideoid != null">
+        ShareVideoId = #{sharevideoid,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoname != null">
+        ShareVideoName = #{sharevideoname,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideourl != null">
+        ShareVideoUrl = #{sharevideourl,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoskipurl != null">
+        ShareVideoSkipUrl = #{sharevideoskipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideostate != null">
+        ShareVideoState = #{sharevideostate,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoremark != null">
+        ShareVideoRemark = #{sharevideoremark,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideotype != null">
+        ShareVideoType = #{sharevideotype,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideocreatetime != null">
+        ShareVideoCreateTime = #{sharevideocreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sharevideoother1 != null">
+        ShareVideoOther1 = #{sharevideoother1,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoother2 != null">
+        ShareVideoOther2 = #{sharevideoother2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.ShareVideo">
+    update share_video
+    set ShareVideoId = #{sharevideoid,jdbcType=VARCHAR},
+    ShareVideoName = #{sharevideoname,jdbcType=VARCHAR},
+    ShareVideoUrl = #{sharevideourl,jdbcType=VARCHAR},
+    ShareVideoSkipUrl = #{sharevideoskipurl,jdbcType=VARCHAR},
+    ShareVideoState = #{sharevideostate,jdbcType=VARCHAR},
+    ShareVideoRemark = #{sharevideoremark,jdbcType=VARCHAR},
+    ShareVideoType = #{sharevideotype,jdbcType=VARCHAR},
+    ShareVideoCreateTime = #{sharevideocreatetime,jdbcType=TIMESTAMP},
+    ShareVideoOther1 = #{sharevideoother1,jdbcType=VARCHAR},
+    ShareVideoOther2 = #{sharevideoother2,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select count(*) from share_video
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from share_video
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from share_video
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!--根据ShareVideo实体添加-->
+  <insert id="insertByShareVideo" parameterType="sun.bz1.entity.ShareVideo">
+    insert into share_video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="sharevideoid != null">
+        ShareVideoId,
+      </if>
+      <if test="sharevideoname != null">
+        ShareVideoName,
+      </if>
+      <if test="sharevideourl != null">
+        ShareVideoUrl,
+      </if>
+      <if test="sharevideoskipurl != null">
+        ShareVideoSkipUrl,
+      </if>
+      <if test="sharevideostate != null">
+        ShareVideoState,
+      </if>
+      <if test="sharevideoremark != null">
+        ShareVideoRemark,
+      </if>
+      <if test="sharevideotype != null">
+        ShareVideoType,
+      </if>
+      <if test="sharevideocreatetime != null">
+        ShareVideoCreateTime,
+      </if>
+      <if test="sharevideoother1 != null">
+        ShareVideoOther1,
+      </if>
+      <if test="sharevideoother2 != null">
+        ShareVideoOther2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sharevideoid != null">
+        #{sharevideoid,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoname != null">
+        #{sharevideoname,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideourl != null">
+        #{sharevideourl,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoskipurl != null">
+        #{sharevideoskipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideostate != null">
+        #{sharevideostate,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoremark != null">
+        #{sharevideoremark,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideotype != null">
+        #{sharevideotype,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideocreatetime != null">
+        #{sharevideocreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sharevideoother1 != null">
+        #{sharevideoother1,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoother2 != null">
+        #{sharevideoother2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!--根据Image实体更新-->
+  <update id="updateByShareVideo" parameterType="sun.bz1.entity.ShareVideo">
+    update share_video
+    <set>
+      <if test="sharevideoid != null">
+        ShareVideoId = #{sharevideoid,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoname != null">
+        ShareVideoName = #{sharevideoname,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideourl != null">
+        ShareVideoUrl = #{sharevideourl,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoskipurl != null">
+        ShareVideoSkipUrl = #{sharevideoskipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideostate != null">
+        ShareVideoState = #{sharevideostate,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoremark != null">
+        ShareVideoRemark = #{sharevideoremark,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideotype != null">
+        ShareVideoType = #{sharevideotype,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideocreatetime != null">
+        ShareVideoCreateTime = #{sharevideocreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sharevideoother1 != null">
+        ShareVideoOther1 = #{sharevideoother1,jdbcType=VARCHAR},
+      </if>
+      <if test="sharevideoother2 != null">
+        ShareVideoOther2 = #{sharevideoother2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="sharevideoid != null and sharevideoid != ''">
+          and ShareVideoId = #{sharevideoid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据ShareVideo实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByShareVideo" parameterType="sun.bz1.entity.ShareVideo" resultType="java.lang.Integer">
+    select count(*) from share_video
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="sharevideoid != null and sharevideoid != ''">
+          and ShareVideoId = #{sharevideoid,jdbcType=VARCHAR}
+        </if>
+        <if test="sharevideostate != null and sharevideostate != ''">
+          and ShareVideoState = #{sharevideostate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+
+  <!-- 根据ShareVideo实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectByShareVideo" parameterType="sun.bz1.entity.ShareVideo" resultMap="BaseResultMap">
+    select * from share_video
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="sharevideoid != null and sharevideoid != ''">
+          and ShareVideoId = #{sharevideoid,jdbcType=VARCHAR}
+        </if>
+        <if test="sharevideostate != null and sharevideostate != ''">
+          and ShareVideoState = #{sharevideostate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+  <!-- 根据ShareVideo实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountBySelectData" parameterType="sun.bz1.entity.ShareVideo" resultType="java.lang.Integer">
+    select count(*) from share_video
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="sharevideoid != null and sharevideoid != ''">
+          and ShareVideoId = #{sharevideoid,jdbcType=VARCHAR}
+        </if>
+        <if test="sharevideostate != null and sharevideostate != ''">
+          and ShareVideoState = #{sharevideostate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据ShareVideo实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectBySelectData" parameterType="sun.bz1.entity.ShareVideo" resultMap="BaseResultMap">
+    select * from share_video
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="sharevideoid != null and sharevideoid != ''">
+          and ShareVideoId = #{sharevideoid,jdbcType=VARCHAR}
+        </if>
+        <if test="sharevideostate != null and sharevideostate != ''">
+          and ShareVideoState = #{sharevideostate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据ShareVideo实体删除 -->
+  <delete id="deleteByShareVideo" parameterType="sun.bz1.entity.ShareVideo">
+    delete from share_video
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="sharevideoid != null and sharevideoid != ''">
+          and ShareVideoId = #{sharevideoid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+</mapper>

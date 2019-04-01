@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 统计数据 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.Statistics">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.Statistics">
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="OrderDetailId" jdbcType="VARCHAR" property="orderdetailid" />
+		<result column="UserId" jdbcType="VARCHAR" property="userid" />
+		<result column="UserName" jdbcType="VARCHAR" property="username" />
+		<result column="GoodsId" jdbcType="VARCHAR" property="goodsid" />
+		<result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+		<result column="ProjectId" jdbcType="VARCHAR" property="projectid" />
+		<result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
+		<result column="OrderDetailNumber" jdbcType="VARCHAR" property="orderdetailnumber" />
+		<result column="PriceMoney" jdbcType="DOUBLE" property="pricemoney" />
+		<result column="TotalMoney" jdbcType="DOUBLE" property="totalmoney" />
+	</resultMap>
+	
+	<!-- 根据Statistics实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectData" parameterType="sun.bz1.entity.Statistics" resultType="java.lang.Integer">
+		SELECT count(*) from order_detail a
+			inner join order_table b ON a.OrderId = b.OrderId
+			left join goods c ON a.GoodsId = c.GoodsId
+			left join project d ON a.ProjectId = d.ProjectId
+			left join user e on b.OrderServiceUserId = e.UserId
+			left join price f on d.ProjectId = f.ProjectId and e.UserId = f.PriceUpdateUserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="username != null and username != ''">
+					and e.UserName like CONCAT('%',#{username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="goodsname != null and goodsname != ''">
+					and c.GoodsName like CONCAT('%',#{goodsname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="projectname != null and projectname != ''">
+					and d.ProjectName like CONCAT('%',#{projectname,jdbcType=VARCHAR},'%') 
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据Statistics实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectBySelectData" parameterType="sun.bz1.entity.Statistics" resultMap="BaseResultMap">
+		SELECT b.OrderId, a.OrderDetailId, e.UserId, e.UserName, c.GoodsId, c.GoodsName, 
+				d.ProjectId, d.ProjectName, a.OrderDetailNumber, f.PriceMoney, (a.OrderDetailNumber * f.PriceMoney) as TotalMoney
+			from order_detail a
+			inner join order_table b ON a.OrderId = b.OrderId
+			left join goods c ON a.GoodsId = c.GoodsId
+			left join project d ON a.ProjectId = d.ProjectId
+			left join user e on b.OrderServiceUserId = e.UserId
+			left join price f on d.ProjectId = f.ProjectId and e.UserId = f.PriceUpdateUserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="username != null and username != ''">
+					and e.UserName like CONCAT('%',#{username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="goodsname != null and goodsname != ''">
+					and c.GoodsName like CONCAT('%',#{goodsname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="projectname != null and projectname != ''">
+					and d.ProjectName like CONCAT('%',#{projectname,jdbcType=VARCHAR},'%') 
+				</if>
+			</trim>
+		</where>
+		<!-- 按照信用值倒序排序 -->
+		order by a.GoodsId, a.ProjectId asc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+</mapper>

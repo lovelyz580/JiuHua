@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 日志表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.Log">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.Log">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="LogId" jdbcType="VARCHAR" property="logid" />
+    <result column="LogUserId" jdbcType="VARCHAR" property="loguserid" />
+    <result column="LogCreateTime" jdbcType="TIMESTAMP" property="logcreatetime" />
+    <result column="LogState" jdbcType="VARCHAR" property="logstate" />
+    <result column="LogOther1" jdbcType="VARCHAR" property="logother1" />
+    <result column="LogOther2" jdbcType="VARCHAR" property="logother2" />
+    <result column="LogOther3" jdbcType="VARCHAR" property="logother3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, LogId, LogUserId, LogCreateTime, LogState, LogOther1, LogOther2, LogOther3
+  </sql>
+
+  <insert id="insert" parameterType="sun.bz1.entity.Log">
+    insert into log (ID, LogId, LogUserId, 
+      LogCreateTime, LogState, LogOther1, 
+      LogOther2, LogOther3)
+    values (#{id,jdbcType=INTEGER}, #{logid,jdbcType=VARCHAR}, #{loguserid,jdbcType=VARCHAR}, 
+      #{logcreatetime,jdbcType=TIMESTAMP}, #{logstate,jdbcType=VARCHAR}, #{logother1,jdbcType=VARCHAR}, 
+      #{logother2,jdbcType=VARCHAR}, #{logother3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sun.bz1.entity.Log">
+    insert into log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="logid != null">
+        LogId,
+      </if>
+      <if test="loguserid != null">
+        LogUserId,
+      </if>
+      <if test="logcreatetime != null">
+        LogCreateTime,
+      </if>
+      <if test="logstate != null">
+        LogState,
+      </if>
+      <if test="logother1 != null">
+        LogOther1,
+      </if>
+      <if test="logother2 != null">
+        LogOther2,
+      </if>
+      <if test="logother3 != null">
+        LogOther3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="logid != null">
+        #{logid,jdbcType=VARCHAR},
+      </if>
+      <if test="loguserid != null">
+        #{loguserid,jdbcType=VARCHAR},
+      </if>
+      <if test="logcreatetime != null">
+        #{logcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logstate != null">
+        #{logstate,jdbcType=VARCHAR},
+      </if>
+      <if test="logother1 != null">
+        #{logother1,jdbcType=VARCHAR},
+      </if>
+      <if test="logother2 != null">
+        #{logother2,jdbcType=VARCHAR},
+      </if>
+      <if test="logother3 != null">
+        #{logother3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.Log">
+    update log
+    <set>
+      <if test="logid != null">
+        LogId = #{logid,jdbcType=VARCHAR},
+      </if>
+      <if test="loguserid != null">
+        LogUserId = #{loguserid,jdbcType=VARCHAR},
+      </if>
+      <if test="logcreatetime != null">
+        LogCreateTime = #{logcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logstate != null">
+        LogState = #{logstate,jdbcType=VARCHAR},
+      </if>
+      <if test="logother1 != null">
+        LogOther1 = #{logother1,jdbcType=VARCHAR},
+      </if>
+      <if test="logother2 != null">
+        LogOther2 = #{logother2,jdbcType=VARCHAR},
+      </if>
+      <if test="logother3 != null">
+        LogOther3 = #{logother3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.Log">
+    update log
+    set LogId = #{logid,jdbcType=VARCHAR},
+      LogUserId = #{loguserid,jdbcType=VARCHAR},
+      LogCreateTime = #{logcreatetime,jdbcType=TIMESTAMP},
+      LogState = #{logstate,jdbcType=VARCHAR},
+      LogOther1 = #{logother1,jdbcType=VARCHAR},
+      LogOther2 = #{logother2,jdbcType=VARCHAR},
+      LogOther3 = #{logother3,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select count(*) from log
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from log
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from log
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!--根据Log实体添加-->
+  <insert id="insertByLog" parameterType="sun.bz1.entity.Log">
+    insert into log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="logid != null">
+        LogId,
+      </if>
+      <if test="loguserid != null">
+        LogUserId,
+      </if>
+      <if test="logcreatetime != null">
+        LogCreateTime,
+      </if>
+      <if test="logstate != null">
+        LogState,
+      </if>
+      <if test="logother1 != null">
+        LogOther1,
+      </if>
+      <if test="logother2 != null">
+        LogOther2,
+      </if>
+      <if test="logother3 != null">
+        LogOther3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="logid != null">
+        #{logid,jdbcType=VARCHAR},
+      </if>
+      <if test="loguserid != null">
+        #{loguserid,jdbcType=VARCHAR},
+      </if>
+      <if test="logcreatetime != null">
+        #{logcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logstate != null">
+        #{logstate,jdbcType=VARCHAR},
+      </if>
+      <if test="logother1 != null">
+        #{logother1,jdbcType=VARCHAR},
+      </if>
+      <if test="logother2 != null">
+        #{logother2,jdbcType=VARCHAR},
+      </if>
+      <if test="logother3 != null">
+        #{logother3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!--根据Log实体更新-->
+  <update id="updateByLog" parameterType="sun.bz1.entity.Log">
+    update log
+    <set>
+      <if test="logid != null">
+        LogId = #{logid,jdbcType=VARCHAR},
+      </if>
+      <if test="loguserid != null">
+        LogUserId = #{loguserid,jdbcType=VARCHAR},
+      </if>
+      <if test="logcreatetime != null">
+        LogCreateTime = #{logcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logstate != null">
+        LogState = #{logstate,jdbcType=VARCHAR},
+      </if>
+      <if test="logother1 != null">
+        LogOther1 = #{logother1,jdbcType=VARCHAR},
+      </if>
+      <if test="logother2 != null">
+        LogOther2 = #{logother2,jdbcType=VARCHAR},
+      </if>
+      <if test="logother3 != null">
+        LogOther3 = #{logother3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="logid != null and logid != ''">
+          and LogId = #{logid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据Log实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByLog" parameterType="sun.bz1.entity.Log" resultType="java.lang.Integer">
+    select count(*) from log
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="logid != null and logid != ''">
+          and LogId = #{logid,jdbcType=VARCHAR}
+        </if>
+        <if test="logstate != null and logstate != ''">
+          and LogState = #{logstate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据Log实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectByLog" parameterType="sun.bz1.entity.Log" resultMap="BaseResultMap">
+    select * from log
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="logid != null and logid != ''">
+          and LogId = #{logid,jdbcType=VARCHAR}
+        </if>
+        <if test="logstate != null and logstate != ''">
+          and LogState = #{logstate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据Log实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountBySelectData" parameterType="sun.bz1.entity.Log" resultType="java.lang.Integer">
+    select count(*) from log
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="logid != null and logid != ''">
+          and LogId = #{logid,jdbcType=VARCHAR}
+        </if>
+        <if test="logstate != null and logstate != ''">
+          and LogState = #{logstate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据Log实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectBySelectData" parameterType="sun.bz1.entity.Log" resultMap="BaseResultMap">
+    select * from log
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="logid != null and logid != ''">
+          and LogId = #{logid,jdbcType=VARCHAR}
+        </if>
+        <if test="logstate != null and logstate != ''">
+          and LogState = #{logstate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据Log实体删除 -->
+  <delete id="deleteByLog" parameterType="sun.bz1.entity.Log">
+    delete from log
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="logid != null and logid != ''">
+          and LogId = #{logid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+</mapper>

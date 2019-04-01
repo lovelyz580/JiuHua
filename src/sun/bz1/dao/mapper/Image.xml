@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--首页图片表-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.Image">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.Image">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ImageId" jdbcType="VARCHAR" property="imageid" />
+    <result column="ImageUrl" jdbcType="VARCHAR" property="imageurl" />
+    <result column="ImageSkipUrl" jdbcType="VARCHAR" property="imageskipurl" />
+    <result column="ImageState" jdbcType="VARCHAR" property="imagestate" />
+    <result column="ImageRemark" jdbcType="VARCHAR" property="imageremark" />
+    <result column="ImageType" jdbcType="VARCHAR" property="imagetype" />
+    <result column="ImageCreateTime" jdbcType="TIMESTAMP" property="imagecreatetime" />
+    <result column="ImageOther1" jdbcType="VARCHAR" property="imageother1" />
+    <result column="ImageOther2" jdbcType="VARCHAR" property="imageother2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ImageId, ImageUrl, ImageSkipUrl, ImageState, ImageRemark, ImageType, ImageCreateTime, 
+    ImageOther1, ImageOther2
+  </sql>
+
+  <insert id="insert" parameterType="sun.bz1.entity.Image">
+    insert into image (ID, ImageId, ImageUrl,
+    ImageSkipUrl, ImageState, ImageRemark,
+    ImageType, ImageCreateTime, ImageOther1,
+    ImageOther2)
+    values (#{id,jdbcType=INTEGER}, #{imageid,jdbcType=VARCHAR}, #{imageurl,jdbcType=VARCHAR},
+    #{imageskipurl,jdbcType=VARCHAR}, #{imagestate,jdbcType=VARCHAR}, #{imageremark,jdbcType=VARCHAR},
+    #{imagetype,jdbcType=VARCHAR}, #{imagecreatetime,jdbcType=TIMESTAMP}, #{imageother1,jdbcType=VARCHAR},
+    #{imageother2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sun.bz1.entity.Image">
+    insert into image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="imageid != null">
+        ImageId,
+      </if>
+      <if test="imageurl != null">
+        ImageUrl,
+      </if>
+      <if test="imageskipurl != null">
+        ImageSkipUrl,
+      </if>
+      <if test="imagestate != null">
+        ImageState,
+      </if>
+      <if test="imageremark != null">
+        ImageRemark,
+      </if>
+      <if test="imagetype != null">
+        ImageType,
+      </if>
+      <if test="imagecreatetime != null">
+        ImageCreateTime,
+      </if>
+      <if test="imageother1 != null">
+        ImageOther1,
+      </if>
+      <if test="imageother2 != null">
+        ImageOther2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="imageid != null">
+        #{imageid,jdbcType=VARCHAR},
+      </if>
+      <if test="imageurl != null">
+        #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageskipurl != null">
+        #{imageskipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="imagestate != null">
+        #{imagestate,jdbcType=VARCHAR},
+      </if>
+      <if test="imageremark != null">
+        #{imageremark,jdbcType=VARCHAR},
+      </if>
+      <if test="imagetype != null">
+        #{imagetype,jdbcType=VARCHAR},
+      </if>
+      <if test="imagecreatetime != null">
+        #{imagecreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imageother1 != null">
+        #{imageother1,jdbcType=VARCHAR},
+      </if>
+      <if test="imageother2 != null">
+        #{imageother2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.Image">
+    update image
+    <set>
+      <if test="imageid != null">
+        ImageId = #{imageid,jdbcType=VARCHAR},
+      </if>
+      <if test="imageurl != null">
+        ImageUrl = #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageskipurl != null">
+        ImageSkipUrl = #{imageskipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="imagestate != null">
+        ImageState = #{imagestate,jdbcType=VARCHAR},
+      </if>
+      <if test="imageremark != null">
+        ImageRemark = #{imageremark,jdbcType=VARCHAR},
+      </if>
+      <if test="imagetype != null">
+        ImageType = #{imagetype,jdbcType=VARCHAR},
+      </if>
+      <if test="imagecreatetime != null">
+        ImageCreateTime = #{imagecreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imageother1 != null">
+        ImageOther1 = #{imageother1,jdbcType=VARCHAR},
+      </if>
+      <if test="imageother2 != null">
+        ImageOther2 = #{imageother2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.Image">
+    update image
+    set ImageId = #{imageid,jdbcType=VARCHAR},
+    ImageUrl = #{imageurl,jdbcType=VARCHAR},
+    ImageSkipUrl = #{imageskipurl,jdbcType=VARCHAR},
+    ImageState = #{imagestate,jdbcType=VARCHAR},
+    ImageRemark = #{imageremark,jdbcType=VARCHAR},
+    ImageType = #{imagetype,jdbcType=VARCHAR},
+    ImageCreateTime = #{imagecreatetime,jdbcType=TIMESTAMP},
+    ImageOther1 = #{imageother1,jdbcType=VARCHAR},
+    ImageOther2 = #{imageother2,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select count(*) from image
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from image
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from image
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!--根据Image实体添加-->
+  <insert id="insertByImage" parameterType="sun.bz1.entity.Image">
+    insert into image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="imageid != null">
+        ImageId,
+      </if>
+      <if test="imageurl != null">
+        ImageUrl,
+      </if>
+      <if test="imageskipurl != null">
+        ImageSkipUrl,
+      </if>
+      <if test="imagestate != null">
+        ImageState,
+      </if>
+      <if test="imageremark != null">
+        ImageRemark,
+      </if>
+      <if test="imagetype != null">
+        ImageType,
+      </if>
+      <if test="imagecreatetime != null">
+        ImageCreateTime,
+      </if>
+      <if test="imageother1 != null">
+        ImageOther1,
+      </if>
+      <if test="imageother2 != null">
+        ImageOther2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="imageid != null">
+        #{imageid,jdbcType=VARCHAR},
+      </if>
+      <if test="imageurl != null">
+        #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageskipurl != null">
+        #{imageskipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="imagestate != null">
+        #{imagestate,jdbcType=VARCHAR},
+      </if>
+      <if test="imageremark != null">
+        #{imageremark,jdbcType=VARCHAR},
+      </if>
+      <if test="imagetype != null">
+        #{imagetype,jdbcType=VARCHAR},
+      </if>
+      <if test="imagecreatetime != null">
+        #{imagecreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imageother1 != null">
+        #{imageother1,jdbcType=VARCHAR},
+      </if>
+      <if test="imageother2 != null">
+        #{imageother2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!--根据Image实体更新-->
+  <update id="updateByImage" parameterType="sun.bz1.entity.Image">
+    update image
+    <set>
+      <if test="imageid != null">
+        ImageId = #{imageid,jdbcType=VARCHAR},
+      </if>
+      <if test="imageurl != null">
+        ImageUrl = #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageskipurl != null">
+        ImageSkipUrl = #{imageskipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="imagestate != null">
+        ImageState = #{imagestate,jdbcType=VARCHAR},
+      </if>
+      <if test="imageremark != null">
+        ImageRemark = #{imageremark,jdbcType=VARCHAR},
+      </if>
+      <if test="imagetype != null">
+        ImageType = #{imagetype,jdbcType=VARCHAR},
+      </if>
+      <if test="imagecreatetime != null">
+        ImageCreateTime = #{imagecreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imageother1 != null">
+        ImageOther1 = #{imageother1,jdbcType=VARCHAR},
+      </if>
+      <if test="imageother2 != null">
+        ImageOther2 = #{imageother2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="imageid != null and imageid != ''">
+          and ImageId = #{imageid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据Image实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByImage" parameterType="sun.bz1.entity.Image" resultType="java.lang.Integer">
+    select count(*) from image
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="imageid != null and imageid != ''">
+          and ImageId = #{imageid,jdbcType=VARCHAR}
+        </if>
+        <if test="imagestate != null and imagestate != ''">
+          and ImageState = #{imagestate,jdbcType=VARCHAR}
+        </if>
+        <if test="imagetype != null and imagetype != ''">
+          and ImageType = #{imagetype,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据Image实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectByImage" parameterType="sun.bz1.entity.Image" resultMap="BaseResultMap">
+    select * from image
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="imageid != null and imageid != ''">
+          and ImageId = #{imageid,jdbcType=VARCHAR}
+        </if>
+        <if test="imagestate != null and imagestate != ''">
+          and ImageState = #{imagestate,jdbcType=VARCHAR}
+        </if>
+        <if test="imagetype != null and imagetype != ''">
+          and ImageType = #{imagetype,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据Image实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountBySelectData" parameterType="sun.bz1.entity.Image" resultType="java.lang.Integer">
+    select count(*) from image
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="imageid != null and imageid != ''">
+          and ImageId = #{imageid,jdbcType=VARCHAR}
+        </if>
+        <if test="imagestate != null and imagestate != ''">
+          and ImageState = #{imagestate,jdbcType=VARCHAR}
+        </if>
+        <if test="imagetype != null and imagetype != ''">
+          and ImageType = #{imagetype,jdbcType=VARCHAR}
+        </if>
+        <if test="imageremark != null and imageremark != ''">
+          and ImageRemark like CONCAT('%',#{imageremark,jdbcType=VARCHAR},'%')
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据Image实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectBySelectData" parameterType="sun.bz1.entity.Image" resultMap="BaseResultMap">
+    select * from image
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="imageid != null and imageid != ''">
+          and ImageId = #{imageid,jdbcType=VARCHAR}
+        </if>
+        <if test="imagestate != null and imagestate != ''">
+          and ImageState = #{imagestate,jdbcType=VARCHAR}
+        </if>
+        <if test="imagetype != null and imagetype != ''">
+          and ImageType = #{imagetype,jdbcType=VARCHAR}
+        </if>
+        <if test="imageremark != null and imageremark != ''">
+          and ImageRemark like CONCAT('%',#{imageremark,jdbcType=VARCHAR},'%')
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据Image实体删除 -->
+  <delete id="deleteByImage" parameterType="sun.bz1.entity.Image">
+    delete from image
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="imageid != null and imageid != ''">
+          and ImageId = #{imageid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+</mapper>

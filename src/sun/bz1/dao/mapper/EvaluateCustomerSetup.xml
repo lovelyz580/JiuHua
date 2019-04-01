@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 维修人员评价客户_评价项_设置表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.EvaluateCustomerSetup">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.EvaluateCustomerSetup">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="EvaluateCustomerSetupId" jdbcType="VARCHAR" property="evaluatecustomersetupid" />
+		<result column="EvaluateCustomerSetupName" jdbcType="VARCHAR" property="evaluatecustomersetupname" />
+		<result column="EvaluateCustomerSetup" jdbcType="DOUBLE" property="evaluatecustomersetup" />
+		<result column="EvaluateCustomerSetupState" jdbcType="VARCHAR" property="evaluatecustomersetupstate" />
+		<result column="EvaluateCustomerSetupCreateUserId" jdbcType="VARCHAR" property="evaluatecustomersetupcreateuserid" />
+		<result column="EvaluateCustomerSetupCreateTime" jdbcType="TIMESTAMP" property="evaluatecustomersetupcreatetime" />
+		<result column="EvaluateCustomerSetupUpdateUserId" jdbcType="VARCHAR" property="evaluatecustomersetupupdateuserid" />
+		<result column="EvaluateCustomerSetupUpdateTime" jdbcType="TIMESTAMP" property="evaluatecustomersetupupdatetime" />
+		<result column="EvaluateCustomerSetupRemark" jdbcType="VARCHAR" property="evaluatecustomersetupremark" />
+		<result column="EvaluateCustomerSetupScore" jdbcType="VARCHAR" property="evaluatecustomersetupscore" />
+		<result column="EvaluateCustomerSetupLossScore" jdbcType="VARCHAR" property="evaluatecustomersetuplossscore" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, EvaluateCustomerSetupId, EvaluateCustomerSetupName, EvaluateCustomerSetup, 
+		EvaluateCustomerSetupState, EvaluateCustomerSetupCreateUserId, EvaluateCustomerSetupCreateTime,
+		EvaluateCustomerSetupUpdateUserId, EvaluateCustomerSetupUpdateTime, EvaluateCustomerSetupRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.EvaluateCustomerSetup">
+		insert into evaluate_customer_setup (ID, EvaluateCustomerSetupId,
+		EvaluateCustomerSetupName, EvaluateCustomerSetup, EvaluateCustomerSetupState,
+		EvaluateCustomerSetupCreateUserId, EvaluateCustomerSetupCreateTime,
+		EvaluateCustomerSetupUpdateUserId, EvaluateCustomerSetupUpdateTime,
+		EvaluateCustomerSetupRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{evaluatecustomersetupid,jdbcType=VARCHAR},
+		#{evaluatecustomersetupname,jdbcType=VARCHAR},
+		#{evaluatecustomersetup,jdbcType=DOUBLE},
+		#{evaluatecustomersetupstate,jdbcType=VARCHAR},
+		#{evaluatecustomersetupcreateuserid,jdbcType=VARCHAR},
+		#{evaluatecustomersetupcreatetime,jdbcType=TIMESTAMP},
+		#{evaluatecustomersetupupdateuserid,jdbcType=VARCHAR},
+		#{evaluatecustomersetupupdatetime,jdbcType=TIMESTAMP},
+		#{evaluatecustomersetupremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.EvaluateCustomerSetup">
+		insert into evaluate_customer_setup
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="evaluatecustomersetupid != null">
+				EvaluateCustomerSetupId,
+			</if>
+			<if test="evaluatecustomersetupname != null">
+				EvaluateCustomerSetupName,
+			</if>
+			<if test="evaluatecustomersetup != null">
+				EvaluateCustomerSetup,
+			</if>
+			<if test="evaluatecustomersetupstate != null">
+				EvaluateCustomerSetupState,
+			</if>
+			<if test="evaluatecustomersetupcreateuserid != null">
+				EvaluateCustomerSetupCreateUserId,
+			</if>
+			<if test="evaluatecustomersetupcreatetime != null">
+				EvaluateCustomerSetupCreateTime,
+			</if>
+			<if test="evaluatecustomersetupupdateuserid != null">
+				EvaluateCustomerSetupUpdateUserId,
+			</if>
+			<if test="evaluatecustomersetupupdatetime != null">
+				EvaluateCustomerSetupUpdateTime,
+			</if>
+			<if test="evaluatecustomersetupremark != null">
+				EvaluateCustomerSetupRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="evaluatecustomersetupid != null">
+				#{evaluatecustomersetupid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupname != null">
+				#{evaluatecustomersetupname,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetup != null">
+				#{evaluatecustomersetup,jdbcType=DOUBLE},
+			</if>
+			<if test="evaluatecustomersetupstate != null">
+				#{evaluatecustomersetupstate,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupcreateuserid != null">
+				#{evaluatecustomersetupcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupcreatetime != null">
+				#{evaluatecustomersetupcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluatecustomersetupupdateuserid != null">
+				#{evaluatecustomersetupupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupupdatetime != null">
+				#{evaluatecustomersetupupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluatecustomersetupremark != null">
+				#{evaluatecustomersetupremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.EvaluateCustomerSetup">
+		update evaluate_customer_setup
+		<set>
+			<if test="evaluatecustomersetupid != null">
+				EvaluateCustomerSetupId = #{evaluatecustomersetupid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupname != null">
+				EvaluateCustomerSetupName = #{evaluatecustomersetupname,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetup != null">
+				EvaluateCustomerSetup = #{evaluatecustomersetup,jdbcType=DOUBLE},
+			</if>
+			<if test="evaluatecustomersetupstate != null">
+				EvaluateCustomerSetupState = #{evaluatecustomersetupstate,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupcreateuserid != null">
+				EvaluateCustomerSetupCreateUserId = #{evaluatecustomersetupcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupcreatetime != null">
+				EvaluateCustomerSetupCreateTime = #{evaluatecustomersetupcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluatecustomersetupupdateuserid != null">
+				EvaluateCustomerSetupUpdateUserId = #{evaluatecustomersetupupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupupdatetime != null">
+				EvaluateCustomerSetupUpdateTime = #{evaluatecustomersetupupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluatecustomersetupremark != null">
+				EvaluateCustomerSetupRemark = #{evaluatecustomersetupremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.EvaluateCustomerSetup">
+		update evaluate_customer_setup
+		set EvaluateCustomerSetupId = #{evaluatecustomersetupid,jdbcType=VARCHAR},
+		EvaluateCustomerSetupName = #{evaluatecustomersetupname,jdbcType=VARCHAR},
+		EvaluateCustomerSetup = #{evaluatecustomersetup,jdbcType=DOUBLE},
+		EvaluateCustomerSetupState = #{evaluatecustomersetupstate,jdbcType=VARCHAR},
+		EvaluateCustomerSetupCreateUserId = #{evaluatecustomersetupcreateuserid,jdbcType=VARCHAR},
+		EvaluateCustomerSetupCreateTime = #{evaluatecustomersetupcreatetime,jdbcType=TIMESTAMP},
+		EvaluateCustomerSetupUpdateUserId = #{evaluatecustomersetupupdateuserid,jdbcType=VARCHAR},
+		EvaluateCustomerSetupUpdateTime = #{evaluatecustomersetupupdatetime,jdbcType=TIMESTAMP},
+		EvaluateCustomerSetupRemark = #{evaluatecustomersetupremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from evaluate_customer_setup
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from evaluate_customer_setup
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from evaluate_customer_setup
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据EvaluateCustomerSetup实体添加 -->
+	<insert id="insertByEvaluateCustomerSetup" parameterType="sun.bz1.entity.EvaluateCustomerSetup">
+		insert into evaluate_customer_setup
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="evaluatecustomersetupid != null">
+				EvaluateCustomerSetupId,
+			</if>
+			<if test="evaluatecustomersetupname != null">
+				EvaluateCustomerSetupName,
+			</if>
+			<if test="evaluatecustomersetup != null">
+				EvaluateCustomerSetup,
+			</if>
+			<if test="evaluatecustomersetupstate != null">
+				EvaluateCustomerSetupState,
+			</if>
+			<if test="evaluatecustomersetupcreateuserid != null">
+				EvaluateCustomerSetupCreateUserId,
+			</if>
+			<if test="evaluatecustomersetupcreatetime != null">
+				EvaluateCustomerSetupCreateTime,
+			</if>
+			<if test="evaluatecustomersetupupdateuserid != null">
+				EvaluateCustomerSetupUpdateUserId,
+			</if>
+			<if test="evaluatecustomersetupupdatetime != null">
+				EvaluateCustomerSetupUpdateTime,
+			</if>
+			<if test="evaluatecustomersetupremark != null">
+				EvaluateCustomerSetupRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="evaluatecustomersetupid != null">
+				#{evaluatecustomersetupid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupname != null">
+				#{evaluatecustomersetupname,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetup != null">
+				#{evaluatecustomersetup,jdbcType=DOUBLE},
+			</if>
+			<if test="evaluatecustomersetupstate != null">
+				#{evaluatecustomersetupstate,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupcreateuserid != null">
+				#{evaluatecustomersetupcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupcreatetime != null">
+				#{evaluatecustomersetupcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluatecustomersetupupdateuserid != null">
+				#{evaluatecustomersetupupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupupdatetime != null">
+				#{evaluatecustomersetupupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluatecustomersetupremark != null">
+				#{evaluatecustomersetupremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据EvaluateCustomerSetup实体更新 -->
+	<update id="updateByEvaluateCustomerSetup" parameterType="sun.bz1.entity.EvaluateCustomerSetup">
+		update evaluate_customer_setup
+		<set>
+			<if test="evaluatecustomersetupid != null">
+				EvaluateCustomerSetupId = #{evaluatecustomersetupid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupname != null">
+				EvaluateCustomerSetupName = #{evaluatecustomersetupname,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetup != null">
+				EvaluateCustomerSetup = #{evaluatecustomersetup,jdbcType=DOUBLE},
+			</if>
+			<if test="evaluatecustomersetupstate != null">
+				EvaluateCustomerSetupState = #{evaluatecustomersetupstate,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupcreateuserid != null">
+				EvaluateCustomerSetupCreateUserId = #{evaluatecustomersetupcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupcreatetime != null">
+				EvaluateCustomerSetupCreateTime = #{evaluatecustomersetupcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluatecustomersetupupdateuserid != null">
+				EvaluateCustomerSetupUpdateUserId = #{evaluatecustomersetupupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatecustomersetupupdatetime != null">
+				EvaluateCustomerSetupUpdateTime = #{evaluatecustomersetupupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluatecustomersetupremark != null">
+				EvaluateCustomerSetupRemark = #{evaluatecustomersetupremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="evaluatecustomersetupid != null and evaluatecustomersetupid != ''">
+					and EvaluateCustomerSetupId = #{evaluatecustomersetupid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据EvaluateCustomerSetup实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByEvaluateCustomerSetup" parameterType="sun.bz1.entity.EvaluateCustomerSetup" resultType="java.lang.Integer">
+		select count(*) from evaluate_customer_setup
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluatecustomersetupid != null and evaluatecustomersetupid != ''">
+					and EvaluateCustomerSetupId = #{evaluatecustomersetupid,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluatecustomersetupstate != null and evaluatecustomersetupstate != ''">
+					and EvaluateCustomerSetupState = #{evaluatecustomersetupstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据EvaluateCustomerSetup实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectByEvaluateCustomerSetup" parameterType="sun.bz1.entity.EvaluateCustomerSetup" resultMap="BaseResultMap">
+		select * from evaluate_customer_setup
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluatecustomersetupid != null and evaluatecustomersetupid != ''">
+					and EvaluateCustomerSetupId = #{evaluatecustomersetupid,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluatecustomersetupstate != null and evaluatecustomersetupstate != ''">
+					and EvaluateCustomerSetupState = #{evaluatecustomersetupstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据EvaluateCustomerSetup实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectData" parameterType="sun.bz1.entity.EvaluateCustomerSetup" resultType="java.lang.Integer">
+		select count(*) from evaluate_customer_setup
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluatecustomersetupid != null and evaluatecustomersetupid != ''">
+					and EvaluateCustomerSetupId = #{evaluatecustomersetupid,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluatecustomersetupname != null and evaluatecustomersetupname != ''">
+					and EvaluateCustomerSetupName like CONCAT('%',#{evaluatecustomersetupname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="evaluatecustomersetupstate != null and evaluatecustomersetupstate != ''">
+					and EvaluateCustomerSetupState = #{evaluatecustomersetupstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据EvaluateCustomerSetup实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectBySelectData" parameterType="sun.bz1.entity.EvaluateCustomerSetup" resultMap="BaseResultMap">
+		select * from evaluate_customer_setup
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluatecustomersetupid != null and evaluatecustomersetupid != ''">
+					and EvaluateCustomerSetupId = #{evaluatecustomersetupid,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluatecustomersetupname != null and evaluatecustomersetupname != ''">
+					and EvaluateCustomerSetupName like CONCAT('%',#{evaluatecustomersetupname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="evaluatecustomersetupstate != null and evaluatecustomersetupstate != ''">
+					and EvaluateCustomerSetupState = #{evaluatecustomersetupstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+</mapper>

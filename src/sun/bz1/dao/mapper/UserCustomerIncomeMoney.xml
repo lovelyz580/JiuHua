@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 用户_客户_收入_金额表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.UserCustomerIncomeMoney">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.UserCustomerIncomeMoney">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="UserCustomerIncomeMoneyId" jdbcType="VARCHAR" property="usercustomerincomemoneyid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="UserCustomerIncomeMoneyUserId" jdbcType="VARCHAR" property="usercustomerincomemoneyuserid" />
+		<result column="UserCustomerIncomeMoney" jdbcType="DOUBLE" property="usercustomerincomemoney" />
+		<result column="UserCustomerIncomeMoneySource" jdbcType="VARCHAR" property="usercustomerincomemoneysource" />
+		<result column="UserCustomerIncomeMoneyCreateTime" jdbcType="TIMESTAMP" property="usercustomerincomemoneycreatetime" />
+		<result column="UserCustomerIncomeMoneyOther1" jdbcType="VARCHAR" property="usercustomerincomemoneyother1" />
+		<result column="UserCustomerIncomeMoneyOther2" jdbcType="VARCHAR" property="usercustomerincomemoneyother2" />
+		<result column="UserCustomerIncomeMoneyRemark" jdbcType="VARCHAR" property="usercustomerincomemoneyremark" />
+	</resultMap>
+	
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.UserCustomerIncomeMoneyAndOrderTableAndUser">
+		<!-- 用户_客户_收入_金额表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="UserCustomerIncomeMoneyId" jdbcType="VARCHAR" property="usercustomerincomemoneyid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="UserCustomerIncomeMoneyUserId" jdbcType="VARCHAR" property="usercustomerincomemoneyuserid" />
+		<result column="UserCustomerIncomeMoney" jdbcType="DOUBLE" property="usercustomerincomemoney" />
+		<result column="UserCustomerIncomeMoneySource" jdbcType="VARCHAR" property="usercustomerincomemoneysource" />
+		<result column="UserCustomerIncomeMoneyCreateTime" jdbcType="TIMESTAMP" property="usercustomerincomemoneycreatetime" />
+		<result column="UserCustomerIncomeMoneyOther1" jdbcType="VARCHAR" property="usercustomerincomemoneyother1" />
+		<result column="UserCustomerIncomeMoneyOther2" jdbcType="VARCHAR" property="usercustomerincomemoneyother2" />
+		<result column="UserCustomerIncomeMoneyRemark" jdbcType="VARCHAR" property="usercustomerincomemoneyremark" />
+
+		<!-- 维修单表 -->
+		<result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+		<result column="OrderContactPerson" jdbcType="VARCHAR" property="ordercontactperson" />
+		<result column="OrderContactPhone" jdbcType="VARCHAR" property="ordercontactphone" />
+		<result column="OrderAddress" jdbcType="VARCHAR" property="orderaddress" />
+		<result column="BuildingTypeId" jdbcType="VARCHAR" property="buildingtypeid" />
+		<result column="OrderPlanTime" jdbcType="TIMESTAMP" property="orderplantime" />
+		<result column="OrderBiddingEndTime" jdbcType="TIMESTAMP" property="orderbiddingendtime" />
+		<result column="OrderProjectType" jdbcType="VARCHAR" property="orderprojecttype" />
+		<result column="OrderPosition" jdbcType="VARCHAR" property="orderposition" />
+		<result column="OrderLatitude" jdbcType="DOUBLE" property="orderlatitude" />
+		<result column="OrderLongitude" jdbcType="DOUBLE" property="orderlongitude" />
+		<result column="OrderDistance" jdbcType="DOUBLE" property="orderdistance" />
+		<result column="OrderInterceptTotalMoney" jdbcType="DOUBLE" property="orderintercepttotalmoney" />
+		<result column="OrderInterceptTravelTotalMoney" jdbcType="DOUBLE" property="orderintercepttraveltotalmoney" />
+		<result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+		<result column="OrderTravelTotalMoney" jdbcType="DOUBLE" property="ordertraveltotalmoney" />
+		<result column="OrderType" jdbcType="VARCHAR" property="ordertype" />
+		<result column="OrderState" jdbcType="VARCHAR" property="orderstate" />
+		<result column="OrderServiceUserId" jdbcType="VARCHAR" property="orderserviceuserid" />
+		<result column="OrderCreateUserId" jdbcType="VARCHAR" property="ordercreateuserid" />
+		<result column="OrderCreateTime" jdbcType="TIMESTAMP" property="ordercreatetime" />
+		<result column="OrderUpdateUserId" jdbcType="VARCHAR" property="orderupdateuserid" />
+		<result column="OrderUpdateTime" jdbcType="TIMESTAMP" property="orderupdatetime" />
+		<result column="OrderApplyCheckUserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+		<result column="OrderApplyCheckTime" jdbcType="TIMESTAMP" property="orderapplychecktime" />
+		<result column="OrderRemark" jdbcType="VARCHAR" property="orderremark" />
+		<result column="OrderCheckAllState" jdbcType="VARCHAR" property="ordercheckallstate" />
+
+		<!-- 金额用户(用户表) -->
+		<result column="UserName" jdbcType="VARCHAR" property="usermoneyuser_username" />
+		<result column="UserRealName" jdbcType="VARCHAR" property="usermoneyuser_userrealname" />
+		<result column="UserSex" jdbcType="VARCHAR" property="usermoneyuser_usersex" />
+		<result column="UserPhone" jdbcType="VARCHAR" property="usermoneyuser_userphone" />
+		<result column="UserCodeId" jdbcType="VARCHAR" property="usermoneyuser_usercodeid" />
+		<result column="UserEmail" jdbcType="VARCHAR" property="usermoneyuser_useremail" />
+		<result column="UserRole" jdbcType="VARCHAR" property="usermoneyuser_userrole" />
+		<result column="UserState" jdbcType="VARCHAR" property="usermoneyuser_userstate" />
+		<result column="UserCredit" jdbcType="DOUBLE" property="usermoneyuser_usercredit" />
+		<result column="UserMoney" jdbcType="INTEGER" property="usermoneyuser_usermoney" />
+		<result column="UserOpenId" jdbcType="VARCHAR" property="usermoneyuser_useropenid" />
+		<result column="UserPosition" jdbcType="VARCHAR" property="usermoneyuser_userposition" />
+		<result column="UserLatitude" jdbcType="DOUBLE" property="usermoneyuser_userlatitude" />
+		<result column="UserLongitude" jdbcType="DOUBLE" property="usermoneyuser_userlongitude" />
+		<result column="UserRemark" jdbcType="VARCHAR" property="usermoneyuser_userremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, UserCustomerIncomeMoneyId, OrderId, UserCustomerIncomeMoneyUserId, UserCustomerIncomeMoney,
+		UserCustomerIncomeMoneySource, UserCustomerIncomeMoneyCreateTime, UserCustomerIncomeMoneyOther1,
+		UserCustomerIncomeMoneyOther2, UserCustomerIncomeMoneyRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.UserCustomerIncomeMoney">
+		insert into user_customer_income_money (ID, UserCustomerIncomeMoneyId, OrderId, 
+		UserCustomerIncomeMoneyUserId, UserCustomerIncomeMoney, UserCustomerIncomeMoneySource, 
+		UserCustomerIncomeMoneyCreateTime, UserCustomerIncomeMoneyOther1, 
+		UserCustomerIncomeMoneyOther2, UserCustomerIncomeMoneyRemark)
+		values (#{id,jdbcType=INTEGER},
+		#{usercustomerincomemoneyid,jdbcType=VARCHAR},
+		#{orderid,jdbcType=VARCHAR},
+		#{usercustomerincomemoneyuserid,jdbcType=VARCHAR},
+		#{usercustomerincomemoney,jdbcType=DOUBLE},
+		#{usercustomerincomemoneysource,jdbcType=VARCHAR},
+		#{usercustomerincomemoneycreatetime,jdbcType=TIMESTAMP},
+		#{usercustomerincomemoneyother1,jdbcType=VARCHAR},
+		#{usercustomerincomemoneyother2,jdbcType=VARCHAR},
+		#{usercustomerincomemoneyremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.UserCustomerIncomeMoney">
+		insert into user_customer_income_money
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="usercustomerincomemoneyid != null">
+				UserCustomerIncomeMoneyId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="usercustomerincomemoneyuserid != null">
+				UserCustomerIncomeMoneyUserId,
+			</if>
+			<if test="usercustomerincomemoney != null">
+				UserCustomerIncomeMoney,
+			</if>
+			<if test="usercustomerincomemoneysource != null">
+				UserCustomerIncomeMoneySource,
+			</if>
+			<if test="usercustomerincomemoneycreatetime != null">
+				UserCustomerIncomeMoneyCreateTime,
+			</if>
+			<if test="usercustomerincomemoneyother1 != null">
+				UserCustomerIncomeMoneyOther1,
+			</if>
+			<if test="usercustomerincomemoneyother2 != null">
+				UserCustomerIncomeMoneyOther2,
+			</if>
+			<if test="usercustomerincomemoneyremark != null">
+				UserCustomerIncomeMoneyRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="usercustomerincomemoneyid != null">
+				#{usercustomerincomemoneyid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneyuserid != null">
+				#{usercustomerincomemoneyuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoney != null">
+				#{usercustomerincomemoney,jdbcType=DOUBLE},
+			</if>
+			<if test="usercustomerincomemoneysource != null">
+				#{usercustomerincomemoneysource,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneycreatetime != null">
+				#{usercustomerincomemoneycreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="usercustomerincomemoneyother1 != null">
+				#{usercustomerincomemoneyother1,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneyother2 != null">
+				#{usercustomerincomemoneyother2,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneyremark != null">
+				#{usercustomerincomemoneyremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.UserCustomerIncomeMoney">
+		update user_customer_income_money
+		<set>
+			<if test="usercustomerincomemoneyid != null">
+				UserCustomerIncomeMoneyId = #{usercustomerincomemoneyid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneyuserid != null">
+				UserCustomerIncomeMoneyUserId = #{usercustomerincomemoneyuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoney != null">
+				UserCustomerIncomeMoney = #{usercustomerincomemoney,jdbcType=DOUBLE},
+			</if>
+			<if test="usercustomerincomemoneysource != null">
+				UserCustomerIncomeMoneySource = #{usercustomerincomemoneysource,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneycreatetime != null">
+				UserCustomerIncomeMoneyCreateTime = #{usercustomerincomemoneycreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="usercustomerincomemoneyother1 != null">
+				UserCustomerIncomeMoneyOther1 = #{usercustomerincomemoneyother1,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneyother2 != null">
+				UserCustomerIncomeMoneyOther2 = #{usercustomerincomemoneyother2,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneyremark != null">
+				UserCustomerIncomeMoneyRemark = #{usercustomerincomemoneyremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.UserCustomerIncomeMoney">
+		update user_customer_income_money
+		set UserCustomerIncomeMoneyId = #{usercustomerincomemoneyid,jdbcType=VARCHAR},
+		OrderId = #{orderid,jdbcType=VARCHAR},
+		UserCustomerIncomeMoneyUserId = #{usercustomerincomemoneyuserid,jdbcType=VARCHAR},
+		UserCustomerIncomeMoney = #{usercustomerincomemoney,jdbcType=DOUBLE},
+		UserCustomerIncomeMoneySource = #{usercustomerincomemoneysource,jdbcType=VARCHAR},
+		UserCustomerIncomeMoneyCreateTime = #{usercustomerincomemoneycreatetime,jdbcType=TIMESTAMP},
+		UserCustomerIncomeMoneyOther1 = #{usercustomerincomemoneyother1,jdbcType=VARCHAR},
+		UserCustomerIncomeMoneyOther2 = #{usercustomerincomemoneyother2,jdbcType=VARCHAR},
+		UserCustomerIncomeMoneyRemark = #{usercustomerincomemoneyremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from user_customer_income_money
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from user_customer_income_money
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from user_customer_income_money
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据UserCustomerIncomeMoney实体添加 -->
+	<insert id="insertByUserCustomerIncomeMoney" parameterType="sun.bz1.entity.UserCustomerIncomeMoney">
+		insert into user_customer_income_money
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="usercustomerincomemoneyid != null">
+				UserCustomerIncomeMoneyId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="usercustomerincomemoneyuserid != null">
+				UserCustomerIncomeMoneyUserId,
+			</if>
+			<if test="usercustomerincomemoney != null">
+				UserCustomerIncomeMoney,
+			</if>
+			<if test="usercustomerincomemoneysource != null">
+				UserCustomerIncomeMoneySource,
+			</if>
+			<if test="usercustomerincomemoneycreatetime != null">
+				UserCustomerIncomeMoneyCreateTime,
+			</if>
+			<if test="usercustomerincomemoneyother1 != null">
+				UserCustomerIncomeMoneyOther1,
+			</if>
+			<if test="usercustomerincomemoneyother2 != null">
+				UserCustomerIncomeMoneyOther2,
+			</if>
+			<if test="usercustomerincomemoneyremark != null">
+				UserCustomerIncomeMoneyRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="usercustomerincomemoneyid != null">
+				#{usercustomerincomemoneyid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneyuserid != null">
+				#{usercustomerincomemoneyuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoney != null">
+				#{usercustomerincomemoney,jdbcType=DOUBLE},
+			</if>
+			<if test="usercustomerincomemoneysource != null">
+				#{usercustomerincomemoneysource,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneycreatetime != null">
+				#{usercustomerincomemoneycreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="usercustomerincomemoneyother1 != null">
+				#{usercustomerincomemoneyother1,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneyother2 != null">
+				#{usercustomerincomemoneyother2,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneyremark != null">
+				#{usercustomerincomemoneyremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据UserCustomerIncomeMoney实体更新 -->
+	<update id="updateByUserCustomerIncomeMoney" parameterType="sun.bz1.entity.UserCustomerIncomeMoney">
+		update user_customer_income_money
+		<set>
+			<if test="usercustomerincomemoneyid != null">
+				UserCustomerIncomeMoneyId = #{usercustomerincomemoneyid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneyuserid != null">
+				UserCustomerIncomeMoneyUserId = #{usercustomerincomemoneyuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoney != null">
+				UserCustomerIncomeMoney = #{usercustomerincomemoney,jdbcType=DOUBLE},
+			</if>
+			<if test="usercustomerincomemoneysource != null">
+				UserCustomerIncomeMoneySource = #{usercustomerincomemoneysource,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneycreatetime != null">
+				UserCustomerIncomeMoneyCreateTime = #{usercustomerincomemoneycreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="usercustomerincomemoneyother1 != null">
+				UserCustomerIncomeMoneyOther1 = #{usercustomerincomemoneyother1,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneyother2 != null">
+				UserCustomerIncomeMoneyOther2 = #{usercustomerincomemoneyother2,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerincomemoneyremark != null">
+				UserCustomerIncomeMoneyRemark = #{usercustomerincomemoneyremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="usercustomerincomemoneyid != null and usercustomerincomemoneyid != ''">
+					and UserCustomerIncomeMoneyId = #{usercustomerincomemoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据UserCustomerIncomeMoneyAndOrderTableAndUser实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountByUnionData" parameterType="sun.bz1.entity.UserCustomerIncomeMoneyAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from user_customer_income_money a
+		left join order_table b on a.OrderId = b.OrderId
+		left join user c on a.UserCustomerIncomeMoneyUserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="usercustomerincomemoneyid != null and usercustomerincomemoneyid != ''">
+					and a.UserCustomerIncomeMoneyId = #{usercustomerincomemoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="usercustomerincomemoneyuserid != null and usercustomerincomemoneyuserid != ''">
+					and a.UserCustomerIncomeMoneyUserId = #{usercustomerincomemoneyuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectmoneycreatestarttime != null and selectmoneycreatestarttime != '' 
+						and selectmoneycreateendtime != null and selectmoneycreateendtime != ''">
+					and a.UserCustomerIncomeMoneyCreateTime &gt;= #{selectmoneycreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.UserCustomerIncomeMoneyCreateTime &lt;= #{selectmoneycreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据UserCustomerIncomeMoneyAndOrderTableAndUser实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量 -->
+	<select id="selectThreeTablesByUnionData" parameterType="sun.bz1.entity.UserCustomerIncomeMoneyAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from user_customer_income_money a
+		left join order_table b on a.OrderId = b.OrderId
+		left join user c on a.UserCustomerIncomeMoneyUserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="usercustomerincomemoneyid != null and usercustomerincomemoneyid != ''">
+					and a.UserCustomerIncomeMoneyId = #{usercustomerincomemoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="usercustomerincomemoneyuserid != null and usercustomerincomemoneyuserid != ''">
+					and a.UserCustomerIncomeMoneyUserId = #{usercustomerincomemoneyuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectmoneycreatestarttime != null and selectmoneycreatestarttime != '' 
+						and selectmoneycreateendtime != null and selectmoneycreateendtime != ''">
+					and a.UserCustomerIncomeMoneyCreateTime &gt;= #{selectmoneycreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.UserCustomerIncomeMoneyCreateTime &lt;= #{selectmoneycreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<!-- 根据UserCustomerIncomeMoneyAndOrderTableAndUser实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountBySelectData" parameterType="sun.bz1.entity.UserCustomerIncomeMoneyAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from user_customer_income_money a
+		left join order_table b on a.OrderId = b.OrderId
+		left join user c on a.UserCustomerIncomeMoneyUserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="usercustomerincomemoneyid != null and usercustomerincomemoneyid != ''">
+					and a.UserCustomerIncomeMoneyId = #{usercustomerincomemoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="usercustomerincomemoneyuserid != null and usercustomerincomemoneyuserid != ''">
+					and a.UserCustomerIncomeMoneyUserId = #{usercustomerincomemoneyuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectmoneycreatestarttime != null and selectmoneycreatestarttime != '' 
+						and selectmoneycreateendtime != null and selectmoneycreateendtime != ''">
+					and a.UserCustomerIncomeMoneyCreateTime &gt;= #{selectmoneycreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.UserCustomerIncomeMoneyCreateTime &lt;= #{selectmoneycreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="usermoneyuser_username != null and usermoneyuser_username != ''">
+					or c.UserName like CONCAT('%',#{usermoneyuser_username,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="usermoneyuser_userrealname != null and usermoneyuser_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{usermoneyuser_userrealname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="usermoneyuser_userphone != null and usermoneyuser_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{usermoneyuser_userphone,jdbcType=VARCHAR},'%')
+				</if>
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据UserCustomerIncomeMoneyAndOrderTableAndUser实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量 -->
+	<select id="selectThreeTablesBySelectData" parameterType="sun.bz1.entity.UserCustomerIncomeMoneyAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from user_customer_income_money a
+		left join order_table b on a.OrderId = b.OrderId
+		left join user c on a.UserCustomerIncomeMoneyId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="usercustomerincomemoneyid != null and usercustomerincomemoneyid != ''">
+					and a.UserCustomerIncomeMoneyId = #{usercustomerincomemoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="usercustomerincomemoneyuserid != null and usercustomerincomemoneyuserid != ''">
+					and a.UserCustomerIncomeMoneyUserId = #{usercustomerincomemoneyuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectmoneycreatestarttime != null and selectmoneycreatestarttime != '' 
+						and selectmoneycreateendtime != null and selectmoneycreateendtime != ''">
+					and a.UserCustomerIncomeMoneyCreateTime &gt;= #{selectmoneycreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.UserCustomerIncomeMoneyCreateTime &lt;= #{selectmoneycreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="usermoneyuser_username != null and usermoneyuser_username != ''">
+					or c.UserName like CONCAT('%',#{usermoneyuser_username,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="usermoneyuser_userrealname != null and usermoneyuser_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{usermoneyuser_userrealname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="usermoneyuser_userphone != null and usermoneyuser_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{usermoneyuser_userphone,jdbcType=VARCHAR},'%')
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+	
+	<!-- 根据UserCustomerIncomeMoney实体删除 -->
+	<delete id="deleteByUserCustomerIncomeMoney" parameterType="sun.bz1.entity.UserCustomerIncomeMoney">
+		delete from user_customer_income_money
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="usercustomerincomemoneyid != null and usercustomerincomemoneyid != ''">
+					and UserCustomerIncomeMoneyId = #{usercustomerincomemoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+	
+</mapper>

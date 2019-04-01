@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 维修单详情表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.OrderDetailConfirm">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.OrderDetailConfirm">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="OrderDetailConfirmId" jdbcType="VARCHAR" property="orderdetailconfirmid" />
+    <result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="GoodsId" jdbcType="VARCHAR" property="goodsid" />
+    <result column="ProjectId" jdbcType="VARCHAR" property="projectid" />
+    <result column="OrderDetailConfirmNumber" jdbcType="INTEGER" property="orderdetailconfirmnumber" />
+    <result column="OrderDetailConfirmInterceptMoney" jdbcType="DOUBLE" property="orderdetailconfirminterceptmoney" />
+    <result column="OrderDetailConfirmInterceptTotalMoney" jdbcType="DOUBLE" property="orderdetailconfirmintercepttotalmoney" />
+    <result column="OrderDetailConfirmPriceMoney" jdbcType="DOUBLE" property="orderdetailconfirmpricemoney" />
+    <result column="OrderDetailConfirmPriceTotalMoney" jdbcType="DOUBLE" property="orderdetailconfirmpricetotalmoney" />
+    <result column="OrderDetailConfirmRemark" jdbcType="VARCHAR" property="orderdetailconfirmremark" />
+
+    <!-- 产品表 -->
+    <result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+
+    <!-- 项目表 -->
+    <result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    ID, OrderDetailConfirmId, OrderId, GoodsId, ProjectId, OrderDetailConfirmNumber, OrderDetailConfirmInterceptMoney,
+    OrderDetailConfirmInterceptTotalMoney, OrderDetailConfirmPriceMoney, OrderDetailConfirmPriceTotalMoney, OrderDetailConfirmRemark
+  </sql>
+
+  <insert id="insert" parameterType="sun.bz1.entity.OrderDetailConfirm">
+    insert into order_detail_confirm (ID, OrderDetailConfirmId, OrderId, GoodsId, ProjectId,
+    OrderDetailConfirmNumber, OrderDetailConfirmInterceptMoney, OrderDetailConfirmInterceptTotalMoney,
+    OrderDetailConfirmPriceMoney, OrderDetailConfirmPriceTotalMoney, OrderDetailConfirmRemark)
+    values (#{id,jdbcType=INTEGER},
+    #{orderdetailconfirmid,jdbcType=VARCHAR},
+    #{orderid,jdbcType=VARCHAR},
+    #{goodsid,jdbcType=VARCHAR},
+    #{projectid,jdbcType=VARCHAR},
+    #{orderdetailconfirmnumber,jdbcType=INTEGER},
+    #{orderdetailconfirminterceptmoney,jdbcType=DOUBLE},
+    #{orderdetailconfirmintercepttotalmoney,jdbcType=DOUBLE},
+    #{orderdetailconfirmpricemoney,jdbcType=DOUBLE},
+    #{orderdetailconfirmpricetotalmoney,jdbcType=DOUBLE},
+    #{orderdetailconfirmremark,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="sun.bz1.entity.OrderDetailConfirm">
+    insert into order_detail_confirm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="orderdetailconfirmid != null">
+        OrderDetailConfirmId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="goodsid != null">
+        GoodsId,
+      </if>
+      <if test="projectid != null">
+        ProjectId,
+      </if>
+      <if test="orderdetailconfirmnumber != null">
+        OrderDetailConfirmNumber,
+      </if>
+      <if test="orderdetailconfirminterceptmoney != null">
+        OrderDetailConfirmInterceptMoney,
+      </if>
+      <if test="orderdetailconfirmintercepttotalmoney != null">
+        OrderDetailConfirmInterceptTotalMoney,
+      </if>
+      <if test="orderdetailconfirmpricemoney != null">
+        OrderDetailConfirmPriceMoney,
+      </if>
+      <if test="orderdetailconfirmpricetotalmoney != null">
+        OrderDetailConfirmPriceTotalMoney,
+      </if>
+      <if test="orderdetailconfirmremark != null">
+        OrderDetailConfirmRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderdetailconfirmid != null">
+        #{orderdetailconfirmid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectid != null">
+        #{projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailconfirmnumber != null">
+        #{orderdetailconfirmnumber,jdbcType=INTEGER},
+      </if>
+      <if test="orderdetailconfirminterceptmoney != null">
+        #{orderdetailconfirminterceptmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmintercepttotalmoney != null">
+        #{orderdetailconfirmintercepttotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmpricemoney != null">
+        #{orderdetailconfirmpricemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmpricetotalmoney != null">
+        #{orderdetailconfirmpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmremark != null">
+        #{orderdetailconfirmremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.OrderDetailConfirm">
+    update order_detail_confirm
+    <set>
+      <if test="orderdetailconfirmid != null">
+        OrderDetailConfirmId = #{orderdetailconfirmid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null">
+        GoodsId = #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectid != null">
+        ProjectId = #{projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailconfirmnumber != null">
+        OrderDetailConfirmNumber = #{orderdetailconfirmnumber,jdbcType=INTEGER},
+      </if>
+      <if test="orderdetailconfirminterceptmoney != null">
+        OrderDetailConfirmInterceptMoney = #{orderdetailconfirminterceptmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmintercepttotalmoney != null">
+        OrderDetailConfirmInterceptTotalMoney = #{orderdetailconfirmintercepttotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmpricemoney != null">
+        OrderDetailConfirmPriceMoney = #{orderdetailconfirmpricemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmpricetotalmoney != null">
+        OrderDetailConfirmPriceTotalMoney = #{orderdetailconfirmpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmremark != null">
+        OrderDetailConfirmRemark = #{orderdetailconfirmremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.OrderDetailConfirm">
+    update order_detail_confirm
+    set OrderDetailConfirmId = #{orderdetailconfirmid,jdbcType=VARCHAR},
+    OrderId = #{orderid,jdbcType=VARCHAR},
+    GoodsId = #{goodsid,jdbcType=VARCHAR},
+    ProjectId = #{projectid,jdbcType=VARCHAR},
+    OrderDetailConfirmNumber = #{orderdetailconfirmnumber,jdbcType=INTEGER},
+    OrderDetailConfirmInterceptMoney = #{orderdetailconfirminterceptmoney,jdbcType=DOUBLE},
+    OrderDetailConfirmInterceptTotalMoney = #{orderdetailconfirmintercepttotalmoney,jdbcType=DOUBLE},
+    OrderDetailConfirmPriceMoney = #{orderdetailconfirmpricemoney,jdbcType=DOUBLE},
+    OrderDetailConfirmPriceTotalMoney = #{orderdetailconfirmpricetotalmoney,jdbcType=DOUBLE},
+    OrderDetailConfirmRemark = #{orderdetailconfirmremark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from order_detail_confirm
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_detail_confirm
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 根据OrderDetailConfirm实体添加 -->
+  <insert id="insertByOrderDetailConfirm" parameterType="sun.bz1.entity.OrderDetailConfirm">
+    insert into order_detail_confirm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderdetailconfirmid != null">
+        OrderDetailConfirmId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="goodsid != null">
+        GoodsId,
+      </if>
+      <if test="projectid != null">
+        ProjectId,
+      </if>
+      <if test="orderdetailconfirmnumber != null">
+        OrderDetailConfirmNumber,
+      </if>
+      <if test="orderdetailconfirminterceptmoney != null">
+        OrderDetailConfirmInterceptMoney,
+      </if>
+      <if test="orderdetailconfirmintercepttotalmoney != null">
+        OrderDetailConfirmInterceptTotalMoney,
+      </if>
+      <if test="orderdetailconfirmpricemoney != null">
+        OrderDetailConfirmPriceMoney,
+      </if>
+      <if test="orderdetailconfirmpricetotalmoney != null">
+        OrderDetailConfirmPriceTotalMoney,
+      </if>
+      <if test="orderdetailconfirmremark != null">
+        OrderDetailConfirmRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderdetailconfirmid != null">
+        #{orderdetailconfirmid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectid != null">
+        #{projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailconfirmnumber != null">
+        #{orderdetailconfirmnumber,jdbcType=INTEGER},
+      </if>
+      <if test="orderdetailconfirminterceptmoney != null">
+        #{orderdetailconfirminterceptmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmintercepttotalmoney != null">
+        #{orderdetailconfirmintercepttotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmpricemoney != null">
+        #{orderdetailconfirmpricemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmpricetotalmoney != null">
+        #{orderdetailconfirmpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmremark != null">
+        #{orderdetailconfirmremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 根据OrderDetailConfirm实体更新 -->
+  <update id="updateByOrderDetailConfirm" parameterType="sun.bz1.entity.OrderDetailConfirm">
+    update order_detail_confirm
+    <set>
+      <if test="orderdetailconfirmid != null">
+        OrderDetailConfirmId = #{orderdetailconfirmid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null">
+        GoodsId = #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectid != null">
+        ProjectId = #{projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailconfirmnumber != null">
+        OrderDetailConfirmNumber = #{orderdetailconfirmnumber,jdbcType=INTEGER},
+      </if>
+      <if test="orderdetailconfirminterceptmoney != null">
+        OrderDetailConfirmInterceptMoney = #{orderdetailconfirminterceptmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmintercepttotalmoney != null">
+        OrderDetailConfirmInterceptTotalMoney = #{orderdetailconfirmintercepttotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmpricemoney != null">
+        OrderDetailConfirmPriceMoney = #{orderdetailconfirmpricemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmpricetotalmoney != null">
+        OrderDetailConfirmPriceTotalMoney = #{orderdetailconfirmpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailconfirmremark != null">
+        OrderDetailConfirmRemark = #{orderdetailconfirmremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="orderdetailconfirmid != null and orderdetailconfirmid != ''">
+          and OrderDetailConfirmId = #{orderdetailconfirmid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据OrderDetailConfirm实体查询 -->
+  <select id="selectByOrderDetailConfirm" parameterType="sun.bz1.entity.OrderDetailConfirm" resultMap="BaseResultMap">
+    select * from order_detail_confirm a
+    left join goods b on a.GoodsId = b.GoodsId
+    left join project c on a.ProjectId = c.ProjectId
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="orderdetailconfirmid != null and orderdetailconfirmid != ''">
+          and OrderDetailConfirmId = #{orderdetailconfirmid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据OrderDetailConfirm实体删除 -->
+  <delete id="deleteByOrderDetailConfirm" parameterType="sun.bz1.entity.OrderDetailConfirm">
+    delete from order_detail_confirm
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="orderdetailconfirmid != null and orderdetailconfirmid != ''">
+          and OrderDetailConfirmId = #{orderdetailconfirmid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+
+</mapper>

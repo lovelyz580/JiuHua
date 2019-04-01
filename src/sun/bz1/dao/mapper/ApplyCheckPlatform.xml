@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.ApplyCheckPlatform">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.ApplyCheckPlatform">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ApplyCheckPlatformId" jdbcType="VARCHAR" property="applycheckplatformid" />
+    <result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="ApplyCheckPlatformState" jdbcType="VARCHAR" property="applycheckplatformstate" />
+    <result column="ApplyCheckPlatformImage" jdbcType="VARCHAR" property="applycheckplatformimage" />
+    <result column="ApplyCheckPlatformVideo" jdbcType="VARCHAR" property="applycheckplatformvideo" />
+    <result column="ApplyCheckPlatformApplyTime" jdbcType="TIMESTAMP" property="applycheckplatformapplytime" />
+    <result column="ApplyCheckPlatformAutomaticTime" jdbcType="TIMESTAMP" property="applycheckplatformautomatictime" />
+    <result column="ApplyCheckPlatformMoney" jdbcType="DOUBLE" property="applycheckplatformmoney" />
+    <result column="ApplyCheckPlatformBackMoney" jdbcType="DOUBLE" property="applycheckplatformbackmoney" />
+    <result column="ApplyCheckPlatformBackFault" jdbcType="VARCHAR" property="applycheckplatformbackfault" />
+    <result column="ApplyCheckPlatformTitle" jdbcType="VARCHAR" property="applycheckplatformtitle" />
+    <result column="ApplyCheckPlatformContent" jdbcType="VARCHAR" property="applycheckplatformcontent" />
+    <result column="ApplyCheckPlatformUserId" jdbcType="VARCHAR" property="applycheckplatformuserid" />
+    <result column="ApplyCheckPlatformTime" jdbcType="TIMESTAMP" property="applycheckplatformtime" />
+    <result column="ApplyCheckPlatformBackUserId" jdbcType="VARCHAR" property="applycheckplatformbackuserid" />
+    <result column="ApplyCheckPlatformBackTime" jdbcType="TIMESTAMP" property="applycheckplatformbacktime" />
+    <result column="ApplyCheckPlatformRemark" jdbcType="VARCHAR" property="applycheckplatformremark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ApplyCheckPlatformId, OrderId, ApplyCheckPlatformState, ApplyCheckPlatformImage, 
+    ApplyCheckPlatformVideo, ApplyCheckPlatformApplyTime, ApplyCheckPlatformAutomaticTime, 
+    ApplyCheckPlatformMoney, ApplyCheckPlatformBackMoney, ApplyCheckPlatformBackFault, 
+    ApplyCheckPlatformTitle, ApplyCheckPlatformContent, ApplyCheckPlatformUserId, ApplyCheckPlatformTime, 
+    ApplyCheckPlatformBackUserId, ApplyCheckPlatformBackTime, ApplyCheckPlatformRemark
+  </sql>
+
+  <insert id="insert" parameterType="sun.bz1.entity.ApplyCheckPlatform">
+    insert into apply_check_platform (ID, ApplyCheckPlatformId, OrderId,
+    ApplyCheckPlatformState, ApplyCheckPlatformImage,
+    ApplyCheckPlatformVideo, ApplyCheckPlatformApplyTime,
+    ApplyCheckPlatformAutomaticTime, ApplyCheckPlatformMoney,
+    ApplyCheckPlatformBackMoney, ApplyCheckPlatformBackFault,
+    ApplyCheckPlatformTitle, ApplyCheckPlatformContent,
+    ApplyCheckPlatformUserId, ApplyCheckPlatformTime,
+    ApplyCheckPlatformBackUserId, ApplyCheckPlatformBackTime,
+    ApplyCheckPlatformRemark)
+    values (#{id,jdbcType=INTEGER}, #{applycheckplatformid,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR},
+    #{applycheckplatformstate,jdbcType=VARCHAR}, #{applycheckplatformimage,jdbcType=VARCHAR},
+    #{applycheckplatformvideo,jdbcType=VARCHAR}, #{applycheckplatformapplytime,jdbcType=TIMESTAMP},
+    #{applycheckplatformautomatictime,jdbcType=TIMESTAMP}, #{applycheckplatformmoney,jdbcType=DOUBLE},
+    #{applycheckplatformbackmoney,jdbcType=DOUBLE}, #{applycheckplatformbackfault,jdbcType=VARCHAR},
+    #{applycheckplatformtitle,jdbcType=VARCHAR}, #{applycheckplatformcontent,jdbcType=VARCHAR},
+    #{applycheckplatformuserid,jdbcType=VARCHAR}, #{applycheckplatformtime,jdbcType=TIMESTAMP},
+    #{applycheckplatformbackuserid,jdbcType=VARCHAR}, #{applycheckplatformbacktime,jdbcType=TIMESTAMP},
+    #{applycheckplatformremark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sun.bz1.entity.ApplyCheckPlatform">
+    insert into apply_check_platform
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="applycheckplatformid != null">
+        ApplyCheckPlatformId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="applycheckplatformstate != null">
+        ApplyCheckPlatformState,
+      </if>
+      <if test="applycheckplatformimage != null">
+        ApplyCheckPlatformImage,
+      </if>
+      <if test="applycheckplatformvideo != null">
+        ApplyCheckPlatformVideo,
+      </if>
+      <if test="applycheckplatformapplytime != null">
+        ApplyCheckPlatformApplyTime,
+      </if>
+      <if test="applycheckplatformautomatictime != null">
+        ApplyCheckPlatformAutomaticTime,
+      </if>
+      <if test="applycheckplatformmoney != null">
+        ApplyCheckPlatformMoney,
+      </if>
+      <if test="applycheckplatformbackmoney != null">
+        ApplyCheckPlatformBackMoney,
+      </if>
+      <if test="applycheckplatformbackfault != null">
+        ApplyCheckPlatformBackFault,
+      </if>
+      <if test="applycheckplatformtitle != null">
+        ApplyCheckPlatformTitle,
+      </if>
+      <if test="applycheckplatformcontent != null">
+        ApplyCheckPlatformContent,
+      </if>
+      <if test="applycheckplatformuserid != null">
+        ApplyCheckPlatformUserId,
+      </if>
+      <if test="applycheckplatformtime != null">
+        ApplyCheckPlatformTime,
+      </if>
+      <if test="applycheckplatformbackuserid != null">
+        ApplyCheckPlatformBackUserId,
+      </if>
+      <if test="applycheckplatformbacktime != null">
+        ApplyCheckPlatformBackTime,
+      </if>
+      <if test="applycheckplatformremark != null">
+        ApplyCheckPlatformRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="applycheckplatformid != null">
+        #{applycheckplatformid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformstate != null">
+        #{applycheckplatformstate,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformimage != null">
+        #{applycheckplatformimage,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformvideo != null">
+        #{applycheckplatformvideo,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformapplytime != null">
+        #{applycheckplatformapplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformautomatictime != null">
+        #{applycheckplatformautomatictime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformmoney != null">
+        #{applycheckplatformmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="applycheckplatformbackmoney != null">
+        #{applycheckplatformbackmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="applycheckplatformbackfault != null">
+        #{applycheckplatformbackfault,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformtitle != null">
+        #{applycheckplatformtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformcontent != null">
+        #{applycheckplatformcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformuserid != null">
+        #{applycheckplatformuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformtime != null">
+        #{applycheckplatformtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformbackuserid != null">
+        #{applycheckplatformbackuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformbacktime != null">
+        #{applycheckplatformbacktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformremark != null">
+        #{applycheckplatformremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.ApplyCheckPlatform">
+    update apply_check_platform
+    <set>
+      <if test="applycheckplatformid != null">
+        ApplyCheckPlatformId = #{applycheckplatformid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformstate != null">
+        ApplyCheckPlatformState = #{applycheckplatformstate,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformimage != null">
+        ApplyCheckPlatformImage = #{applycheckplatformimage,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformvideo != null">
+        ApplyCheckPlatformVideo = #{applycheckplatformvideo,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformapplytime != null">
+        ApplyCheckPlatformApplyTime = #{applycheckplatformapplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformautomatictime != null">
+        ApplyCheckPlatformAutomaticTime = #{applycheckplatformautomatictime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformmoney != null">
+        ApplyCheckPlatformMoney = #{applycheckplatformmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="applycheckplatformbackmoney != null">
+        ApplyCheckPlatformBackMoney = #{applycheckplatformbackmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="applycheckplatformbackfault != null">
+        ApplyCheckPlatformBackFault = #{applycheckplatformbackfault,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformtitle != null">
+        ApplyCheckPlatformTitle = #{applycheckplatformtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformcontent != null">
+        ApplyCheckPlatformContent = #{applycheckplatformcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformuserid != null">
+        ApplyCheckPlatformUserId = #{applycheckplatformuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformtime != null">
+        ApplyCheckPlatformTime = #{applycheckplatformtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformbackuserid != null">
+        ApplyCheckPlatformBackUserId = #{applycheckplatformbackuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformbacktime != null">
+        ApplyCheckPlatformBackTime = #{applycheckplatformbacktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformremark != null">
+        ApplyCheckPlatformRemark = #{applycheckplatformremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.ApplyCheckPlatform">
+    update apply_check_platform
+    set ApplyCheckPlatformId = #{applycheckplatformid,jdbcType=VARCHAR},
+    OrderId = #{orderid,jdbcType=VARCHAR},
+    ApplyCheckPlatformState = #{applycheckplatformstate,jdbcType=VARCHAR},
+    ApplyCheckPlatformImage = #{applycheckplatformimage,jdbcType=VARCHAR},
+    ApplyCheckPlatformVideo = #{applycheckplatformvideo,jdbcType=VARCHAR},
+    ApplyCheckPlatformApplyTime = #{applycheckplatformapplytime,jdbcType=TIMESTAMP},
+    ApplyCheckPlatformAutomaticTime = #{applycheckplatformautomatictime,jdbcType=TIMESTAMP},
+    ApplyCheckPlatformMoney = #{applycheckplatformmoney,jdbcType=DOUBLE},
+    ApplyCheckPlatformBackMoney = #{applycheckplatformbackmoney,jdbcType=DOUBLE},
+    ApplyCheckPlatformBackFault = #{applycheckplatformbackfault,jdbcType=VARCHAR},
+    ApplyCheckPlatformTitle = #{applycheckplatformtitle,jdbcType=VARCHAR},
+    ApplyCheckPlatformContent = #{applycheckplatformcontent,jdbcType=VARCHAR},
+    ApplyCheckPlatformUserId = #{applycheckplatformuserid,jdbcType=VARCHAR},
+    ApplyCheckPlatformTime = #{applycheckplatformtime,jdbcType=TIMESTAMP},
+    ApplyCheckPlatformBackUserId = #{applycheckplatformbackuserid,jdbcType=VARCHAR},
+    ApplyCheckPlatformBackTime = #{applycheckplatformbacktime,jdbcType=TIMESTAMP},
+    ApplyCheckPlatformRemark = #{applycheckplatformremark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from apply_check_platform
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apply_check_platform
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+
+  <!-- 根据ApplyCheckPlatform实体添加 -->
+  <insert id="insertByApplyCheckPlatform" parameterType="sun.bz1.entity.ApplyCheckPlatform">
+    insert into apply_check_platform
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="applycheckplatformid != null">
+        ApplyCheckPlatformId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="applycheckplatformstate != null">
+        ApplyCheckPlatformState,
+      </if>
+      <if test="applycheckplatformimage != null">
+        ApplyCheckPlatformImage,
+      </if>
+      <if test="applycheckplatformvideo != null">
+        ApplyCheckPlatformVideo,
+      </if>
+      <if test="applycheckplatformapplytime != null">
+        ApplyCheckPlatformApplyTime,
+      </if>
+      <if test="applycheckplatformautomatictime != null">
+        ApplyCheckPlatformAutomaticTime,
+      </if>
+      <if test="applycheckplatformmoney != null">
+        ApplyCheckPlatformMoney,
+      </if>
+      <if test="applycheckplatformbackmoney != null">
+        ApplyCheckPlatformBackMoney,
+      </if>
+      <if test="applycheckplatformbackfault != null">
+        ApplyCheckPlatformBackFault,
+      </if>
+      <if test="applycheckplatformtitle != null">
+        ApplyCheckPlatformTitle,
+      </if>
+      <if test="applycheckplatformcontent != null">
+        ApplyCheckPlatformContent,
+      </if>
+      <if test="applycheckplatformuserid != null">
+        ApplyCheckPlatformUserId,
+      </if>
+      <if test="applycheckplatformtime != null">
+        ApplyCheckPlatformTime,
+      </if>
+      <if test="applycheckplatformbackuserid != null">
+        ApplyCheckPlatformBackUserId,
+      </if>
+      <if test="applycheckplatformbacktime != null">
+        ApplyCheckPlatformBackTime,
+      </if>
+      <if test="applycheckplatformremark != null">
+        ApplyCheckPlatformRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="applycheckplatformid != null">
+        #{applycheckplatformid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformstate != null">
+        #{applycheckplatformstate,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformimage != null">
+        #{applycheckplatformimage,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformvideo != null">
+        #{applycheckplatformvideo,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformapplytime != null">
+        #{applycheckplatformapplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformautomatictime != null">
+        #{applycheckplatformautomatictime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformmoney != null">
+        #{applycheckplatformmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="applycheckplatformbackmoney != null">
+        #{applycheckplatformbackmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="applycheckplatformbackfault != null">
+        #{applycheckplatformbackfault,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformtitle != null">
+        #{applycheckplatformtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformcontent != null">
+        #{applycheckplatformcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformuserid != null">
+        #{applycheckplatformuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformtime != null">
+        #{applycheckplatformtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformbackuserid != null">
+        #{applycheckplatformbackuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformbacktime != null">
+        #{applycheckplatformbacktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformremark != null">
+        #{applycheckplatformremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <!-- 根据ApplyCheckPlatform实体更新 -->
+  <update id="updateByApplyCheckPlatform" parameterType="sun.bz1.entity.ApplyCheckPlatform">
+    update apply_check_platform
+    <set>
+      <if test="applycheckplatformid != null">
+        ApplyCheckPlatformId = #{applycheckplatformid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformstate != null">
+        ApplyCheckPlatformState = #{applycheckplatformstate,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformimage != null">
+        ApplyCheckPlatformImage = #{applycheckplatformimage,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformvideo != null">
+        ApplyCheckPlatformVideo = #{applycheckplatformvideo,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformapplytime != null">
+        ApplyCheckPlatformApplyTime = #{applycheckplatformapplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformautomatictime != null">
+        ApplyCheckPlatformAutomaticTime = #{applycheckplatformautomatictime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformmoney != null">
+        ApplyCheckPlatformMoney = #{applycheckplatformmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="applycheckplatformbackmoney != null">
+        ApplyCheckPlatformBackMoney = #{applycheckplatformbackmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="applycheckplatformbackfault != null">
+        ApplyCheckPlatformBackFault = #{applycheckplatformbackfault,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformtitle != null">
+        ApplyCheckPlatformTitle = #{applycheckplatformtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformcontent != null">
+        ApplyCheckPlatformContent = #{applycheckplatformcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformuserid != null">
+        ApplyCheckPlatformUserId = #{applycheckplatformuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformtime != null">
+        ApplyCheckPlatformTime = #{applycheckplatformtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformbackuserid != null">
+        ApplyCheckPlatformBackUserId = #{applycheckplatformbackuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="applycheckplatformbacktime != null">
+        ApplyCheckPlatformBackTime = #{applycheckplatformbacktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applycheckplatformremark != null">
+        ApplyCheckPlatformRemark = #{applycheckplatformremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="applycheckplatformid != null and applycheckplatformid != ''">
+          and ApplyCheckPlatformId = #{applycheckplatformid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+
+
+
+  <!-- 根据ApplyCheckPlatform实体删除 -->
+  <delete id="deleteByApplyCheckPlatform" parameterType="sun.bz1.entity.ApplyCheckPlatform">
+    delete from apply_check_platform
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="applycheckplatformid != null and applycheckplatformid != ''">
+          and ApplyCheckPlatformId = #{applycheckplatformid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+</mapper>

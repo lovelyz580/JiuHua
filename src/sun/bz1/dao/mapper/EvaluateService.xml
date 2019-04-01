@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 客户评价维修人员表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.EvaluateService">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.EvaluateService">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="EvaluateServiceId" jdbcType="VARCHAR" property="evaluateserviceid" />
+		<result column="ServiceUserId" jdbcType="VARCHAR" property="serviceuserid" />
+		<result column="CustomerUserId" jdbcType="VARCHAR" property="customeruserid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="EvaluateServiceScore" jdbcType="DOUBLE" property="evaluateservicescore" />
+		<result column="EvaluateServiceOpinion" jdbcType="VARCHAR" property="evaluateserviceopinion" />
+		<result column="EvaluateServiceCreateTime" jdbcType="TIMESTAMP" property="evaluateservicecreatetime" />
+		<result column="EvaluateServiceRemark" jdbcType="VARCHAR" property="evaluateserviceremark" />
+		<result column="EvaluateServiceSetupId" jdbcType="VARCHAR" property="evaluateservicesetupid" />
+		<result column="EvaluateServiceSetupName" jdbcType="VARCHAR" property="evaluateservicesetupname" />
+		<result column="EvaluateServiceSetupScore" jdbcType="VARCHAR" property="evaluateservicesetupscore" />
+	</resultMap>
+	
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.EvaluateServiceAndOrderTableAndUser">
+		<!-- 客户评价维修人员表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="EvaluateServiceId" jdbcType="VARCHAR" property="evaluateserviceid" />
+		<result column="ServiceUserId" jdbcType="VARCHAR" property="serviceuserid" />
+		<result column="CustomerUserId" jdbcType="VARCHAR" property="customeruserid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="EvaluateServiceScore" jdbcType="DOUBLE" property="evaluateservicescore" />
+		<result column="EvaluateServiceOpinion" jdbcType="VARCHAR" property="evaluateserviceopinion" />
+		<result column="EvaluateServiceCreateTime" jdbcType="TIMESTAMP" property="evaluateservicecreatetime" />
+		<result column="EvaluateServiceRemark" jdbcType="VARCHAR" property="evaluateserviceremark" />
+		<result column="EvaluateServiceSetupId" jdbcType="VARCHAR" property="evaluateservicesetupid" />
+		<result column="EvaluateServiceSetupName" jdbcType="VARCHAR" property="evaluateservicesetupname" />
+		<result column="EvaluateServiceSetupScore" jdbcType="VARCHAR" property="evaluateservicesetupscore" />
+		
+		<!-- 维修人员ID(被评价人)(用户表) -->
+		<result column="UserName" jdbcType="VARCHAR" property="serviceuser_username" />
+		<result column="UserRealName" jdbcType="VARCHAR" property="serviceuser_userrealname" />
+		<result column="UserSex" jdbcType="VARCHAR" property="serviceuser_usersex" />
+		<result column="UserPhone" jdbcType="VARCHAR" property="serviceuser_userphone" />
+		<result column="UserCodeId" jdbcType="VARCHAR" property="serviceuser_usercodeid" />
+		<result column="UserEmail" jdbcType="VARCHAR" property="serviceuser_useremail" />
+		<result column="UserRole" jdbcType="VARCHAR" property="serviceuser_userrole" />
+		<result column="UserState" jdbcType="VARCHAR" property="serviceuser_userstate" />
+		<result column="UserCredit" jdbcType="DOUBLE" property="serviceuser_usercredit" />
+		<result column="UserMoney" jdbcType="DOUBLE" property="serviceuser_usermoney" />
+		<result column="UserOpenId" jdbcType="VARCHAR" property="serviceuser_useropenid" />
+		<result column="UserPosition" jdbcType="VARCHAR" property="serviceuser_userposition" />
+		<result column="UserLatitude" jdbcType="DOUBLE" property="serviceuser_userlatitude" />
+		<result column="UserLongitude" jdbcType="DOUBLE" property="serviceuser_userlongitude" />
+		<result column="UserRemark" jdbcType="VARCHAR" property="serviceuser_userremark" />
+		
+		<!-- 客户ID(评价人)(用户表) -->
+		<result column="UserName1" jdbcType="VARCHAR" property="customeruser_username" />
+		<result column="UserRealName1" jdbcType="VARCHAR" property="customeruser_userrealname" />
+		<result column="UserSex1" jdbcType="VARCHAR" property="customeruser_usersex" />
+		<result column="UserPhone1" jdbcType="VARCHAR" property="customeruser_userphone" />
+		<result column="UserCodeId1" jdbcType="VARCHAR" property="customeruser_usercodeid" />
+		<result column="UserEmail1" jdbcType="VARCHAR" property="customeruser_useremail" />
+		<result column="UserRole1" jdbcType="VARCHAR" property="customeruser_userrole" />
+		<result column="UserState1" jdbcType="VARCHAR" property="customeruser_userstate" />
+		<result column="UserCredit1" jdbcType="DOUBLE" property="customeruser_usercredit" />
+		<result column="UserMoney1" jdbcType="DOUBLE" property="customeruser_usermoney" />
+		<result column="UserOpenId1" jdbcType="VARCHAR" property="customeruser_useropenid" />
+		<result column="UserPosition1" jdbcType="VARCHAR" property="customeruser_userposition" />
+		<result column="UserLatitude1" jdbcType="DOUBLE" property="customeruser_userlatitude" />
+		<result column="UserLongitude1" jdbcType="DOUBLE" property="customeruser_userlongitude" />
+		<result column="UserRemark1" jdbcType="VARCHAR" property="customeruser_userremark" />
+		
+		<!-- 维修单表 -->
+		<result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+		<result column="OrderContactPerson" jdbcType="VARCHAR" property="ordercontactperson" />
+		<result column="OrderContactPhone" jdbcType="VARCHAR" property="ordercontactphone" />
+		<result column="OrderAddress" jdbcType="VARCHAR" property="orderaddress" />
+		<result column="BuildingTypeId" jdbcType="VARCHAR" property="buildingtypeid" />
+		<result column="OrderPlanTime" jdbcType="TIMESTAMP" property="orderplantime" />
+		<result column="OrderBiddingEndTime" jdbcType="TIMESTAMP" property="orderbiddingendtime" />
+		<result column="OrderProjectType" jdbcType="VARCHAR" property="orderprojecttype" />
+		<result column="OrderPosition" jdbcType="VARCHAR" property="orderposition" />
+		<result column="OrderLatitude" jdbcType="DOUBLE" property="orderlatitude" />
+		<result column="OrderLongitude" jdbcType="DOUBLE" property="orderlongitude" />
+		<result column="OrderDistance" jdbcType="DOUBLE" property="orderdistance" />
+		<result column="OrderInterceptTotalMoney" jdbcType="DOUBLE" property="orderintercepttotalmoney" />
+		<result column="OrderInterceptTravelTotalMoney" jdbcType="DOUBLE" property="orderintercepttraveltotalmoney" />
+		<result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+		<result column="OrderTravelTotalMoney" jdbcType="DOUBLE" property="ordertraveltotalmoney" />
+		<result column="OrderType" jdbcType="VARCHAR" property="ordertype" />
+		<result column="OrderState" jdbcType="VARCHAR" property="orderstate" />
+		<result column="OrderapplycheckuserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+		<result column="OrderCreateUserId" jdbcType="VARCHAR" property="ordercreateuserid" />
+		<result column="OrderCreateTime" jdbcType="TIMESTAMP" property="ordercreatetime" />
+		<result column="OrderUpdateUserId" jdbcType="VARCHAR" property="orderupdateuserid" />
+		<result column="OrderUpdateTime" jdbcType="TIMESTAMP" property="orderupdatetime" />
+		<result column="OrderApplyCheckUserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+		<result column="OrderApplyCheckTime" jdbcType="TIMESTAMP" property="orderapplychecktime" />
+		<result column="OrderRemark" jdbcType="VARCHAR" property="orderremark" />
+		<result column="OrderCheckAllState" jdbcType="VARCHAR" property="ordercheckallstate" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, EvaluateServiceId, ServiceUserId, CustomerUserId, OrderId,
+		EvaluateServiceScore, EvaluateServiceOpinion, EvaluateServiceCreateTime, 
+		EvaluateServiceRemark,EvaluateServiceSetupId, EvaluateServiceSetupName, EvaluateServiceSetupScore
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.EvaluateService">
+		insert into evaluate_service (ID, EvaluateServiceId, 
+		ServiceUserId, CustomerUserId, OrderId, EvaluateServiceScore, 
+		EvaluateServiceOpinion, EvaluateServiceCreateTime, EvaluateServiceRemark,EvaluateServiceSetupId, EvaluateServiceSetupName, EvaluateServiceSetupScore)
+		values (#{id,jdbcType=INTEGER}, 
+		#{evaluateserviceid,jdbcType=VARCHAR},
+		#{serviceuserid,jdbcType=VARCHAR},
+		#{customeruserid,jdbcType=VARCHAR}, 
+		#{orderid,jdbcType=VARCHAR},
+		#{evaluateservicescore,jdbcType=DOUBLE},
+		#{evaluateserviceopinion,jdbcType=VARCHAR},
+		#{evaluateservicecreatetime,jdbcType=TIMESTAMP},
+		#{evaluateserviceremark,jdbcType=VARCHAR},
+		#{evaluateservicesetupid,jdbcType=VARCHAR},
+		#{evaluateservicesetupname,jdbcType=VARCHAR},
+		#{evaluateservicesetupscore,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.EvaluateService">
+		insert into evaluate_service
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="evaluateserviceid != null">
+				EvaluateServiceId,
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId,
+			</if>
+			<if test="customeruserid != null">
+				CustomerUserId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="evaluateservicescore != null">
+				EvaluateServiceScore,
+			</if>
+			<if test="evaluateserviceopinion != null">
+				EvaluateServiceOpinion,
+			</if>
+			<if test="evaluateservicecreatetime != null">
+				EvaluateServiceCreateTime,
+			</if>
+			<if test="evaluateserviceremark != null">
+				EvaluateServiceRemark,
+			</if>
+			<if test="evaluateservicesetupid != null">
+				EvaluateServiceSetupId,
+			</if>
+			<if test="evaluateservicesetupname != null">
+				EvaluateServiceSetupName,
+			</if>
+			<if test="evaluateservicesetupscore != null">
+				EvaluateServiceSetupScore,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="evaluateserviceid != null">
+				#{evaluateserviceid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				#{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="customeruserid != null">
+				#{customeruserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicescore != null">
+				#{evaluateservicescore,jdbcType=DOUBLE},
+			</if>
+			<if test="evaluateserviceopinion != null">
+				#{evaluateserviceopinion,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicecreatetime != null">
+				#{evaluateservicecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluateserviceremark != null">
+				#{evaluateserviceremark,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupid != null">
+				#{evaluateservicesetupid,jdbcType=VARCHAR},,
+			</if>
+			<if test="evaluateservicesetupname != null">
+				#{evaluateservicesetupname,jdbcType=VARCHAR},,
+			</if>
+			<if test="evaluateservicesetupscore != null">
+				#{evaluateservicesetupscore,jdbcType=VARCHAR},,
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.EvaluateService">
+		update evaluate_service
+		<set>
+			<if test="evaluateserviceid != null">
+				EvaluateServiceId = #{evaluateserviceid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="customeruserid != null">
+				CustomerUserId = #{customeruserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicescore != null">
+				EvaluateServiceScore = #{evaluateservicescore,jdbcType=DOUBLE},
+			</if>
+			<if test="evaluateserviceopinion != null">
+				EvaluateServiceOpinion = #{evaluateserviceopinion,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicecreatetime != null">
+				EvaluateServiceCreateTime = #{evaluateservicecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluateserviceremark != null">
+				EvaluateServiceRemark = #{evaluateserviceremark,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupid != null">
+				EvaluateServiceSetupId = #{evaluateservicesetupid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupname != null">
+				EvaluateServiceSetupName = #{evaluateservicesetupname,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupscore != null">
+				EvaluateServiceSetupScore = #{evaluateservicesetupscore,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.EvaluateService">
+		update evaluate_service
+		set EvaluateServiceId = #{evaluateserviceid,jdbcType=VARCHAR},
+		ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+		CustomerUserId = #{customeruserid,jdbcType=VARCHAR},
+		OrderId = #{orderid,jdbcType=VARCHAR},
+		EvaluateServiceScore = #{evaluateservicescore,jdbcType=DOUBLE},
+		EvaluateServiceOpinion = #{evaluateserviceopinion,jdbcType=VARCHAR},
+		EvaluateServiceCreateTime = #{evaluateservicecreatetime,jdbcType=TIMESTAMP},
+		EvaluateServiceRemark = #{evaluateserviceremark,jdbcType=VARCHAR},
+		EvaluateServiceSetupId = #{evaluateservicesetupid,jdbcType=VARCHAR},
+		EvaluateServiceSetupName = #{evaluateservicesetupname,jdbcType=VARCHAR},
+		EvaluateServiceSetupScore = #{evaluateservicesetupscore,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from evaluate_service
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from evaluate_service
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from evaluate_service
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据EvaluateService实体添加 -->
+	<insert id="insertByEvaluateService" parameterType="sun.bz1.entity.EvaluateService">
+		insert into evaluate_service
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="evaluateserviceid != null">
+				EvaluateServiceId,
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId,
+			</if>
+			<if test="customeruserid != null">
+				CustomerUserId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="evaluateservicescore != null">
+				EvaluateServiceScore,
+			</if>
+			<if test="evaluateserviceopinion != null">
+				EvaluateServiceOpinion,
+			</if>
+			<if test="evaluateservicecreatetime != null">
+				EvaluateServiceCreateTime,
+			</if>
+			<if test="evaluateserviceremark != null">
+				EvaluateServiceRemark,
+			</if>
+			<if test="evaluateservicesetupid != null">
+				EvaluateServiceSetupId,
+			</if>
+			<if test="evaluateservicesetupname != null">
+				EvaluateServiceSetupName,
+			</if>
+			<if test="evaluateservicesetupscore != null">
+				EvaluateServiceSetupScore,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="evaluateserviceid != null">
+				#{evaluateserviceid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				#{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="customeruserid != null">
+				#{customeruserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicescore != null">
+				#{evaluateservicescore,jdbcType=DOUBLE},
+			</if>
+			<if test="evaluateserviceopinion != null">
+				#{evaluateserviceopinion,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicecreatetime != null">
+				#{evaluateservicecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluateserviceremark != null">
+				#{evaluateserviceremark,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupid != null">
+				#{evaluateservicesetupid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupname != null">
+				#{evaluateservicesetupname,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupscore != null">
+				#{evaluateservicesetupscore,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据EvaluateService实体更新 -->
+	<update id="updateByEvaluateService" parameterType="sun.bz1.entity.EvaluateService">
+		update evaluate_service
+		<set>
+			<if test="evaluateserviceid != null">
+				EvaluateServiceId = #{evaluateserviceid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="customeruserid != null">
+				CustomerUserId = #{customeruserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicescore != null">
+				EvaluateServiceScore = #{evaluateservicescore,jdbcType=DOUBLE},
+			</if>
+			<if test="evaluateserviceopinion != null">
+				EvaluateServiceOpinion = #{evaluateserviceopinion,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicecreatetime != null">
+				EvaluateServiceCreateTime = #{evaluateservicecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluateserviceremark != null">
+				EvaluateServiceRemark = #{evaluateserviceremark,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupid != null">
+				EvaluateServiceSetupId = #{evaluateservicesetupid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupname != null">
+				EvaluateServiceSetupName = #{evaluateservicesetupname,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupscore != null">
+				EvaluateServiceSetupScore = #{evaluateservicesetupscore,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="evaluateserviceid != null and evaluateserviceid != ''">
+					and EvaluateServiceId = #{evaluateserviceid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据EvaluateServiceAndOrderTableAndUser实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountByUnionData" parameterType="sun.bz1.entity.EvaluateServiceAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from evaluate_service a
+			inner join user b on a.ServiceUserId = b.UserId
+			inner join user c on a.CustomerUserId = c.UserId
+			inner join order_table d on a.OrderId = d.OrderId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluateserviceid != null and evaluateserviceid != ''">
+					and a.EvaluateServiceId = #{evaluateserviceid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="customeruserid != null and customeruserid != ''">
+					and a.CustomerUserId = #{customeruserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectevaluateservicecreatestarttime != null and selectevaluateservicecreatestarttime != '' 
+						and selectevaluateservicecreateendtime != null and selectevaluateservicecreateendtime != ''">
+					and a.EvaluateServiceCreateTime &gt;= #{selectevaluateservicecreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.EvaluateServiceCreateTime &lt;= #{selectevaluateservicecreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and d.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and d.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and d.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and d.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and d.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and d.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and d.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and d.OrderapplycheckuserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and d.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据EvaluateServiceAndOrderTableAndUser实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesByUnionData" parameterType="sun.bz1.entity.EvaluateServiceAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from evaluate_service a
+			inner join user b on a.ServiceUserId = b.UserId
+			inner join user c on a.CustomerUserId = c.UserId
+			inner join order_table d on a.OrderId = d.OrderId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluateserviceid != null and evaluateserviceid != ''">
+					and a.EvaluateServiceId = #{evaluateserviceid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="customeruserid != null and customeruserid != ''">
+					and a.CustomerUserId = #{customeruserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectevaluateservicecreatestarttime != null and selectevaluateservicecreatestarttime != '' 
+						and selectevaluateservicecreateendtime != null and selectevaluateservicecreateendtime != ''">
+					and a.EvaluateServiceCreateTime &gt;= #{selectevaluateservicecreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.EvaluateServiceCreateTime &lt;= #{selectevaluateservicecreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and d.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and d.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and d.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and d.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and d.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and d.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and d.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and d.OrderapplycheckuserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and d.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据EvaluateServiceAndOrderTableAndUser实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountBySelectData" parameterType="sun.bz1.entity.EvaluateServiceAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from evaluate_service a
+			inner join user b on a.ServiceUserId = b.UserId
+			inner join user c on a.CustomerUserId = c.UserId
+			inner join order_table d on a.OrderId = d.OrderId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluateserviceid != null and evaluateserviceid != ''">
+					and a.EvaluateServiceId = #{evaluateserviceid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="customeruserid != null and customeruserid != ''">
+					and a.CustomerUserId = #{customeruserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectevaluateservicecreatestarttime != null and selectevaluateservicecreatestarttime != '' 
+						and selectevaluateservicecreateendtime != null and selectevaluateservicecreateendtime != ''">
+					and a.EvaluateServiceCreateTime &gt;= #{selectevaluateservicecreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.EvaluateServiceCreateTime &lt;= #{selectevaluateservicecreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="serviceuser_username != null and serviceuser_username != ''">
+					or b.UserName like CONCAT('%',#{serviceuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userrealname != null and serviceuser_userrealname != ''">
+					or b.UserRealName like CONCAT('%',#{serviceuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userphone != null and serviceuser_userphone != ''">
+					or b.UserPhone like CONCAT('%',#{serviceuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="customeruser_username != null and customeruser_username != ''">
+					or c.UserName like CONCAT('%',#{customeruser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="customeruser_userrealname != null and customeruser_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{customeruser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="customeruser_userphone != null and customeruser_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{customeruser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or d.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or d.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or d.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or d.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and d.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and d.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and d.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and d.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and d.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and d.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and d.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and d.OrderapplycheckuserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and d.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据EvaluateServiceAndOrderTableAndUser实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesBySelectData" parameterType="sun.bz1.entity.EvaluateServiceAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from evaluate_service a
+			inner join user b on a.ServiceUserId = b.UserId
+			inner join user c on a.CustomerUserId = c.UserId
+			inner join order_table d on a.OrderId = d.OrderId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluateserviceid != null and evaluateserviceid != ''">
+					and a.EvaluateServiceId = #{evaluateserviceid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="customeruserid != null and customeruserid != ''">
+					and a.CustomerUserId = #{customeruserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectevaluateservicecreatestarttime != null and selectevaluateservicecreatestarttime != '' 
+						and selectevaluateservicecreateendtime != null and selectevaluateservicecreateendtime != ''">
+					and a.EvaluateServiceCreateTime &gt;= #{selectevaluateservicecreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.EvaluateServiceCreateTime &lt;= #{selectevaluateservicecreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="serviceuser_username != null and serviceuser_username != ''">
+					or b.UserName like CONCAT('%',#{serviceuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userrealname != null and serviceuser_userrealname != ''">
+					or b.UserRealName like CONCAT('%',#{serviceuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userphone != null and serviceuser_userphone != ''">
+					or b.UserPhone like CONCAT('%',#{serviceuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="customeruser_username != null and customeruser_username != ''">
+					or c.UserName like CONCAT('%',#{customeruser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="customeruser_userrealname != null and customeruser_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{customeruser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="customeruser_userphone != null and customeruser_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{customeruser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or d.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or d.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or d.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or d.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and d.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and d.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and d.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and d.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and d.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and d.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and d.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and d.OrderapplycheckuserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and d.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据EvaluateService实体删除 -->
+	<delete id="deleteByEvaluateService" parameterType="sun.bz1.entity.EvaluateService">
+		delete from evaluate_service
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluateserviceid != null and evaluateserviceid != ''">
+					and EvaluateServiceId = #{evaluateserviceid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+	
+</mapper>

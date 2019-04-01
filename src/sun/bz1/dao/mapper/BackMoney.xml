@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 平台_收益金额表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.BackMoney">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.BackMoney">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="BackMoneyId" jdbcType="VARCHAR" property="backmoneyid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="BackMoney" jdbcType="DOUBLE" property="backmoney" />
+		<result column="BackMoneyCreateTime" jdbcType="TIMESTAMP" property="backmoneycreatetime" />
+		<result column="BackMoneyOther1" jdbcType="VARCHAR" property="backmoneyother1" />
+		<result column="BackMoneyOther2" jdbcType="VARCHAR" property="backmoneyother2" />
+		<result column="BackMoneyRemark" jdbcType="VARCHAR" property="backmoneyremark" />
+	</resultMap>
+	
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.BackMoneyAndOrderTable">
+		<!-- 平台_收益金额表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="BackMoneyId" jdbcType="VARCHAR" property="backmoneyid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="BackMoney" jdbcType="DOUBLE" property="backmoney" />
+		<result column="BackMoneyCreateTime" jdbcType="TIMESTAMP" property="backmoneycreatetime" />
+		<result column="BackMoneyOther1" jdbcType="VARCHAR" property="backmoneyother1" />
+		<result column="BackMoneyOther2" jdbcType="VARCHAR" property="backmoneyother2" />
+		<result column="BackMoneyRemark" jdbcType="VARCHAR" property="backmoneyremark" />
+		
+		<!-- 维修单表 -->
+		<result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+		<result column="OrderContactPerson" jdbcType="VARCHAR" property="ordercontactperson" />
+		<result column="OrderContactPhone" jdbcType="VARCHAR" property="ordercontactphone" />
+		<result column="OrderAddress" jdbcType="VARCHAR" property="orderaddress" />
+		<result column="BuildingTypeId" jdbcType="VARCHAR" property="buildingtypeid" />
+		<result column="OrderPlanTime" jdbcType="TIMESTAMP" property="orderplantime" />
+		<result column="OrderBiddingEndTime" jdbcType="TIMESTAMP" property="orderbiddingendtime" />
+		<result column="OrderProjectType" jdbcType="VARCHAR" property="orderprojecttype" />
+		<result column="OrderPosition" jdbcType="VARCHAR" property="orderposition" />
+		<result column="OrderLatitude" jdbcType="DOUBLE" property="orderlatitude" />
+		<result column="OrderLongitude" jdbcType="DOUBLE" property="orderlongitude" />
+		<result column="OrderDistance" jdbcType="DOUBLE" property="orderdistance" />
+		<result column="OrderInterceptTotalMoney" jdbcType="DOUBLE" property="orderintercepttotalmoney" />
+		<result column="OrderInterceptTravelTotalMoney" jdbcType="DOUBLE" property="orderintercepttraveltotalmoney" />
+		<result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+		<result column="OrderTravelTotalMoney" jdbcType="DOUBLE" property="ordertraveltotalmoney" />
+		<result column="OrderType" jdbcType="VARCHAR" property="ordertype" />
+		<result column="OrderState" jdbcType="VARCHAR" property="orderstate" />
+		<result column="OrderServiceUserId" jdbcType="VARCHAR" property="orderserviceuserid" />
+		<result column="OrderCreateUserId" jdbcType="VARCHAR" property="ordercreateuserid" />
+		<result column="OrderCreateTime" jdbcType="TIMESTAMP" property="ordercreatetime" />
+		<result column="OrderUpdateUserId" jdbcType="VARCHAR" property="orderupdateuserid" />
+		<result column="OrderUpdateTime" jdbcType="TIMESTAMP" property="orderupdatetime" />
+		<result column="OrderApplyCheckUserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+		<result column="OrderApplyCheckTime" jdbcType="TIMESTAMP" property="orderapplychecktime" />
+		<result column="OrderRemark" jdbcType="VARCHAR" property="orderremark" />
+		<result column="OrderCheckAllState" jdbcType="VARCHAR" property="ordercheckallstate" />
+	</resultMap>
+
+	<resultMap id="SeniorResultReportMap" type="sun.bz1.entity.BackMoneyAndOrderTableAndUserPaymentAndUser">
+		<!-- 平台_收益金额表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="BackMoneyId" jdbcType="VARCHAR" property="backmoneyid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="BackMoney" jdbcType="DOUBLE" property="backmoney" />
+		<result column="BackMoneyCreateTime" jdbcType="TIMESTAMP" property="backmoneycreatetime" />
+		<result column="BackMoneyOther1" jdbcType="VARCHAR" property="backmoneyother1" />
+		<result column="BackMoneyOther2" jdbcType="VARCHAR" property="backmoneyother2" />
+		<result column="BackMoneyRemark" jdbcType="VARCHAR" property="backmoneyremark" />
+
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, BackMoneyId, OrderId, BackMoney, BackMoneyCreateTime, 
+		BackMoneyOther1, BackMoneyOther2, BackMoneyRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.BackMoney">
+		insert into back_money (ID, BackMoneyId, OrderId, BackMoney, BackMoneyCreateTime, 
+		BackMoneyOther1, BackMoneyOther2, BackMoneyRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{backmoneyid,jdbcType=VARCHAR},
+		#{orderid,jdbcType=VARCHAR},
+		#{backmoney,jdbcType=DOUBLE}, 
+		#{backmoneycreatetime,jdbcType=TIMESTAMP},
+		#{backmoneyother1,jdbcType=VARCHAR},
+		#{backmoneyother2,jdbcType=VARCHAR},
+		#{backmoneyremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.BackMoney">
+		insert into back_money
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="backmoneyid != null">
+				BackMoneyId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="backmoney != null">
+				BackMoney,
+			</if>
+			<if test="backmoneycreatetime != null">
+				BackMoneyCreateTime,
+			</if>
+			<if test="backmoneyother1 != null">
+				BackMoneyOther1,
+			</if>
+			<if test="backmoneyother2 != null">
+				BackMoneyOther2,
+			</if>
+			<if test="backmoneyremark != null">
+				BackMoneyRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="backmoneyid != null">
+				#{backmoneyid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="backmoney != null">
+				#{backmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="backmoneycreatetime != null">
+				#{backmoneycreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="backmoneyother1 != null">
+				#{backmoneyother1,jdbcType=VARCHAR},
+			</if>
+			<if test="backmoneyother2 != null">
+				#{backmoneyother2,jdbcType=VARCHAR},
+			</if>
+			<if test="backmoneyremark != null">
+				#{backmoneyremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.BackMoney">
+		update back_money
+		<set>
+			<if test="backmoneyid != null">
+				BackMoneyId = #{backmoneyid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="backmoney != null">
+				BackMoney = #{backmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="backmoneycreatetime != null">
+				BackMoneyCreateTime = #{backmoneycreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="backmoneyother1 != null">
+				BackMoneyOther1 = #{backmoneyother1,jdbcType=VARCHAR},
+			</if>
+			<if test="backmoneyother2 != null">
+				BackMoneyOther2 = #{backmoneyother2,jdbcType=VARCHAR},
+			</if>
+			<if test="backmoneyremark != null">
+				BackMoneyRemark = #{backmoneyremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.BackMoney">
+		update back_money
+		set BackMoneyId = #{backmoneyid,jdbcType=VARCHAR},
+		OrderId = #{orderid,jdbcType=VARCHAR},
+		BackMoney = #{backmoney,jdbcType=DOUBLE},
+		BackMoneyCreateTime = #{backmoneycreatetime,jdbcType=TIMESTAMP},
+		BackMoneyOther1 = #{backmoneyother1,jdbcType=VARCHAR},
+		BackMoneyOther2 = #{backmoneyother2,jdbcType=VARCHAR},
+		BackMoneyRemark = #{backmoneyremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from back_money
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from back_money
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from back_money
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据BackMoney实体添加 -->
+	<insert id="insertByBackMoney" parameterType="sun.bz1.entity.BackMoney">
+		insert into back_money
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="backmoneyid != null">
+				BackMoneyId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="backmoney != null">
+				BackMoney,
+			</if>
+			<if test="backmoneycreatetime != null">
+				BackMoneyCreateTime,
+			</if>
+			<if test="backmoneyother1 != null">
+				BackMoneyOther1,
+			</if>
+			<if test="backmoneyother2 != null">
+				BackMoneyOther2,
+			</if>
+			<if test="backmoneyremark != null">
+				BackMoneyRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="backmoneyid != null">
+				#{backmoneyid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="backmoney != null">
+				#{backmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="backmoneycreatetime != null">
+				#{backmoneycreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="backmoneyother1 != null">
+				#{backmoneyother1,jdbcType=VARCHAR},
+			</if>
+			<if test="backmoneyother2 != null">
+				#{backmoneyother2,jdbcType=VARCHAR},
+			</if>
+			<if test="backmoneyremark != null">
+				#{backmoneyremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据BackMoney实体更新 -->
+	<update id="updateByBackMoney" parameterType="sun.bz1.entity.BackMoney">
+		update back_money
+		<set>
+			<if test="backmoneyid != null">
+				BackMoneyId = #{backmoneyid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="backmoney != null">
+				BackMoney = #{backmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="backmoneycreatetime != null">
+				BackMoneyCreateTime = #{backmoneycreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="backmoneyother1 != null">
+				BackMoneyOther1 = #{backmoneyother1,jdbcType=VARCHAR},
+			</if>
+			<if test="backmoneyother2 != null">
+				BackMoneyOther2 = #{backmoneyother2,jdbcType=VARCHAR},
+			</if>
+			<if test="backmoneyremark != null">
+				BackMoneyRemark = #{backmoneyremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="backmoneyid != null and backmoneyid != ''">
+					and BackMoneyId = #{backmoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据BackMoneyAndOrderTable实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="selectTwoTablesCountByUnionData" parameterType="sun.bz1.entity.BackMoneyAndOrderTable" resultType="java.lang.Integer">
+		select count(*) from back_money a 
+			inner join order_table b on a.OrderId = b.OrderId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="backmoneyid != null and backmoneyid != ''">
+					and a.BackMoneyId = #{backmoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectbackmoneycreatestarttime != null and selectbackmoneycreatestarttime != '' 
+						and selectbackmoneycreateendtime != null and selectbackmoneycreateendtime != ''">
+					and a.BackMoneyCreateTime &gt;= #{selectbackmoneycreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.BackMoneyCreateTime &lt;= #{selectbackmoneycreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据BackMoneyAndOrderTable实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectTwoTablesByUnionData" parameterType="sun.bz1.entity.BackMoneyAndOrderTable" resultMap="SeniorResultMap">
+		select * from back_money a 
+			inner join order_table b on a.OrderId = b.OrderId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="backmoneyid != null and backmoneyid != ''">
+					and a.BackMoneyId = #{backmoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectbackmoneycreatestarttime != null and selectbackmoneycreatestarttime != '' 
+						and selectbackmoneycreateendtime != null and selectbackmoneycreateendtime != ''">
+					and a.BackMoneyCreateTime &gt;= #{selectbackmoneycreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.BackMoneyCreateTime &lt;= #{selectbackmoneycreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据BackMoneyAndOrderTable实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectTwoTablesCountBySelectData" parameterType="sun.bz1.entity.BackMoneyAndOrderTable" resultType="java.lang.Integer">
+		select count(*) from back_money a 
+			inner join order_table b on a.OrderId = b.OrderId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="backmoneyid != null and backmoneyid != ''">
+					and a.BackMoneyId = #{backmoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectbackmoneycreatestarttime != null and selectbackmoneycreatestarttime != '' 
+						and selectbackmoneycreateendtime != null and selectbackmoneycreateendtime != ''">
+					and a.BackMoneyCreateTime &gt;= #{selectbackmoneycreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.BackMoneyCreateTime &lt;= #{selectbackmoneycreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据BackMoneyAndOrderTable实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectTwoTablesBySelectData" parameterType="sun.bz1.entity.BackMoneyAndOrderTable" resultMap="SeniorResultMap">
+		select * from back_money a 
+			inner join order_table b on a.OrderId = b.OrderId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="backmoneyid != null and backmoneyid != ''">
+					and a.BackMoneyId = #{backmoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+					<if test="selectbackmoneycreatestarttime != null and selectbackmoneycreatestarttime != '' 
+						and selectbackmoneycreateendtime != null and selectbackmoneycreateendtime != ''">
+					and a.BackMoneyCreateTime &gt;= #{selectbackmoneycreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.BackMoneyCreateTime &lt;= #{selectbackmoneycreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+
+
+	<!-- 根据BackMoneyAndOrderTable实体模糊查询(生成客户给平台付款的报表) -->
+	<!-- 查询数量 -->
+	<select id="selectFourTablesCountBySelectDataIncomeReport" parameterType="sun.bz1.entity.BackMoneyAndOrderTableAndUserPaymentAndUser" resultType="java.lang.Integer">
+		select count(*) from back_money bm
+		left JOIN user_payment up on bm.BackMoneyOther2 = up.UserPaymentId
+		left join order_table ot on up.OrderId = ot.OrderId
+		left join user u on up.RemitterUserId = u.UserId
+		left join user u2 on ot.OrderServiceUserId = u2.UserId
+		where bm.BackMoney &gt; 0
+
+
+		<if test="selectbackmoneycreatestarttime != null and selectbackmoneycreatestarttime != ''">
+			and up.UserPaymentCreateTime &gt;= #{selectbackmoneycreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+		</if>
+		<if test="selectbackmoneycreateendtime != null and selectbackmoneycreateendtime != ''">
+			and up.UserPaymentCreateTime &lt;= #{selectbackmoneycreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+		</if>
+		<if test="orderprojectname != null and orderprojectname != ''">
+			and ot.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="customername != null and customername != ''">
+			and u.UserRealName like CONCAT('%',#{customername,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="platformincomestate != null and platformincomestate != '' and platformincomestate == 'YSH'">
+			and up.OrderRemark = "YSH"
+		</if>
+		<if test="platformincomestate != null and platformincomestate != '' and platformincomestate == 'WSH'">
+			and up.OrderRemark is null
+		</if>
+
+		<if test="selectorderplanstarttime != null and selectorderplanstarttime != ''
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+			and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+		</if>
+		<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != ''
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+			and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+		</if>
+
+		<if test="orderprojectnamekeyword != null and orderprojectnamekeyword != ''">
+			and (ot.OrderProjectName like CONCAT('%',#{orderprojectnamekeyword,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="customernamekeyword != null and customernamekeyword != ''">
+			or u.UserRealName like CONCAT('%',#{customernamekeyword,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userpaymentplatformaccountname != null and userpaymentplatformaccountname != ''">
+			or up.UserPaymentPlatformAccountName like CONCAT('%',#{userpaymentplatformaccountname,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="userpaymentplatformaccount != null and userpaymentplatformaccount != ''">
+			or up.UserPaymentPlatformAccount like CONCAT('%',#{userpaymentplatformaccount,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userpaymentplatformaccountaddress != null and userpaymentplatformaccountaddress != ''">
+			or up.UserPaymentServiceAccount like CONCAT('%',#{userpaymentplatformaccountaddress,jdbcType=VARCHAR},'%'))
+		</if>
+
+
+	</select>
+
+	<!-- 根据BackMoneyAndOrderTable实体模糊查询(生成客户给平台付款的报表) -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectFourTablesBySelectDataIncomeReport" parameterType="sun.bz1.entity.BackMoneyAndOrderTableAndUserPaymentAndUser" resultMap="SeniorResultReportMap">
+		select bm.ID id,up.OrderRemark platformincomestate,bm.OrderId orderid,up.UserPaymentPlatformServiceState platformservicestate,ot.OrderProjectName orderprojectname,
+		u.UserRealName customername,IFNULL(bm.BackMoney, 0) platformimcomemoney,up.UserPaymentPlatformAccount userpaymentplatformaccount,
+		up.UserPaymentServiceAccount userpaymentplatformaccountaddress,up.UserPaymentPlatformAccountName userpaymentplatformaccountname,up.UserPaymentCreateTime platformincometime from back_money bm
+		left JOIN user_payment up on bm.BackMoneyOther2 = up.UserPaymentId
+		left join order_table ot on up.OrderId = ot.OrderId
+		left join user u on up.RemitterUserId = u.UserId
+		left join user u2 on ot.OrderServiceUserId = u2.UserId
+		where bm.BackMoney &gt; 0
+
+
+		<if test="selectbackmoneycreatestarttime != null and selectbackmoneycreatestarttime != ''">
+			and up.UserPaymentCreateTime &gt;= #{selectbackmoneycreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+		</if>
+		<if test="selectbackmoneycreateendtime != null and selectbackmoneycreateendtime != ''">
+			and up.UserPaymentCreateTime &lt;= #{selectbackmoneycreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+		</if>
+		<if test="orderprojectname != null and orderprojectname != ''">
+			and ot.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="customername != null and customername != ''">
+			and u.UserRealName like CONCAT('%',#{customername,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="platformincomestate != null and platformincomestate != '' and platformincomestate == 'YSH'">
+			and up.OrderRemark = "YSH"
+		</if>
+		<if test="platformincomestate != null and platformincomestate != '' and platformincomestate == 'WSH'">
+			and up.OrderRemark is null
+		</if>
+
+		<if test="selectorderplanstarttime != null and selectorderplanstarttime != ''
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+			and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+		</if>
+		<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != ''
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+			and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+		</if>
+
+		<if test="orderprojectnamekeyword != null and orderprojectnamekeyword != ''">
+			and (ot.OrderProjectName like CONCAT('%',#{orderprojectnamekeyword,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="customernamekeyword != null and customernamekeyword != ''">
+			or u.UserRealName like CONCAT('%',#{customernamekeyword,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userpaymentplatformaccountname != null and userpaymentplatformaccountname != ''">
+			or up.UserPaymentPlatformAccountName like CONCAT('%',#{userpaymentplatformaccountname,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="userpaymentplatformaccount != null and userpaymentplatformaccount != ''">
+			or up.UserPaymentPlatformAccount like CONCAT('%',#{userpaymentplatformaccount,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userpaymentplatformaccountaddress != null and userpaymentplatformaccountaddress != ''">
+			or up.UserPaymentServiceAccount like CONCAT('%',#{userpaymentplatformaccountaddress,jdbcType=VARCHAR},'%'))
+		</if>
+
+
+
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<!-- 根据BackMoneyAndOrderTable实体模糊查询(生成平台付款给维修的报表) -->
+	<!-- 查询数量 -->
+	<select id="selectFourTablesCountBySelectDataServiceReport" parameterType="sun.bz1.entity.BackMoneyAndOrderTableAndUserPaymentAndUser" resultType="java.lang.Integer">
+		select count(*) from back_money bm
+		left JOIN user_payment up on bm.BackMoneyOther2 = up.UserPaymentId
+		left join order_table ot on up.OrderId = ot.OrderId
+		left join user u on up.RemitterUserId = u.UserId
+		left join user u2 on ot.OrderServiceUserId = u2.UserId
+		where bm.BackMoney &lt; 0
+
+
+
+		<if test="selectbackmoneycreatestarttime != null and selectbackmoneycreatestarttime != ''">
+			and bm.BackMoneyCreateTime &gt;= #{selectbackmoneycreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+		</if>
+		<if test="selectbackmoneycreateendtime != null and selectbackmoneycreateendtime != ''">
+			and bm.BackMoneyCreateTime &lt;= #{selectbackmoneycreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+		</if>
+		<if test="orderprojectname != null and orderprojectname != ''">
+			and ot.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="servicename != null and servicename != ''">
+			and u2.UserRealName like CONCAT('%',#{servicename,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="platformservicestate != null and platformservicestate != '' and platformservicestate == 'YSH'">
+			and up.UserPaymentPlatformServiceState = "YSH"
+		</if>
+		<if test="platformservicestate != null and platformservicestate != '' and platformservicestate == 'WSH'">
+			and up.UserPaymentPlatformServiceState is null
+		</if>
+
+		<if test="selectorderplanstarttime != null and selectorderplanstarttime != ''
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+			and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+		</if>
+		<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != ''
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+			and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+		</if>
+
+		<if test="orderprojectnamekeyword != null and orderprojectnamekeyword != ''">
+			and (ot.OrderProjectName like CONCAT('%',#{orderprojectnamekeyword,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="servicenamekeyword != null and servicenamekeyword != ''">
+			or u2.UserRealName like CONCAT('%',#{servicenamekeyword,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="serviceaccount != null and serviceaccount != ''">
+			or u2.UserAccount like CONCAT('%',#{serviceaccount,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="serviceaccountaddress != null and serviceaccountaddress != ''">
+			or u2.UserAccountAddress like CONCAT('%',#{serviceaccountaddress,jdbcType=VARCHAR},'%'))
+		</if>
+
+
+	</select>
+
+	<!-- 根据BackMoneyAndOrderTable实体模糊查询(生成平台付款给维修的报表) -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectFourTablesBySelectDataServiceReport" parameterType="sun.bz1.entity.BackMoneyAndOrderTableAndUserPaymentAndUser" resultMap="SeniorResultReportMap">
+		select bm.ID id,up.OrderRemark platformincomestate,bm.OrderId orderid,up.UserPaymentPlatformServiceState platformservicestate,ot.OrderProjectName orderprojectname,
+		u2.UserRealName servicename,IFNULL(abs(bm.BackMoney), 0) platformtoservicemoney,u2.UserAccount serviceaccount,
+		u2.UserAccountAddress serviceaccountaddress,bm.BackMoneyCreateTime platformservicetime from back_money bm
+		left JOIN user_payment up on bm.BackMoneyOther2 = up.UserPaymentId
+		left join order_table ot on up.OrderId = ot.OrderId
+		left join user u on up.RemitterUserId = u.UserId
+		left join user u2 on ot.OrderServiceUserId = u2.UserId
+		where bm.BackMoney &lt; 0
+
+
+		<if test="selectbackmoneycreatestarttime != null and selectbackmoneycreatestarttime != ''">
+			and bm.BackMoneyCreateTime &gt;= #{selectbackmoneycreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+		</if>
+		<if test="selectbackmoneycreateendtime != null and selectbackmoneycreateendtime != ''">
+			and bm.BackMoneyCreateTime &lt;= #{selectbackmoneycreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+		</if>
+		<if test="orderprojectname != null and orderprojectname != ''">
+			and ot.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="servicename != null and servicename != ''">
+			and u2.UserRealName like CONCAT('%',#{servicename,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="platformservicestate != null and platformservicestate != '' and platformservicestate == 'YSH'">
+			and up.UserPaymentPlatformServiceState = "YSH"
+		</if>
+		<if test="platformservicestate != null and platformservicestate != '' and platformservicestate == 'WSH'">
+			and up.UserPaymentPlatformServiceState is null
+		</if>
+
+		<if test="selectorderplanstarttime != null and selectorderplanstarttime != ''
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+			and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+		</if>
+		<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != ''
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+			and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+		</if>
+
+		<if test="orderprojectnamekeyword != null and orderprojectnamekeyword != ''">
+			and (ot.OrderProjectName like CONCAT('%',#{orderprojectnamekeyword,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="servicenamekeyword != null and servicenamekeyword != ''">
+			or u2.UserRealName like CONCAT('%',#{servicenamekeyword,jdbcType=VARCHAR},'%')
+		</if>
+
+		<if test="serviceaccount != null and serviceaccount != ''">
+			or u2.UserAccount like CONCAT('%',#{serviceaccount,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="serviceaccountaddress != null and serviceaccountaddress != ''">
+			or u2.UserAccountAddress like CONCAT('%',#{serviceaccountaddress,jdbcType=VARCHAR},'%'))
+		</if>
+
+
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+	
+	<!-- 根据BackMoney实体删除 -->
+	<delete id="deleteByBackMoney" parameterType="sun.bz1.entity.BackMoney">
+		delete from back_money
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="backmoneyid != null and backmoneyid != ''">
+					and BackMoneyId = #{backmoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+	
+</mapper>

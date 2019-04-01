@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 订单打卡表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.OrderBreakCard">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.OrderBreakCard">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="OrderBreakCardId" jdbcType="VARCHAR" property="orderbreakcardid" />
+    <result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="OrderBreakCardUserId" jdbcType="VARCHAR" property="orderbreakcarduserid" />
+    <result column="OrderBreakCardUserName" jdbcType="VARCHAR" property="orderbreakcardusername" />
+    <result column="OrderBreakCardCreateTime" jdbcType="TIMESTAMP" property="orderbreakcardcreatetime" />
+    <result column="OrderBreakCardAddress" jdbcType="VARCHAR" property="orderbreakcardaddress" />
+    <result column="OrderBreakCardOther1" jdbcType="VARCHAR" property="orderbreakcardother1" />
+    <result column="OrderBreakCardOther2" jdbcType="VARCHAR" property="orderbreakcardother2" />
+    <result column="OrderBreakCardOther3" jdbcType="VARCHAR" property="orderbreakcardother3" />
+    <result column="OrderBreakCardOther4" jdbcType="VARCHAR" property="orderbreakcardother4" />
+    <result column="OrderBreakCardOther5" jdbcType="VARCHAR" property="orderbreakcardother5" />
+  </resultMap>
+
+  <resultMap id="SeniorResultMap" type="sun.bz1.entity.OrderBreakCardAndOrderTableAndUser">
+    <!-- 订单打卡表 -->
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="OrderBreakCardId" jdbcType="VARCHAR" property="orderbreakcardid" />
+    <result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="OrderBreakCardUserId" jdbcType="VARCHAR" property="orderbreakcarduserid" />
+    <result column="OrderBreakCardUserName" jdbcType="VARCHAR" property="orderbreakcardusername" />
+    <result column="OrderBreakCardCreateTime" jdbcType="TIMESTAMP" property="orderbreakcardcreatetime" />
+    <result column="OrderBreakCardAddress" jdbcType="VARCHAR" property="orderbreakcardaddress" />
+    <result column="OrderBreakCardOther1" jdbcType="VARCHAR" property="orderbreakcardother1" />
+    <result column="OrderBreakCardOther2" jdbcType="VARCHAR" property="orderbreakcardother2" />
+    <result column="OrderBreakCardOther3" jdbcType="VARCHAR" property="orderbreakcardother3" />
+    <result column="OrderBreakCardOther4" jdbcType="VARCHAR" property="orderbreakcardother4" />
+    <result column="OrderBreakCardOther5" jdbcType="VARCHAR" property="orderbreakcardother5" />
+
+    <!-- 订单表 -->
+    <result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+    <result column="OrderContactPerson" jdbcType="VARCHAR" property="ordercontactperson" />
+    <result column="OrderContactPhone" jdbcType="VARCHAR" property="ordercontactphone" />
+    <result column="OrderAddress" jdbcType="VARCHAR" property="orderaddress" />
+    <result column="BuildingTypeId" jdbcType="VARCHAR" property="buildingtypeid" />
+    <result column="OrderPlanTime" jdbcType="TIMESTAMP" property="orderplantime" />
+    <result column="OrderBiddingEndTime" jdbcType="TIMESTAMP" property="orderbiddingendtime" />
+    <result column="OrderProjectType" jdbcType="VARCHAR" property="orderprojecttype" />
+    <result column="OrderPosition" jdbcType="VARCHAR" property="orderposition" />
+    <result column="OrderLatitude" jdbcType="DOUBLE" property="orderlatitude" />
+    <result column="OrderLongitude" jdbcType="DOUBLE" property="orderlongitude" />
+    <result column="OrderDistance" jdbcType="DOUBLE" property="orderdistance" />
+    <result column="OrderInterceptTotalMoney" jdbcType="DOUBLE" property="orderintercepttotalmoney" />
+    <result column="OrderInterceptTravelTotalMoney" jdbcType="DOUBLE" property="orderintercepttraveltotalmoney" />
+    <result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+    <result column="OrderTravelTotalMoney" jdbcType="DOUBLE" property="ordertraveltotalmoney" />
+    <result column="OrderType" jdbcType="VARCHAR" property="ordertype" />
+    <result column="OrderState" jdbcType="VARCHAR" property="orderstate" />
+    <result column="OrderServiceUserId" jdbcType="VARCHAR" property="orderserviceuserid" />
+    <result column="OrderCreateUserId" jdbcType="VARCHAR" property="ordercreateuserid" />
+    <result column="OrderCreateTime" jdbcType="TIMESTAMP" property="ordercreatetime" />
+    <result column="OrderUpdateUserId" jdbcType="VARCHAR" property="orderupdateuserid" />
+    <result column="OrderUpdateTime" jdbcType="TIMESTAMP" property="orderupdatetime" />
+    <result column="OrderApplyCheckUserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+    <result column="OrderApplyCheckTime" jdbcType="TIMESTAMP" property="orderapplychecktime" />
+    <result column="OrderRemark" jdbcType="VARCHAR" property="orderremark" />
+    <result column="OrderCheckAllState" jdbcType="VARCHAR" property="ordercheckallstate" />
+    <result column="OrderDayMoney" jdbcType="DOUBLE" property="orderdaymoney" />
+    <result column="OrderDay" jdbcType="INTEGER" property="orderday" />
+    <result column="OrderPeopleNumber" jdbcType="INTEGER" property="orderpeoplenumber" />
+    <result column="OrderMaterialMoney" jdbcType="DOUBLE" property="ordermaterialmoney" />
+    <!-- 用户表 -->
+    <result column="UserId" jdbcType="VARCHAR" property="userid" />
+    <result column="UserName" jdbcType="VARCHAR" property="username" />
+    <result column="UserPassword" jdbcType="VARCHAR" property="userpassword" />
+    <result column="UserSalt" jdbcType="VARCHAR" property="usersalt" />
+    <result column="UserEncryptPassword" jdbcType="VARCHAR" property="userencryptpassword" />
+    <result column="UserRealName" jdbcType="VARCHAR" property="userrealname" />
+    <result column="UserSex" jdbcType="VARCHAR" property="usersex" />
+    <result column="UserPhone" jdbcType="VARCHAR" property="userphone" />
+    <result column="UserCodeId" jdbcType="VARCHAR" property="usercodeid" />
+    <result column="UserEmail" jdbcType="VARCHAR" property="useremail" />
+    <result column="UserRole" jdbcType="VARCHAR" property="userrole" />
+    <result column="UserState" jdbcType="VARCHAR" property="userstate" />
+    <result column="UserCredit" jdbcType="DOUBLE" property="usercredit" />
+    <result column="UserMoney" jdbcType="DOUBLE" property="usermoney" />
+    <result column="UserSMS" jdbcType="VARCHAR" property="usersms" />
+    <result column="UserSMSTime" jdbcType="TIMESTAMP" property="usersmstime" />
+    <result column="UserOpenId" jdbcType="VARCHAR" property="useropenid" />
+    <result column="UserPosition" jdbcType="VARCHAR" property="userposition" />
+    <result column="UserLatitude" jdbcType="DOUBLE" property="userlatitude" />
+    <result column="UserLongitude" jdbcType="DOUBLE" property="userlongitude" />
+    <result column="UserCreateUserId" jdbcType="VARCHAR" property="usercreateuserid" />
+    <result column="UserCreateTime" jdbcType="TIMESTAMP" property="usercreatetime" />
+    <result column="UserUpdateUserId" jdbcType="VARCHAR" property="userupdateuserid" />
+    <result column="UserUpdateTime" jdbcType="TIMESTAMP" property="userupdatetime" />
+    <result column="UserRemark" jdbcType="VARCHAR" property="userremark" />
+    <result column="UserInvitationUserId" jdbcType="VARCHAR" property="userinvitationuserid" />
+    <result column="UserSort" jdbcType="INTEGER" property="usersort" />
+    <result column="UserAccount" jdbcType="VARCHAR" property="useraccount" />
+    <result column="UserAccountAddress" jdbcType="VARCHAR" property="useraccountaddress" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, OrderBreakCardId, OrderId, OrderBreakCardUserId, OrderBreakCardUserName, OrderBreakCardCreateTime, 
+    OrderBreakCardAddress, OrderBreakCardOther1, OrderBreakCardOther2, OrderBreakCardOther3, 
+    OrderBreakCardOther4, OrderBreakCardOther5
+  </sql>
+  <insert id="insert" parameterType="sun.bz1.entity.OrderBreakCard">
+    insert into order_break_card (ID, OrderBreakCardId, OrderId,
+    OrderBreakCardUserId, OrderBreakCardUserName,
+    OrderBreakCardCreateTime, OrderBreakCardAddress,
+    OrderBreakCardOther1, OrderBreakCardOther2,
+    OrderBreakCardOther3, OrderBreakCardOther4,
+    OrderBreakCardOther5)
+    values (#{id,jdbcType=INTEGER}, #{orderbreakcardid,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR},
+    #{orderbreakcarduserid,jdbcType=VARCHAR}, #{orderbreakcardusername,jdbcType=VARCHAR},
+    #{orderbreakcardcreatetime,jdbcType=TIMESTAMP}, #{orderbreakcardaddress,jdbcType=VARCHAR},
+    #{orderbreakcardother1,jdbcType=VARCHAR}, #{orderbreakcardother2,jdbcType=VARCHAR},
+    #{orderbreakcardother3,jdbcType=VARCHAR}, #{orderbreakcardother4,jdbcType=VARCHAR},
+    #{orderbreakcardother5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sun.bz1.entity.OrderBreakCard">
+    insert into order_break_card
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="orderbreakcardid != null">
+        OrderBreakCardId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="orderbreakcarduserid != null">
+        OrderBreakCardUserId,
+      </if>
+      <if test="orderbreakcardusername != null">
+        OrderBreakCardUserName,
+      </if>
+      <if test="orderbreakcardcreatetime != null">
+        OrderBreakCardCreateTime,
+      </if>
+      <if test="orderbreakcardaddress != null">
+        OrderBreakCardAddress,
+      </if>
+      <if test="orderbreakcardother1 != null">
+        OrderBreakCardOther1,
+      </if>
+      <if test="orderbreakcardother2 != null">
+        OrderBreakCardOther2,
+      </if>
+      <if test="orderbreakcardother3 != null">
+        OrderBreakCardOther3,
+      </if>
+      <if test="orderbreakcardother4 != null">
+        OrderBreakCardOther4,
+      </if>
+      <if test="orderbreakcardother5 != null">
+        OrderBreakCardOther5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderbreakcardid != null">
+        #{orderbreakcardid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcarduserid != null">
+        #{orderbreakcarduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardusername != null">
+        #{orderbreakcardusername,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardcreatetime != null">
+        #{orderbreakcardcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderbreakcardaddress != null">
+        #{orderbreakcardaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother1 != null">
+        #{orderbreakcardother1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother2 != null">
+        #{orderbreakcardother2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother3 != null">
+        #{orderbreakcardother3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother4 != null">
+        #{orderbreakcardother4,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother5 != null">
+        #{orderbreakcardother5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.OrderBreakCard">
+    update order_break_card
+    <set>
+      <if test="orderbreakcardid != null">
+        OrderBreakCardId = #{orderbreakcardid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcarduserid != null">
+        OrderBreakCardUserId = #{orderbreakcarduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardusername != null">
+        OrderBreakCardUserName = #{orderbreakcardusername,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardcreatetime != null">
+        OrderBreakCardCreateTime = #{orderbreakcardcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderbreakcardaddress != null">
+        OrderBreakCardAddress = #{orderbreakcardaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother1 != null">
+        OrderBreakCardOther1 = #{orderbreakcardother1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother2 != null">
+        OrderBreakCardOther2 = #{orderbreakcardother2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother3 != null">
+        OrderBreakCardOther3 = #{orderbreakcardother3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother4 != null">
+        OrderBreakCardOther4 = #{orderbreakcardother4,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother5 != null">
+        OrderBreakCardOther5 = #{orderbreakcardother5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.OrderBreakCard">
+    update order_break_card
+    set OrderBreakCardId = #{orderbreakcardid,jdbcType=VARCHAR},
+    OrderId = #{orderid,jdbcType=VARCHAR},
+    OrderBreakCardUserId = #{orderbreakcarduserid,jdbcType=VARCHAR},
+    OrderBreakCardUserName = #{orderbreakcardusername,jdbcType=VARCHAR},
+    OrderBreakCardCreateTime = #{orderbreakcardcreatetime,jdbcType=TIMESTAMP},
+    OrderBreakCardAddress = #{orderbreakcardaddress,jdbcType=VARCHAR},
+    OrderBreakCardOther1 = #{orderbreakcardother1,jdbcType=VARCHAR},
+    OrderBreakCardOther2 = #{orderbreakcardother2,jdbcType=VARCHAR},
+    OrderBreakCardOther3 = #{orderbreakcardother3,jdbcType=VARCHAR},
+    OrderBreakCardOther4 = #{orderbreakcardother4,jdbcType=VARCHAR},
+    OrderBreakCardOther5 = #{orderbreakcardother5,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select count(*) from order_break_card
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    *
+    from order_break_card
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_break_card
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!--根据OrderBreakCard实体添加-->
+  <insert id="insertByOrderBreakCard" parameterType="sun.bz1.entity.OrderBreakCard">
+    insert into order_break_card
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="orderbreakcardid != null">
+        OrderBreakCardId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="orderbreakcarduserid != null">
+        OrderBreakCardUserId,
+      </if>
+      <if test="orderbreakcardusername != null">
+        OrderBreakCardUserName,
+      </if>
+      <if test="orderbreakcardcreatetime != null">
+        OrderBreakCardCreateTime,
+      </if>
+      <if test="orderbreakcardaddress != null">
+        OrderBreakCardAddress,
+      </if>
+      <if test="orderbreakcardother1 != null">
+        OrderBreakCardOther1,
+      </if>
+      <if test="orderbreakcardother2 != null">
+        OrderBreakCardOther2,
+      </if>
+      <if test="orderbreakcardother3 != null">
+        OrderBreakCardOther3,
+      </if>
+      <if test="orderbreakcardother4 != null">
+        OrderBreakCardOther4,
+      </if>
+      <if test="orderbreakcardother5 != null">
+        OrderBreakCardOther5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderbreakcardid != null">
+        #{orderbreakcardid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcarduserid != null">
+        #{orderbreakcarduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardusername != null">
+        #{orderbreakcardusername,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardcreatetime != null">
+        #{orderbreakcardcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderbreakcardaddress != null">
+        #{orderbreakcardaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother1 != null">
+        #{orderbreakcardother1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother2 != null">
+        #{orderbreakcardother2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother3 != null">
+        #{orderbreakcardother3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother4 != null">
+        #{orderbreakcardother4,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother5 != null">
+        #{orderbreakcardother5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!--根据OrderBreakCard实体更新-->
+  <update id="updateByOrderBreakCard" parameterType="sun.bz1.entity.OrderBreakCard">
+    update order_break_card
+    <set>
+      <if test="orderbreakcardid != null">
+        OrderBreakCardId = #{orderbreakcardid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcarduserid != null">
+        OrderBreakCardUserId = #{orderbreakcarduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardusername != null">
+        OrderBreakCardUserName = #{orderbreakcardusername,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardcreatetime != null">
+        OrderBreakCardCreateTime = #{orderbreakcardcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderbreakcardaddress != null">
+        OrderBreakCardAddress = #{orderbreakcardaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother1 != null">
+        OrderBreakCardOther1 = #{orderbreakcardother1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother2 != null">
+        OrderBreakCardOther2 = #{orderbreakcardother2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother3 != null">
+        OrderBreakCardOther3 = #{orderbreakcardother3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother4 != null">
+        OrderBreakCardOther4 = #{orderbreakcardother4,jdbcType=VARCHAR},
+      </if>
+      <if test="orderbreakcardother5 != null">
+        OrderBreakCardOther5 = #{orderbreakcardother5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="orderbreakcardid != null and orderbreakcardid != ''">
+          and OrderBreakCardId = #{orderbreakcardid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据OrderBreakCard实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByOrderBreakCard" parameterType="sun.bz1.entity.OrderBreakCard" resultType="java.lang.Integer">
+    select count(*) from order_break_card
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="orderbreakcardid != null and orderbreakcardid != ''">
+          and OrderBreakCardId = #{orderbreakcardid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="breakcardtime != null and breakcardtime != ''">
+          and to_days(OrderBreakCardCreateTime) = to_days(now())
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据OrderBreakCard实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectByOrderBreakCard" parameterType="sun.bz1.entity.OrderBreakCard" resultMap="BaseResultMap">
+    select * from order_break_card
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="orderbreakcardid != null and orderbreakcardid != ''">
+          and OrderBreakCardId = #{orderbreakcardid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="breakcardtime != null and breakcardtime != ''">
+          and to_days(OrderBreakCardCreateTime) = to_days(now())
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据OrderBreakCard实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountBySelectData" parameterType="sun.bz1.entity.OrderBreakCard" resultType="java.lang.Integer">
+    select count(*) from order_break_card
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="orderbreakcardid != null and orderbreakcardid != ''">
+          and OrderBreakCardId = #{orderbreakcardid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据Log实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectBySelectData" parameterType="sun.bz1.entity.OrderBreakCard" resultMap="BaseResultMap">
+    select * from order_break_card
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="orderbreakcardid != null and orderbreakcardid != ''">
+          and OrderBreakCardId = #{orderbreakcardid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+  <!-- 根据OrderBreakCardAndOrderTableAndUser实体模糊查询 -->
+  <!-- 查询数量 -->
+  <select id="selectThreeTablesCountBySelectData" parameterType="sun.bz1.entity.OrderBreakCardAndOrderTableAndUser" resultType="java.lang.Integer">
+    select count(*) from order_break_card obc
+    left JOIN order_table ot on obc.OrderId = ot.OrderId
+    left join user u on obc.OrderBreakCardUserId = u.userId
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="orderbreakcardid != null and orderbreakcardid != ''">
+          and obc.OrderBreakCardId = #{orderbreakcardid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderbreakcarduserid != null and orderbreakcarduserid != ''">
+          and obc.OrderBreakCardUserId = #{orderbreakcarduserid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderbreakcardusername != null and orderbreakcardusername != ''">
+          or obc.OrderBreakCardUserName like CONCAT('%',#{orderbreakcardusername,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="orderbreakcardaddress != null and orderbreakcardaddress != ''">
+          or obc.OrderBreakCardAddress like CONCAT('%',#{orderbreakcardaddress,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and ot.OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderprojectname != null and orderprojectname != ''">
+          or ot.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="ordercontactperson != null and ordercontactperson != ''">
+          or ot.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="ordercontactphone != null and ordercontactphone != ''">
+          or ot.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="orderaddress != null and orderaddress != ''">
+          or ot.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%')
+        </if>
+
+        <if test="ordertype != null and ordertype != ''">
+          and ot.OrderType = #{ordertype,jdbcType=VARCHAR}
+        </if>
+        <if test="orderstate != null and orderstate != ''">
+          and ot.OrderState = #{orderstate,jdbcType=VARCHAR}
+        </if>
+        <if test="orderserviceuserid != null and orderserviceuserid != ''">
+          and ot.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+        </if>
+
+        <if test="ordercreateuserid != null and ordercreateuserid != ''">
+          and ot.OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR}
+        </if>
+        <if test="ordercheckallstate != null and ordercheckallstate != ''">
+          and ot.OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR}
+        </if>
+        <if test="userrealname != null and userrealname != ''">
+          or u.UserRealName like CONCAT('%',#{userrealname,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="userphone != null and userphone != ''">
+          or u.UserPhone like CONCAT('%',#{userphone,jdbcType=VARCHAR},'%')
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据OrderBreakCardAndOrderTableAndUser实体模糊查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量  -->
+  <select id="selectThreeTablesBySelectData" parameterType="sun.bz1.entity.OrderBreakCardAndOrderTableAndUser" resultMap="SeniorResultMap">
+    select * from order_break_card obc
+    left JOIN order_table ot on obc.OrderId = ot.OrderId
+    left join user u on obc.OrderBreakCardUserId = u.userId
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="orderbreakcardid != null and orderbreakcardid != ''">
+          and obc.OrderBreakCardId = #{orderbreakcardid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderbreakcarduserid != null and orderbreakcarduserid != ''">
+          and obc.OrderBreakCardUserId = #{orderbreakcarduserid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderbreakcardusername != null and orderbreakcardusername != ''">
+          or obc.OrderBreakCardUserName like CONCAT('%',#{orderbreakcardusername,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="orderbreakcardaddress != null and orderbreakcardaddress != ''">
+          or obc.OrderBreakCardAddress like CONCAT('%',#{orderbreakcardaddress,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and ot.OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderprojectname != null and orderprojectname != ''">
+          or ot.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="ordercontactperson != null and ordercontactperson != ''">
+          or ot.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="ordercontactphone != null and ordercontactphone != ''">
+          or ot.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="orderaddress != null and orderaddress != ''">
+          or ot.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%')
+        </if>
+
+        <if test="ordertype != null and ordertype != ''">
+          and ot.OrderType = #{ordertype,jdbcType=VARCHAR}
+        </if>
+        <if test="orderstate != null and orderstate != ''">
+          and ot.OrderState = #{orderstate,jdbcType=VARCHAR}
+        </if>
+        <if test="orderserviceuserid != null and orderserviceuserid != ''">
+          and ot.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+        </if>
+
+        <if test="ordercreateuserid != null and ordercreateuserid != ''">
+          and ot.OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR}
+        </if>
+        <if test="ordercheckallstate != null and ordercheckallstate != ''">
+          and ot.OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR}
+        </if>
+        <if test="userrealname != null and userrealname != ''">
+          or u.UserRealName like CONCAT('%',#{userrealname,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="userphone != null and userphone != ''">
+          or u.UserPhone like CONCAT('%',#{userphone,jdbcType=VARCHAR},'%')
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据OrderBreakCard实体删除 -->
+  <delete id="deleteByOrderBreakCard" parameterType="sun.bz1.entity.OrderBreakCard">
+    delete from order_break_card
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="orderbreakcardid != null and orderbreakcardid != ''">
+          and OrderBreakCardId = #{orderbreakcardid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+</mapper>

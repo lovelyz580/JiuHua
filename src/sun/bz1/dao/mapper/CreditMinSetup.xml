@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 信用值_最低值_设置表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.CreditMinSetup">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.CreditMinSetup">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="CreditMin" jdbcType="DOUBLE" property="creditmin" />
+		<result column="CreditMinUpdateUserId" jdbcType="VARCHAR" property="creditminupdateuserid" />
+		<result column="CreditMinUpdateTime" jdbcType="TIMESTAMP" property="creditminupdatetime" />
+		<result column="CreditMinRemark" jdbcType="VARCHAR" property="creditminremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, CreditMin, CreditMinUpdateUserId, CreditMinUpdateTime, CreditMinRemark
+	</sql>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.CreditMinSetup">
+		update credit_min_setup
+		<set>
+			<if test="creditmin != null">
+				CreditMin = #{creditmin,jdbcType=DOUBLE},
+			</if>
+			<if test="creditminupdateuserid != null">
+				CreditMinUpdateUserId = #{creditminupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="creditminupdatetime != null">
+				CreditMinUpdateTime = #{creditminupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="creditminremark != null">
+				CreditMinRemark = #{creditminremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.CreditMinSetup">
+		update credit_min_setup
+		set CreditMin = #{creditmin,jdbcType=DOUBLE},
+		CreditMinUpdateUserId = #{creditminupdateuserid,jdbcType=VARCHAR},
+		CreditMinUpdateTime = #{creditminupdatetime,jdbcType=TIMESTAMP},
+		CreditMinRemark = #{creditminremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from credit_min_setup
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from credit_min_setup
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据CreditMinSetup实体更新 -->
+	<update id="updateBySetup" parameterType="sun.bz1.entity.CreditMinSetup">
+		update credit_min_setup
+		<set>
+			<if test="creditmin != null">
+				CreditMin = #{creditmin,jdbcType=DOUBLE},
+			</if>
+			<if test="creditminupdateuserid != null">
+				CreditMinUpdateUserId = #{creditminupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="creditminupdatetime != null">
+				CreditMinUpdateTime = #{creditminupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="creditminremark != null">
+				CreditMinRemark = #{creditminremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据CreditMinSetup实体查询 -->
+	<select id="selectBySetup" parameterType="sun.bz1.entity.CreditMinSetup" resultMap="BaseResultMap">
+		select * from credit_min_setup
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+</mapper>

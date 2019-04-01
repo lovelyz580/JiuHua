@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 客户评价维修人员_评价项_设置表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.EvaluateServiceSetup">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.EvaluateServiceSetup">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="EvaluateServiceSetupId" jdbcType="VARCHAR" property="evaluateservicesetupid" />
+		<result column="EvaluateServiceSetupName" jdbcType="VARCHAR" property="evaluateservicesetupname" />
+		<result column="EvaluateServiceSetup" jdbcType="DOUBLE" property="evaluateservicesetup" />
+		<result column="EvaluateServiceSetupState" jdbcType="VARCHAR" property="evaluateservicesetupstate" />
+		<result column="EvaluateServiceSetupCreateUserId" jdbcType="VARCHAR" property="evaluateservicesetupcreateuserid" />
+		<result column="EvaluateServiceSetupCreateTime" jdbcType="TIMESTAMP" property="evaluateservicesetupcreatetime" />
+		<result column="EvaluateServiceSetupUpdateUserId" jdbcType="VARCHAR" property="evaluateservicesetupupdateuserid" />
+		<result column="EvaluateServiceSetupUpdateTime" jdbcType="TIMESTAMP" property="evaluateservicesetupupdatetime" />
+		<result column="EvaluateServiceSetupRemark" jdbcType="VARCHAR" property="evaluateservicesetupremark" />
+		<result column="EvaluateServiceSetupScore" jdbcType="INTEGER" property="evaluateservicesetupscore" />
+		<result column="EvaluateServiceSetupLossScore" jdbcType="INTEGER" property="evaluateservicesetuplossscore" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, EvaluateServiceSetupId, EvaluateServiceSetupName, EvaluateServiceSetup, 
+		EvaluateServiceSetupState, EvaluateServiceSetupCreateUserId, EvaluateServiceSetupCreateTime,
+		EvaluateServiceSetupUpdateUserId, EvaluateServiceSetupUpdateTime, EvaluateServiceSetupRemark,EvaluateServiceSetupScore,EvaluateServiceSetupLossScore
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.EvaluateServiceSetup">
+		insert into evaluate_service_setup (ID, EvaluateServiceSetupId, EvaluateServiceSetupName,
+		EvaluateServiceSetup, EvaluateServiceSetupState, EvaluateServiceSetupCreateUserId, 
+		EvaluateServiceSetupCreateTime, EvaluateServiceSetupUpdateUserId, 
+		EvaluateServiceSetupUpdateTime, EvaluateServiceSetupRemark,EvaluateServiceSetupScore,EvaluateServiceSetupLossScore)
+		values (#{id,jdbcType=INTEGER}, 
+		#{evaluateservicesetupid,jdbcType=VARCHAR},
+		#{evaluateservicesetupname,jdbcType=VARCHAR},
+		#{evaluateservicesetup,jdbcType=DOUBLE},
+		#{evaluateservicesetupstate,jdbcType=VARCHAR},
+		#{evaluateservicesetupcreateuserid,jdbcType=VARCHAR},
+		#{evaluateservicesetupcreatetime,jdbcType=TIMESTAMP},
+		#{evaluateservicesetupupdateuserid,jdbcType=VARCHAR},
+		#{evaluateservicesetupupdatetime,jdbcType=TIMESTAMP},
+		#{evaluateservicesetupremark,jdbcType=VARCHAR},
+		#{evaluateservicesetupscore,jdbcType=INTEGER},
+		#{evaluateservicesetuplossscore,jdbcType=INTEGER},)
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.EvaluateServiceSetup">
+		insert into evaluate_service_setup
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="evaluateservicesetupid != null">
+				EvaluateServiceSetupId,
+			</if>
+			<if test="evaluateservicesetupname != null">
+				EvaluateServiceSetupName,
+			</if>
+			<if test="evaluateservicesetup != null">
+				EvaluateServiceSetup,
+			</if>
+			<if test="evaluateservicesetupstate != null">
+				EvaluateServiceSetupState,
+			</if>
+			<if test="evaluateservicesetupcreateuserid != null">
+				EvaluateServiceSetupCreateUserId,
+			</if>
+			<if test="evaluateservicesetupcreatetime != null">
+				EvaluateServiceSetupCreateTime,
+			</if>
+			<if test="evaluateservicesetupupdateuserid != null">
+				EvaluateServiceSetupUpdateUserId,
+			</if>
+			<if test="evaluateservicesetupupdatetime != null">
+				EvaluateServiceSetupUpdateTime,
+			</if>
+			<if test="evaluateservicesetupremark != null">
+				EvaluateServiceSetupRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="evaluateservicesetupid != null">
+				#{evaluateservicesetupid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupname != null">
+				#{evaluateservicesetupname,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetup != null">
+				#{evaluateservicesetup,jdbcType=DOUBLE},
+			</if>
+			<if test="evaluateservicesetupstate != null">
+				#{evaluateservicesetupstate,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupcreateuserid != null">
+				#{evaluateservicesetupcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupcreatetime != null">
+				#{evaluateservicesetupcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluateservicesetupupdateuserid != null">
+				#{evaluateservicesetupupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupupdatetime != null">
+				#{evaluateservicesetupupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluateservicesetupremark != null">
+				#{evaluateservicesetupremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.EvaluateServiceSetup">
+		update evaluate_service_setup
+		<set>
+			<if test="evaluateservicesetupid != null">
+				EvaluateServiceSetupId = #{evaluateservicesetupid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupname != null">
+				EvaluateServiceSetupName = #{evaluateservicesetupname,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetup != null">
+				EvaluateServiceSetup = #{evaluateservicesetup,jdbcType=DOUBLE},
+			</if>
+			<if test="evaluateservicesetupstate != null">
+				EvaluateServiceSetupState = #{evaluateservicesetupstate,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupcreateuserid != null">
+				EvaluateServiceSetupCreateUserId = #{evaluateservicesetupcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupcreatetime != null">
+				EvaluateServiceSetupCreateTime = #{evaluateservicesetupcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluateservicesetupupdateuserid != null">
+				EvaluateServiceSetupUpdateUserId = #{evaluateservicesetupupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupupdatetime != null">
+				EvaluateServiceSetupUpdateTime = #{evaluateservicesetupupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluateservicesetupremark != null">
+				EvaluateServiceSetupRemark = #{evaluateservicesetupremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.EvaluateServiceSetup">
+		update evaluate_service_setup
+		set EvaluateServiceSetupId = #{evaluateservicesetupid,jdbcType=VARCHAR},
+		EvaluateServiceSetupName = #{evaluateservicesetupname,jdbcType=VARCHAR},
+		EvaluateServiceSetup = #{evaluateservicesetup,jdbcType=DOUBLE},
+		EvaluateServiceSetupState = #{evaluateservicesetupstate,jdbcType=VARCHAR},
+		EvaluateServiceSetupCreateUserId = #{evaluateservicesetupcreateuserid,jdbcType=VARCHAR},
+		EvaluateServiceSetupCreateTime = #{evaluateservicesetupcreatetime,jdbcType=TIMESTAMP},
+		EvaluateServiceSetupUpdateUserId = #{evaluateservicesetupupdateuserid,jdbcType=VARCHAR},
+		EvaluateServiceSetupUpdateTime = #{evaluateservicesetupupdatetime,jdbcType=TIMESTAMP},
+		EvaluateServiceSetupRemark = #{evaluateservicesetupremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from evaluate_service_setup
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from evaluate_service_setup
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from evaluate_service_setup
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据EvaluateServiceSetup实体添加 -->
+	<insert id="insertByEvaluateServiceSetup" parameterType="sun.bz1.entity.EvaluateServiceSetup">
+		insert into evaluate_service_setup
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="evaluateservicesetupid != null">
+				EvaluateServiceSetupId,
+			</if>
+			<if test="evaluateservicesetupname != null">
+				EvaluateServiceSetupName,
+			</if>
+			<if test="evaluateservicesetup != null">
+				EvaluateServiceSetup,
+			</if>
+			<if test="evaluateservicesetupstate != null">
+				EvaluateServiceSetupState,
+			</if>
+			<if test="evaluateservicesetupcreateuserid != null">
+				EvaluateServiceSetupCreateUserId,
+			</if>
+			<if test="evaluateservicesetupcreatetime != null">
+				EvaluateServiceSetupCreateTime,
+			</if>
+			<if test="evaluateservicesetupupdateuserid != null">
+				EvaluateServiceSetupUpdateUserId,
+			</if>
+			<if test="evaluateservicesetupupdatetime != null">
+				EvaluateServiceSetupUpdateTime,
+			</if>
+			<if test="evaluateservicesetupremark != null">
+				EvaluateServiceSetupRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="evaluateservicesetupid != null">
+				#{evaluateservicesetupid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupname != null">
+				#{evaluateservicesetupname,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetup != null">
+				#{evaluateservicesetup,jdbcType=DOUBLE},
+			</if>
+			<if test="evaluateservicesetupstate != null">
+				#{evaluateservicesetupstate,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupcreateuserid != null">
+				#{evaluateservicesetupcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupcreatetime != null">
+				#{evaluateservicesetupcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluateservicesetupupdateuserid != null">
+				#{evaluateservicesetupupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupupdatetime != null">
+				#{evaluateservicesetupupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluateservicesetupremark != null">
+				#{evaluateservicesetupremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据EvaluateServiceSetup实体更新 -->
+	<update id="updateByEvaluateServiceSetup" parameterType="sun.bz1.entity.EvaluateServiceSetup">
+		update evaluate_service_setup
+		<set>
+			<if test="evaluateservicesetupid != null">
+				EvaluateServiceSetupId = #{evaluateservicesetupid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupname != null">
+				EvaluateServiceSetupName = #{evaluateservicesetupname,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetup != null">
+				EvaluateServiceSetup = #{evaluateservicesetup,jdbcType=DOUBLE},
+			</if>
+			<if test="evaluateservicesetupstate != null">
+				EvaluateServiceSetupState = #{evaluateservicesetupstate,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupcreateuserid != null">
+				EvaluateServiceSetupCreateUserId = #{evaluateservicesetupcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupcreatetime != null">
+				EvaluateServiceSetupCreateTime = #{evaluateservicesetupcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluateservicesetupupdateuserid != null">
+				EvaluateServiceSetupUpdateUserId = #{evaluateservicesetupupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateservicesetupupdatetime != null">
+				EvaluateServiceSetupUpdateTime = #{evaluateservicesetupupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="evaluateservicesetupremark != null">
+				EvaluateServiceSetupRemark = #{evaluateservicesetupremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="evaluateservicesetupid != null and evaluateservicesetupid != ''">
+					and EvaluateServiceSetupId = #{evaluateservicesetupid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据EvaluateServiceSetup实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByEvaluateServiceSetup" parameterType="sun.bz1.entity.EvaluateServiceSetup" resultType="java.lang.Integer">
+		select count(*) from evaluate_service_setup
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluateservicesetupid != null and evaluateservicesetupid != ''">
+					and EvaluateServiceSetupId = #{evaluateservicesetupid,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluateservicesetupstate != null and evaluateservicesetupstate != ''">
+					and EvaluateServiceSetupState = #{evaluateservicesetupstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据EvaluateServiceSetup实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectByEvaluateServiceSetup" parameterType="sun.bz1.entity.EvaluateServiceSetup" resultMap="BaseResultMap">
+		select * from evaluate_service_setup
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluateservicesetupid != null and evaluateservicesetupid != ''">
+					and EvaluateServiceSetupId = #{evaluateservicesetupid,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluateservicesetupstate != null and evaluateservicesetupstate != ''">
+					and EvaluateServiceSetupState = #{evaluateservicesetupstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据EvaluateServiceSetup实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectData" parameterType="sun.bz1.entity.EvaluateServiceSetup" resultType="java.lang.Integer">
+		select count(*) from evaluate_service_setup
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluateservicesetupid != null and evaluateservicesetupid != ''">
+					and EvaluateServiceSetupId = #{evaluateservicesetupid,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluateservicesetupname != null and evaluateservicesetupname != ''">
+					and EvaluateServiceSetupName like CONCAT('%',#{evaluateservicesetupname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="evaluateservicesetupstate != null and evaluateservicesetupstate != ''">
+					and EvaluateServiceSetupState = #{evaluateservicesetupstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据EvaluateServiceSetup实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectBySelectData" parameterType="sun.bz1.entity.EvaluateServiceSetup" resultMap="BaseResultMap">
+		select * from evaluate_service_setup
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="evaluateservicesetupid != null and evaluateservicesetupid != ''">
+					and EvaluateServiceSetupId = #{evaluateservicesetupid,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluateservicesetupname != null and evaluateservicesetupname != ''">
+					and EvaluateServiceSetupName like CONCAT('%',#{evaluateservicesetupname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="evaluateservicesetupstate != null and evaluateservicesetupstate != ''">
+					and EvaluateServiceSetupState = #{evaluateservicesetupstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+</mapper>

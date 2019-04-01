@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.OrderDetailRecord">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.OrderDetailRecord">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="OrderDetailRecordId" jdbcType="VARCHAR" property="orderdetailrecordid" />
+    <result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="GoodsId" jdbcType="VARCHAR" property="goodsid" />
+    <result column="ProjectId" jdbcType="VARCHAR" property="projectid" />
+    <result column="OrderDetailNumber" jdbcType="INTEGER" property="orderdetailnumber" />
+    <result column="InterceptId" jdbcType="VARCHAR" property="interceptid" />
+    <result column="OrderDetailInterceptTotalMoney" jdbcType="DOUBLE" property="orderdetailintercepttotalmoney" />
+    <result column="PriceId" jdbcType="VARCHAR" property="priceid" />
+    <result column="OrderDetailPriceTotalMoney" jdbcType="DOUBLE" property="orderdetailpricetotalmoney" />
+    <result column="OrderDetailRemark" jdbcType="VARCHAR" property="orderdetailremark" />
+    <result column="OrderDetailRecordCreateTime" jdbcType="TIMESTAMP" property="orderdetailrecordcreatetime" />
+
+    <!-- 产品表 -->
+    <result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+
+    <!-- 项目表 -->
+    <result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    ID, OrderDetailRecordId, OrderId, GoodsId, ProjectId, OrderDetailNumber, OrderDetailInterceptMoney,
+    OrderDetailInterceptTotalMoney, OrderDetailPriceMoney, OrderDetailPriceTotalMoney, OrderDetailRemark,OrderDetailRecordCreateTime
+  </sql>
+
+  <insert id="insert" parameterType="sun.bz1.entity.OrderDetailRecord">
+    insert into order_detail_record (ID, OrderDetailRecordId, OrderId, GoodsId, ProjectId,
+    OrderDetailNumber, OrderDetailInterceptMoney, OrderDetailInterceptTotalMoney,
+    OrderDetailPriceMoney, OrderDetailPriceTotalMoney, OrderDetailRemark,OrderDetailRecordCreateTime)
+    values (#{id,jdbcType=INTEGER},
+    #{orderdetailrecordid,jdbcType=VARCHAR},
+    #{orderid,jdbcType=VARCHAR},
+    #{goodsid,jdbcType=VARCHAR},
+    #{projectid,jdbcType=VARCHAR},
+    #{orderdetailnumber,jdbcType=INTEGER},
+    #{orderdetailinterceptmoney,jdbcType=DOUBLE},
+    #{orderdetailintercepttotalmoney,jdbcType=DOUBLE},
+    #{orderdetailpricemoney,jdbcType=DOUBLE},
+    #{orderdetailpricetotalmoney,jdbcType=DOUBLE},
+    #{orderdetailrecordcreatetime,jdbcType=TIMESTAMP},
+    #{orderdetailremark,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="sun.bz1.entity.OrderDetailRecord">
+    insert into order_detail_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="orderdetailrecordid != null">
+        OrderDetailRecordId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="goodsid != null">
+        GoodsId,
+      </if>
+      <if test="projectid != null">
+        ProjectId,
+      </if>
+      <if test="orderdetailnumber != null">
+        OrderDetailNumber,
+      </if>
+      <if test="orderdetailinterceptmoney != null">
+        OrderDetailInterceptMoney,
+      </if>
+      <if test="orderdetailintercepttotalmoney != null">
+        OrderDetailInterceptTotalMoney,
+      </if>
+      <if test="orderdetailpricemoney != null">
+        OrderDetailPriceMoney,
+      </if>
+      <if test="orderdetailpricetotalmoney != null">
+        OrderDetailPriceTotalMoney,
+      </if>
+      <if test="orderdetailremark != null">
+        OrderDetailRemark,
+      </if>
+      <if test="orderdetailrecordcreatetime != null">
+        OrderDetailRecordCreateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderdetailrecordid != null">
+        #{orderdetailrecordid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectid != null">
+        #{projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailnumber != null">
+        #{orderdetailnumber,jdbcType=INTEGER},
+      </if>
+      <if test="orderdetailinterceptmoney != null">
+        #{orderdetailinterceptmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailintercepttotalmoney != null">
+        #{orderdetailintercepttotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailpricemoney != null">
+        #{orderdetailpricemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailpricetotalmoney != null">
+        #{orderdetailpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailremark != null">
+        #{orderdetailremark,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailrecordcreatetime != null">
+        #{orderdetailrecordcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.OrderDetailRecord">
+    update order_detail_record
+    <set>
+      <if test="orderdetailrecordid != null">
+        OrderDetailRecordId = #{orderdetailrecordid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null">
+        GoodsId = #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectid != null">
+        ProjectId = #{projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailnumber != null">
+        OrderDetailNumber = #{orderdetailnumber,jdbcType=INTEGER},
+      </if>
+      <if test="orderdetailinterceptmoney != null">
+        OrderDetailInterceptMoney = #{orderdetailinterceptmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailintercepttotalmoney != null">
+        OrderDetailInterceptTotalMoney = #{orderdetailintercepttotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailpricemoney != null">
+        OrderDetailPriceMoney = #{orderdetailpricemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailpricetotalmoney != null">
+        OrderDetailPriceTotalMoney = #{orderdetailpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailremark != null">
+        OrderDetailRemark = #{orderdetailremark,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailrecordcreatetime != null">
+        OrderDetailRecordCreateTime = #{orderdetailrecordcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.OrderDetailRecord">
+    update order_detail_record
+    set OrderDetailRecordId = #{orderdetailrecordid,jdbcType=VARCHAR},
+    OrderId = #{orderid,jdbcType=VARCHAR},
+    GoodsId = #{goodsid,jdbcType=VARCHAR},
+    ProjectId = #{projectid,jdbcType=VARCHAR},
+    OrderDetailNumber = #{orderdetailnumber,jdbcType=INTEGER},
+    OrderDetailInterceptMoney = #{orderdetailinterceptmoney,jdbcType=DOUBLE},
+    OrderDetailInterceptTotalMoney = #{orderdetailintercepttotalmoney,jdbcType=DOUBLE},
+    OrderDetailPriceMoney = #{orderdetailpricemoney,jdbcType=DOUBLE},
+    OrderDetailPriceTotalMoney = #{orderdetailpricetotalmoney,jdbcType=DOUBLE},
+    OrderDetailRemark = #{orderdetailremark,jdbcType=VARCHAR},
+    OrderDetailRecordCreateTime = #{orderdetailrecordcreatetime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from order_detail_record
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_detail_record
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 根据OrderDetail实体添加 -->
+  <insert id="insertByOrderDetailRecord" parameterType="sun.bz1.entity.OrderDetailRecord">
+    insert into order_detail_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderdetailrecordid != null">
+        OrderDetailRecordId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="goodsid != null">
+        GoodsId,
+      </if>
+      <if test="projectid != null">
+        ProjectId,
+      </if>
+      <if test="orderdetailnumber != null">
+        OrderDetailNumber,
+      </if>
+      <if test="orderdetailinterceptmoney != null">
+        OrderDetailInterceptMoney,
+      </if>
+      <if test="orderdetailintercepttotalmoney != null">
+        OrderDetailInterceptTotalMoney,
+      </if>
+      <if test="orderdetailpricemoney != null">
+        OrderDetailPriceMoney,
+      </if>
+      <if test="orderdetailpricetotalmoney != null">
+        OrderDetailPriceTotalMoney,
+      </if>
+      <if test="orderdetailremark != null">
+        OrderDetailRemark,
+      </if>
+      <if test="orderdetailrecordcreatetime != null">
+        OrderDetailRecordCreateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderdetailrecordid != null">
+        #{orderdetailrecordid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectid != null">
+        #{projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailnumber != null">
+        #{orderdetailnumber,jdbcType=INTEGER},
+      </if>
+      <if test="orderdetailinterceptmoney != null">
+        #{orderdetailinterceptmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailintercepttotalmoney != null">
+        #{orderdetailintercepttotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailpricemoney != null">
+        #{orderdetailpricemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailpricetotalmoney != null">
+        #{orderdetailpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailremark != null">
+        #{orderdetailremark,jdbcType=VARCHAR},
+      </if>+
+      <if test="orderdetailrecordcreatetime != null">
+        #{orderdetailrecordcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 根据OrderDetailRecord实体更新 -->
+  <update id="updateByOrderDetailRecord" parameterType="sun.bz1.entity.OrderDetailRecord">
+    update order_detail_record
+    <set>
+      <if test="orderdetailrecordid != null">
+        OrderDetailRecordId = #{orderdetailrecordid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null">
+        GoodsId = #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectid != null">
+        ProjectId = #{projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailnumber != null">
+        OrderDetailNumber = #{orderdetailnumber,jdbcType=INTEGER},
+      </if>
+      <if test="orderdetailinterceptmoney != null">
+        OrderDetailInterceptMoney = #{orderdetailinterceptmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailintercepttotalmoney != null">
+        OrderDetailInterceptTotalMoney = #{orderdetailintercepttotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailpricemoney != null">
+        OrderDetailPriceMoney = #{orderdetailpricemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailpricetotalmoney != null">
+        OrderDetailPriceTotalMoney = #{orderdetailpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdetailremark != null">
+        OrderDetailRemark = #{orderdetailremark,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailrecordcreatetime != null">
+        OrderDetailRecordCreateTime = #{orderdetailrecordcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="orderdetailrecordid != null and orderdetailrecordid != ''">
+          and OrderDetailRecordId = #{orderdetailrecordid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据OrderDetailRecord实体查询 -->
+  <select id="selectByOrderDetailRecord" parameterType="sun.bz1.entity.OrderDetailRecord" resultMap="BaseResultMap">
+    select * from order_detail_record a
+    left join goods b on a.GoodsId = b.GoodsId
+    left join project c on a.ProjectId = c.ProjectId
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="orderdetailrecordid != null and orderdetailrecordid != ''">
+          and OrderDetailRecordId = #{orderdetailrecordid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据OrderDetailRecordId实体删除 -->
+  <delete id="deleteByOrderDetailRecord" parameterType="sun.bz1.entity.OrderDetailRecord">
+    delete from order_detail_record
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="orderdetailrecordid != null and orderdetailrecordid != ''">
+          and OrderDetailRecordId = #{orderdetailrecordid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+</mapper>

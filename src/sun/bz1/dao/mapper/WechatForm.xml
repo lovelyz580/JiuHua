@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.WechatForm">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.WechatForm">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="FormId" jdbcType="VARCHAR" property="formid" />
+    <result column="UserId" jdbcType="VARCHAR" property="userid" />
+    <result column="OpenId" jdbcType="VARCHAR" property="openid" />
+    <result column="TemplateId" jdbcType="VARCHAR" property="templateid" />
+    <result column="CreateDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="WechatOther1" jdbcType="VARCHAR" property="wechatother1" />
+    <result column="WechatOther2" jdbcType="VARCHAR" property="wechatother2" />
+    <result column="WechatOther3" jdbcType="VARCHAR" property="wechatother3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, FormId, UserId, OpenId, TemplateId, CreateDate, WechatOther1, WechatOther2, WechatOther3
+  </sql>
+
+  <insert id="insert" parameterType="sun.bz1.entity.WechatForm">
+    insert into wechat_form (ID, FormId, UserId, 
+      OpenId, TemplateId, CreateDate, 
+      WechatOther1, WechatOther2, WechatOther3
+      )
+    values (#{id,jdbcType=INTEGER}, #{formid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{openid,jdbcType=VARCHAR}, #{templateid,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{wechatother1,jdbcType=VARCHAR}, #{wechatother2,jdbcType=VARCHAR}, #{wechatother3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sun.bz1.entity.WechatForm">
+    insert into wechat_form
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="formid != null">
+        FormId,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="openid != null">
+        OpenId,
+      </if>
+      <if test="templateid != null">
+        TemplateId,
+      </if>
+      <if test="createdate != null">
+        CreateDate,
+      </if>
+      <if test="wechatother1 != null">
+        WechatOther1,
+      </if>
+      <if test="wechatother2 != null">
+        WechatOther2,
+      </if>
+      <if test="wechatother3 != null">
+        WechatOther3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="formid != null">
+        #{formid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="templateid != null">
+        #{templateid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wechatother1 != null">
+        #{wechatother1,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatother2 != null">
+        #{wechatother2,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatother3 != null">
+        #{wechatother3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.WechatForm">
+    update wechat_form
+    <set>
+      <if test="formid != null">
+        FormId = #{formid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        OpenId = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="templateid != null">
+        TemplateId = #{templateid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wechatother1 != null">
+        WechatOther1 = #{wechatother1,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatother2 != null">
+        WechatOther2 = #{wechatother2,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatother3 != null">
+        WechatOther3 = #{wechatother3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.WechatForm">
+    update wechat_form
+    set FormId = #{formid,jdbcType=VARCHAR},
+      UserId = #{userid,jdbcType=VARCHAR},
+      OpenId = #{openid,jdbcType=VARCHAR},
+      TemplateId = #{templateid,jdbcType=VARCHAR},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      WechatOther1 = #{wechatother1,jdbcType=VARCHAR},
+      WechatOther2 = #{wechatother2,jdbcType=VARCHAR},
+      WechatOther3 = #{wechatother3,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wechat_form
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wechat_form
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 根据WechatForm实体添加 -->
+  <insert id="insertByWechatForm" parameterType="sun.bz1.entity.WechatForm">
+    insert into wechat_form
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="formid != null">
+        FormId,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="openid != null">
+        OpenId,
+      </if>
+      <if test="templateid != null">
+        TemplateId,
+      </if>
+      <if test="createdate != null">
+        CreateDate,
+      </if>
+      <if test="wechatother1 != null">
+        WechatOther1,
+      </if>
+      <if test="wechatother2 != null">
+        WechatOther2,
+      </if>
+      <if test="wechatother3 != null">
+        WechatOther3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="formid != null">
+        #{formid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="templateid != null">
+        #{templateid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wechatother1 != null">
+        #{wechatother1,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatother2 != null">
+        #{wechatother2,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatother3 != null">
+        #{wechatother3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 根据WechatForm实体更新 -->
+  <update id="updateByWechatForm" parameterType="sun.bz1.entity.WechatForm">
+    update wechat_form
+    <set>
+      <if test="formid != null">
+        FormId = #{formid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        OpenId = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="templateid != null">
+        TemplateId = #{templateid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wechatother1 != null">
+        WechatOther1 = #{wechatother1,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatother2 != null">
+        WechatOther2 = #{wechatother2,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatother3 != null">
+        WechatOther3 = #{wechatother3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据WechatForm实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByWechatForm" parameterType="sun.bz1.entity.WechatForm" resultType="java.lang.Integer">
+    select count(*) from wechat_form
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null and id != ''">
+          and Id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="userid != null and userid != ''">
+          and UserId = #{userid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据WechatForm实体查询 -->
+  <select id="selectByWechatForm" parameterType="sun.bz1.entity.WechatForm" resultMap="BaseResultMap">
+    select * from wechat_form
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null and id != ''">
+          and Id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="userid != null and userid != ''">
+          and UserId = #{userid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+</mapper>

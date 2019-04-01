@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 维修验收表(验收成功或失败时在该表中添加数据) -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.ApplyCheck">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.ApplyCheck">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="ApplyCheckId" jdbcType="VARCHAR" property="applycheckid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="ApplyCheckState" jdbcType="VARCHAR" property="applycheckstate" />
+		<result column="ApplyCheckImage" jdbcType="VARCHAR" property="applycheckimage" />
+		<result column="ApplyCheckVideo" jdbcType="VARCHAR" property="applycheckvideo" />
+		<result column="ApplyCheckApplyTime" jdbcType="TIMESTAMP" property="applycheckapplytime" />
+		<result column="ApplyCheckAutomaticTime" jdbcType="TIMESTAMP" property="applycheckautomatictime" />
+		<result column="ApplyCheckMoney" jdbcType="DOUBLE" property="applycheckmoney" />
+		<result column="ApplyCheckBackMoney" jdbcType="DOUBLE" property="applycheckbackmoney" />
+		<result column="ApplyCheckBackFault" jdbcType="VARCHAR" property="applycheckbackfault" />
+		<result column="ApplyCheckTitle" jdbcType="VARCHAR" property="applychecktitle" />
+		<result column="ApplyCheckContent" jdbcType="VARCHAR" property="applycheckcontent" />
+		<result column="ApplyCheckUserId" jdbcType="VARCHAR" property="applycheckuserid" />
+		<result column="ApplyCheckTime" jdbcType="TIMESTAMP" property="applychecktime" />
+		<result column="ApplyCheckBackUserId" jdbcType="VARCHAR" property="applycheckbackuserid" />
+		<result column="ApplyCheckBackTime" jdbcType="TIMESTAMP" property="applycheckbacktime" />
+		<result column="ApplyCheckRemark" jdbcType="VARCHAR" property="applycheckremark" />
+	</resultMap>
+	
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.ApplyCheckAndOrderTableAndUser">
+		<!-- 维修验收表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="ApplyCheckId" jdbcType="VARCHAR" property="applycheckid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="ApplyCheckState" jdbcType="VARCHAR" property="applycheckstate" />
+		<result column="ApplyCheckImage" jdbcType="VARCHAR" property="applycheckimage" />
+		<result column="ApplyCheckVideo" jdbcType="VARCHAR" property="applycheckvideo" />
+		<result column="ApplyCheckApplyTime" jdbcType="TIMESTAMP" property="applycheckapplytime" />
+		<result column="ApplyCheckAutomaticTime" jdbcType="TIMESTAMP" property="applycheckautomatictime" />
+		<result column="ApplyCheckMoney" jdbcType="DOUBLE" property="applycheckmoney" />
+		<result column="ApplyCheckBackMoney" jdbcType="DOUBLE" property="applycheckbackmoney" />
+		<result column="ApplyCheckBackFault" jdbcType="VARCHAR" property="applycheckbackfault" />
+		<result column="ApplyCheckTitle" jdbcType="VARCHAR" property="applychecktitle" />
+		<result column="ApplyCheckContent" jdbcType="VARCHAR" property="applycheckcontent" />
+		<result column="ApplyCheckUserId" jdbcType="VARCHAR" property="applycheckuserid" />
+		<result column="ApplyCheckTime" jdbcType="TIMESTAMP" property="applychecktime" />
+		<result column="ApplyCheckBackUserId" jdbcType="VARCHAR" property="applycheckbackuserid" />
+		<result column="ApplyCheckBackTime" jdbcType="TIMESTAMP" property="applycheckbacktime" />
+		<result column="ApplyCheckRemark" jdbcType="VARCHAR" property="applycheckremark" />
+		
+		<!-- 维修单表 -->
+		<result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+		<result column="OrderContactPerson" jdbcType="VARCHAR" property="ordercontactperson" />
+		<result column="OrderContactPhone" jdbcType="VARCHAR" property="ordercontactphone" />
+		<result column="OrderAddress" jdbcType="VARCHAR" property="orderaddress" />
+		<result column="BuildingTypeId" jdbcType="VARCHAR" property="buildingtypeid" />
+		<result column="OrderPlanTime" jdbcType="TIMESTAMP" property="orderplantime" />
+		<result column="OrderBiddingEndTime" jdbcType="TIMESTAMP" property="orderbiddingendtime" />
+		<result column="OrderBiddingEndTime" jdbcType="TIMESTAMP" property="orderbiddingendtime" />
+		<result column="OrderProjectType" jdbcType="VARCHAR" property="orderprojecttype" />
+		<result column="OrderPosition" jdbcType="VARCHAR" property="orderposition" />
+		<result column="OrderLatitude" jdbcType="DOUBLE" property="orderlatitude" />
+		<result column="OrderLongitude" jdbcType="DOUBLE" property="orderlongitude" />
+		<result column="OrderDistance" jdbcType="DOUBLE" property="orderdistance" />
+		<result column="OrderInterceptTotalMoney" jdbcType="DOUBLE" property="orderintercepttotalmoney" />
+		<result column="OrderInterceptTravelTotalMoney" jdbcType="DOUBLE" property="orderintercepttraveltotalmoney" />
+		<result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+		<result column="OrderTravelTotalMoney" jdbcType="DOUBLE" property="ordertraveltotalmoney" />
+		<result column="OrderType" jdbcType="VARCHAR" property="ordertype" />
+		<result column="OrderState" jdbcType="VARCHAR" property="orderstate" />
+		<result column="OrderapplycheckuserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+		<result column="OrderCreateUserId" jdbcType="VARCHAR" property="ordercreateuserid" />
+		<result column="OrderServiceUserId" jdbcType="VARCHAR" property="orderserviceuserid" />
+		<result column="OrderCreateTime" jdbcType="TIMESTAMP" property="ordercreatetime" />
+		<result column="OrderUpdateUserId" jdbcType="VARCHAR" property="orderupdateuserid" />
+		<result column="OrderUpdateTime" jdbcType="TIMESTAMP" property="orderupdatetime" />
+		<result column="OrderApplyCheckUserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+		<result column="OrderApplyCheckTime" jdbcType="TIMESTAMP" property="orderapplychecktime" />
+		<result column="OrderRemark" jdbcType="VARCHAR" property="orderremark" />
+		<result column="OrderCheckAllState" jdbcType="VARCHAR" property="ordercheckallstate" />
+		<result column="OrderPropertyCompanyId" jdbcType="VARCHAR" property="orderpropertycompanyid" />
+		<result column="OrderPaymentMethodContent" jdbcType="VARCHAR" property="orderpaymentmethodcontent" />
+		
+		<!-- 验收人员(用户表) -->
+		<result column="UserName" jdbcType="VARCHAR" property="applycheckuser_username" />
+		<result column="UserRealName" jdbcType="VARCHAR" property="applycheckuser_userrealname" />
+		<result column="UserSex" jdbcType="VARCHAR" property="applycheckuser_usersex" />
+		<result column="UserPhone" jdbcType="VARCHAR" property="applycheckuser_userphone" />
+		<result column="UserCodeId" jdbcType="VARCHAR" property="applycheckuser_usercodeid" />
+		<result column="UserEmail" jdbcType="VARCHAR" property="applycheckuser_useremail" />
+		<result column="UserRole" jdbcType="VARCHAR" property="applycheckuser_userrole" />
+		<result column="UserState" jdbcType="VARCHAR" property="applycheckuser_userstate" />
+		<result column="UserCredit" jdbcType="DOUBLE" property="applycheckuser_usercredit" />
+		<result column="UserMoney" jdbcType="DOUBLE" property="applycheckuser_usermoney" />
+		<result column="UserOpenId" jdbcType="VARCHAR" property="applycheckuser_useropenid" />
+		<result column="UserPosition" jdbcType="VARCHAR" property="applycheckuser_userposition" />
+		<result column="UserLatitude" jdbcType="DOUBLE" property="applycheckuser_userlatitude" />
+		<result column="UserLongitude" jdbcType="DOUBLE" property="applycheckuser_userlongitude" />
+		<result column="UserRemark" jdbcType="VARCHAR" property="applycheckuser_userremark" />
+		
+		<!-- 平台操作人员(用户表) -->
+		<result column="UserName1" jdbcType="VARCHAR" property="applycheckbackuser_username" />
+		<result column="UserRealName1" jdbcType="VARCHAR" property="applycheckbackuser_userrealname" />
+		<result column="UserSex1" jdbcType="VARCHAR" property="applycheckbackuser_usersex" />
+		<result column="UserPhone1" jdbcType="VARCHAR" property="applycheckbackuser_userphone" />
+		<result column="UserCodeId1" jdbcType="VARCHAR" property="applycheckbackuser_usercodeid" />
+		<result column="UserEmail1" jdbcType="VARCHAR" property="applycheckbackuser_useremail" />
+		<result column="UserRole1" jdbcType="VARCHAR" property="applycheckbackuser_userrole" />
+		<result column="UserState1" jdbcType="VARCHAR" property="applycheckbackuser_userstate" />
+		<result column="UserCredit1" jdbcType="DOUBLE" property="applycheckbackuser_usercredit" />
+		<result column="UserMoney1" jdbcType="DOUBLE" property="applycheckbackuser_usermoney" />
+		<result column="UserOpenId1" jdbcType="VARCHAR" property="applycheckbackuser_useropenid" />
+		<result column="UserPosition1" jdbcType="VARCHAR" property="applycheckbackuser_userposition" />
+		<result column="UserLatitude1" jdbcType="DOUBLE" property="applycheckbackuser_userlatitude" />
+		<result column="UserLongitude1" jdbcType="DOUBLE" property="applycheckbackuser_userlongitude" />
+		<result column="UserRemark1" jdbcType="VARCHAR" property="applycheckbackuser_userremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, ApplyCheckId, OrderId, ApplyCheckState, ApplyCheckImage, ApplyCheckVideo, 
+		ApplyCheckMoney, ApplyCheckBackMoney, ApplyCheckBackFault, ApplyCheckTitle, 
+		ApplyCheckContent, ApplyCheckUserId, ApplyCheckTime, ApplyCheckBackUserId, 
+		ApplyCheckBackTime, ApplyCheckRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.ApplyCheck">
+		insert into apply_check (ID, ApplyCheckId, OrderId, ApplyCheckState, 
+		ApplyCheckImage, ApplyCheckVideo, ApplyCheckAutomaticTime, ApplyCheckApplyTime,
+		ApplyCheckMoney, ApplyCheckBackMoney,  ApplyCheckBackFault, ApplyCheckTitle, 
+		ApplyCheckContent, ApplyCheckUserId, ApplyCheckTime, ApplyCheckBackUserId, 
+		ApplyCheckBackTime, ApplyCheckRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{applycheckid,jdbcType=VARCHAR},
+		#{orderid,jdbcType=VARCHAR},
+		#{applycheckstate,jdbcType=VARCHAR}, 
+		#{applycheckimage,jdbcType=VARCHAR},
+		#{applycheckvideo,jdbcType=VARCHAR},
+		#{applycheckapplytime,jdbcType=TIMESTAMP},
+		#{applycheckautomatictime,jdbcType=TIMESTAMP},
+		#{applycheckmoney,jdbcType=DOUBLE},
+		#{applycheckbackmoney,jdbcType=DOUBLE},
+		#{applycheckbackfault,jdbcType=VARCHAR},
+		#{applychecktitle,jdbcType=VARCHAR},
+		#{applycheckcontent,jdbcType=VARCHAR},
+		#{applycheckuserid,jdbcType=VARCHAR},
+		#{applychecktime,jdbcType=TIMESTAMP},
+		#{applycheckbackuserid,jdbcType=VARCHAR},
+		#{applycheckbacktime,jdbcType=TIMESTAMP},
+		#{applycheckremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.ApplyCheck">
+		insert into apply_check
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="applycheckid != null">
+				ApplyCheckId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="applycheckstate != null">
+				ApplyCheckState,
+			</if>
+			<if test="applycheckimage != null">
+				ApplyCheckImage,
+			</if>
+			<if test="applycheckvideo != null">
+				ApplyCheckVideo,
+			</if>
+			<if test="applycheckapplytime != null">
+				ApplyCheckApplyTime,
+			</if>
+			<if test="applycheckautomatictime != null">
+				ApplyCheckAutomaticTime,
+			</if>
+			<if test="applycheckmoney != null">
+				ApplyCheckMoney,
+			</if>
+			<if test="applycheckbackmoney != null">
+				ApplyCheckBackMoney,
+			</if>
+			<if test="applycheckbackfault != null">
+				ApplyCheckBackFault,
+			</if>
+			<if test="applychecktitle != null">
+				ApplyCheckTitle,
+			</if>
+			<if test="applycheckcontent != null">
+				ApplyCheckContent,
+			</if>
+			<if test="applycheckuserid != null">
+				ApplyCheckUserId,
+			</if>
+			<if test="applychecktime != null">
+				ApplyCheckTime,
+			</if>
+			<if test="applycheckbackuserid != null">
+				ApplyCheckBackUserId,
+			</if>
+			<if test="applycheckbacktime != null">
+				ApplyCheckBackTime,
+			</if>
+			<if test="applycheckremark != null">
+				ApplyCheckRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="applycheckid != null">
+				#{applycheckid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckstate != null">
+				#{applycheckstate,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckimage != null">
+				#{applycheckimage,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckvideo != null">
+				#{applycheckvideo,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckapplytime != null">
+				#{applycheckapplytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckautomatictime != null">
+				#{applycheckautomatictime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckmoney != null">
+				#{applycheckmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="applycheckbackmoney != null">
+				#{applycheckbackmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="applycheckbackfault != null">
+				#{applycheckbackfault,jdbcType=VARCHAR},
+			</if>
+			<if test="applychecktitle != null">
+				#{applychecktitle,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckcontent != null">
+				#{applycheckcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckuserid != null">
+				#{applycheckuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="applychecktime != null">
+				#{applychecktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckbackuserid != null">
+				#{applycheckbackuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckbacktime != null">
+				#{applycheckbacktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckremark != null">
+				#{applycheckremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.ApplyCheck">
+		update apply_check
+		<set>
+			<if test="applycheckid != null">
+				ApplyCheckId = #{applycheckid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckstate != null">
+				ApplyCheckState = #{applycheckstate,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckimage != null">
+				ApplyCheckImage = #{applycheckimage,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckvideo != null">
+				ApplyCheckVideo = #{applycheckvideo,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckapplytime != null">
+				ApplyCheckApplyTime = #{applycheckapplytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckautomatictime != null">
+				ApplyCheckAutomaticTime = #{applycheckautomatictime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckmoney != null">
+				ApplyCheckMoney = #{applycheckmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="applycheckbackmoney != null">
+				ApplyCheckBackMoney = #{applycheckbackmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="applycheckbackfault != null">
+				ApplyCheckBackFault = #{applycheckbackfault,jdbcType=VARCHAR},
+			</if>
+			<if test="applychecktitle != null">
+				ApplyCheckTitle = #{applychecktitle,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckcontent != null">
+				ApplyCheckContent = #{applycheckcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckuserid != null">
+				ApplyCheckUserId = #{applycheckuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="applychecktime != null">
+				ApplyCheckTime = #{applychecktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckbackuserid != null">
+				ApplyCheckBackUserId = #{applycheckbackuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckbacktime != null">
+				ApplyCheckBackTime = #{applycheckbacktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckremark != null">
+				ApplyCheckRemark = #{applycheckremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.ApplyCheck">
+		update apply_check
+		set ApplyCheckId = #{applycheckid,jdbcType=VARCHAR},
+		OrderId = #{orderid,jdbcType=VARCHAR},
+		ApplyCheckState = #{applycheckstate,jdbcType=VARCHAR},
+		ApplyCheckImage = #{applycheckimage,jdbcType=VARCHAR},
+		ApplyCheckVideo = #{applycheckvideo,jdbcType=VARCHAR},
+		ApplyCheckApplyTime = #{applycheckapplytime,jdbcType=TIMESTAMP},
+		ApplyCheckAutomaticTime = #{applycheckautomatictime,jdbcType=TIMESTAMP},
+		ApplyCheckMoney = #{applycheckmoney,jdbcType=DOUBLE},
+		ApplyCheckBackMoney = #{applycheckbackmoney,jdbcType=DOUBLE},
+		ApplyCheckBackFault = #{applycheckbackfault,jdbcType=VARCHAR},
+		ApplyCheckTitle = #{applychecktitle,jdbcType=VARCHAR},
+		ApplyCheckContent = #{applycheckcontent,jdbcType=VARCHAR},
+		ApplyCheckUserId = #{applycheckuserid,jdbcType=VARCHAR},
+		ApplyCheckTime = #{applychecktime,jdbcType=TIMESTAMP},
+		ApplyCheckBackUserId = #{applycheckbackuserid,jdbcType=VARCHAR},
+		ApplyCheckBackTime = #{applycheckbacktime,jdbcType=TIMESTAMP},
+		ApplyCheckRemark = #{applycheckremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from apply_check
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from apply_check
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from apply_check
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据ApplyCheck实体添加 -->
+	<insert id="insertByApplyCheck" parameterType="sun.bz1.entity.ApplyCheck">
+		insert into apply_check
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="applycheckid != null">
+				ApplyCheckId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="applycheckstate != null">
+				ApplyCheckState,
+			</if>
+			<if test="applycheckimage != null">
+				ApplyCheckImage,
+			</if>
+			<if test="applycheckvideo != null">
+				ApplyCheckVideo,
+			</if>
+			<if test="applycheckapplytime != null">
+				ApplyCheckApplyTime,
+			</if>
+			<if test="applycheckautomatictime != null">
+				ApplyCheckAutomaticTime,
+			</if>
+			<if test="applycheckmoney != null">
+				ApplyCheckMoney,
+			</if>
+			<if test="applycheckbackmoney != null">
+				ApplyCheckBackMoney,
+			</if>
+			<if test="applycheckbackfault != null">
+				ApplyCheckBackFault,
+			</if>
+			<if test="applychecktitle != null">
+				ApplyCheckTitle,
+			</if>
+			<if test="applycheckcontent != null">
+				ApplyCheckContent,
+			</if>
+			<if test="applycheckuserid != null">
+				ApplyCheckUserId,
+			</if>
+			<if test="applychecktime != null">
+				ApplyCheckTime,
+			</if>
+			<if test="applycheckbackuserid != null">
+				ApplyCheckBackUserId,
+			</if>
+			<if test="applycheckbacktime != null">
+				ApplyCheckBackTime,
+			</if>
+			<if test="applycheckremark != null">
+				ApplyCheckRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="applycheckid != null">
+				#{applycheckid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckstate != null">
+				#{applycheckstate,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckimage != null">
+				#{applycheckimage,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckvideo != null">
+				#{applycheckvideo,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckapplytime != null">
+				#{applycheckapplytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckautomatictime != null">
+				#{applycheckautomatictime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckmoney != null">
+				#{applycheckmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="applycheckbackmoney != null">
+				#{applycheckbackmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="applycheckbackfault != null">
+				#{applycheckbackfault,jdbcType=VARCHAR},
+			</if>
+			<if test="applychecktitle != null">
+				#{applychecktitle,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckcontent != null">
+				#{applycheckcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckuserid != null">
+				#{applycheckuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="applychecktime != null">
+				#{applychecktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckbackuserid != null">
+				#{applycheckbackuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckbacktime != null">
+				#{applycheckbacktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckremark != null">
+				#{applycheckremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据ApplyCheck实体更新 -->
+	<update id="updateByApplyCheck" parameterType="sun.bz1.entity.ApplyCheck">
+		update apply_check
+		<set>
+			<if test="applycheckid != null">
+				ApplyCheckId = #{applycheckid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckstate != null">
+				ApplyCheckState = #{applycheckstate,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckimage != null">
+				ApplyCheckImage = #{applycheckimage,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckvideo != null">
+				ApplyCheckVideo = #{applycheckvideo,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckapplytime != null">
+				ApplyCheckApplyTime = #{applycheckapplytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckautomatictime != null">
+				ApplyCheckAutomaticTime = #{applycheckautomatictime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckmoney != null">
+				ApplyCheckMoney = #{applycheckmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="applycheckbackmoney != null">
+				ApplyCheckBackMoney = #{applycheckbackmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="applycheckbackfault != null">
+				ApplyCheckBackFault = #{applycheckbackfault,jdbcType=VARCHAR},
+			</if>
+			<if test="applychecktitle != null">
+				ApplyCheckTitle = #{applychecktitle,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckcontent != null">
+				ApplyCheckContent = #{applycheckcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckuserid != null">
+				ApplyCheckUserId = #{applycheckuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="applychecktime != null">
+				ApplyCheckTime = #{applychecktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckbackuserid != null">
+				ApplyCheckBackUserId = #{applycheckbackuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="applycheckbacktime != null">
+				ApplyCheckBackTime = #{applycheckbacktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applycheckremark != null">
+				ApplyCheckRemark = #{applycheckremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="applycheckid != null and applycheckid != ''">
+					and ApplyCheckId = #{applycheckid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据ApplyCheckAndOrderTableAndUser实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountByUnionData" parameterType="sun.bz1.entity.ApplyCheckAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from apply_check a 
+			inner join order_table b on a.OrderId = b.OrderId
+			left join user c on a.ApplyCheckUserId = c.UserId 
+			left join user d on a.ApplyCheckBackUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="applycheckid != null and applycheckid != ''">
+					and a.ApplyCheckId = #{applycheckid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckstate != null and applycheckstate != ''">
+					and a.ApplyCheckState = #{applycheckstate,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckbhgstate != null and applycheckbhgstate != '' and applycheckbhgstate == 'BHG'">
+					and a.ApplyCheckState != "HG" and a.ApplyCheckState != "SQYS"
+				</if>
+				<if test="applycheckbackfault != null and applycheckbackfault != ''">
+					and a.ApplyCheckBackFault = #{applycheckbackfault,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckuserid != null and applycheckuserid != ''">
+					and a.ApplyCheckUserId = #{applycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectapplycheckstarttime != null and selectapplycheckstarttime != '' 
+						and selectapplycheckendtime != null and selectapplycheckendtime != ''">
+					and a.ApplyCheckTime &gt;= #{selectapplycheckstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.ApplyCheckTime &lt;= #{selectapplycheckendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="applycheckbackuserid != null and applycheckbackuserid != ''">
+					and a.ApplyCheckBackUserId = #{applycheckbackuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectapplycheckbackstarttime != null and selectapplycheckbackstarttime != '' 
+						and selectapplycheckbackendtime != null and selectapplycheckbackendtime != ''">
+					and a.ApplyCheckBackTime &gt;= #{selectapplycheckbackstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.ApplyCheckBackTime &lt;= #{selectapplycheckbackendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderapplycheckuserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据ApplyCheckAndOrderTableAndUser实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesByUnionData" parameterType="sun.bz1.entity.ApplyCheckAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from apply_check a 
+			inner join order_table b on a.OrderId = b.OrderId
+			left join user c on a.ApplyCheckUserId = c.UserId 
+			left join user d on a.ApplyCheckBackUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="applycheckid != null and applycheckid != ''">
+					and a.ApplyCheckId = #{applycheckid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckstate != null and applycheckstate != ''">
+					and a.ApplyCheckState = #{applycheckstate,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckbhgstate != null and applycheckbhgstate != '' and applycheckbhgstate == 'BHG'">
+					and a.ApplyCheckState != "HG" and a.ApplyCheckState != "SQYS"
+				</if>
+				<if test="applycheckbackfault != null and applycheckbackfault != ''">
+					and a.ApplyCheckBackFault = #{applycheckbackfault,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckuserid != null and applycheckuserid != ''">
+					and a.ApplyCheckUserId = #{applycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectapplycheckstarttime != null and selectapplycheckstarttime != '' 
+						and selectapplycheckendtime != null and selectapplycheckendtime != ''">
+					and a.ApplyCheckTime &gt;= #{selectapplycheckstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.ApplyCheckTime &lt;= #{selectapplycheckendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="applycheckbackuserid != null and applycheckbackuserid != ''">
+					and a.ApplyCheckBackUserId = #{applycheckbackuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectapplycheckbackstarttime != null and selectapplycheckbackstarttime != '' 
+						and selectapplycheckbackendtime != null and selectapplycheckbackendtime != ''">
+					and a.ApplyCheckBackTime &gt;= #{selectapplycheckbackstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.ApplyCheckBackTime &lt;= #{selectapplycheckbackendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderapplycheckuserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+
+	<!-- 根据ApplyCheckAndOrderTableAndUser实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesByUnionDataByTimeDesc" parameterType="sun.bz1.entity.ApplyCheckAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from apply_check a
+		inner join order_table b on a.OrderId = b.OrderId
+		left join user c on a.ApplyCheckUserId = c.UserId
+		left join user d on a.ApplyCheckBackUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="applycheckid != null and applycheckid != ''">
+					and a.ApplyCheckId = #{applycheckid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckstate != null and applycheckstate != ''">
+					and a.ApplyCheckState = #{applycheckstate,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckbackfault != null and applycheckbackfault != ''">
+					and a.ApplyCheckBackFault = #{applycheckbackfault,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckuserid != null and applycheckuserid != ''">
+					and a.ApplyCheckUserId = #{applycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectapplycheckstarttime != null and selectapplycheckstarttime != ''
+						and selectapplycheckendtime != null and selectapplycheckendtime != ''">
+					and a.ApplyCheckTime &gt;= #{selectapplycheckstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.ApplyCheckTime &lt;= #{selectapplycheckendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="applycheckbackuserid != null and applycheckbackuserid != ''">
+					and a.ApplyCheckBackUserId = #{applycheckbackuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectapplycheckbackstarttime != null and selectapplycheckbackstarttime != ''
+						and selectapplycheckbackendtime != null and selectapplycheckbackendtime != ''">
+					and a.ApplyCheckBackTime &gt;= #{selectapplycheckbackstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.ApplyCheckBackTime &lt;= #{selectapplycheckbackendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != ''
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != ''
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderapplycheckuserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		order by a.ApplyCheckApplyTime desc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+	
+	<!-- 根据ApplyCheckAndOrderTableAndUser实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountBySelectData" parameterType="sun.bz1.entity.ApplyCheckAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from apply_check a 
+			inner join order_table b on a.OrderId = b.OrderId
+			left join user c on a.ApplyCheckUserId = c.UserId 
+			left join user d on a.ApplyCheckBackUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="applycheckid != null and applycheckid != ''">
+					and a.ApplyCheckId = #{applycheckid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckstate != null and applycheckstate != ''">
+					and a.ApplyCheckState = #{applycheckstate,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckbackfault != null and applycheckbackfault != ''">
+					and a.ApplyCheckBackFault = #{applycheckbackfault,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckuserid != null and applycheckuserid != ''">
+					and a.ApplyCheckUserId = #{applycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectapplycheckstarttime != null and selectapplycheckstarttime != '' 
+						and selectapplycheckendtime != null and selectapplycheckendtime != ''">
+					and a.ApplyCheckTime &gt;= #{selectapplycheckstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.ApplyCheckTime &lt;= #{selectapplycheckendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="applycheckbackuserid != null and applycheckbackuserid != ''">
+					and a.ApplyCheckBackUserId = #{applycheckbackuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectapplycheckbackstarttime != null and selectapplycheckbackstarttime != '' 
+						and selectapplycheckbackendtime != null and selectapplycheckbackendtime != ''">
+					and a.ApplyCheckBackTime &gt;= #{selectapplycheckbackstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.ApplyCheckBackTime &lt;= #{selectapplycheckbackendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderapplycheckuserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckuser_username != null and applycheckuser_username != ''">
+					or c.UserName like CONCAT('%',#{applycheckuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="applycheckuser_userrealname != null and applycheckuser_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{applycheckuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="applycheckuser_userphone != null and applycheckuser_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{applycheckuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="applycheckbackuser_username != null and applycheckbackuser_username != ''">
+					or d.UserName like CONCAT('%',#{applycheckbackuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="applycheckbackuser_userrealname != null and applycheckbackuser_userrealname != ''">
+					or d.UserRealName like CONCAT('%',#{applycheckbackuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="applycheckbackuser_userphone != null and applycheckbackuser_userphone != ''">
+					or d.UserPhone like CONCAT('%',#{applycheckbackuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据ApplyCheckAndOrderTableAndUser实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesBySelectData" parameterType="sun.bz1.entity.ApplyCheckAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from apply_check a 
+			inner join order_table b on a.OrderId = b.OrderId
+			left join user c on a.ApplyCheckUserId = c.UserId 
+			left join user d on a.ApplyCheckBackUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="applycheckid != null and applycheckid != ''">
+					and a.ApplyCheckId = #{applycheckid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckstate != null and applycheckstate != ''">
+					and a.ApplyCheckState = #{applycheckstate,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckbackfault != null and applycheckbackfault != ''">
+					and a.ApplyCheckBackFault = #{applycheckbackfault,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckuserid != null and applycheckuserid != ''">
+					and a.ApplyCheckUserId = #{applycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectapplycheckstarttime != null and selectapplycheckstarttime != '' 
+						and selectapplycheckendtime != null and selectapplycheckendtime != ''">
+					and a.ApplyCheckTime &gt;= #{selectapplycheckstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.ApplyCheckTime &lt;= #{selectapplycheckendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="applycheckbackuserid != null and applycheckbackuserid != ''">
+					and a.ApplyCheckBackUserId = #{applycheckbackuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectapplycheckbackstarttime != null and selectapplycheckbackstarttime != '' 
+						and selectapplycheckbackendtime != null and selectapplycheckbackendtime != ''">
+					and a.ApplyCheckBackTime &gt;= #{selectapplycheckbackstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.ApplyCheckBackTime &lt;= #{selectapplycheckbackendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderapplycheckuserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="applycheckuser_username != null and applycheckuser_username != ''">
+					or c.UserName like CONCAT('%',#{applycheckuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="applycheckuser_userrealname != null and applycheckuser_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{applycheckuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="applycheckuser_userphone != null and applycheckuser_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{applycheckuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="applycheckbackuser_username != null and applycheckbackuser_username != ''">
+					or d.UserName like CONCAT('%',#{applycheckbackuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="applycheckbackuser_userrealname != null and applycheckbackuser_userrealname != ''">
+					or d.UserRealName like CONCAT('%',#{applycheckbackuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="applycheckbackuser_userphone != null and applycheckbackuser_userphone != ''">
+					or d.UserPhone like CONCAT('%',#{applycheckbackuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据ApplyCheck实体删除 -->
+	<delete id="deleteByApplyCheck" parameterType="sun.bz1.entity.ApplyCheck">
+		delete from apply_check
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="applycheckid != null and applycheckid != ''">
+					and ApplyCheckId = #{applycheckid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+	
+</mapper>

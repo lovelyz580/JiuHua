@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- 派单确认表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.DistributeConfirm">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.DistributeConfirm">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="DistributeConfirmId" jdbcType="VARCHAR" property="distributeconfirmid" />
+    <result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="DistributeConfirmServiceUserId" jdbcType="VARCHAR" property="distributeconfirmserviceuserid" />
+    <result column="DistributeConfirmOrderDistance" jdbcType="DOUBLE" property="distributeconfirmorderdistance" />
+    <result column="DistributeConfirmOrderInterceptTotalMoney" jdbcType="DOUBLE" property="distributeconfirmorderintercepttotalmoney" />
+    <result column="DistributeConfirmOrderPriceTotalMoney" jdbcType="DOUBLE" property="distributeconfirmorderpricetotalmoney" />
+    <result column="DistributeConfirmOrderTravelTotalMoney" jdbcType="DOUBLE" property="distributeconfirmordertraveltotalmoney" />
+    <result column="DistributeConfirmCreateUserId" jdbcType="VARCHAR" property="distributeconfirmcreateuserid" />
+    <result column="DistributeConfirmCreateTime" jdbcType="TIMESTAMP" property="distributeconfirmcreatetime" />
+    <result column="DistributeConfirmState" jdbcType="VARCHAR" property="distributeconfirmstate" />
+    <result column="DistributeConfirmOther1" jdbcType="VARCHAR" property="distributeconfirmother1" />
+    <result column="DistributeConfirmOther2" jdbcType="VARCHAR" property="distributeconfirmother2" />
+    <result column="DistributeConfirmOther3" jdbcType="VARCHAR" property="distributeconfirmother3" />
+    <result column="DistributeConfirmOther4" jdbcType="DOUBLE" property="distributeconfirmother4" />
+    <result column="DistributeConfirmUpdateUserId" jdbcType="VARCHAR" property="distributeconfirmupdateuserid" />
+    <result column="DistributeConfirmUpdateTime" jdbcType="TIMESTAMP" property="distributeconfirmupdatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, DistributeConfirmId, OrderId, DistributeConfirmServiceUserId, DistributeConfirmOrderDistance, 
+    DistributeConfirmOrderInterceptTotalMoney, DistributeConfirmOrderPriceTotalMoney, 
+    DistributeConfirmOrderTravelTotalMoney, DistributeConfirmCreateUserId, DistributeConfirmCreateTime, 
+    DistributeConfirmState, DistributeConfirmOther1, DistributeConfirmOther2, DistributeConfirmOther3, 
+    DistributeConfirmOther4, DistributeConfirmUpdateUserId, DistributeConfirmUpdateTime
+  </sql>
+
+  <insert id="insert" parameterType="sun.bz1.entity.DistributeConfirm">
+    insert into distribute_confirm (ID, DistributeConfirmId, OrderId,
+    DistributeConfirmServiceUserId, DistributeConfirmOrderDistance,
+    DistributeConfirmOrderInterceptTotalMoney, DistributeConfirmOrderPriceTotalMoney,
+    DistributeConfirmOrderTravelTotalMoney, DistributeConfirmCreateUserId,
+    DistributeConfirmCreateTime, DistributeConfirmState,
+    DistributeConfirmOther1, DistributeConfirmOther2,
+    DistributeConfirmOther3, DistributeConfirmOther4,
+    DistributeConfirmUpdateUserId, DistributeConfirmUpdateTime
+    )
+    values (#{id,jdbcType=INTEGER}, #{distributeconfirmid,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR},
+    #{distributeconfirmserviceuserid,jdbcType=VARCHAR}, #{distributeconfirmorderdistance,jdbcType=DOUBLE},
+    #{distributeconfirmorderintercepttotalmoney,jdbcType=DOUBLE}, #{distributeconfirmorderpricetotalmoney,jdbcType=DOUBLE},
+    #{distributeconfirmordertraveltotalmoney,jdbcType=DOUBLE}, #{distributeconfirmcreateuserid,jdbcType=VARCHAR},
+    #{distributeconfirmcreatetime,jdbcType=TIMESTAMP}, #{distributeconfirmstate,jdbcType=VARCHAR},
+    #{distributeconfirmother1,jdbcType=VARCHAR}, #{distributeconfirmother2,jdbcType=VARCHAR},
+    #{distributeconfirmother3,jdbcType=VARCHAR}, #{distributeconfirmother4,jdbcType=DOUBLE},
+    #{distributeconfirmupdateuserid,jdbcType=VARCHAR}, #{distributeconfirmupdatetime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="sun.bz1.entity.DistributeConfirm">
+    insert into distribute_confirm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="distributeconfirmid != null">
+        DistributeConfirmId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="distributeconfirmserviceuserid != null">
+        DistributeConfirmServiceUserId,
+      </if>
+      <if test="distributeconfirmorderdistance != null">
+        DistributeConfirmOrderDistance,
+      </if>
+      <if test="distributeconfirmorderintercepttotalmoney != null">
+        DistributeConfirmOrderInterceptTotalMoney,
+      </if>
+      <if test="distributeconfirmorderpricetotalmoney != null">
+        DistributeConfirmOrderPriceTotalMoney,
+      </if>
+      <if test="distributeconfirmordertraveltotalmoney != null">
+        DistributeConfirmOrderTravelTotalMoney,
+      </if>
+      <if test="distributeconfirmcreateuserid != null">
+        DistributeConfirmCreateUserId,
+      </if>
+      <if test="distributeconfirmcreatetime != null">
+        DistributeConfirmCreateTime,
+      </if>
+      <if test="distributeconfirmstate != null">
+        DistributeConfirmState,
+      </if>
+      <if test="distributeconfirmother1 != null">
+        DistributeConfirmOther1,
+      </if>
+      <if test="distributeconfirmother2 != null">
+        DistributeConfirmOther2,
+      </if>
+      <if test="distributeconfirmother3 != null">
+        DistributeConfirmOther3,
+      </if>
+      <if test="distributeconfirmother4 != null">
+        DistributeConfirmOther4,
+      </if>
+      <if test="distributeconfirmupdateuserid != null">
+        DistributeConfirmUpdateUserId,
+      </if>
+      <if test="distributeconfirmupdatetime != null">
+        DistributeConfirmUpdateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="distributeconfirmid != null">
+        #{distributeconfirmid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmserviceuserid != null">
+        #{distributeconfirmserviceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmorderdistance != null">
+        #{distributeconfirmorderdistance,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmorderintercepttotalmoney != null">
+        #{distributeconfirmorderintercepttotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmorderpricetotalmoney != null">
+        #{distributeconfirmorderpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmordertraveltotalmoney != null">
+        #{distributeconfirmordertraveltotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmcreateuserid != null">
+        #{distributeconfirmcreateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmcreatetime != null">
+        #{distributeconfirmcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="distributeconfirmstate != null">
+        #{distributeconfirmstate,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother1 != null">
+        #{distributeconfirmother1,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother2 != null">
+        #{distributeconfirmother2,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother3 != null">
+        #{distributeconfirmother3,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother4 != null">
+        #{distributeconfirmother4,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmupdateuserid != null">
+        #{distributeconfirmupdateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmupdatetime != null">
+        #{distributeconfirmupdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.DistributeConfirm">
+    update distribute_confirm
+    <set>
+      <if test="distributeconfirmid != null">
+        DistributeConfirmId = #{distributeconfirmid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmserviceuserid != null">
+        DistributeConfirmServiceUserId = #{distributeconfirmserviceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmorderdistance != null">
+        DistributeConfirmOrderDistance = #{distributeconfirmorderdistance,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmorderintercepttotalmoney != null">
+        DistributeConfirmOrderInterceptTotalMoney = #{distributeconfirmorderintercepttotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmorderpricetotalmoney != null">
+        DistributeConfirmOrderPriceTotalMoney = #{distributeconfirmorderpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmordertraveltotalmoney != null">
+        DistributeConfirmOrderTravelTotalMoney = #{distributeconfirmordertraveltotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmcreateuserid != null">
+        DistributeConfirmCreateUserId = #{distributeconfirmcreateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmcreatetime != null">
+        DistributeConfirmCreateTime = #{distributeconfirmcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="distributeconfirmstate != null">
+        DistributeConfirmState = #{distributeconfirmstate,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother1 != null">
+        DistributeConfirmOther1 = #{distributeconfirmother1,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother2 != null">
+        DistributeConfirmOther2 = #{distributeconfirmother2,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother3 != null">
+        DistributeConfirmOther3 = #{distributeconfirmother3,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother4 != null">
+        DistributeConfirmOther4 = #{distributeconfirmother4,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmupdateuserid != null">
+        DistributeConfirmUpdateUserId = #{distributeconfirmupdateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmupdatetime != null">
+        DistributeConfirmUpdateTime = #{distributeconfirmupdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.DistributeConfirm">
+    update distribute_confirm
+    set DistributeConfirmId = #{distributeconfirmid,jdbcType=VARCHAR},
+    OrderId = #{orderid,jdbcType=VARCHAR},
+    DistributeConfirmServiceUserId = #{distributeconfirmserviceuserid,jdbcType=VARCHAR},
+    DistributeConfirmOrderDistance = #{distributeconfirmorderdistance,jdbcType=DOUBLE},
+    DistributeConfirmOrderInterceptTotalMoney = #{distributeconfirmorderintercepttotalmoney,jdbcType=DOUBLE},
+    DistributeConfirmOrderPriceTotalMoney = #{distributeconfirmorderpricetotalmoney,jdbcType=DOUBLE},
+    DistributeConfirmOrderTravelTotalMoney = #{distributeconfirmordertraveltotalmoney,jdbcType=DOUBLE},
+    DistributeConfirmCreateUserId = #{distributeconfirmcreateuserid,jdbcType=VARCHAR},
+    DistributeConfirmCreateTime = #{distributeconfirmcreatetime,jdbcType=TIMESTAMP},
+    DistributeConfirmState = #{distributeconfirmstate,jdbcType=VARCHAR},
+    DistributeConfirmOther1 = #{distributeconfirmother1,jdbcType=VARCHAR},
+    DistributeConfirmOther2 = #{distributeconfirmother2,jdbcType=VARCHAR},
+    DistributeConfirmOther3 = #{distributeconfirmother3,jdbcType=VARCHAR},
+    DistributeConfirmOther4 = #{distributeconfirmother4,jdbcType=DOUBLE},
+    DistributeConfirmUpdateUserId = #{distributeconfirmupdateuserid,jdbcType=VARCHAR},
+    DistributeConfirmUpdateTime = #{distributeconfirmupdatetime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select count(*) from distribute_confirm
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from distribute_confirm
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from distribute_confirm
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 根据DistributeConfirm实体添加 -->
+  <insert id="insertByDistributeConfirm" parameterType="sun.bz1.entity.DistributeConfirm">
+    insert into distribute_confirm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="distributeconfirmid != null">
+        DistributeConfirmId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="distributeconfirmserviceuserid != null">
+        DistributeConfirmServiceUserId,
+      </if>
+      <if test="distributeconfirmorderdistance != null">
+        DistributeConfirmOrderDistance,
+      </if>
+      <if test="distributeconfirmorderintercepttotalmoney != null">
+        DistributeConfirmOrderInterceptTotalMoney,
+      </if>
+      <if test="distributeconfirmorderpricetotalmoney != null">
+        DistributeConfirmOrderPriceTotalMoney,
+      </if>
+      <if test="distributeconfirmordertraveltotalmoney != null">
+        DistributeConfirmOrderTravelTotalMoney,
+      </if>
+      <if test="distributeconfirmcreateuserid != null">
+        DistributeConfirmCreateUserId,
+      </if>
+      <if test="distributeconfirmcreatetime != null">
+        DistributeConfirmCreateTime,
+      </if>
+      <if test="distributeconfirmstate != null">
+        DistributeConfirmState,
+      </if>
+      <if test="distributeconfirmother1 != null">
+        DistributeConfirmOther1,
+      </if>
+      <if test="distributeconfirmother2 != null">
+        DistributeConfirmOther2,
+      </if>
+      <if test="distributeconfirmother3 != null">
+        DistributeConfirmOther3,
+      </if>
+      <if test="distributeconfirmother4 != null">
+        DistributeConfirmOther4,
+      </if>
+      <if test="distributeconfirmupdateuserid != null">
+        DistributeConfirmUpdateUserId,
+      </if>
+      <if test="distributeconfirmupdatetime != null">
+        DistributeConfirmUpdateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="distributeconfirmid != null">
+        #{distributeconfirmid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmserviceuserid != null">
+        #{distributeconfirmserviceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmorderdistance != null">
+        #{distributeconfirmorderdistance,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmorderintercepttotalmoney != null">
+        #{distributeconfirmorderintercepttotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmorderpricetotalmoney != null">
+        #{distributeconfirmorderpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmordertraveltotalmoney != null">
+        #{distributeconfirmordertraveltotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmcreateuserid != null">
+        #{distributeconfirmcreateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmcreatetime != null">
+        #{distributeconfirmcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="distributeconfirmstate != null">
+        #{distributeconfirmstate,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother1 != null">
+        #{distributeconfirmother1,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother2 != null">
+        #{distributeconfirmother2,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother3 != null">
+        #{distributeconfirmother3,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother4 != null">
+        #{distributeconfirmother4,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmupdateuserid != null">
+        #{distributeconfirmupdateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmupdatetime != null">
+        #{distributeconfirmupdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 根据DistributeConfirm实体更新 -->
+  <update id="updateByDistributeConfirm" parameterType="sun.bz1.entity.DistributeConfirm">
+    update distribute_confirm
+    <set>
+      <if test="distributeconfirmid != null">
+        DistributeConfirmId = #{distributeconfirmid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmserviceuserid != null">
+        DistributeConfirmServiceUserId = #{distributeconfirmserviceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmorderdistance != null">
+        DistributeConfirmOrderDistance = #{distributeconfirmorderdistance,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmorderintercepttotalmoney != null">
+        DistributeConfirmOrderInterceptTotalMoney = #{distributeconfirmorderintercepttotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmorderpricetotalmoney != null">
+        DistributeConfirmOrderPriceTotalMoney = #{distributeconfirmorderpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmordertraveltotalmoney != null">
+        DistributeConfirmOrderTravelTotalMoney = #{distributeconfirmordertraveltotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmcreateuserid != null">
+        DistributeConfirmCreateUserId = #{distributeconfirmcreateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmcreatetime != null">
+        DistributeConfirmCreateTime = #{distributeconfirmcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="distributeconfirmstate != null">
+        DistributeConfirmState = #{distributeconfirmstate,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother1 != null">
+        DistributeConfirmOther1 = #{distributeconfirmother1,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother2 != null">
+        DistributeConfirmOther2 = #{distributeconfirmother2,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother3 != null">
+        DistributeConfirmOther3 = #{distributeconfirmother3,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmother4 != null">
+        DistributeConfirmOther4 = #{distributeconfirmother4,jdbcType=DOUBLE},
+      </if>
+      <if test="distributeconfirmupdateuserid != null">
+        DistributeConfirmUpdateUserId = #{distributeconfirmupdateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="distributeconfirmupdatetime != null">
+        DistributeConfirmUpdateTime = #{distributeconfirmupdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="distributeconfirmid != null and distributeconfirmid != ''">
+          and DistributeConfirmId = #{distributeconfirmid,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmserviceuserid != null and distributeconfirmserviceuserid != ''">
+          and DistributeConfirmServiceUserId = #{distributeconfirmserviceuserid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据DistributeConfirm实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByDistributeConfirm" parameterType="sun.bz1.entity.DistributeConfirm" resultType="java.lang.Integer">
+    select count(*) from distribute_confirm
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="distributeconfirmid != null and distributeconfirmid != ''">
+          and DistributeConfirmId = #{distributeconfirmid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmstate != null and distributeconfirmstate != ''">
+          and DistributeConfirmState = #{distributeconfirmstate,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmserviceuserid != null and distributeconfirmserviceuserid != ''">
+          and DistributeConfirmServiceUserId = #{distributeconfirmserviceuserid,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmcreateuserid != null and distributeconfirmcreateuserid != ''">
+          and DistributeConfirmCreateUserId = #{distributeconfirmcreateuserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据DistributeConfirm实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectByDistributeConfirm" parameterType="sun.bz1.entity.DistributeConfirm" resultMap="BaseResultMap">
+    select * from distribute_confirm
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="distributeconfirmid != null and distributeconfirmid != ''">
+          and DistributeConfirmId = #{distributeconfirmid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmstate != null and distributeconfirmstate != ''">
+          and DistributeConfirmState = #{distributeconfirmstate,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmserviceuserid != null and distributeconfirmserviceuserid != ''">
+          and DistributeConfirmServiceUserId = #{distributeconfirmserviceuserid,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmcreateuserid != null and distributeconfirmcreateuserid != ''">
+          and DistributeConfirmCreateUserId = #{distributeconfirmcreateuserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    order by DistributeConfirmCreateTime desc
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据DistributeConfirm实体模糊查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountBySelectData" parameterType="sun.bz1.entity.DistributeConfirm" resultType="java.lang.Integer">
+    select count(*) from distribute_confirm
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="distributeconfirmid != null and distributeconfirmid != ''">
+          and DistributeConfirmId = #{distributeconfirmid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmstate != null and distributeconfirmstate != ''">
+          and DistributeConfirmState = #{distributeconfirmstate,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmserviceuserid != null and distributeconfirmserviceuserid != ''">
+          and DistributeConfirmServiceUserId = #{distributeconfirmserviceuserid,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmcreateuserid != null and distributeconfirmcreateuserid != ''">
+          and DistributeConfirmCreateUserId = #{distributeconfirmcreateuserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据DistributeConfirm实体模糊查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectBySelectData" parameterType="sun.bz1.entity.DistributeConfirm" resultMap="BaseResultMap">
+    select * from distribute_confirm
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="distributeconfirmid != null and distributeconfirmid != ''">
+          and DistributeConfirmId = #{distributeconfirmid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmstate != null and distributeconfirmstate != ''">
+          and DistributeConfirmState = #{distributeconfirmstate,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmserviceuserid != null and distributeconfirmserviceuserid != ''">
+          and DistributeConfirmServiceUserId = #{distributeconfirmserviceuserid,jdbcType=VARCHAR}
+        </if>
+        <if test="distributeconfirmcreateuserid != null and distributeconfirmcreateuserid != ''">
+          and DistributeConfirmCreateUserId = #{distributeconfirmcreateuserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据DistributeConfirm实体删除 -->
+  <delete id="deleteByDistributeConfirm" parameterType="sun.bz1.entity.DistributeConfirm">
+    delete from distribute_confirm
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="distributeconfirmid != null and distributeconfirmid != ''">
+          and DistributeConfirmId = #{distributeconfirmid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+</mapper>

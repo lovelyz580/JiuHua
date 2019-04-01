@@ -1,0 +1,1503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 维修单表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.OrderTable">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.OrderTable">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+		<result column="OrderContactPerson" jdbcType="VARCHAR" property="ordercontactperson" />
+		<result column="OrderContactPhone" jdbcType="VARCHAR" property="ordercontactphone" />
+		<result column="OrderAddress" jdbcType="VARCHAR" property="orderaddress" />
+		<result column="BuildingTypeId" jdbcType="VARCHAR" property="buildingtypeid" />
+		<result column="OrderPlanTime" jdbcType="TIMESTAMP" property="orderplantime" />
+		<result column="OrderBiddingEndTime" jdbcType="TIMESTAMP" property="orderbiddingendtime" />
+		<result column="OrderProjectType" jdbcType="VARCHAR" property="orderprojecttype" />
+		<result column="OrderPosition" jdbcType="VARCHAR" property="orderposition" />
+		<result column="OrderLatitude" jdbcType="DOUBLE" property="orderlatitude" />
+		<result column="OrderLongitude" jdbcType="DOUBLE" property="orderlongitude" />
+		<result column="OrderDistance" jdbcType="DOUBLE" property="orderdistance" />
+		<result column="OrderInterceptTotalMoney" jdbcType="DOUBLE" property="orderintercepttotalmoney" />
+		<result column="OrderInterceptTravelTotalMoney" jdbcType="DOUBLE" property="orderintercepttraveltotalmoney" />
+		<result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+		<result column="OrderTravelTotalMoney" jdbcType="DOUBLE" property="ordertraveltotalmoney" />
+		<result column="OrderType" jdbcType="VARCHAR" property="ordertype" />
+		<result column="OrderState" jdbcType="VARCHAR" property="orderstate" />
+		<result column="OrderServiceUserId" jdbcType="VARCHAR" property="orderserviceuserid" />
+		<result column="OrderCreateUserId" jdbcType="VARCHAR" property="ordercreateuserid" />
+		<result column="OrderCreateTime" jdbcType="TIMESTAMP" property="ordercreatetime" />
+		<result column="OrderUpdateUserId" jdbcType="VARCHAR" property="orderupdateuserid" />
+		<result column="OrderUpdateTime" jdbcType="TIMESTAMP" property="orderupdatetime" />
+		<result column="OrderApplyCheckUserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+		<result column="OrderApplyCheckTime" jdbcType="TIMESTAMP" property="orderapplychecktime" />
+		<result column="OrderRemark" jdbcType="VARCHAR" property="orderremark" />
+		<result column="OrderCheckAllState" jdbcType="VARCHAR" property="ordercheckallstate" />
+		<result column="OrderDayMoney" jdbcType="DOUBLE" property="orderdaymoney" />
+		<result column="OrderDay" jdbcType="INTEGER" property="orderday" />
+		<result column="OrderPeopleNumber" jdbcType="INTEGER" property="orderpeoplenumber" />
+		<result column="OrderMaterialMoney" jdbcType="DOUBLE" property="ordermaterialmoney" />
+		<result column="OrderPropertyCompanyId" jdbcType="VARCHAR" property="orderpropertycompanyid" />
+		<result column="OrderPaymentMethodContent" jdbcType="VARCHAR" property="orderpaymentmethodcontent" />
+	</resultMap>
+	
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.OrderTableAndBuildingType">
+		<!-- 维修单表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+		<result column="OrderContactPerson" jdbcType="VARCHAR" property="ordercontactperson" />
+		<result column="OrderContactPhone" jdbcType="VARCHAR" property="ordercontactphone" />
+		<result column="OrderAddress" jdbcType="VARCHAR" property="orderaddress" />
+		<result column="BuildingTypeId" jdbcType="VARCHAR" property="buildingtypeid" />
+		<result column="OrderPlanTime" jdbcType="TIMESTAMP" property="orderplantime" />
+		<result column="OrderBiddingEndTime" jdbcType="TIMESTAMP" property="orderbiddingendtime" />
+		<result column="OrderProjectType" jdbcType="VARCHAR" property="orderprojecttype" />
+		<result column="OrderPosition" jdbcType="VARCHAR" property="orderposition" />
+		<result column="OrderLatitude" jdbcType="DOUBLE" property="orderlatitude" />
+		<result column="OrderLongitude" jdbcType="DOUBLE" property="orderlongitude" />
+		<result column="OrderDistance" jdbcType="DOUBLE" property="orderdistance" />
+		<result column="OrderInterceptTotalMoney" jdbcType="DOUBLE" property="orderintercepttotalmoney" />
+		<result column="OrderInterceptTravelTotalMoney" jdbcType="DOUBLE" property="orderintercepttraveltotalmoney" />
+		<result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+		<result column="OrderTravelTotalMoney" jdbcType="DOUBLE" property="ordertraveltotalmoney" />
+		<result column="OrderType" jdbcType="VARCHAR" property="ordertype" />
+		<result column="OrderState" jdbcType="VARCHAR" property="orderstate" />
+		<result column="OrderServiceUserId" jdbcType="VARCHAR" property="orderserviceuserid" />
+		<result column="OrderCreateUserId" jdbcType="VARCHAR" property="ordercreateuserid" />
+		<result column="OrderCreateTime" jdbcType="TIMESTAMP" property="ordercreatetime" />
+		<result column="OrderUpdateUserId" jdbcType="VARCHAR" property="orderupdateuserid" />
+		<result column="OrderUpdateTime" jdbcType="TIMESTAMP" property="orderupdatetime" />
+		<result column="OrderApplyCheckUserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+		<result column="OrderApplyCheckTime" jdbcType="TIMESTAMP" property="orderapplychecktime" />
+		<result column="OrderRemark" jdbcType="VARCHAR" property="orderremark" />
+		<result column="OrderCheckAllState" jdbcType="VARCHAR" property="ordercheckallstate" />
+		<result column="OrderDayMoney" jdbcType="DOUBLE" property="orderdaymoney" />
+		<result column="OrderDay" jdbcType="INTEGER" property="orderday" />
+		<result column="OrderPeopleNumber" jdbcType="INTEGER" property="orderpeoplenumber" />
+		<result column="OrderMaterialMoney" jdbcType="DOUBLE" property="ordermaterialmoney" />
+		<result column="OrderPropertyCompanyId" jdbcType="VARCHAR" property="orderpropertycompanyid" />
+		<result column="OrderPaymentMethodContent" jdbcType="VARCHAR" property="orderpaymentmethodcontent" />
+		
+		<!-- 建筑类型表 -->
+		<result column="BuildingTypeName" jdbcType="VARCHAR" property="buildingtypename" />
+		<result column="BuildingTypeState" jdbcType="VARCHAR" property="buildingtypestate" />
+		<result column="BuildingTypeCoefficient" jdbcType="DOUBLE" property="buildingtypecoefficient" />
+		<result column="BuildingTypeCreateUserId" jdbcType="VARCHAR" property="buildingtypecreateuserid" />
+		<result column="BuildingTypeCreateTime" jdbcType="TIMESTAMP" property="buildingtypecreatetime" />
+		<result column="BuildingTypeUpdateUserId" jdbcType="VARCHAR" property="buildingtypeupdateuserid" />
+		<result column="BuildingTypeUpdateTime" jdbcType="TIMESTAMP" property="buildingtypeupdatetime" />
+		<result column="BuildingTypeRemark" jdbcType="VARCHAR" property="buildingtyperemark" />
+
+		<result column="PropertyCompanyName" jdbcType="VARCHAR" property="propertycompanyname" />
+	</resultMap>
+
+	<resultMap id="BaseResultReportMap" type="sun.bz1.entity.OrderTableAndBuildingTypeAndOrderDetailListAndGoodsAndProject">
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+		<result column="OrderContactPerson" jdbcType="VARCHAR" property="ordercontactperson" />
+		<result column="OrderContactPhone" jdbcType="VARCHAR" property="ordercontactphone" />
+		<result column="OrderCreateUserId" jdbcType="VARCHAR" property="ordercreateuserid" />
+		<result column="OrderServiceUserId" jdbcType="VARCHAR" property="orderserviceuserid" />
+		<result column="OrderDetailNumber" jdbcType="INTEGER" property="orderdetailnumber" />
+		<result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+		<result column="GoodsType" jdbcType="VARCHAR" property="goodstype" />
+		<result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
+		<result column="ProjectType" jdbcType="VARCHAR" property="projecttype" />
+		<result column="OrderInterceptTotalMoney" jdbcType="DOUBLE" property="orderintercepttotalmoney" />
+		<result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+		<result column="OrderDetailInterceptTotalMoney" jdbcType="DOUBLE" property="orderdetailintercepttotalmoney" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, OrderId, OrderProjectName, OrderContactPerson, OrderContactPhone, OrderAddress,
+		BuildingTypeId, OrderPlanTime, OrderBiddingEndTime, OrderProjectType, OrderPosition,
+		OrderLatitude, OrderLongitude, OrderDistance, OrderInterceptTotalMoney, OrderInterceptTravelTotalMoney,
+		OrderPriceTotalMoney, OrderTravelTotalMoney, OrderType, OrderState, OrderServiceUserId, 
+		OrderCreateUserId, OrderCreateTime, OrderUpdateUserId, OrderUpdateTime, OrderApplyCheckUserId, 
+		OrderApplyCheckTime, OrderRemark,OrderCheckAllState,OrderPropertyCompanyId,OrderPaymentMethodContent
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.OrderTable">
+		insert into order_table (ID, OrderId, OrderProjectName, OrderContactPerson, 
+		OrderContactPhone, OrderAddress, BuildingTypeId, OrderPlanTime, OrderBiddingEndTime, 
+		OrderProjectType, OrderPosition, OrderLatitude, OrderLongitude, OrderDistance, 
+		OrderInterceptTotalMoney, OrderInterceptTravelTotalMoney, OrderPriceTotalMoney, 
+		OrderTravelTotalMoney, OrderType, OrderState, OrderServiceUserId, OrderCreateUserId, 
+		OrderCreateTime, OrderUpdateUserId, OrderUpdateTime, OrderApplyCheckUserId, 
+		OrderApplyCheckTime, OrderRemark,OrderCheckAllState,OrderDayMoney,OrderDay,OrderPeopleNumber,OrderMaterialMoney,OrderPropertyCompanyId,OrderPaymentMethodContent)
+		values (#{id,jdbcType=INTEGER}, 
+		#{orderid,jdbcType=VARCHAR},
+		#{orderprojectname,jdbcType=VARCHAR},
+		#{ordercontactperson,jdbcType=VARCHAR},
+		#{ordercontactphone,jdbcType=VARCHAR},
+		#{orderaddress,jdbcType=VARCHAR}, 
+		#{buildingtypeid,jdbcType=VARCHAR},
+		#{orderplantime,jdbcType=TIMESTAMP},
+		#{orderbiddingendtime,jdbcType=TIMESTAMP},
+		#{orderprojecttype,jdbcType=VARCHAR},
+		#{orderposition,jdbcType=VARCHAR},
+		#{orderlatitude,jdbcType=DOUBLE},
+		#{orderlongitude,jdbcType=DOUBLE},
+		#{orderdistance,jdbcType=DOUBLE},
+		#{orderintercepttotalmoney,jdbcType=DOUBLE},
+		#{orderintercepttraveltotalmoney,jdbcType=DOUBLE},
+		#{orderpricetotalmoney,jdbcType=DOUBLE},
+		#{ordertraveltotalmoney,jdbcType=DOUBLE},
+		#{ordertype,jdbcType=VARCHAR}, 
+		#{orderstate,jdbcType=VARCHAR},
+		#{orderserviceuserid,jdbcType=VARCHAR},
+		#{ordercreateuserid,jdbcType=VARCHAR},
+		#{ordercreatetime,jdbcType=TIMESTAMP},
+		#{orderupdateuserid,jdbcType=VARCHAR},
+		#{orderupdatetime,jdbcType=TIMESTAMP},
+		#{orderapplycheckuserid,jdbcType=VARCHAR},
+		#{orderapplychecktime,jdbcType=TIMESTAMP},
+		#{orderremark,jdbcType=VARCHAR},
+		#{ordercheckallstate,jdbcType=VARCHAR},
+		#{orderdaymoney,jdbcType=DOUBLE},
+		#{orderday,jdbcType=INTEGER},
+		#{orderpeoplenumber,jdbcType=INTEGER},
+		#{ordermaterialmoney,jdbcType=DOUBLE},
+		#{orderpropertycompanyid,jdbcType=VARCHAR},
+		#{orderpaymentmethodcontent,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.OrderTable">
+		insert into order_table
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="orderprojectname != null">
+				OrderProjectName,
+			</if>
+			<if test="ordercontactperson != null">
+				OrderContactPerson,
+			</if>
+			<if test="ordercontactphone != null">
+				OrderContactPhone,
+			</if>
+			<if test="orderaddress != null">
+				OrderAddress,
+			</if>
+			<if test="buildingtypeid != null">
+				BuildingTypeId,
+			</if>
+			<if test="orderplantime != null">
+				OrderPlanTime,
+			</if>
+			<if test="orderbiddingendtime != null">
+				OrderBiddingEndTime,
+			</if>
+			<if test="orderprojecttype != null">
+				OrderProjectType,
+			</if>
+			<if test="orderposition != null">
+				OrderPosition,
+			</if>
+			<if test="orderlatitude != null">
+				OrderLatitude,
+			</if>
+			<if test="orderlongitude != null">
+				OrderLongitude,
+			</if>
+			<if test="orderdistance != null">
+				OrderDistance,
+			</if>
+			<if test="orderintercepttotalmoney != null">
+				OrderInterceptTotalMoney,
+			</if>
+			<if test="orderintercepttraveltotalmoney != null">
+				OrderInterceptTravelTotalMoney,
+			</if>
+			<if test="orderpricetotalmoney != null">
+				OrderPriceTotalMoney,
+			</if>
+			<if test="ordertraveltotalmoney != null">
+				OrderTravelTotalMoney,
+			</if>
+			<if test="ordertype != null">
+				OrderType,
+			</if>
+			<if test="orderstate != null">
+				OrderState,
+			</if>
+			<if test="orderserviceuserid != null">
+				OrderServiceUserId,
+			</if>
+			<if test="ordercreateuserid != null">
+				OrderCreateUserId,
+			</if>
+			<if test="ordercreatetime != null">
+				OrderCreateTime,
+			</if>
+			<if test="orderupdateuserid != null">
+				OrderUpdateUserId,
+			</if>
+			<if test="orderupdatetime != null">
+				OrderUpdateTime,
+			</if>
+			<if test="orderapplycheckuserid != null">
+				OrderApplyCheckUserId,
+			</if>
+			<if test="orderapplychecktime != null">
+				OrderApplyCheckTime,
+			</if>
+			<if test="orderremark != null">
+				OrderRemark,
+			</if>
+			<if test="ordercheckallstate != null">
+				OrderCheckAllState,
+			</if>
+			<if test="orderdaymoney != null">
+				OrderDayMoney,
+			</if>
+			<if test="orderday != null">
+				OrderDay,
+			</if>
+			<if test="orderpeoplenumber != null">
+				OrderPeopleNumber,
+			</if>
+			<if test="ordermaterialmoney != null">
+				OrderMaterialMoney,
+			</if>
+			<if test="orderpropertycompanyid != null">
+				OrderPropertyCompanyId,
+			</if>
+			<if test="orderpaymentmethodcontent != null">
+				OrderPaymentMethodContent,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderprojectname != null">
+				#{orderprojectname,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercontactperson != null">
+				#{ordercontactperson,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercontactphone != null">
+				#{ordercontactphone,jdbcType=VARCHAR},
+			</if>
+			<if test="orderaddress != null">
+				#{orderaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypeid != null">
+				#{buildingtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderplantime != null">
+				#{orderplantime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderbiddingendtime != null">
+				#{orderbiddingendtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderprojecttype != null">
+				#{orderprojecttype,jdbcType=VARCHAR},
+			</if>
+			<if test="orderposition != null">
+				#{orderposition,jdbcType=VARCHAR},
+			</if>
+			<if test="orderlatitude != null">
+				#{orderlatitude,jdbcType=DOUBLE},
+			</if>
+			<if test="orderlongitude != null">
+				#{orderlongitude,jdbcType=DOUBLE},
+			</if>
+			<if test="orderdistance != null">
+				#{orderdistance,jdbcType=DOUBLE},
+			</if>
+			<if test="orderintercepttotalmoney != null">
+				#{orderintercepttotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderintercepttraveltotalmoney != null">
+				#{orderintercepttraveltotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderpricetotalmoney != null">
+				#{orderpricetotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="ordertraveltotalmoney != null">
+				#{ordertraveltotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="ordertype != null">
+				#{ordertype,jdbcType=VARCHAR},
+			</if>
+			<if test="orderstate != null">
+				#{orderstate,jdbcType=VARCHAR},
+			</if>
+			<if test="orderserviceuserid != null">
+				#{orderserviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercreateuserid != null">
+				#{ordercreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercreatetime != null">
+				#{ordercreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderupdateuserid != null">
+				#{orderupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderupdatetime != null">
+				#{orderupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderapplycheckuserid != null">
+				#{orderapplycheckuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderapplychecktime != null">
+				#{orderapplychecktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderremark != null">
+				#{orderremark,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercheckallstate != null">
+				#{ordercheckallstate,jdbcType=VARCHAR},
+			</if>
+			<if test="orderdaymoney != null">
+				#{orderdaymoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderday != null">
+				#{orderday,jdbcType=INTEGER},
+			</if>
+			<if test="orderpeoplenumber != null">
+				#{orderpeoplenumber,jdbcType=INTEGER},
+			</if>
+			<if test="ordermaterialmoney != null">
+				#{ordermaterialmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderpropertycompanyid != null">
+				#{orderpropertycompanyid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpaymentmethodcontent != null">
+				#{orderpaymentmethodcontent,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.OrderTable">
+		update order_table
+		<set>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderprojectname != null">
+				OrderProjectName = #{orderprojectname,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercontactperson != null">
+				OrderContactPerson = #{ordercontactperson,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercontactphone != null">
+				OrderContactPhone = #{ordercontactphone,jdbcType=VARCHAR},
+			</if>
+			<if test="orderaddress != null">
+				OrderAddress = #{orderaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypeid != null">
+				BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderplantime != null">
+				OrderPlanTime = #{orderplantime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderbiddingendtime != null">
+				OrderBiddingEndTime = #{orderbiddingendtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderprojecttype != null">
+				OrderProjectType = #{orderprojecttype,jdbcType=VARCHAR},
+			</if>
+			<if test="orderposition != null">
+				OrderPosition = #{orderposition,jdbcType=VARCHAR},
+			</if>
+			<if test="orderlatitude != null">
+				OrderLatitude = #{orderlatitude,jdbcType=DOUBLE},
+			</if>
+			<if test="orderlongitude != null">
+				OrderLongitude = #{orderlongitude,jdbcType=DOUBLE},
+			</if>
+			<if test="orderdistance != null">
+				OrderDistance = #{orderdistance,jdbcType=DOUBLE},
+			</if>
+			<if test="orderintercepttotalmoney != null">
+				OrderInterceptTotalMoney = #{orderintercepttotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderintercepttraveltotalmoney != null">
+				OrderInterceptTravelTotalMoney = #{orderintercepttraveltotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderpricetotalmoney != null">
+				OrderPriceTotalMoney = #{orderpricetotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="ordertraveltotalmoney != null">
+				OrderTravelTotalMoney = #{ordertraveltotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="ordertype != null">
+				OrderType = #{ordertype,jdbcType=VARCHAR},
+			</if>
+			<if test="orderstate != null">
+				OrderState = #{orderstate,jdbcType=VARCHAR},
+			</if>
+			<if test="orderserviceuserid != null">
+				OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercreateuserid != null">
+				OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercreatetime != null">
+				OrderCreateTime = #{ordercreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderupdateuserid != null">
+				OrderUpdateUserId = #{orderupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderupdatetime != null">
+				OrderUpdateTime = #{orderupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderapplycheckuserid != null">
+				OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderapplychecktime != null">
+				OrderApplyCheckTime = #{orderapplychecktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderremark != null">
+				OrderRemark = #{orderremark,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercheckallstate != null">
+				OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR},
+			</if>
+			<if test="orderdaymoney != null">
+				OrderDayMoney = #{orderdaymoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderday != null">
+				OrderDay = #{orderday,jdbcType=INTEGER},
+			</if>
+			<if test="orderpeoplenumber != null">
+				OrderPeopleNumber = #{orderpeoplenumber,jdbcType=INTEGER},
+			</if>
+			<if test="ordermaterialmoney != null">
+				OrderMaterialMoney = #{ordermaterialmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderpropertycompanyid != null">
+				OrderPropertyCompanyId = #{orderpropertycompanyid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpaymentmethodcontent != null">
+				OrderPaymentMethodContent = #{orderpaymentmethodcontent,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.OrderTable">
+		update order_table
+		set OrderId = #{orderid,jdbcType=VARCHAR},
+		OrderProjectName = #{orderprojectname,jdbcType=VARCHAR},
+		OrderContactPerson = #{ordercontactperson,jdbcType=VARCHAR},
+		OrderContactPhone = #{ordercontactphone,jdbcType=VARCHAR},
+		OrderAddress = #{orderaddress,jdbcType=VARCHAR},
+		BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR},
+		OrderPlanTime = #{orderplantime,jdbcType=TIMESTAMP},
+		OrderBiddingEndTime = #{orderbiddingendtime,jdbcType=TIMESTAMP},
+		OrderProjectType = #{orderprojecttype,jdbcType=VARCHAR},
+		OrderPosition = #{orderposition,jdbcType=VARCHAR},
+		OrderLatitude = #{orderlatitude,jdbcType=DOUBLE},
+		OrderLongitude = #{orderlongitude,jdbcType=DOUBLE},
+		OrderDistance = #{orderdistance,jdbcType=DOUBLE},
+		OrderInterceptTotalMoney = #{orderintercepttotalmoney,jdbcType=DOUBLE},
+		OrderInterceptTravelTotalMoney = #{orderintercepttraveltotalmoney,jdbcType=DOUBLE},
+		OrderPriceTotalMoney = #{orderpricetotalmoney,jdbcType=DOUBLE},
+		OrderTravelTotalMoney = #{ordertraveltotalmoney,jdbcType=DOUBLE},
+		OrderType = #{ordertype,jdbcType=VARCHAR},
+		OrderState = #{orderstate,jdbcType=VARCHAR},
+		OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR},
+		OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR},
+		OrderCreateTime = #{ordercreatetime,jdbcType=TIMESTAMP},
+		OrderUpdateUserId = #{orderupdateuserid,jdbcType=VARCHAR},
+		OrderUpdateTime = #{orderupdatetime,jdbcType=TIMESTAMP},
+		OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR},
+		OrderApplyCheckTime = #{orderapplychecktime,jdbcType=TIMESTAMP},
+		OrderRemark = #{orderremark,jdbcType=VARCHAR},
+		OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR},
+		OrderDayMoney = #{orderdaymoney,jdbcType=DOUBLE},
+		OrderDay = #{orderday,jdbcType=INTEGER},
+		OrderPeopleNumber = #{orderpeoplenumber,jdbcType=INTEGER},
+		OrderMaterialMoney = #{ordermaterialmoney,jdbcType=DOUBLE},
+		OrderPropertyCompanyId = #{orderpropertycompanyid,jdbcType=VARCHAR},
+		OrderPaymentMethodContent = #{orderpaymentmethodcontent,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from order_table
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from order_table
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from order_table
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据OrderTable实体添加 -->
+	<insert id="insertByOrderTable" parameterType="sun.bz1.entity.OrderTable">
+		insert into order_table
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="orderprojectname != null">
+				OrderProjectName,
+			</if>
+			<if test="ordercontactperson != null">
+				OrderContactPerson,
+			</if>
+			<if test="ordercontactphone != null">
+				OrderContactPhone,
+			</if>
+			<if test="orderaddress != null">
+				OrderAddress,
+			</if>
+			<if test="buildingtypeid != null">
+				BuildingTypeId,
+			</if>
+			<if test="orderplantime != null">
+				OrderPlanTime,
+			</if>
+			<if test="orderbiddingendtime != null">
+				OrderBiddingEndTime,
+			</if>
+			<if test="orderprojecttype != null">
+				OrderProjectType,
+			</if>
+			<if test="orderposition != null">
+				OrderPosition,
+			</if>
+			<if test="orderlatitude != null">
+				OrderLatitude,
+			</if>
+			<if test="orderlongitude != null">
+				OrderLongitude,
+			</if>
+			<if test="orderdistance != null">
+				OrderDistance,
+			</if>
+			<if test="orderintercepttotalmoney != null">
+				OrderInterceptTotalMoney,
+			</if>
+			<if test="orderintercepttraveltotalmoney != null">
+				OrderInterceptTravelTotalMoney,
+			</if>
+			<if test="orderpricetotalmoney != null">
+				OrderPriceTotalMoney,
+			</if>
+			<if test="ordertraveltotalmoney != null">
+				OrderTravelTotalMoney,
+			</if>
+			<if test="ordertype != null">
+				OrderType,
+			</if>
+			<if test="orderstate != null">
+				OrderState,
+			</if>
+			<if test="orderserviceuserid != null">
+				OrderServiceUserId,
+			</if>
+			<if test="ordercreateuserid != null">
+				OrderCreateUserId,
+			</if>
+			<if test="ordercreatetime != null">
+				OrderCreateTime,
+			</if>
+			<if test="orderupdateuserid != null">
+				OrderUpdateUserId,
+			</if>
+			<if test="orderupdatetime != null">
+				OrderUpdateTime,
+			</if>
+			<if test="orderapplycheckuserid != null">
+				OrderApplyCheckUserId,
+			</if>
+			<if test="orderapplychecktime != null">
+				OrderApplyCheckTime,
+			</if>
+			<if test="orderremark != null">
+				OrderRemark,
+			</if>
+			<if test="ordercheckallstate != null">
+				OrderCheckAllState,
+			</if>
+			<if test="orderdaymoney != null">
+				OrderDayMoney,
+			</if>
+			<if test="orderday != null">
+				OrderDay,
+			</if>
+			<if test="orderpeoplenumber != null">
+				OrderPeopleNumber,
+			</if>
+			<if test="ordermaterialmoney != null">
+				OrderMaterialMoney,
+			</if>
+			<if test="orderpropertycompanyid != null">
+				OrderPropertyCompanyId,
+			</if>
+			<if test="orderpaymentmethodcontent != null">
+				OrderPaymentMethodContent,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderprojectname != null">
+				#{orderprojectname,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercontactperson != null">
+				#{ordercontactperson,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercontactphone != null">
+				#{ordercontactphone,jdbcType=VARCHAR},
+			</if>
+			<if test="orderaddress != null">
+				#{orderaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypeid != null">
+				#{buildingtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderplantime != null">
+				#{orderplantime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderbiddingendtime != null">
+				#{orderbiddingendtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderprojecttype != null">
+				#{orderprojecttype,jdbcType=VARCHAR},
+			</if>
+			<if test="orderposition != null">
+				#{orderposition,jdbcType=VARCHAR},
+			</if>
+			<if test="orderlatitude != null">
+				#{orderlatitude,jdbcType=DOUBLE},
+			</if>
+			<if test="orderlongitude != null">
+				#{orderlongitude,jdbcType=DOUBLE},
+			</if>
+			<if test="orderdistance != null">
+				#{orderdistance,jdbcType=DOUBLE},
+			</if>
+			<if test="orderintercepttotalmoney != null">
+				#{orderintercepttotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderintercepttraveltotalmoney != null">
+				#{orderintercepttraveltotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderpricetotalmoney != null">
+				#{orderpricetotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="ordertraveltotalmoney != null">
+				#{ordertraveltotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="ordertype != null">
+				#{ordertype,jdbcType=VARCHAR},
+			</if>
+			<if test="orderstate != null">
+				#{orderstate,jdbcType=VARCHAR},
+			</if>
+			<if test="orderserviceuserid != null">
+				#{orderserviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercreateuserid != null">
+				#{ordercreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercreatetime != null">
+				#{ordercreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderupdateuserid != null">
+				#{orderupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderupdatetime != null">
+				#{orderupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderapplycheckuserid != null">
+				#{orderapplycheckuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderapplychecktime != null">
+				#{orderapplychecktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderremark != null">
+				#{orderremark,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercheckallstate != null">
+				#{ordercheckallstate,jdbcType=VARCHAR},
+			</if>
+			<if test="orderdaymoney != null">
+				#{orderdaymoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderday != null">
+				#{orderday,jdbcType=INTEGER},
+			</if>
+			<if test="orderpeoplenumber != null">
+				#{orderpeoplenumber,jdbcType=INTEGER},
+			</if>
+			<if test="ordermaterialmoney != null">
+				#{ordermaterialmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderpropertycompanyid != null">
+				#{orderpropertycompanyid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpaymentmethodcontent != null">
+				#{orderpaymentmethodcontent,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据OrderTable实体更新 -->
+	<update id="updateByOrderTable" parameterType="sun.bz1.entity.OrderTable">
+		update order_table
+		<set>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderprojectname != null">
+				OrderProjectName = #{orderprojectname,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercontactperson != null">
+				OrderContactPerson = #{ordercontactperson,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercontactphone != null">
+				OrderContactPhone = #{ordercontactphone,jdbcType=VARCHAR},
+			</if>
+			<if test="orderaddress != null">
+				OrderAddress = #{orderaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypeid != null">
+				BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderplantime != null">
+				OrderPlanTime = #{orderplantime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderbiddingendtime != null">
+				OrderBiddingEndTime = #{orderbiddingendtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderprojecttype != null">
+				OrderProjectType = #{orderprojecttype,jdbcType=VARCHAR},
+			</if>
+			<if test="orderposition != null">
+				OrderPosition = #{orderposition,jdbcType=VARCHAR},
+			</if>
+			<if test="orderlatitude != null">
+				OrderLatitude = #{orderlatitude,jdbcType=DOUBLE},
+			</if>
+			<if test="orderlongitude != null">
+				OrderLongitude = #{orderlongitude,jdbcType=DOUBLE},
+			</if>
+			<if test="orderdistance != null">
+				OrderDistance = #{orderdistance,jdbcType=DOUBLE},
+			</if>
+			<if test="orderintercepttotalmoney != null">
+				OrderInterceptTotalMoney = #{orderintercepttotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderintercepttraveltotalmoney != null">
+				OrderInterceptTravelTotalMoney = #{orderintercepttraveltotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderpricetotalmoney != null">
+				OrderPriceTotalMoney = #{orderpricetotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="ordertraveltotalmoney != null">
+				OrderTravelTotalMoney = #{ordertraveltotalmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="ordertype != null">
+				OrderType = #{ordertype,jdbcType=VARCHAR},
+			</if>
+			<if test="orderstate != null">
+				OrderState = #{orderstate,jdbcType=VARCHAR},
+			</if>
+			<if test="orderserviceuserid != null">
+				OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercreateuserid != null">
+				OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercreatetime != null">
+				OrderCreateTime = #{ordercreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderupdateuserid != null">
+				OrderUpdateUserId = #{orderupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderupdatetime != null">
+				OrderUpdateTime = #{orderupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderapplycheckuserid != null">
+				OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderapplychecktime != null">
+				OrderApplyCheckTime = #{orderapplychecktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderremark != null">
+				OrderRemark = #{orderremark,jdbcType=VARCHAR},
+			</if>
+			<if test="ordercheckallstate != null">
+				OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR},
+			</if>
+			<if test="orderdaymoney != null">
+				OrderDayMoney = #{orderdaymoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderday != null">
+				OrderDay = #{orderday,jdbcType=INTEGER},
+			</if>
+			<if test="orderpeoplenumber != null">
+				OrderPeopleNumber = #{orderpeoplenumber,jdbcType=INTEGER},
+			</if>
+			<if test="ordermaterialmoney != null">
+				OrderMaterialMoney = #{ordermaterialmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderpropertycompanyid != null">
+				OrderPropertyCompanyId = #{orderpropertycompanyid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpaymentmethodcontent != null">
+				OrderPaymentMethodContent = #{orderpaymentmethodcontent,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据OrderTable实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByOrderTable" parameterType="sun.bz1.entity.OrderTable" resultType="java.lang.Integer">
+		select count(*) from order_table
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectstarttime != null and selectstarttime != '' 
+						and selectendtime != null and selectendtime != ''">
+					and OrderPlanTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and OrderPlanTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderposition != null and orderposition != ''">
+					and OrderPosition = #{orderposition,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="ordercreateuserid != null and ordercreateuserid != ''">
+					and OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="ordercheckallstate != null and ordercheckallstate != ''">
+					and OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据OrderTable实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectByOrderTable" parameterType="sun.bz1.entity.OrderTable" resultMap="BaseResultMap">
+		select * from order_table
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectstarttime != null and selectstarttime != '' 
+						and selectendtime != null and selectendtime != ''">
+					and OrderPlanTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and OrderPlanTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+                <if test="selectorderstarttime != null and selectorderstarttime != ''">
+                    and OrderCreateTime &gt;= #{selectorderstarttime,jdbcType=VARCHAR}
+                </if>
+                <if test="selectorderendtime != null and selectorderendtime != ''">
+                    and OrderPlanTime &lt;= #{selectorderendtime,jdbcType=VARCHAR}
+                </if>
+                <if test="buildingtypeid != null and buildingtypeid != ''">
+                    and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+                </if>
+				<if test="ordertype != null and ordertype != ''">
+					and OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+                <if test="orderposition != null and orderposition != ''">
+                    and OrderPosition = #{orderposition,jdbcType=VARCHAR}
+                </if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="ordercreateuserid != null and ordercreateuserid != ''">
+					and OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="ordercheckallstate != null and ordercheckallstate != ''">
+					and OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		order by OrderCreateTime desc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据OrderTable实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectData" parameterType="sun.bz1.entity.OrderTable" resultType="java.lang.Integer">
+		select count(*) from order_table
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectstarttime != null and selectstarttime != '' 
+						and selectendtime != null and selectendtime != ''">
+					and OrderPlanTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and OrderPlanTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="ordercreateuserid != null and ordercreateuserid != ''">
+					and OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="ordercheckallstate != null and ordercheckallstate != ''">
+					and OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectareaprovincecode != null and selectareaprovincecode != ''">
+					and OrderPosition like CONCAT(#{selectareaprovincecode,jdbcType=VARCHAR},'%')
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据OrderTable实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectBySelectData" parameterType="sun.bz1.entity.OrderTable" resultMap="BaseResultMap">
+		select * from order_table
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectstarttime != null and selectstarttime != '' 
+						and selectendtime != null and selectendtime != ''">
+					and OrderPlanTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and OrderPlanTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != ''
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="ordercreateuserid != null and ordercreateuserid != ''">
+					and OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="ordercheckallstate != null and ordercheckallstate != ''">
+					and OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectareaprovincecode != null and selectareaprovincecode != ''">
+					and OrderPosition like CONCAT(#{selectareaprovincecode,jdbcType=VARCHAR},'%')
+				</if>
+			</trim>
+		</where>
+		order by OrderCreateTime desc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据OrderTableAndBuildingType实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="selectTwoTablesCountByUnionData" parameterType="sun.bz1.entity.OrderTableAndBuildingType" resultType="java.lang.Integer">
+		select count(*) from order_table a
+			left join building_type b on a.BuildingTypeId = b.BuildingTypeId 
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and a.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectstarttime != null and selectstarttime != '' 
+						and selectendtime != null and selectendtime != ''">
+					and a.OrderPlanTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.OrderPlanTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and a.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and a.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and a.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and a.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and a.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="buildingtypestate != null and buildingtypestate != ''">
+					and b.BuildingTypeState = #{buildingtypestate,jdbcType=VARCHAR}
+				</if>
+				<if test="ordercheckallstate != null and ordercheckallstate != ''">
+					and a.OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderposition != null and orderposition != ''">
+					and a.OrderPosition like CONCAT(#{orderposition,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					and (a.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or a.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or a.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or a.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%'))
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据OrderTableAndBuildingType实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectTwoTablesByUnionData" parameterType="sun.bz1.entity.OrderTableAndBuildingType" resultMap="SeniorResultMap">
+		select * from order_table a 
+			left join building_type b on a.BuildingTypeId = b.BuildingTypeId
+			left join property_company c on a.OrderPropertyCompanyId = c.PropertyCompanyId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and a.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectstarttime != null and selectstarttime != '' 
+						and selectendtime != null and selectendtime != ''">
+					and a.OrderPlanTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.OrderPlanTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and a.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and a.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and a.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and a.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and a.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="buildingtypestate != null and buildingtypestate != ''">
+					and b.BuildingTypeState = #{buildingtypestate,jdbcType=VARCHAR}
+				</if>
+				<if test="ordercheckallstate != null and ordercheckallstate != ''">
+					and a.OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderposition != null and orderposition != ''">
+					and a.OrderPosition like CONCAT(#{orderposition,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					and (a.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or a.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or a.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or a.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%'))
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+
+
+	<!-- 根据OrderTable实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectFourTablesCountDetailRport" parameterType="sun.bz1.entity.OrderTableAndBuildingType" resultType="java.lang.Integer">
+		SELECT count(*) FROM
+		order_table ot
+		LEFT JOIN order_detail od ON ot.OrderId = od.OrderId
+		left JOIN goods g on od.GoodsId = g.GoodsId
+		left JOIN project p on od.ProjectId = p.ProjectId
+		<where>
+			<trim suffixOverrides="and|or">
+
+				<if test="ordercreateuserid != null and ordercreateuserid != ''">
+					and ot.OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and ot.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and ot.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderposition != null and orderposition != ''">
+					and ot.OrderPosition = #{orderposition,jdbcType=VARCHAR}
+				</if>
+
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据OrderTable实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectFourTablesDetailRport" parameterType="sun.bz1.entity.OrderTableAndBuildingType" resultMap="BaseResultReportMap">
+		SELECT
+		*
+		FROM
+		order_table ot
+		LEFT JOIN order_detail od ON ot.OrderId = od.OrderId
+		left JOIN goods g on od.GoodsId = g.GoodsId
+		left JOIN project p on od.ProjectId = p.ProjectId
+		<where>
+			<trim suffixOverrides="and|or">
+
+				<if test="ordercreateuserid != null and ordercreateuserid != ''">
+					and ot.OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and ot.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and ot.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderposition != null and orderposition != ''">
+					and ot.OrderPosition = #{orderposition,jdbcType=VARCHAR}
+				</if>
+
+			</trim>
+		</where>
+		order by OrderCreateTime desc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<!-- 维修人员评价客户时用到 -->
+	<!-- 根据OrderTable实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectEvaluateCustomerCountByOrderTable" parameterType="sun.bz1.entity.OrderTable" resultType="java.lang.Integer">
+		select count(*) from order_table
+		where OrderId not in (select OrderId from evaluate_customer)
+			<if test="orderid != null and orderid != ''">
+				and OrderId = #{orderid,jdbcType=VARCHAR}
+			</if>
+			<if test="buildingtypeid != null and buildingtypeid != ''">
+				and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+			</if>
+			<if test="selectstarttime != null and selectstarttime != '' 
+					and selectendtime != null and selectendtime != ''">
+				and OrderPlanTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+				and OrderPlanTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+			<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+					and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+				and OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+				and OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+			<if test="ordertype != null and ordertype != ''">
+				and OrderType = #{ordertype,jdbcType=VARCHAR}
+			</if>
+			<if test="orderstate != null and orderstate != ''">
+				and OrderState = #{orderstate,jdbcType=VARCHAR}
+			</if>
+			<if test="orderserviceuserid != null and orderserviceuserid != ''">
+				and OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+			</if>
+			<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+				and OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+			</if>
+			<if test="ordercreateuserid != null and ordercreateuserid != ''">
+				and OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR}
+			</if>
+		<if test="ordercheckallstate != null and ordercheckallstate != ''">
+			and OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR}
+		</if>
+	</select>
+	
+	<!-- 维修人员评价客户时用到 -->
+	<!-- 根据OrderTable实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectEvaluateCustomerByOrderTable" parameterType="sun.bz1.entity.OrderTable" resultMap="BaseResultMap">
+		select * from order_table
+		where OrderId not in (select OrderId from evaluate_customer)
+			<if test="orderid != null and orderid != ''">
+				and OrderId = #{orderid,jdbcType=VARCHAR}
+			</if>
+			<if test="buildingtypeid != null and buildingtypeid != ''">
+				and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+			</if>
+			<if test="selectstarttime != null and selectstarttime != '' 
+					and selectendtime != null and selectendtime != ''">
+				and OrderPlanTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+				and OrderPlanTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+			<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+					and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+				and OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+				and OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+			<if test="ordertype != null and ordertype != ''">
+				and OrderType = #{ordertype,jdbcType=VARCHAR}
+			</if>
+			<if test="orderstate != null and orderstate != ''">
+				and OrderState = #{orderstate,jdbcType=VARCHAR}
+			</if>
+			<if test="orderserviceuserid != null and orderserviceuserid != ''">
+				and OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+			</if>
+			<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+				and OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+			</if>
+			<if test="ordercreateuserid != null and ordercreateuserid != ''">
+				and OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR}
+			</if>
+		<if test="ordercheckallstate != null and ordercheckallstate != ''">
+			and OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR}
+		</if>
+		order by OrderCreateTime desc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 客户评价维修人员时用到 -->
+	<!-- 根据OrderTable实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectEvaluateServiceCountByOrderTable" parameterType="sun.bz1.entity.OrderTable" resultType="java.lang.Integer">
+		select count(*) from order_table
+		where OrderId not in (select OrderId from evaluate_service)
+			<if test="orderid != null and orderid != ''">
+				and OrderId = #{orderid,jdbcType=VARCHAR}
+			</if>
+			<if test="buildingtypeid != null and buildingtypeid != ''">
+				and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+			</if>
+			<if test="selectstarttime != null and selectstarttime != '' 
+					and selectendtime != null and selectendtime != ''">
+				and OrderPlanTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+				and OrderPlanTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+			<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+					and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+				and OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+				and OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+			<if test="ordertype != null and ordertype != ''">
+				and OrderType = #{ordertype,jdbcType=VARCHAR}
+			</if>
+			<if test="orderstate != null and orderstate != ''">
+				and OrderState = #{orderstate,jdbcType=VARCHAR}
+			</if>
+			<if test="orderserviceuserid != null and orderserviceuserid != ''">
+				and OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+			</if>
+			<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+				and OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+			</if>
+			<if test="ordercreateuserid != null and ordercreateuserid != ''">
+				and OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR}
+			</if>
+		<if test="ordercheckallstate != null and ordercheckallstate != ''">
+			and OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR}
+		</if>
+	</select>
+	
+	<!-- 客户评价维修人员时用到 -->
+	<!-- 根据OrderTable实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectEvaluateServiceByOrderTable" parameterType="sun.bz1.entity.OrderTable" resultMap="BaseResultMap">
+		select * from order_table
+		where OrderId not in (select OrderId from evaluate_service)
+			<if test="orderid != null and orderid != ''">
+				and OrderId = #{orderid,jdbcType=VARCHAR}
+			</if>
+			<if test="buildingtypeid != null and buildingtypeid != ''">
+				and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+			</if>
+			<if test="selectstarttime != null and selectstarttime != '' 
+					and selectendtime != null and selectendtime != ''">
+				and OrderPlanTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+				and OrderPlanTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+			<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+					and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+				and OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+				and OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+			<if test="ordertype != null and ordertype != ''">
+				and OrderType = #{ordertype,jdbcType=VARCHAR}
+			</if>
+			<if test="orderstate != null and orderstate != ''">
+				and OrderState = #{orderstate,jdbcType=VARCHAR}
+			</if>
+			<if test="orderserviceuserid != null and orderserviceuserid != ''">
+				and OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+			</if>
+			<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+				and OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+			</if>
+			<if test="ordercreateuserid != null and ordercreateuserid != ''">
+				and OrderCreateUserId = #{ordercreateuserid,jdbcType=VARCHAR}
+			</if>
+		<if test="ordercheckallstate != null and ordercheckallstate != ''">
+			and OrderCheckAllState = #{ordercheckallstate,jdbcType=VARCHAR}
+		</if>
+		order by OrderCreateTime desc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据OrderTable实体删除 -->
+	<delete id="deleteByOrderTable" parameterType="sun.bz1.entity.OrderTable">
+		delete from order_table
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+	
+</mapper>

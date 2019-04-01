@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 用户付款表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.UserPayment">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.UserPayment">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="UserPaymentId" jdbcType="VARCHAR" property="userpaymentid" />
+    <result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+    <result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+    <result column="IdentificationCode" jdbcType="VARCHAR" property="identificationcode" />
+    <result column="RemitterUserId" jdbcType="VARCHAR" property="remitteruserid" />
+    <result column="UserPaymentCreateUserId" jdbcType="VARCHAR" property="userpaymentcreateuserid" />
+    <result column="UserPaymentCreateTime" jdbcType="TIMESTAMP" property="userpaymentcreatetime" />
+    <result column="UserPaymentUpdateUserId" jdbcType="VARCHAR" property="userpaymentupdateuserid" />
+    <result column="UserPaymentUpdateTime" jdbcType="TIMESTAMP" property="userpaymentupdatetime" />
+    <result column="UserPaymentOther1" jdbcType="VARCHAR" property="userpaymentother1" />
+    <result column="UserPaymentOther2" jdbcType="VARCHAR" property="userpaymentother2" />
+    <result column="UserPaymentOther3" jdbcType="VARCHAR" property="userpaymentother3" />
+    <result column="OrderRemark" jdbcType="VARCHAR" property="orderremark" />
+    <result column="UserPaymentPlatformServiceState" jdbcType="VARCHAR" property="userpaymentplatformservicestate" />
+    <result column="UserPaymentPlatformAccount" jdbcType="VARCHAR" property="userpaymentplatformaccount" />
+    <result column="UserPaymentServiceAccount" jdbcType="VARCHAR" property="userpaymentserviceaccount" />
+      <result column="UserPaymentPlatformAccountName" jdbcType="VARCHAR" property="userpaymentplatformaccountname" />
+  </resultMap>
+
+  <resultMap id="SeniorResultMap" type="sun.bz1.entity.UserPaymentAndOrderTableAndUser">
+    <!--用户付款表-->
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="UserPaymentId" jdbcType="VARCHAR" property="userpaymentid" />
+    <result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="OrderProjectName" jdbcType="VARCHAR" property="userpaymentorderprojectname" />
+    <result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="userpaymentorderpricetotalmoney" />
+    <result column="IdentificationCode" jdbcType="VARCHAR" property="identificationcode" />
+    <result column="RemitterUserId" jdbcType="VARCHAR" property="remitteruserid" />
+    <result column="UserPaymentCreateUserId" jdbcType="VARCHAR" property="userpaymentcreateuserid" />
+    <result column="UserPaymentCreateTime" jdbcType="TIMESTAMP" property="userpaymentcreatetime" />
+    <result column="UserPaymentUpdateUserId" jdbcType="VARCHAR" property="userpaymentupdateuserid" />
+    <result column="UserPaymentUpdateTime" jdbcType="TIMESTAMP" property="userpaymentupdatetime" />
+    <result column="UserPaymentOther1" jdbcType="VARCHAR" property="userpaymentother1" />
+    <result column="UserPaymentOther2" jdbcType="DOUBLE" property="userpaymentother2" />
+    <result column="UserPaymentOther3" jdbcType="VARCHAR" property="userpaymentother3" />
+    <result column="OrderRemark" jdbcType="VARCHAR" property="userpaymentoderremark" />
+    <result column="UserPaymentPlatformServiceState" jdbcType="VARCHAR" property="userpaymentplatformservicestate" />
+    <result column="UserPaymentPlatformAccount" jdbcType="VARCHAR" property="userpaymentplatformaccount" />
+    <result column="UserPaymentServiceAccount" jdbcType="VARCHAR" property="userpaymentserviceaccount" />
+      <result column="UserPaymentPlatformAccountName" jdbcType="VARCHAR" property="userpaymentplatformaccountname" />
+    <result column="OrderCheckAllState" jdbcType="VARCHAR" property="ordercheckallstate" />
+
+    <!-- 维修单表 -->
+    <result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+    <result column="OrderContactPerson" jdbcType="VARCHAR" property="ordercontactperson" />
+    <result column="OrderContactPhone" jdbcType="VARCHAR" property="ordercontactphone" />
+    <result column="OrderAddress" jdbcType="VARCHAR" property="orderaddress" />
+    <result column="BuildingTypeId" jdbcType="VARCHAR" property="buildingtypeid" />
+    <result column="OrderPlanTime" jdbcType="TIMESTAMP" property="orderplantime" />
+    <result column="OrderBiddingEndTime" jdbcType="TIMESTAMP" property="orderbiddingendtime" />
+    <result column="OrderProjectType" jdbcType="VARCHAR" property="orderprojecttype" />
+    <result column="OrderPosition" jdbcType="VARCHAR" property="orderposition" />
+    <result column="OrderLatitude" jdbcType="DOUBLE" property="orderlatitude" />
+    <result column="OrderLongitude" jdbcType="DOUBLE" property="orderlongitude" />
+    <result column="OrderDistance" jdbcType="DOUBLE" property="orderdistance" />
+    <result column="OrderInterceptTotalMoney" jdbcType="DOUBLE" property="orderintercepttotalmoney" />
+    <result column="OrderInterceptTravelTotalMoney" jdbcType="DOUBLE" property="orderintercepttraveltotalmoney" />
+    <result column="OrderPriceTotalMoney1" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+    <result column="OrderTravelTotalMoney" jdbcType="DOUBLE" property="ordertraveltotalmoney" />
+    <result column="OrderType" jdbcType="VARCHAR" property="ordertype" />
+    <result column="OrderState" jdbcType="VARCHAR" property="orderstate" />
+    <result column="OrderapplycheckuserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+    <result column="OrderCreateUserId" jdbcType="VARCHAR" property="ordercreateuserid" />
+    <result column="OrderCreateTime" jdbcType="TIMESTAMP" property="ordercreatetime" />
+    <result column="OrderUpdateUserId" jdbcType="VARCHAR" property="orderupdateuserid" />
+    <result column="OrderUpdateTime" jdbcType="TIMESTAMP" property="orderupdatetime" />
+    <result column="OrderApplyCheckUserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+    <result column="OrderApplyCheckTime" jdbcType="TIMESTAMP" property="orderapplychecktime" />
+    <result column="OrderRemark" jdbcType="VARCHAR" property="orderremark" />
+    <result column="OrderPropertyCompanyId" jdbcType="VARCHAR" property="orderpropertycompanyid" />
+    <result column="OrderPaymentMethodContent" jdbcType="VARCHAR" property="orderpaymentmethodcontent" />
+
+    <!-- 客户ID(用户表) -->
+    <result column="UserName" jdbcType="VARCHAR" property="customeruser_username" />
+    <result column="UserRealName" jdbcType="VARCHAR" property="customeruser_userrealname" />
+    <result column="UserSex" jdbcType="VARCHAR" property="customeruser_usersex" />
+    <result column="UserPhone" jdbcType="VARCHAR" property="customeruser_userphone" />
+    <result column="UserCodeId" jdbcType="VARCHAR" property="customeruser_usercodeid" />
+    <result column="UserEmail" jdbcType="VARCHAR" property="customeruser_useremail" />
+    <result column="UserRole" jdbcType="VARCHAR" property="customeruser_userrole" />
+    <result column="UserState" jdbcType="VARCHAR" property="customeruser_userstate" />
+    <result column="UserCredit" jdbcType="DOUBLE" property="customeruser_usercredit" />
+    <result column="UserMoney" jdbcType="DOUBLE" property="customeruser_usermoney" />
+    <result column="UserOpenId" jdbcType="VARCHAR" property="customeruser_useropenid" />
+    <result column="UserPosition" jdbcType="VARCHAR" property="customeruser_userposition" />
+    <result column="UserLatitude" jdbcType="DOUBLE" property="customeruser_userlatitude" />
+    <result column="UserLongitude" jdbcType="DOUBLE" property="customeruser_userlongitude" />
+    <result column="UserRemark" jdbcType="VARCHAR" property="customeruser_userremark" />
+      <result column="UserAccount" jdbcType="VARCHAR" property="customeruser_useraccount" />
+      <result column="UserAccountAddress" jdbcType="VARCHAR" property="customeruser_useraccountaddress" />
+
+    <!--维修人员ID(用户表) -->
+    <result column="UserName1" jdbcType="VARCHAR" property="serviceuser_username" />
+    <result column="UserRealName1" jdbcType="VARCHAR" property="serviceuser_userrealname" />
+    <result column="UserSex1" jdbcType="VARCHAR" property="serviceuser_usersex" />
+    <result column="UserPhone1" jdbcType="VARCHAR" property="serviceuser_userphone" />
+    <result column="UserCodeId1" jdbcType="VARCHAR" property="serviceuser_usercodeid" />
+    <result column="UserEmail1" jdbcType="VARCHAR" property="serviceuser_useremail" />
+    <result column="UserRole1" jdbcType="VARCHAR" property="serviceuser_userrole" />
+    <result column="UserState1" jdbcType="VARCHAR" property="serviceuser_userstate" />
+    <result column="UserCredit1" jdbcType="DOUBLE" property="serviceuser_usercredit" />
+    <result column="UserMoney1" jdbcType="DOUBLE" property="serviceuser_usermoney" />
+    <result column="UserOpenId1" jdbcType="VARCHAR" property="serviceuser_useropenid" />
+    <result column="UserPosition1" jdbcType="VARCHAR" property="serviceuser_userposition" />
+    <result column="UserLatitude1" jdbcType="DOUBLE" property="serviceuser_userlatitude" />
+    <result column="UserLongitude1" jdbcType="DOUBLE" property="serviceuser_userlongitude" />
+    <result column="UserRemark1" jdbcType="VARCHAR" property="serviceuser_userremark" />
+      <result column="UserAccount1" jdbcType="VARCHAR" property="serviceuser_useraccount" />
+      <result column="UserAccountAddress1" jdbcType="VARCHAR" property="serviceuser_useraccountaddress" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, UserPaymentId, OrderId, OrderProjectName, OrderPriceTotalMoney, IdentificationCode, 
+    RemitterUserId, UserPaymentCreateUserId, UserPaymentCreateTime, UserPaymentUpdateUserId, 
+    UserPaymentUpdateTime, UserPaymentOther1, UserPaymentOther2, UserPaymentOther3, OrderRemark,
+    UserPaymentPlatformServiceState,UserPaymentPlatformAccount,UserPaymentServiceAccount,UserPaymentPlatformAccountName
+  </sql>
+
+  <insert id="insert" parameterType="sun.bz1.entity.UserPayment">
+    insert into user_payment (ID, UserPaymentId, OrderId, 
+      OrderProjectName, OrderPriceTotalMoney, 
+      IdentificationCode, RemitterUserId, UserPaymentCreateUserId, 
+      UserPaymentCreateTime, UserPaymentUpdateUserId, 
+      UserPaymentUpdateTime, UserPaymentOther1, 
+      UserPaymentOther2, UserPaymentOther3, OrderRemark,UserPaymentPlatformServiceState,UserPaymentPlatformAccount,
+      UserPaymentServiceAccount,UserPaymentPlatformAccountName
+      )
+    values (#{id,jdbcType=INTEGER}, #{userpaymentid,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR}, 
+      #{orderprojectname,jdbcType=VARCHAR}, #{orderpricetotalmoney,jdbcType=DOUBLE}, 
+      #{identificationcode,jdbcType=VARCHAR}, #{remitteruserid,jdbcType=VARCHAR}, #{userpaymentcreateuserid,jdbcType=VARCHAR}, 
+      #{userpaymentcreatetime,jdbcType=TIMESTAMP}, #{userpaymentupdateuserid,jdbcType=VARCHAR}, 
+      #{userpaymentupdatetime,jdbcType=TIMESTAMP}, #{userpaymentother1,jdbcType=VARCHAR}, 
+      #{userpaymentother2,jdbcType=DOUBLE}, #{userpaymentother3,jdbcType=VARCHAR}, #{orderremark,jdbcType=VARCHAR},
+      #{userpaymentplatformservicestate,jdbcType=VARCHAR},#{userpaymentplatformaccount,jdbcType=VARCHAR},#{userpaymentserviceaccount,jdbcType=VARCHAR},\
+      #{userpaymentplatformaccountname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sun.bz1.entity.UserPayment">
+    insert into user_payment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userpaymentid != null">
+        UserPaymentId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="orderprojectname != null">
+        OrderProjectName,
+      </if>
+      <if test="orderpricetotalmoney != null">
+        OrderPriceTotalMoney,
+      </if>
+      <if test="identificationcode != null">
+        IdentificationCode,
+      </if>
+      <if test="remitteruserid != null">
+        RemitterUserId,
+      </if>
+      <if test="userpaymentcreateuserid != null">
+        UserPaymentCreateUserId,
+      </if>
+      <if test="userpaymentcreatetime != null">
+        UserPaymentCreateTime,
+      </if>
+      <if test="userpaymentupdateuserid != null">
+        UserPaymentUpdateUserId,
+      </if>
+      <if test="userpaymentupdatetime != null">
+        UserPaymentUpdateTime,
+      </if>
+      <if test="userpaymentother1 != null">
+        UserPaymentOther1,
+      </if>
+      <if test="userpaymentother2 != null">
+        UserPaymentOther2,
+      </if>
+      <if test="userpaymentother3 != null">
+        UserPaymentOther3,
+      </if>
+      <if test="orderremark != null">
+        OrderRemark,
+      </if>
+      <if test="userpaymentplatformservicestate != null">
+        UserPaymentPlatformServiceState,
+      </if>
+      <if test="userpaymentplatformaccount != null">
+        UserPaymentPlatformAccount,
+      </if>
+      <if test="userpaymentserviceaccount != null">
+        UserPaymentServiceAccount,
+      </if>
+        <if test="userpaymentplatformaccountname != null">
+            UserPaymentPlatformAccountName,
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userpaymentid != null">
+        #{userpaymentid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderprojectname != null">
+        #{orderprojectname,jdbcType=VARCHAR},
+      </if>
+      <if test="orderpricetotalmoney != null">
+        #{orderpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="identificationcode != null">
+        #{identificationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="remitteruserid != null">
+        #{remitteruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentcreateuserid != null">
+        #{userpaymentcreateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentcreatetime != null">
+        #{userpaymentcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userpaymentupdateuserid != null">
+        #{userpaymentupdateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentupdatetime != null">
+        #{userpaymentupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userpaymentother1 != null">
+        #{userpaymentother1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentother2 != null">
+        #{userpaymentother2,jdbcType=DOUBLE},
+      </if>
+      <if test="userpaymentother3 != null">
+        #{userpaymentother3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderremark != null">
+        #{orderremark,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentplatformservicestate != null">
+        #{userpaymentplatformservicestate,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentplatformaccount != null">
+        #{userpaymentplatformaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentserviceaccount != null">
+        #{userpaymentserviceaccount,jdbcType=VARCHAR},
+    </if>
+        <if test="userpaymentplatformaccountname != null">
+            #{userpaymentplatformaccountname,jdbcType=VARCHAR},
+        </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.UserPayment">
+    update user_payment
+    <set>
+      <if test="userpaymentid != null">
+        UserPaymentId = #{userpaymentid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderprojectname != null">
+        OrderProjectName = #{orderprojectname,jdbcType=VARCHAR},
+      </if>
+      <if test="orderpricetotalmoney != null">
+        OrderPriceTotalMoney = #{orderpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="identificationcode != null">
+        IdentificationCode = #{identificationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="remitteruserid != null">
+        RemitterUserId = #{remitteruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentcreateuserid != null">
+        UserPaymentCreateUserId = #{userpaymentcreateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentcreatetime != null">
+        UserPaymentCreateTime = #{userpaymentcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userpaymentupdateuserid != null">
+        UserPaymentUpdateUserId = #{userpaymentupdateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentupdatetime != null">
+        UserPaymentUpdateTime = #{userpaymentupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userpaymentother1 != null">
+        UserPaymentOther1 = #{userpaymentother1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentother2 != null">
+        UserPaymentOther2 = #{userpaymentother2,jdbcType=DOUBLE},
+      </if>
+      <if test="userpaymentother3 != null">
+        UserPaymentOther3 = #{userpaymentother3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderremark != null">
+        OrderRemark = #{orderremark,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentplatformservicestate != null">
+        UserPaymentPlatformServiceState = #{userpaymentplatformservicestate,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentplatformaccount != null">
+        UserPaymentPlatformAccount = #{userpaymentplatformaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentserviceaccount != null">
+        UserPaymentServiceAccount = #{userpaymentserviceaccount,jdbcType=VARCHAR},
+      </if>
+        <if test="userpaymentplatformaccountname != null">
+            UserPaymentPlatformAccountName = #{userpaymentplatformaccountname,jdbcType=VARCHAR},
+        </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.UserPayment">
+    update user_payment
+    set UserPaymentId = #{userpaymentid,jdbcType=VARCHAR},
+      OrderId = #{orderid,jdbcType=VARCHAR},
+      OrderProjectName = #{orderprojectname,jdbcType=VARCHAR},
+      OrderPriceTotalMoney = #{orderpricetotalmoney,jdbcType=DOUBLE},
+      IdentificationCode = #{identificationcode,jdbcType=VARCHAR},
+      RemitterUserId = #{remitteruserid,jdbcType=VARCHAR},
+      UserPaymentCreateUserId = #{userpaymentcreateuserid,jdbcType=VARCHAR},
+      UserPaymentCreateTime = #{userpaymentcreatetime,jdbcType=TIMESTAMP},
+      UserPaymentUpdateUserId = #{userpaymentupdateuserid,jdbcType=VARCHAR},
+      UserPaymentUpdateTime = #{userpaymentupdatetime,jdbcType=TIMESTAMP},
+      UserPaymentOther1 = #{userpaymentother1,jdbcType=VARCHAR},
+      UserPaymentOther2 = #{userpaymentother2,jdbcType=DOUBLE},
+      UserPaymentOther3 = #{userpaymentother3,jdbcType=VARCHAR},
+      OrderRemark = #{orderremark,jdbcType=VARCHAR},
+      UserPaymentPlatformServiceState = #{userpaymentplatformservicestate,jdbcType=VARCHAR},
+      UserPaymentPlatformAccount = #{userpaymentplatformaccount,jdbcType=VARCHAR},
+      UserPaymentServiceAccount = #{userpaymentserviceaccount,jdbcType=VARCHAR},
+      UserPaymentPlatformAccountName = #{userpaymentplatformaccountname,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select count(*) from user_payment
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from user_payment
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_payment
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 根据UserPayment实体添加 -->
+  <insert id="insertByUserPayment" parameterType="sun.bz1.entity.UserPayment">
+    insert into user_payment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userpaymentid != null">
+        UserPaymentId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="orderprojectname != null">
+        OrderProjectName,
+      </if>
+      <if test="orderpricetotalmoney != null">
+        OrderPriceTotalMoney,
+      </if>
+      <if test="identificationcode != null">
+        IdentificationCode,
+      </if>
+      <if test="remitteruserid != null">
+        RemitterUserId,
+      </if>
+      <if test="userpaymentcreateuserid != null">
+        UserPaymentCreateUserId,
+      </if>
+      <if test="userpaymentcreatetime != null">
+        UserPaymentCreateTime,
+      </if>
+      <if test="userpaymentupdateuserid != null">
+        UserPaymentUpdateUserId,
+      </if>
+      <if test="userpaymentupdatetime != null">
+        UserPaymentUpdateTime,
+      </if>
+      <if test="userpaymentother1 != null">
+        UserPaymentOther1,
+      </if>
+      <if test="userpaymentother2 != null">
+        UserPaymentOther2,
+      </if>
+      <if test="userpaymentother3 != null">
+        UserPaymentOther3,
+      </if>
+      <if test="orderremark != null">
+        OrderRemark,
+      </if>
+      <if test="userpaymentplatformservicestate != null">
+        UserPaymentPlatformServiceState,
+      </if>
+      <if test="userpaymentplatformaccount != null">
+        UserPaymentPlatformAccount,
+      </if>
+      <if test="userpaymentserviceaccount != null">
+        UserPaymentServiceAccount,
+      </if>
+        <if test="userpaymentplatformaccountname != null">
+            UserPaymentPlatformAccountName,
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userpaymentid != null">
+        #{userpaymentid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderprojectname != null">
+        #{orderprojectname,jdbcType=VARCHAR},
+      </if>
+      <if test="orderpricetotalmoney != null">
+        #{orderpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="identificationcode != null">
+        #{identificationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="remitteruserid != null">
+        #{remitteruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentcreateuserid != null">
+        #{userpaymentcreateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentcreatetime != null">
+        #{userpaymentcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userpaymentupdateuserid != null">
+        #{userpaymentupdateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentupdatetime != null">
+        #{userpaymentupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userpaymentother1 != null">
+        #{userpaymentother1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentother2 != null">
+        #{userpaymentother2,jdbcType=DOUBLE},
+      </if>
+      <if test="userpaymentother3 != null">
+        #{userpaymentother3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderremark != null">
+        #{orderremark,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentplatformservicestate != null">
+        #{userpaymentplatformservicestate,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentplatformaccount != null">
+        #{userpaymentplatformaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentserviceaccount != null">
+        #{userpaymentserviceaccount,jdbcType=VARCHAR},
+      </if>
+        <if test="userpaymentplatformaccountname != null">
+            #{userpaymentplatformaccountname,jdbcType=VARCHAR},
+        </if>
+    </trim>
+  </insert>
+
+  <!-- 根据UserPayment实体更新 -->
+  <update id="updateByUserPayment" parameterType="sun.bz1.entity.UserPayment">
+    update user_payment
+    <set>
+      <if test="userpaymentid != null">
+        UserPaymentId = #{userpaymentid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderprojectname != null">
+        OrderProjectName = #{orderprojectname,jdbcType=VARCHAR},
+      </if>
+      <if test="orderpricetotalmoney != null">
+        OrderPriceTotalMoney = #{orderpricetotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="identificationcode != null">
+        IdentificationCode = #{identificationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="remitteruserid != null">
+        RemitterUserId = #{remitteruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentcreateuserid != null">
+        UserPaymentCreateUserId = #{userpaymentcreateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentcreatetime != null">
+        UserPaymentCreateTime = #{userpaymentcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userpaymentupdateuserid != null">
+        UserPaymentUpdateUserId = #{userpaymentupdateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentupdatetime != null">
+        UserPaymentUpdateTime = #{userpaymentupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userpaymentother1 != null">
+        UserPaymentOther1 = #{userpaymentother1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentother2 != null">
+        UserPaymentOther2 = #{userpaymentother2,jdbcType=DOUBLE},
+      </if>
+      <if test="userpaymentother3 != null">
+        UserPaymentOther3 = #{userpaymentother3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderremark != null">
+        OrderRemark = #{orderremark,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentplatformservicestate != null">
+        UserPaymentPlatformServiceState = #{userpaymentplatformservicestate,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentplatformaccount != null">
+        UserPaymentPlatformAccount = #{userpaymentplatformaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userpaymentserviceaccount != null">
+        UserPaymentServiceAccount = #{userpaymentserviceaccount,jdbcType=VARCHAR},
+      </if>
+        <if test="userpaymentplatformaccountname != null">
+            UserPaymentPlatformAccountName = #{userpaymentplatformaccountname,jdbcType=VARCHAR},
+        </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="userpaymentid != null and userpaymentid != ''">
+          and UserPaymentId = #{userpaymentid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据UserPayment实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByUserPayment" parameterType="sun.bz1.entity.UserPayment" resultType="java.lang.Integer">
+    select count(*) from user_payment
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="userpaymentid != null and userpaymentid != ''">
+          and UserPaymentId = #{userpaymentid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="remitteruserid != null and remitteruserid != ''">
+          and RemitterUserId = #{remitteruserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据UserPayment实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectByUserPayment" parameterType="sun.bz1.entity.UserPayment" resultMap="BaseResultMap">
+    select * from user_payment
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="userpaymentid != null and userpaymentid != ''">
+          and UserPaymentId = #{userpaymentid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="remitteruserid != null and remitteruserid != ''">
+          and RemitterUserId = #{remitteruserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据UserPayment实体查询 创建时间倒序 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectByUserPaymentTimeDesc" parameterType="sun.bz1.entity.UserPayment" resultMap="BaseResultMap">
+    select * from user_payment
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="userpaymentid != null and userpaymentid != ''">
+          and UserPaymentId = #{userpaymentid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="remitteruserid != null and remitteruserid != ''">
+          and RemitterUserId = #{remitteruserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    order by UserPaymentCreateTime desc
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+  <!-- 根据UserPayment实体模糊查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountBySelectData" parameterType="sun.bz1.entity.UserPayment" resultType="java.lang.Integer">
+    select count(*) from user_payment
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="userpaymentid != null and userpaymentid != ''">
+          and UserPaymentId = #{userpaymentid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderprojectname != null and orderprojectname != ''">
+          or OrderProjectName like
+          CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="remitteruserid != null and remitteruserid != ''">
+          and RemitterUserId = #{remitteruserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据News实体模糊查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectBySelectData" parameterType="sun.bz1.entity.UserPayment" resultMap="BaseResultMap">
+    select * from user_payment
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="userpaymentid != null and userpaymentid != ''">
+          and UserPaymentId = #{userpaymentid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderprojectname != null and orderprojectname != ''">
+          or OrderProjectName like
+          CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="remitteruserid != null and remitteruserid != ''">
+          and RemitterUserId = #{remitteruserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据UserPaymentAndOrderTableAndUser实体联表查询 -->
+  <!-- 查询数量 -->
+  <select id="selectThreeTablesCountByUnionData" parameterType="sun.bz1.entity.UserPaymentAndOrderTableAndUser" resultType="java.lang.Integer">
+    select count(*) from user_payment up
+    inner join order_table ot on up.OrderId = ot.OrderId
+    left join user u on up.RemitterUserId = u.UserId
+    left join user u2 on ot.OrderServiceUserId = u2.UserId
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="userpaymentid != null and userpaymentid != ''">
+          and up.UserPaymentId = #{userpaymentid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and up.OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="remitteruserid != null and remitteruserid != ''">
+          and up.RemitterUserId = #{remitteruserid,jdbcType=VARCHAR}
+        </if>
+        <if test="paymentstarttime != null and paymentstarttime != ''
+						and paymentendtime != null and paymentendtime != ''">
+          and up.UserPaymentCreateTime &gt;= #{paymentstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+          and up.UserPaymentCreateTime &lt;= #{paymentendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+        </if>
+
+        <if test="ordertype != null and ordertype != ''">
+          or ot.OrderType = #{ordertype,jdbcType=VARCHAR}
+        </if>
+
+        <if test="orderprojecttype != null and orderprojecttype != ''">
+          and ot.OrderProjectType = #{orderprojecttype,jdbcType=VARCHAR}
+        </if>
+        <if test="orderstate != null and orderstate != ''">
+          and ot.OrderState = #{orderstate,jdbcType=VARCHAR}
+        </if>
+        <if test="userpaymentother1 != null and userpaymentother1 != ''">
+          and up.UserPaymentOther1 = #{userpaymentother1,jdbcType=VARCHAR}
+        </if>
+        <if test="orderremark != null and orderremark != ''">
+          and up.OrderRemark = #{orderremark,jdbcType=VARCHAR}
+        </if>
+        <if test="userpaymentplatformservicestate != null and userpaymentplatformservicestate != ''">
+          and up.UserPaymentPlatformServiceState = #{userpaymentplatformservicestate,jdbcType=VARCHAR}
+        </if>
+        <if test="userpaymentplatformaccount != null and userpaymentplatformaccount != ''">
+          and (up.UserPaymentPlatformAccount like CONCAT('%',#{userpaymentplatformaccount,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="userpaymentserviceaccount != null and userpaymentserviceaccount != ''">
+          or up.UserPaymentServiceAccount like CONCAT('%',#{userpaymentplatformaccount,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="userpaymentplatformaccountname != null and userpaymentplatformaccountname != ''">
+          or up.UserPaymentPlatformAccountName like CONCAT('%',#{userpaymentplatformaccountname,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="orderprojectname != null and orderprojectname != ''">
+          or ot.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%'))
+        </if>
+        <!-- 付款人姓名 -->
+        <if test="customeruser_userrealname != null and customeruser_userrealname != ''">
+          or u.UserRealName like CONCAT('%',#{customeruser_userrealname,jdbcType=VARCHAR},'%')
+        </if>
+        <!-- 收款人姓名 -->
+        <if test="serviceuser_userrealname != null and serviceuser_userrealname != ''">
+          or u2.UserRealName like CONCAT('%',#{serviceuser_userrealname,jdbcType=VARCHAR},'%')
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据UserPaymentAndOrderTableAndUser实体联表查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量  -->
+  <select id="selectThreeTablesByUnionData" parameterType="sun.bz1.entity.UserPaymentAndOrderTableAndUser" resultMap="SeniorResultMap">
+    select up.UserPaymentId ,up.OrderId,up.OrderProjectName,up.OrderPriceTotalMoney,up.IdentificationCode,up.RemitterUserId,up.UserPaymentCreateUserId,up.UserPaymentCreateTime,
+    up.UserPaymentUpdateUserId, up.UserPaymentUpdateTime,up.UserPaymentOther1,up.UserPaymentOther2,up.UserPaymentOther3,up.OrderRemark,up.UserPaymentPlatformServiceState,up.UserPaymentPlatformAccount,
+    up.UserPaymentServiceAccount,up.UserPaymentPlatformAccountName,ot.OrderAddress,ot.OrderPlanTime,ot.OrderBiddingEndTime,
+    ot.OrderProjectType,ot.OrderInterceptTotalMoney,ot.OrderInterceptTravelTotalMoney,ot.OrderPriceTotalMoney OrderPriceTotalMoney1,ot.OrderTravelTotalMoney,ot.OrderType,ot.OrderState,
+    ot.OrderCreateUserId,u.UserRealName,u.UserPhone,u.UserRole,u.UserAccount,u.UserAccountAddress,u2.UserRealName UserRealName1,u2.UserPhone UserPhone1,u2.UserRole UserRole1,
+      u2.UserAccount UserAccount1,u2.UserAccountAddress UserAccountAddress1 from user_payment up
+    inner join order_table ot on up.OrderId = ot.OrderId
+    left join user u on up.RemitterUserId = u.UserId
+    left join user u2 on ot.OrderServiceUserId = u2.UserId
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="userpaymentid != null and userpaymentid != ''">
+          and up.UserPaymentId = #{userpaymentid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and up.OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+        <if test="remitteruserid != null and remitteruserid != ''">
+          and up.RemitterUserId = #{remitteruserid,jdbcType=VARCHAR}
+        </if>
+        <if test="paymentstarttime != null and paymentstarttime != ''
+						and paymentendtime != null and paymentendtime != ''">
+          and up.UserPaymentCreateTime &gt;= #{paymentstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+          and up.UserPaymentCreateTime &lt;= #{paymentendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+        </if>
+
+        <if test="ordertype != null and ordertype != ''">
+          or ot.OrderType = #{ordertype,jdbcType=VARCHAR}
+        </if>
+
+        <if test="orderprojecttype != null and orderprojecttype != ''">
+          and ot.OrderProjectType = #{orderprojecttype,jdbcType=VARCHAR}
+        </if>
+        <if test="orderstate != null and orderstate != ''">
+          and ot.OrderState = #{orderstate,jdbcType=VARCHAR}
+        </if>
+        <if test="userpaymentother1 != null and userpaymentother1 != ''">
+          and up.UserPaymentOther1 = #{userpaymentother1,jdbcType=VARCHAR}
+        </if>
+        <if test="orderremark != null and orderremark != ''">
+          and up.OrderRemark = #{orderremark,jdbcType=VARCHAR}
+        </if>
+        <if test="userpaymentplatformservicestate != null and userpaymentplatformservicestate != ''">
+          and up.UserPaymentPlatformServiceState = #{userpaymentplatformservicestate,jdbcType=VARCHAR}
+        </if>
+        <if test="userpaymentplatformaccount != null and userpaymentplatformaccount != ''">
+          and (up.UserPaymentPlatformAccount like CONCAT('%',#{userpaymentplatformaccount,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="userpaymentserviceaccount != null and userpaymentserviceaccount != ''">
+          or up.UserPaymentServiceAccount like CONCAT('%',#{userpaymentplatformaccount,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="userpaymentplatformaccountname != null and userpaymentplatformaccountname != ''">
+          or up.UserPaymentPlatformAccountName like CONCAT('%',#{userpaymentplatformaccountname,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="orderprojectname != null and orderprojectname != ''">
+          or ot.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%'))
+        </if>
+        <!-- 付款人姓名 -->
+        <if test="customeruser_userrealname != null and customeruser_userrealname != ''">
+          or u.UserRealName like CONCAT('%',#{customeruser_userrealname,jdbcType=VARCHAR},'%')
+        </if>
+        <!-- 收款人姓名 -->
+        <if test="serviceuser_userrealname != null and serviceuser_userrealname != ''">
+          or u2.UserRealName like CONCAT('%',#{serviceuser_userrealname,jdbcType=VARCHAR},'%')
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+  <!-- 根据UserPayment实体删除 -->
+  <delete id="deleteByUserPayment" parameterType="sun.bz1.entity.UserPayment">
+    delete from user_payment
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="userpaymentid != null and userpaymentid != ''">
+          and UserPaymentId = #{userpaymentid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+</mapper>

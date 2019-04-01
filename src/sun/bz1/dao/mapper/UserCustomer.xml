@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 用户_客户表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.UserCustomer">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.UserCustomer">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="UserId" jdbcType="VARCHAR" property="userid" />
+		<result column="UserCustomerCity" jdbcType="VARCHAR" property="usercustomercity" />
+		<result column="UserCustomerCompany" jdbcType="VARCHAR" property="usercustomercompany" />
+		<result column="UserCustomerOrganization" jdbcType="VARCHAR" property="usercustomerorganization" />
+		<result column="UserCustomerAddress" jdbcType="VARCHAR" property="usercustomeraddress" />
+		<result column="UserCustomerRemark" jdbcType="VARCHAR" property="usercustomerremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, UserId, UserCustomerCity, UserCustomerCompany,
+		UserCustomerOrganization, UserCustomerAddress, UserCustomerRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.UserCustomer">
+		insert into user_customer (ID, UserId, UserCustomerCity, UserCustomerCompany, 
+		UserCustomerOrganization, UserCustomerAddress, UserCustomerRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{userid,jdbcType=VARCHAR},
+		#{usercustomercity,jdbcType=VARCHAR},
+		#{usercustomercompany,jdbcType=VARCHAR},
+		#{usercustomerorganization,jdbcType=VARCHAR},
+		#{usercustomeraddress,jdbcType=VARCHAR},
+		#{usercustomerremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.UserCustomer">
+		insert into user_customer
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="userid != null">
+				UserId,
+			</if>
+			<if test="usercustomercity != null">
+				UserCustomerCity,
+			</if>
+			<if test="usercustomercompany != null">
+				UserCustomerCompany,
+			</if>
+			<if test="usercustomerorganization != null">
+				UserCustomerOrganization,
+			</if>
+			<if test="usercustomeraddress != null">
+				UserCustomerAddress,
+			</if>
+			<if test="usercustomerremark != null">
+				UserCustomerRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomercity != null">
+				#{usercustomercity,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomercompany != null">
+				#{usercustomercompany,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerorganization != null">
+				#{usercustomerorganization,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomeraddress != null">
+				#{usercustomeraddress,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerremark != null">
+				#{usercustomerremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.UserCustomer">
+		update user_customer
+		<set>
+			<if test="userid != null">
+				UserId = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomercity != null">
+				UserCustomerCity = #{usercustomercity,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomercompany != null">
+				UserCustomerCompany = #{usercustomercompany,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerorganization != null">
+				UserCustomerOrganization = #{usercustomerorganization,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomeraddress != null">
+				UserCustomerAddress = #{usercustomeraddress,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerremark != null">
+				UserCustomerRemark = #{usercustomerremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.UserCustomer">
+		update user_customer
+		set UserId = #{userid,jdbcType=VARCHAR},
+		UserCustomerCity = #{usercustomercity,jdbcType=VARCHAR},
+		UserCustomerCompany = #{usercustomercompany,jdbcType=VARCHAR},
+		UserCustomerOrganization = #{usercustomerorganization,jdbcType=VARCHAR},
+		UserCustomerAddress = #{usercustomeraddress,jdbcType=VARCHAR},
+		UserCustomerRemark = #{usercustomerremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from user_customer
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+		
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from user_customer
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from user_customer
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据UserCustomer实体添加 -->
+	<insert id="insertByUserCustomer" parameterType="sun.bz1.entity.UserCustomer">
+		insert into user_customer
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userid != null">
+				UserId,
+			</if>
+			<if test="usercustomercity != null">
+				UserCustomerCity,
+			</if>
+			<if test="usercustomercompany != null">
+				UserCustomerCompany,
+			</if>
+			<if test="usercustomerorganization != null">
+				UserCustomerOrganization,
+			</if>
+			<if test="usercustomeraddress != null">
+				UserCustomerAddress,
+			</if>
+			<if test="usercustomerremark != null">
+				UserCustomerRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomercity != null">
+				#{usercustomercity,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomercompany != null">
+				#{usercustomercompany,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerorganization != null">
+				#{usercustomerorganization,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomeraddress != null">
+				#{usercustomeraddress,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerremark != null">
+				#{usercustomerremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据UserCustomer实体更新 -->
+	<update id="updateByUserCustomer" parameterType="sun.bz1.entity.UserCustomer">
+		update user_customer
+		<set>
+			<if test="userid != null">
+				UserId = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomercity != null">
+				UserCustomerCity = #{usercustomercity,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomercompany != null">
+				UserCustomerCompany = #{usercustomercompany,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerorganization != null">
+				UserCustomerOrganization = #{usercustomerorganization,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomeraddress != null">
+				UserCustomerAddress = #{usercustomeraddress,jdbcType=VARCHAR},
+			</if>
+			<if test="usercustomerremark != null">
+				UserCustomerRemark = #{usercustomerremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据UserCustomer实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByUserCustomer" parameterType="sun.bz1.entity.UserCustomer" resultType="java.lang.Integer">
+		select count(*) from user_customer
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据UserCustomer实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectByUserCustomer" parameterType="sun.bz1.entity.UserCustomer" resultMap="BaseResultMap">
+		select * from user_customer
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据UserCustomer实体删除 -->
+	<delete id="deleteByUserCustomer" parameterType="sun.bz1.entity.UserCustomer">
+		delete from user_customer
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+	
+</mapper>

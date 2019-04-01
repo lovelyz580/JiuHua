@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 信用值_变化表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.CreditChange">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.CreditChange">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="CreditChangeId" jdbcType="VARCHAR" property="creditchangeid" />
+		<result column="UserId" jdbcType="VARCHAR" property="userid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="EvaluatId" jdbcType="VARCHAR" property="evaluatid" />
+		<result column="CreditChangeType" jdbcType="VARCHAR" property="creditchangetype" />
+		<result column="CreditChange" jdbcType="DOUBLE" property="creditchange" />
+		<result column="CreditChangeCreateTime" jdbcType="TIMESTAMP" property="creditchangecreatetime" />
+		<result column="CreditChangeRemark" jdbcType="VARCHAR" property="creditchangeremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, CreditChangeId, UserId, OrderId, EvaluatId, CreditChangeType, 
+		CreditChange, CreditChangeCreateTime, CreditChangeRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.CreditChange">
+		insert into credit_change (ID, CreditChangeId, UserId, OrderId, EvaluatId,
+		CreditChangeType, CreditChange, CreditChangeCreateTime, CreditChangeRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{creditchangeid,jdbcType=VARCHAR},
+		#{userid,jdbcType=VARCHAR},
+		#{orderid,jdbcType=VARCHAR}, 
+		#{evaluatid,jdbcType=VARCHAR}, 
+		#{creditchangetype,jdbcType=VARCHAR},
+		#{creditchange,jdbcType=DOUBLE},
+		#{creditchangecreatetime,jdbcType=TIMESTAMP},
+		#{creditchangeremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.CreditChange">
+		insert into credit_change
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="creditchangeid != null">
+				CreditChangeId,
+			</if>
+			<if test="userid != null">
+				UserId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="evaluatid != null">
+				EvaluatId,
+			</if>
+			<if test="creditchangetype != null">
+				CreditChangeType,
+			</if>
+			<if test="creditchange != null">
+				CreditChange,
+			</if>
+			<if test="creditchangecreatetime != null">
+				CreditChangeCreateTime,
+			</if>
+			<if test="creditchangeremark != null">
+				CreditChangeRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="creditchangeid != null">
+				#{creditchangeid,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatid != null">
+				#{evaluatid,jdbcType=VARCHAR},
+			</if>
+			<if test="creditchangetype != null">
+				#{creditchangetype,jdbcType=VARCHAR},
+			</if>
+			<if test="creditchange != null">
+				#{creditchange,jdbcType=DOUBLE},
+			</if>
+			<if test="creditchangecreatetime != null">
+				#{creditchangecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="creditchangeremark != null">
+				#{creditchangeremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.CreditChange">
+		update credit_change
+		<set>
+			<if test="creditchangeid != null">
+				CreditChangeId = #{creditchangeid,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				UserId = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatid != null">
+				EvaluatId = #{evaluatid,jdbcType=VARCHAR},
+			</if>
+			<if test="creditchangetype != null">
+				CreditChangeType = #{creditchangetype,jdbcType=VARCHAR},
+			</if>
+			<if test="creditchange != null">
+				CreditChange = #{creditchange,jdbcType=DOUBLE},
+			</if>
+			<if test="creditchangecreatetime != null">
+				CreditChangeCreateTime = #{creditchangecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="creditchangeremark != null">
+				CreditChangeRemark = #{creditchangeremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.CreditChange">
+		update credit_change
+		set CreditChangeId = #{creditchangeid,jdbcType=VARCHAR},
+		UserId = #{userid,jdbcType=VARCHAR},
+		OrderId = #{orderid,jdbcType=VARCHAR},
+		EvaluatId = #{evaluatid,jdbcType=VARCHAR},
+		CreditChangeType = #{creditchangetype,jdbcType=VARCHAR},
+		CreditChange = #{creditchange,jdbcType=DOUBLE},
+		CreditChangeCreateTime = #{creditchangecreatetime,jdbcType=TIMESTAMP},
+		CreditChangeRemark = #{creditchangeremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from credit_change
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from credit_change
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from credit_change
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据CreditChange实体添加 -->
+	<insert id="insertByCreditChange" parameterType="sun.bz1.entity.CreditChange">
+		insert into credit_change
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creditchangeid != null">
+				CreditChangeId,
+			</if>
+			<if test="userid != null">
+				UserId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="evaluatid != null">
+				EvaluatId,
+			</if>
+			<if test="creditchangetype != null">
+				CreditChangeType,
+			</if>
+			<if test="creditchange != null">
+				CreditChange,
+			</if>
+			<if test="creditchangecreatetime != null">
+				CreditChangeCreateTime,
+			</if>
+			<if test="creditchangeremark != null">
+				CreditChangeRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="creditchangeid != null">
+				#{creditchangeid,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatid != null">
+				#{evaluatid,jdbcType=VARCHAR},
+			</if>
+			<if test="creditchangetype != null">
+				#{creditchangetype,jdbcType=VARCHAR},
+			</if>
+			<if test="creditchange != null">
+				#{creditchange,jdbcType=DOUBLE},
+			</if>
+			<if test="creditchangecreatetime != null">
+				#{creditchangecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="creditchangeremark != null">
+				#{creditchangeremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据CreditChange实体更新 -->
+	<update id="updateByCreditChange" parameterType="sun.bz1.entity.CreditChange">
+		update credit_change
+		<set>
+			<if test="creditchangeid != null">
+				CreditChangeId = #{creditchangeid,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				UserId = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluatid != null">
+				EvaluatId = #{evaluatid,jdbcType=VARCHAR},
+			</if>
+			<if test="creditchangetype != null">
+				CreditChangeType = #{creditchangetype,jdbcType=VARCHAR},
+			</if>
+			<if test="creditchange != null">
+				CreditChange = #{creditchange,jdbcType=DOUBLE},
+			</if>
+			<if test="creditchangecreatetime != null">
+				CreditChangeCreateTime = #{creditchangecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="creditchangeremark != null">
+				CreditChangeRemark = #{creditchangeremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="creditchangeid != null and creditchangeid != ''">
+					and CreditChangeId = #{creditchangeid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluatid != null and evaluatid != ''">
+					and EvaluatId = #{evaluatid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据CreditChange实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByCreditChange" parameterType="sun.bz1.entity.CreditChange" resultType="java.lang.Integer">
+		select count(*) from credit_change
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="creditchangeid != null and creditchangeid != ''">
+					and CreditChangeId = #{creditchangeid,jdbcType=VARCHAR}
+				</if>
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="creditchangetype != null and creditchangetype != ''">
+					and CreditChangeType = #{creditchangetype,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluatid != null and evaluatid != ''">
+					and EvaluatId = #{evaluatid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectstarttime != null and selectstarttime != '' 
+						and selectendtime != null and selectendtime != ''">
+					and CreditChangeCreateTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and CreditChangeCreateTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据CreditChange实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectByCreditChange" parameterType="sun.bz1.entity.CreditChange" resultMap="BaseResultMap">
+		select * from credit_change
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="creditchangeid != null and creditchangeid != ''">
+					and CreditChangeId = #{creditchangeid,jdbcType=VARCHAR}
+				</if>
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluatid != null and evaluatid != ''">
+					and EvaluatId = #{evaluatid,jdbcType=VARCHAR}
+				</if>
+				<if test="creditchangetype != null and creditchangetype != ''">
+					and CreditChangeType = #{creditchangetype,jdbcType=VARCHAR}
+				</if>
+				<if test="selectstarttime != null and selectstarttime != '' 
+						and selectendtime != null and selectendtime != ''">
+					and CreditChangeCreateTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and CreditChangeCreateTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据CreditChange实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectData" parameterType="sun.bz1.entity.CreditChange" resultType="java.lang.Integer">
+		select count(*) from credit_change
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="creditchangeid != null and creditchangeid != ''">
+					and CreditChangeId = #{creditchangeid,jdbcType=VARCHAR}
+				</if>
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluatid != null and evaluatid != ''">
+					and EvaluatId = #{evaluatid,jdbcType=VARCHAR}
+				</if>
+				<if test="creditchangetype != null and creditchangetype != ''">
+					and CreditChangeType = #{creditchangetype,jdbcType=VARCHAR}
+				</if>
+				<if test="selectstarttime != null and selectstarttime != '' 
+						and selectendtime != null and selectendtime != ''">
+					and CreditChangeCreateTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and CreditChangeCreateTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据CreditChange实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectBySelectData" parameterType="sun.bz1.entity.CreditChange" resultMap="BaseResultMap">
+		select * from credit_change
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="creditchangeid != null and creditchangeid != ''">
+					and CreditChangeId = #{creditchangeid,jdbcType=VARCHAR}
+				</if>
+				<if test="userid != null and userid != ''">
+					and UserId = #{userid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="evaluatid != null and evaluatid != ''">
+					and EvaluatId = #{evaluatid,jdbcType=VARCHAR}
+				</if>
+				<if test="creditchangetype != null and creditchangetype != ''">
+					and CreditChangeType = #{creditchangetype,jdbcType=VARCHAR}
+				</if>
+				<if test="selectstarttime != null and selectstarttime != '' 
+						and selectendtime != null and selectendtime != ''">
+					and CreditChangeCreateTime &gt;= #{selectstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and CreditChangeCreateTime &lt;= #{selectendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+</mapper>

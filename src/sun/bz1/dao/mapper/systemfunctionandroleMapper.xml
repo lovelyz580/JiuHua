@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="sun.bz1.dao.mapper.systemfunctionandroleMapper">
+
+     <!--定义sql片段  sql:是sql片段标签属性id是该片段的唯一标识 -->
+     <sql id="zd">
+        rid,sid
+     </sql>
+     
+     <!-- 添加用户信息 -->
+     <insert id="addText" parameterType="java.util.List">
+         insert into systemfunctionandrole(<include refid="zd"/>) 
+         values
+         <foreach collection="list" item="systemfunctionandrole" separator=",">
+					(#{systemfunctionandrole.rid},#{systemfunctionandrole.sid})
+		 </foreach>
+    </insert>
+     
+     <!-- 增删改查标签里的id:一定要和接口里对应的方法名一致 -->
+     <delete id="deletText" parameterType="sun.bz1.entity.systemfunctionandrole" >
+         delete from systemfunctionandrole where rid =#{rid}
+     </delete>
+     
+     
+     
+     <!-- 根据用户名模糊查询，根据权限查询 -->
+     <select id="selectText" resultType="sun.bz1.entity.systemfunctionandrole" parameterType="sun.bz1.entity.systemfunctionandrole">
+         <!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
+         select <include refid="zd"/> from systemfunctionandrole
+         <!-- 当页面没有输入用户名和选择权限，就让它的条件永远为真，就变成全查询了 -->
+         <where>
+             <if test="rid != null and rid !=''">
+                 and rid =#{rid} 
+             </if>        
+             <if test="sid != null and sid !=''">
+                 and sid =#{sid}
+             </if>     
+         </where>
+         <if test="pagenumber != -1">
+                 limit #{pagenumber},#{pagesize}
+         </if>
+     </select>
+     
+     <!-- 查询关联数量 -->
+     <select id="selectTextCount" resultType="java.lang.Integer" parameterType="sun.bz1.entity.systemfunctionandrole">
+         <!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
+         select count(*) from systemfunctionandrole
+         <!-- 当页面没有输入用户名和选择权限，就让它的条件永远为真，就变成全查询了 -->
+         <where>
+             <if test="rid != null and rid !=''">
+                 and rid =#{rid} 
+             </if>        
+             <if test="sid != null and sid !=''">
+                 and sid =#{sid}
+             </if>     
+         </where>
+      </select>
+ </mapper>

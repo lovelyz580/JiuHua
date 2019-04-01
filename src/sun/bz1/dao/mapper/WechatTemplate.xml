@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.WechatTemplate">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.WechatTemplate">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="WechatTemplateId" jdbcType="VARCHAR" property="wechattemplateid" />
+    <result column="WechatTemplateName" jdbcType="VARCHAR" property="wechattemplatename" />
+    <result column="WechatTemplateIdState" jdbcType="VARCHAR" property="wechattemplateidstate" />
+    <result column="CreateDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="WechatTemplateRemark" jdbcType="VARCHAR" property="wechattemplateremark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, WechatTemplateId, WechatTemplateName, WechatTemplateIdState, CreateDate, WechatTemplateRemark
+  </sql>
+
+  <insert id="insert" parameterType="sun.bz1.entity.WechatTemplate">
+    insert into wechat_template (ID, WechatTemplateId, WechatTemplateName, 
+      WechatTemplateIdState, CreateDate, WechatTemplateRemark
+      )
+    values (#{id,jdbcType=INTEGER}, #{wechattemplateid,jdbcType=VARCHAR}, #{wechattemplatename,jdbcType=VARCHAR}, 
+      #{wechattemplateidstate,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{wechattemplateremark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sun.bz1.entity.WechatTemplate">
+    insert into wechat_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="wechattemplateid != null">
+        WechatTemplateId,
+      </if>
+      <if test="wechattemplatename != null">
+        WechatTemplateName,
+      </if>
+      <if test="wechattemplateidstate != null">
+        WechatTemplateIdState,
+      </if>
+      <if test="createdate != null">
+        CreateDate,
+      </if>
+      <if test="wechattemplateremark != null">
+        WechatTemplateRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="wechattemplateid != null">
+        #{wechattemplateid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechattemplatename != null">
+        #{wechattemplatename,jdbcType=VARCHAR},
+      </if>
+      <if test="wechattemplateidstate != null">
+        #{wechattemplateidstate,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wechattemplateremark != null">
+        #{wechattemplateremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.WechatTemplate">
+    update wechat_template
+    <set>
+      <if test="wechattemplateid != null">
+        WechatTemplateId = #{wechattemplateid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechattemplatename != null">
+        WechatTemplateName = #{wechattemplatename,jdbcType=VARCHAR},
+      </if>
+      <if test="wechattemplateidstate != null">
+        WechatTemplateIdState = #{wechattemplateidstate,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wechattemplateremark != null">
+        WechatTemplateRemark = #{wechattemplateremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.WechatTemplate">
+    update wechat_template
+    set WechatTemplateId = #{wechattemplateid,jdbcType=VARCHAR},
+      WechatTemplateName = #{wechattemplatename,jdbcType=VARCHAR},
+      WechatTemplateIdState = #{wechattemplateidstate,jdbcType=VARCHAR},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      WechatTemplateRemark = #{wechattemplateremark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wechat_template
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wechat_template
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 根据WechatTemplate实体添加 -->
+  <insert id="insertByWechatTemplate" parameterType="sun.bz1.entity.WechatTemplate">
+    insert into wechat_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="wechattemplateid != null">
+        WechatTemplateId,
+      </if>
+      <if test="wechattemplatename != null">
+        WechatTemplateName,
+      </if>
+      <if test="wechattemplateidstate != null">
+        WechatTemplateIdState,
+      </if>
+      <if test="createdate != null">
+        CreateDate,
+      </if>
+      <if test="wechattemplateremark != null">
+        WechatTemplateRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="wechattemplateid != null">
+        #{wechattemplateid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechattemplatename != null">
+        #{wechattemplatename,jdbcType=VARCHAR},
+      </if>
+      <if test="wechattemplateidstate != null">
+        #{wechattemplateidstate,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wechattemplateremark != null">
+        #{wechattemplateremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 根据WechatTemplate实体更新 -->
+  <update id="updateByWechatTemplate" parameterType="sun.bz1.entity.WechatTemplate">
+    update wechat_template
+    <set>
+      <if test="wechattemplateid != null">
+        WechatTemplateId = #{wechattemplateid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechattemplatename != null">
+        WechatTemplateName = #{wechattemplatename,jdbcType=VARCHAR},
+      </if>
+      <if test="wechattemplateidstate != null">
+        WechatTemplateIdState = #{wechattemplateidstate,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wechattemplateremark != null">
+        WechatTemplateRemark = #{wechattemplateremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据WechatTemplate实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByWechatTemplate" parameterType="sun.bz1.entity.WechatTemplate" resultType="java.lang.Integer">
+    select count(*) from wechat_template
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null and id != ''">
+          and Id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="wechattemplateidstate != null and wechattemplateidstate != ''">
+          and WechatTemplateIdState = #{wechattemplateidstate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据WechatTemplate实体查询 -->
+  <select id="selectByWechatTemplate" parameterType="sun.bz1.entity.WechatTemplate" resultMap="BaseResultMap">
+    select * from wechat_template
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null and id != ''">
+          and Id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="wechattemplateidstate != null and wechattemplateidstate != ''">
+          and WechatTemplateIdState = #{wechattemplateidstate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+</mapper>

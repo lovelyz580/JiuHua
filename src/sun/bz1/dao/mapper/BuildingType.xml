@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 建筑类型表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.BuildingType">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.BuildingType">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="BuildingTypeId" jdbcType="VARCHAR" property="buildingtypeid" />
+		<result column="BuildingTypeName" jdbcType="VARCHAR" property="buildingtypename" />
+		<result column="BuildingTypeState" jdbcType="VARCHAR" property="buildingtypestate" />
+		<result column="BuildingTypeCoefficient" jdbcType="DOUBLE" property="buildingtypecoefficient" />
+		<result column="BuildingTypeCreateUserId" jdbcType="VARCHAR" property="buildingtypecreateuserid" />
+		<result column="BuildingTypeCreateTime" jdbcType="TIMESTAMP" property="buildingtypecreatetime" />
+		<result column="BuildingTypeUpdateUserId" jdbcType="VARCHAR" property="buildingtypeupdateuserid" />
+		<result column="BuildingTypeUpdateTime" jdbcType="TIMESTAMP" property="buildingtypeupdatetime" />
+		<result column="BuildingTypeRemark" jdbcType="VARCHAR" property="buildingtyperemark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, BuildingTypeId, BuildingTypeName, BuildingTypeState,BuildingTypeCoefficient, BuildingTypeCreateUserId, 
+		BuildingTypeCreateTime, BuildingTypeUpdateUserId, BuildingTypeUpdateTime, BuildingTypeRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.BuildingType">
+		insert into building_type (ID, BuildingTypeId, BuildingTypeName, 
+		BuildingTypeState,BuildingTypeCoefficient, BuildingTypeCreateUserId, BuildingTypeCreateTime, 
+		BuildingTypeUpdateUserId, BuildingTypeUpdateTime, BuildingTypeRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{buildingtypeid,jdbcType=VARCHAR},
+		#{buildingtypename,jdbcType=VARCHAR},
+		#{buildingtypestate,jdbcType=VARCHAR},
+		#{buildingtypecoefficient,jdbcType=DOUBLE},
+		#{buildingtypecreateuserid,jdbcType=VARCHAR},
+		#{buildingtypecreatetime,jdbcType=TIMESTAMP},
+		#{buildingtypeupdateuserid,jdbcType=VARCHAR},
+		#{buildingtypeupdatetime,jdbcType=TIMESTAMP},
+		#{buildingtyperemark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.BuildingType">
+		insert into building_type
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="buildingtypeid != null">
+				BuildingTypeId,
+			</if>
+			<if test="buildingtypename != null">
+				BuildingTypeName,
+			</if>
+			<if test="buildingtypestate != null">
+				BuildingTypeState,
+			</if>
+			<if test="buildingtypecoefficient != null">
+				BuildingTypeCoefficient,
+			</if>
+			<if test="buildingtypecreateuserid != null">
+				BuildingTypeCreateUserId,
+			</if>
+			<if test="buildingtypecreatetime != null">
+				BuildingTypeCreateTime,
+			</if>
+			<if test="buildingtypeupdateuserid != null">
+				BuildingTypeUpdateUserId,
+			</if>
+			<if test="buildingtypeupdatetime != null">
+				BuildingTypeUpdateTime,
+			</if>
+			<if test="buildingtyperemark != null">
+				BuildingTypeRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="buildingtypeid != null">
+				#{buildingtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypename != null">
+				#{buildingtypename,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypestate != null">
+				#{buildingtypestate,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypecoefficient != null">
+				#{buildingtypecoefficient,jdbcType=DOUBLE},
+			</if>
+			<if test="buildingtypecreateuserid != null">
+				#{buildingtypecreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypecreatetime != null">
+				#{buildingtypecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="buildingtypeupdateuserid != null">
+				#{buildingtypeupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypeupdatetime != null">
+				#{buildingtypeupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="buildingtyperemark != null">
+				#{buildingtyperemark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.BuildingType">
+		update building_type
+		<set>
+			<if test="buildingtypeid != null">
+				BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypename != null">
+				BuildingTypeName = #{buildingtypename,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypestate != null">
+				BuildingTypeState = #{buildingtypestate,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypecoefficient != null">
+				BuildingTypeCoefficient = #{buildingtypecoefficient,jdbcType=DOUBLE},
+			</if>
+			<if test="buildingtypecreateuserid != null">
+				BuildingTypeCreateUserId = #{buildingtypecreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypecreatetime != null">
+				BuildingTypeCreateTime = #{buildingtypecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="buildingtypeupdateuserid != null">
+				BuildingTypeUpdateUserId = #{buildingtypeupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypeupdatetime != null">
+				BuildingTypeUpdateTime = #{buildingtypeupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="buildingtyperemark != null">
+				BuildingTypeRemark = #{buildingtyperemark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.BuildingType">
+		update building_type
+		set BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR},
+		BuildingTypeName = #{buildingtypename,jdbcType=VARCHAR},
+		BuildingTypeState = #{buildingtypestate,jdbcType=VARCHAR},
+		BuildingTypeCoefficient = #{buildingtypecoefficient,jdbcType=DOUBLE},
+		BuildingTypeCreateUserId = #{buildingtypecreateuserid,jdbcType=VARCHAR},
+		BuildingTypeCreateTime = #{buildingtypecreatetime,jdbcType=TIMESTAMP},
+		BuildingTypeUpdateUserId = #{buildingtypeupdateuserid,jdbcType=VARCHAR},
+		BuildingTypeUpdateTime = #{buildingtypeupdatetime,jdbcType=TIMESTAMP},
+		BuildingTypeRemark = #{buildingtyperemark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from building_type
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from building_type
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from building_type
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据BuildingType实体添加 -->
+	<insert id="insertByBuildingType" parameterType="sun.bz1.entity.BuildingType">
+		insert into building_type
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="buildingtypeid != null">
+				BuildingTypeId,
+			</if>
+			<if test="buildingtypename != null">
+				BuildingTypeName,
+			</if>
+			<if test="buildingtypestate != null">
+				BuildingTypeState,
+			</if>
+			<if test="buildingtypecoefficient != null">
+				BuildingTypeCoefficient,
+			</if>
+			<if test="buildingtypecreateuserid != null">
+				BuildingTypeCreateUserId,
+			</if>
+			<if test="buildingtypecreatetime != null">
+				BuildingTypeCreateTime,
+			</if>
+			<if test="buildingtypeupdateuserid != null">
+				BuildingTypeUpdateUserId,
+			</if>
+			<if test="buildingtypeupdatetime != null">
+				BuildingTypeUpdateTime,
+			</if>
+			<if test="buildingtyperemark != null">
+				BuildingTypeRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="buildingtypeid != null">
+				#{buildingtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypename != null">
+				#{buildingtypename,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypestate != null">
+				#{buildingtypestate,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypecoefficient != null">
+				#{buildingtypecoefficient,jdbcType=DOUBLE},
+			</if>
+			<if test="buildingtypecreateuserid != null">
+				#{buildingtypecreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypecreatetime != null">
+				#{buildingtypecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="buildingtypeupdateuserid != null">
+				#{buildingtypeupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypeupdatetime != null">
+				#{buildingtypeupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="buildingtyperemark != null">
+				#{buildingtyperemark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据BuildingType实体更新 -->
+	<update id="updateByBuildingType" parameterType="sun.bz1.entity.BuildingType">
+		update building_type
+		<set>
+			<if test="buildingtypeid != null">
+				BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypename != null">
+				BuildingTypeName = #{buildingtypename,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypestate != null">
+				BuildingTypeState = #{buildingtypestate,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypecoefficient != null">
+				BuildingTypeCoefficient = #{buildingtypecoefficient,jdbcType=DOUBLE},
+			</if>
+			<if test="buildingtypecreateuserid != null">
+				BuildingTypeCreateUserId = #{buildingtypecreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypecreatetime != null">
+				BuildingTypeCreateTime = #{buildingtypecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="buildingtypeupdateuserid != null">
+				BuildingTypeUpdateUserId = #{buildingtypeupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingtypeupdatetime != null">
+				BuildingTypeUpdateTime = #{buildingtypeupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="buildingtyperemark != null">
+				BuildingTypeRemark = #{buildingtyperemark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据BuildingType实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByBuildingType" parameterType="sun.bz1.entity.BuildingType" resultType="java.lang.Integer">
+		select count(*) from building_type
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="buildingtypestate != null and buildingtypestate != ''">
+					and BuildingTypeState = #{buildingtypestate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据BuildingType实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectByBuildingType" parameterType="sun.bz1.entity.BuildingType" resultMap="BaseResultMap">
+		select * from building_type
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="buildingtypestate != null and buildingtypestate != ''">
+					and BuildingTypeState = #{buildingtypestate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据BuildingType实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectData" parameterType="sun.bz1.entity.BuildingType" resultType="java.lang.Integer">
+		select count(*) from building_type
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="buildingtypename != null and buildingtypename != ''">
+					or BuildingTypeName like CONCAT('%',#{buildingtypename,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="buildingtypestate != null and buildingtypestate != ''">
+					and BuildingTypeState = #{buildingtypestate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据BuildingType实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectBySelectData" parameterType="sun.bz1.entity.BuildingType" resultMap="BaseResultMap">
+		select * from building_type
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="buildingtypename != null and buildingtypename != ''">
+					or BuildingTypeName like CONCAT('%',#{buildingtypename,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="buildingtypestate != null and buildingtypestate != ''">
+					and BuildingTypeState = #{buildingtypestate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+</mapper>

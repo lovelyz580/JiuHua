@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 纠纷表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.Dispute">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.Dispute">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="DisputeId" jdbcType="VARCHAR" property="disputeid" />
+		<result column="CustomerUserId" jdbcType="VARCHAR" property="customeruserid" />
+		<result column="ServiceUserId" jdbcType="VARCHAR" property="serviceuserid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="DisputeTitle" jdbcType="VARCHAR" property="disputetitle" />
+		<result column="DisputeState" jdbcType="VARCHAR" property="disputestate" />
+		<result column="Dispute" jdbcType="VARCHAR" property="dispute" />
+		<result column="DisputeCreateTime" jdbcType="TIMESTAMP" property="disputecreatetime" />
+		<result column="DisputeReplyContent" jdbcType="VARCHAR" property="disputereplycontent" />
+		<result column="DisputeReplyUserId" jdbcType="VARCHAR" property="disputereplyuserid" />
+		<result column="DisputeReplyTime" jdbcType="TIMESTAMP" property="disputereplytime" />
+		<result column="DisputeRemark" jdbcType="VARCHAR" property="disputeremark" />
+	</resultMap>
+	
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.DisputeAndUser">
+		<!-- 纠纷表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="DisputeId" jdbcType="VARCHAR" property="disputeid" />
+		<result column="CustomerUserId" jdbcType="VARCHAR" property="customeruserid" />
+		<result column="ServiceUserId" jdbcType="VARCHAR" property="serviceuserid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="DisputeTitle" jdbcType="VARCHAR" property="disputetitle" />
+		<result column="DisputeState" jdbcType="VARCHAR" property="disputestate" />
+		<result column="Dispute" jdbcType="VARCHAR" property="dispute" />
+		<result column="DisputeCreateTime" jdbcType="TIMESTAMP" property="disputecreatetime" />
+		<result column="DisputeReplyContent" jdbcType="VARCHAR" property="disputereplycontent" />
+		<result column="DisputeReplyUserId" jdbcType="VARCHAR" property="disputereplyuserid" />
+		<result column="DisputeReplyTime" jdbcType="TIMESTAMP" property="disputereplytime" />
+		<result column="DisputeRemark" jdbcType="VARCHAR" property="disputeremark" />
+		
+		<!-- 客户ID(用户表) -->
+		<result column="UserName" jdbcType="VARCHAR" property="customeruser_username" />
+		<result column="UserRealName" jdbcType="VARCHAR" property="customeruser_userrealname" />
+		<result column="UserSex" jdbcType="VARCHAR" property="customeruser_usersex" />
+		<result column="UserPhone" jdbcType="VARCHAR" property="customeruser_userphone" />
+		<result column="UserCodeId" jdbcType="VARCHAR" property="customeruser_usercodeid" />
+		<result column="UserEmail" jdbcType="VARCHAR" property="customeruser_useremail" />
+		<result column="UserRole" jdbcType="VARCHAR" property="customeruser_userrole" />
+		<result column="UserState" jdbcType="VARCHAR" property="customeruser_userstate" />
+		<result column="UserCredit" jdbcType="DOUBLE" property="customeruser_usercredit" />
+		<result column="UserMoney" jdbcType="DOUBLE" property="customeruser_usermoney" />
+		<result column="UserOpenId" jdbcType="VARCHAR" property="customeruser_useropenid" />
+		<result column="UserPosition" jdbcType="VARCHAR" property="customeruser_userposition" />
+		<result column="UserLatitude" jdbcType="DOUBLE" property="customeruser_userlatitude" />
+		<result column="UserLongitude" jdbcType="DOUBLE" property="customeruser_userlongitude" />
+		<result column="UserRemark" jdbcType="VARCHAR" property="customeruser_userremark" />
+		
+		<!-- 维修人员ID(用户表) -->
+		<result column="UserName1" jdbcType="VARCHAR" property="serviceuser_username" />
+		<result column="UserRealName1" jdbcType="VARCHAR" property="serviceuser_userrealname" />
+		<result column="UserSex1" jdbcType="VARCHAR" property="serviceuser_usersex" />
+		<result column="UserPhone1" jdbcType="VARCHAR" property="serviceuser_userphone" />
+		<result column="UserCodeId1" jdbcType="VARCHAR" property="serviceuser_usercodeid" />
+		<result column="UserEmail1" jdbcType="VARCHAR" property="serviceuser_useremail" />
+		<result column="UserRole1" jdbcType="VARCHAR" property="serviceuser_userrole" />
+		<result column="UserState1" jdbcType="VARCHAR" property="serviceuser_userstate" />
+		<result column="UserCredit1" jdbcType="DOUBLE" property="serviceuser_usercredit" />
+		<result column="UserMoney1" jdbcType="DOUBLE" property="serviceuser_usermoney" />
+		<result column="UserOpenId1" jdbcType="VARCHAR" property="serviceuser_useropenid" />
+		<result column="UserPosition1" jdbcType="VARCHAR" property="serviceuser_userposition" />
+		<result column="UserLatitude1" jdbcType="DOUBLE" property="serviceuser_userlatitude" />
+		<result column="UserLongitude1" jdbcType="DOUBLE" property="serviceuser_userlongitude" />
+		<result column="UserRemark1" jdbcType="VARCHAR" property="serviceuser_userremark" />
+		
+		<!-- 纠纷回复人员(用户表) -->
+		<result column="UserName2" jdbcType="VARCHAR" property="disputereplyuser_username" />
+		<result column="UserRealName2" jdbcType="VARCHAR" property="disputereplyuser_userrealname" />
+		<result column="UserSex2" jdbcType="VARCHAR" property="disputereplyuser_usersex" />
+		<result column="UserPhone2" jdbcType="VARCHAR" property="disputereplyuser_userphone" />
+		<result column="UserCodeId2" jdbcType="VARCHAR" property="disputereplyuser_usercodeid" />
+		<result column="UserEmail2" jdbcType="VARCHAR" property="disputereplyuser_useremail" />
+		<result column="UserRole2" jdbcType="VARCHAR" property="disputereplyuser_userrole" />
+		<result column="UserState2" jdbcType="VARCHAR" property="disputereplyuser_userstate" />
+		<result column="UserCredit2" jdbcType="DOUBLE" property="disputereplyuser_usercredit" />
+		<result column="UserMoney2" jdbcType="DOUBLE" property="disputereplyuser_usermoney" />
+		<result column="UserOpenId2" jdbcType="VARCHAR" property="disputereplyuser_useropenid" />
+		<result column="UserPosition2" jdbcType="VARCHAR" property="disputereplyuser_userposition" />
+		<result column="UserLatitude2" jdbcType="DOUBLE" property="disputereplyuser_userlatitude" />
+		<result column="UserLongitude2" jdbcType="DOUBLE" property="disputereplyuser_userlongitude" />
+		<result column="UserRemark2" jdbcType="VARCHAR" property="disputereplyuser_userremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, DisputeId, CustomerUserId,ServiceUserId, OrderId, DisputeTitle,
+		DisputeState, Dispute, DisputeCreateTime, DisputeReplyContent, 
+		DisputeReplyUserId, DisputeReplyTime, DisputeRemark
+	</sql>
+
+	<insert id="insert" parameterType="sun.bz1.entity.Dispute">
+		insert into dispute (ID, DisputeId, CustomerUserId, ServiceUserId,
+		OrderId, DisputeTitle, DisputeState, Dispute, DisputeCreateTime, 
+		DisputeReplyContent, DisputeReplyUserId, DisputeReplyTime, DisputeRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{disputeid,jdbcType=VARCHAR},
+		#{customeruserid,jdbcType=VARCHAR}, 
+		#{serviceuserid,jdbcType=VARCHAR},
+		#{orderid,jdbcType=VARCHAR}, 
+		#{disputetitle,jdbcType=VARCHAR},
+		#{disputestate,jdbcType=VARCHAR},
+		#{dispute,jdbcType=VARCHAR}, 
+		#{disputecreatetime,jdbcType=TIMESTAMP},
+		#{disputereplycontent,jdbcType=VARCHAR},
+		#{disputereplyuserid,jdbcType=VARCHAR},
+		#{disputereplytime,jdbcType=TIMESTAMP},
+		#{disputeremark,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertSelective" parameterType="sun.bz1.entity.Dispute">
+		insert into dispute
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="disputeid != null">
+				DisputeId,
+			</if>
+			<if test="customeruserid != null">
+				CustomerUserId,
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="disputetitle != null">
+				DisputeTitle,
+			</if>
+			<if test="disputestate != null">
+				DisputeState,
+			</if>
+			<if test="dispute != null">
+				Dispute,
+			</if>
+			<if test="disputecreatetime != null">
+				DisputeCreateTime,
+			</if>
+			<if test="disputereplycontent != null">
+				DisputeReplyContent,
+			</if>
+			<if test="disputereplyuserid != null">
+				DisputeReplyUserId,
+			</if>
+			<if test="disputereplytime != null">
+				DisputeReplyTime,
+			</if>
+			<if test="disputeremark != null">
+				DisputeRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="disputeid != null">
+				#{disputeid,jdbcType=VARCHAR},
+			</if>
+			<if test="customeruserid != null">
+				#{customeruserid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				#{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="disputetitle != null">
+				#{disputetitle,jdbcType=VARCHAR},
+			</if>
+			<if test="disputestate != null">
+				#{disputestate,jdbcType=VARCHAR},
+			</if>
+			<if test="dispute != null">
+				#{dispute,jdbcType=VARCHAR},
+			</if>
+			<if test="disputecreatetime != null">
+				#{disputecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="disputereplycontent != null">
+				#{disputereplycontent,jdbcType=VARCHAR},
+			</if>
+			<if test="disputereplyuserid != null">
+				#{disputereplyuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="disputereplytime != null">
+				#{disputereplytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="disputeremark != null">
+				#{disputeremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.Dispute">
+		update dispute
+		<set>
+			<if test="disputeid != null">
+				DisputeId = #{disputeid,jdbcType=VARCHAR},
+			</if>
+			<if test="customeruserid != null">
+				CustomerUserId = #{customeruserid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="disputetitle != null">
+				DisputeTitle = #{disputetitle,jdbcType=VARCHAR},
+			</if>
+			<if test="disputestate != null">
+				DisputeState = #{disputestate,jdbcType=VARCHAR},
+			</if>
+			<if test="dispute != null">
+				Dispute = #{dispute,jdbcType=VARCHAR},
+			</if>
+			<if test="disputecreatetime != null">
+				DisputeCreateTime = #{disputecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="disputereplycontent != null">
+				DisputeReplyContent = #{disputereplycontent,jdbcType=VARCHAR},
+			</if>
+			<if test="disputereplyuserid != null">
+				DisputeReplyUserId = #{disputereplyuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="disputereplytime != null">
+				DisputeReplyTime = #{disputereplytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="disputeremark != null">
+				DisputeRemark = #{disputeremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.Dispute">
+		update dispute
+		set DisputeId = #{disputeid,jdbcType=VARCHAR},
+		CustomerUserId = #{customeruserid,jdbcType=VARCHAR},
+		Serviceuserid = #{serviceuserid,jdbcType=VARCHAR},
+		OrderId = #{orderid,jdbcType=VARCHAR},
+		DisputeTitle = #{disputetitle,jdbcType=VARCHAR},
+		DisputeState = #{disputestate,jdbcType=VARCHAR},
+		Dispute = #{dispute,jdbcType=VARCHAR},
+		DisputeCreateTime = #{disputecreatetime,jdbcType=TIMESTAMP},
+		DisputeReplyContent = #{disputereplycontent,jdbcType=VARCHAR},
+		DisputeReplyUserId = #{disputereplyuserid,jdbcType=VARCHAR},
+		DisputeReplyTime = #{disputereplytime,jdbcType=TIMESTAMP},
+		DisputeRemark = #{disputeremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from dispute
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from dispute
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from dispute
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<!-- 根据Dispute实体添加 -->
+	<insert id="insertByDispute" parameterType="sun.bz1.entity.Dispute">
+		insert into dispute
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="disputeid != null">
+				DisputeId,
+			</if>
+			<if test="customeruserid != null">
+				CustomerUserId,
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="disputetitle != null">
+				DisputeTitle,
+			</if>
+			<if test="disputestate != null">
+				DisputeState,
+			</if>
+			<if test="dispute != null">
+				Dispute,
+			</if>
+			<if test="disputecreatetime != null">
+				DisputeCreateTime,
+			</if>
+			<if test="disputereplycontent != null">
+				DisputeReplyContent,
+			</if>
+			<if test="disputereplyuserid != null">
+				DisputeReplyUserId,
+			</if>
+			<if test="disputereplytime != null">
+				DisputeReplyTime,
+			</if>
+			<if test="disputeremark != null">
+				DisputeRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="disputeid != null">
+				#{disputeid,jdbcType=VARCHAR},
+			</if>
+			<if test="customeruserid != null">
+				#{customeruserid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				#{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="disputetitle != null">
+				#{disputetitle,jdbcType=VARCHAR},
+			</if>
+			<if test="disputestate != null">
+				#{disputestate,jdbcType=VARCHAR},
+			</if>
+			<if test="dispute != null">
+				#{dispute,jdbcType=VARCHAR},
+			</if>
+			<if test="disputecreatetime != null">
+				#{disputecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="disputereplycontent != null">
+				#{disputereplycontent,jdbcType=VARCHAR},
+			</if>
+			<if test="disputereplyuserid != null">
+				#{disputereplyuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="disputereplytime != null">
+				#{disputereplytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="disputeremark != null">
+				#{disputeremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 根据Dispute实体更新 -->
+	<update id="updateByDispute" parameterType="sun.bz1.entity.Dispute">
+		update dispute
+		<set>
+			<if test="disputeid != null">
+				DisputeId = #{disputeid,jdbcType=VARCHAR},
+			</if>
+			<if test="customeruserid != null">
+				CustomerUserId = #{customeruserid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="disputetitle != null">
+				DisputeTitle = #{disputetitle,jdbcType=VARCHAR},
+			</if>
+			<if test="disputestate != null">
+				DisputeState = #{disputestate,jdbcType=VARCHAR},
+			</if>
+			<if test="dispute != null">
+				Dispute = #{dispute,jdbcType=VARCHAR},
+			</if>
+			<if test="disputecreatetime != null">
+				DisputeCreateTime = #{disputecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="disputereplycontent != null">
+				DisputeReplyContent = #{disputereplycontent,jdbcType=VARCHAR},
+			</if>
+			<if test="disputereplyuserid != null">
+				DisputeReplyUserId = #{disputereplyuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="disputereplytime != null">
+				DisputeReplyTime = #{disputereplytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="disputeremark != null">
+				DisputeRemark = #{disputeremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="disputeid != null and disputeid != ''">
+					and DisputeId = #{disputeid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+
+	<!-- 根据DisputeAndUser实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectTwoTablesCountByUnionData" parameterType="sun.bz1.entity.DisputeAndUser" resultType="java.lang.Integer">
+		select count(*) from dispute a 
+			inner join user b on a.CustomerUserId = b.UserId
+			inner join user c on a.ServiceUserId = c.UserId
+			left join user d on a.DisputeReplyUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="disputeid != null and disputeid != ''">
+					and a.DisputeId = #{disputeid,jdbcType=VARCHAR}
+				</if>
+				<if test="disputestate != null and disputestate != ''">
+					and a.DisputeState = #{disputestate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectdisputecreatestarttime != null and selectdisputecreatestarttime != '' 
+						and selectdisputecreateendtime != null and selectdisputecreateendtime != ''">
+					and a.DisputeCreateTime &gt;= #{selectdisputecreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.DisputeCreateTime &lt;= #{selectdisputecreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectdisputereplystarttime != null and selectdisputereplystarttime != '' 
+						and selectdisputereplyendtime != null and selectdisputereplyendtime != ''">
+					and a.DisputeReplyTime &gt;= #{selectdisputereplystarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.DisputeReplyTime &lt;= #{selectdisputereplyendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据DisputeAndUser实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量 -->
+	<select id="selectTwoTablesByUnionData" parameterType="sun.bz1.entity.DisputeAndUser" resultMap="SeniorResultMap">
+		select a.*, b.*,
+			c.UserName as UserName1, c.UserRealName as UserRealName1, c.UserSex as UserSex1,
+			c.UserPhone as UserPhone1, c.UserCodeId as UserCodeId1, c.UserEmail as UserEmail1,
+			c.UserRole as UserRole1, c.UserState as UserState1, c.UserCredit as UserCredit1, 
+			c.UserMoney as UserMoney1, c.UserOpenId as UserOpenId1, c.UserPosition as UserPosition1,
+			c.UserLatitude as UserLatitude1, c.UserLongitude as UserLongitude1, c.UserRemark as UserRemark1,
+			d.UserName as UserName2, d.UserRealName as UserRealName2, d.UserSex as UserSex2,
+			d.UserPhone as UserPhone2, d.UserCodeId as UserCodeId2, d.UserEmail as UserEmail2,
+			d.UserRole as UserRole2, d.UserState as UserState2, d.UserCredit as UserCredit2, 
+			d.UserMoney as UserMoney2, d.UserOpenId as UserOpenId2, d.UserPosition as UserPosition2,
+			d.UserLatitude as UserLatitude2, d.UserLongitude as UserLongitude2, d.UserRemark as UserRemark2
+		from dispute a 
+			inner join user b on a.CustomerUserId = b.UserId
+			inner join user c on a.ServiceUserId = c.UserId
+			left join user d on a.DisputeReplyUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="disputeid != null and disputeid != ''">
+					and a.DisputeId = #{disputeid,jdbcType=VARCHAR}
+				</if>
+				<if test="disputestate != null and disputestate != ''">
+					and a.DisputeState = #{disputestate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectdisputecreatestarttime != null and selectdisputecreatestarttime != '' 
+						and selectdisputecreateendtime != null and selectdisputecreateendtime != ''">
+					and a.DisputeCreateTime &gt;= #{selectdisputecreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.DisputeCreateTime &lt;= #{selectdisputecreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectdisputereplystarttime != null and selectdisputereplystarttime != '' 
+						and selectdisputereplyendtime != null and selectdisputereplyendtime != ''">
+					and a.DisputeReplyTime &gt;= #{selectdisputereplystarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.DisputeReplyTime &lt;= #{selectdisputereplyendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<!-- 根据DisputeAndUser实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectTwoTablesCountBySelectData" parameterType="sun.bz1.entity.DisputeAndUser" resultType="java.lang.Integer">
+		select count(*) from dispute a 
+			inner join user b on a.CustomerUserId = b.UserId
+			inner join user c on a.ServiceUserId = c.UserId
+			left join user d on a.DisputeReplyUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="disputeid != null and disputeid != ''">
+					and a.DisputeId = #{disputeid,jdbcType=VARCHAR}
+				</if>
+				<if test="disputestate != null and disputestate != ''">
+					and a.DisputeState = #{disputestate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectdisputecreatestarttime != null and selectdisputecreatestarttime != '' 
+						and selectdisputecreateendtime != null and selectdisputecreateendtime != ''">
+					and a.DisputeCreateTime &gt;= #{selectdisputecreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.DisputeCreateTime &lt;= #{selectdisputecreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectdisputereplystarttime != null and selectdisputereplystarttime != '' 
+						and selectdisputereplyendtime != null and selectdisputereplyendtime != ''">
+					and a.DisputeReplyTime &gt;= #{selectdisputereplystarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.DisputeReplyTime &lt;= #{selectdisputereplyendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="customeruser_username != null and customeruser_username != ''">
+					or b.UserName like CONCAT('%',#{customeruser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="customeruser_userrealname != null and customeruser_userrealname != ''">
+					or b.UserRealName like CONCAT('%',#{customeruser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="customeruser_userphone != null and customeruser_userphone != ''">
+					or b.UserPhone like CONCAT('%',#{customeruser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="serviceuser_username != null and serviceuser_username != ''">
+					or c.UserName like CONCAT('%',#{serviceuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userrealname != null and serviceuser_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{serviceuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userphone != null and serviceuser_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{serviceuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="disputereplyuser_username != null and disputereplyuser_username != ''">
+					or d.UserName like CONCAT('%',#{disputereplyuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="disputereplyuser_userrealname != null and disputereplyuser_userrealname != ''">
+					or d.UserRealName like CONCAT('%',#{disputereplyuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="disputereplyuser_userphone != null and disputereplyuser_userphone != ''">
+					or d.UserPhone like CONCAT('%',#{disputereplyuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据DisputeAndUser实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量 -->
+	<select id="selectTwoTablesBySelectData" parameterType="sun.bz1.entity.DisputeAndUser" resultMap="SeniorResultMap">
+		select a.*, b.*,
+			c.UserName as UserName1, c.UserRealName as UserRealName1, c.UserSex as UserSex1,
+			c.UserPhone as UserPhone1, c.UserCodeId as UserCodeId1, c.UserEmail as UserEmail1,
+			c.UserRole as UserRole1, c.UserState as UserState1, c.UserCredit as UserCredit1, 
+			c.UserMoney as UserMoney1, c.UserOpenId as UserOpenId1, c.UserPosition as UserPosition1,
+			c.UserLatitude as UserLatitude1, c.UserLongitude as UserLongitude1, c.UserRemark as UserRemark1,
+			d.UserName as UserName2, d.UserRealName as UserRealName2, d.UserSex as UserSex2,
+			d.UserPhone as UserPhone2, d.UserCodeId as UserCodeId2, d.UserEmail as UserEmail2,
+			d.UserRole as UserRole2, d.UserState as UserState2, d.UserCredit as UserCredit2, 
+			d.UserMoney as UserMoney2, d.UserOpenId as UserOpenId2, d.UserPosition as UserPosition2,
+			d.UserLatitude as UserLatitude2, d.UserLongitude as UserLongitude2, d.UserRemark as UserRemark2
+		from dispute a 
+			inner join user b on a.CustomerUserId = b.UserId
+			inner join user c on a.ServiceUserId = c.UserId
+			left join user d on a.DisputeReplyUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="disputeid != null and disputeid != ''">
+					and a.DisputeId = #{disputeid,jdbcType=VARCHAR}
+				</if>
+				<if test="disputestate != null and disputestate != ''">
+					and a.DisputeState = #{disputestate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectdisputecreatestarttime != null and selectdisputecreatestarttime != '' 
+						and selectdisputecreateendtime != null and selectdisputecreateendtime != ''">
+					and a.DisputeCreateTime &gt;= #{selectdisputecreatestarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.DisputeCreateTime &lt;= #{selectdisputecreateendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectdisputereplystarttime != null and selectdisputereplystarttime != '' 
+						and selectdisputereplyendtime != null and selectdisputereplyendtime != ''">
+					and a.DisputeReplyTime &gt;= #{selectdisputereplystarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.DisputeReplyTime &lt;= #{selectdisputereplyendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="customeruser_username != null and customeruser_username != ''">
+					or b.UserName like CONCAT('%',#{customeruser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="customeruser_userrealname != null and customeruser_userrealname != ''">
+					or b.UserRealName like CONCAT('%',#{customeruser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="customeruser_userphone != null and customeruser_userphone != ''">
+					or b.UserPhone like CONCAT('%',#{customeruser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="serviceuser_username != null and serviceuser_username != ''">
+					or c.UserName like CONCAT('%',#{serviceuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userrealname != null and serviceuser_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{serviceuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userphone != null and serviceuser_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{serviceuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="disputereplyuser_username != null and disputereplyuser_username != ''">
+					or d.UserName like CONCAT('%',#{disputereplyuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="disputereplyuser_userrealname != null and disputereplyuser_userrealname != ''">
+					or d.UserRealName like CONCAT('%',#{disputereplyuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="disputereplyuser_userphone != null and disputereplyuser_userphone != ''">
+					or d.UserPhone like CONCAT('%',#{disputereplyuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+</mapper>

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.PropertyCompany">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.PropertyCompany">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="PropertyCompanyId" jdbcType="VARCHAR" property="propertycompanyid" />
+    <result column="PropertyCompanyName" jdbcType="VARCHAR" property="propertycompanyname" />
+    <result column="PropertyCompanyState" jdbcType="VARCHAR" property="propertycompanystate" />
+    <result column="PropertyCompanyCreateUserId" jdbcType="VARCHAR" property="propertycompanycreateuserid" />
+    <result column="PropertyCompanyCreateTime" jdbcType="TIMESTAMP" property="propertycompanycreatetime" />
+    <result column="PropertyCompanyUpdateUserId" jdbcType="VARCHAR" property="propertycompanyupdateuserid" />
+    <result column="PropertyCompanyUpdateTime" jdbcType="TIMESTAMP" property="propertycompanyupdatetime" />
+    <result column="PropertyCompanyRemark" jdbcType="VARCHAR" property="propertycompanyremark" />
+    <result column="PropertyCompanyOther1" jdbcType="VARCHAR" property="propertycompanyother1" />
+    <result column="PropertyCompanyOther2" jdbcType="VARCHAR" property="propertycompanyother2" />
+    <result column="PropertyCompanyOther3" jdbcType="VARCHAR" property="propertycompanyother3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PropertyCompanyId, PropertyCompanyName, PropertyCompanyState, PropertyCompanyCreateUserId, 
+    PropertyCompanyCreateTime, PropertyCompanyUpdateUserId, PropertyCompanyUpdateTime, 
+    PropertyCompanyRemark, PropertyCompanyOther1, PropertyCompanyOther2, PropertyCompanyOther3
+  </sql>
+  <insert id="insert" parameterType="sun.bz1.entity.PropertyCompany">
+    insert into property_company (ID, PropertyCompanyId, PropertyCompanyName,
+    PropertyCompanyState, PropertyCompanyCreateUserId,
+    PropertyCompanyCreateTime, PropertyCompanyUpdateUserId,
+    PropertyCompanyUpdateTime, PropertyCompanyRemark,
+    PropertyCompanyOther1, PropertyCompanyOther2,
+    PropertyCompanyOther3)
+    values (#{id,jdbcType=INTEGER}, #{propertycompanyid,jdbcType=VARCHAR}, #{propertycompanyname,jdbcType=VARCHAR},
+    #{propertycompanystate,jdbcType=VARCHAR}, #{propertycompanycreateuserid,jdbcType=VARCHAR},
+    #{propertycompanycreatetime,jdbcType=TIMESTAMP}, #{propertycompanyupdateuserid,jdbcType=VARCHAR},
+    #{propertycompanyupdatetime,jdbcType=TIMESTAMP}, #{propertycompanyremark,jdbcType=VARCHAR},
+    #{propertycompanyother1,jdbcType=VARCHAR}, #{propertycompanyother2,jdbcType=VARCHAR},
+    #{propertycompanyother3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sun.bz1.entity.PropertyCompany">
+    insert into property_company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="propertycompanyid != null">
+        PropertyCompanyId,
+      </if>
+      <if test="propertycompanyname != null">
+        PropertyCompanyName,
+      </if>
+      <if test="propertycompanystate != null">
+        PropertyCompanyState,
+      </if>
+      <if test="propertycompanycreateuserid != null">
+        PropertyCompanyCreateUserId,
+      </if>
+      <if test="propertycompanycreatetime != null">
+        PropertyCompanyCreateTime,
+      </if>
+      <if test="propertycompanyupdateuserid != null">
+        PropertyCompanyUpdateUserId,
+      </if>
+      <if test="propertycompanyupdatetime != null">
+        PropertyCompanyUpdateTime,
+      </if>
+      <if test="propertycompanyremark != null">
+        PropertyCompanyRemark,
+      </if>
+      <if test="propertycompanyother1 != null">
+        PropertyCompanyOther1,
+      </if>
+      <if test="propertycompanyother2 != null">
+        PropertyCompanyOther2,
+      </if>
+      <if test="propertycompanyother3 != null">
+        PropertyCompanyOther3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="propertycompanyid != null">
+        #{propertycompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyname != null">
+        #{propertycompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanystate != null">
+        #{propertycompanystate,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanycreateuserid != null">
+        #{propertycompanycreateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanycreatetime != null">
+        #{propertycompanycreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertycompanyupdateuserid != null">
+        #{propertycompanyupdateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyupdatetime != null">
+        #{propertycompanyupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertycompanyremark != null">
+        #{propertycompanyremark,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyother1 != null">
+        #{propertycompanyother1,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyother2 != null">
+        #{propertycompanyother2,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyother3 != null">
+        #{propertycompanyother3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.PropertyCompany">
+    update property_company
+    <set>
+      <if test="propertycompanyid != null">
+        PropertyCompanyId = #{propertycompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyname != null">
+        PropertyCompanyName = #{propertycompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanystate != null">
+        PropertyCompanyState = #{propertycompanystate,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanycreateuserid != null">
+        PropertyCompanyCreateUserId = #{propertycompanycreateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanycreatetime != null">
+        PropertyCompanyCreateTime = #{propertycompanycreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertycompanyupdateuserid != null">
+        PropertyCompanyUpdateUserId = #{propertycompanyupdateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyupdatetime != null">
+        PropertyCompanyUpdateTime = #{propertycompanyupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertycompanyremark != null">
+        PropertyCompanyRemark = #{propertycompanyremark,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyother1 != null">
+        PropertyCompanyOther1 = #{propertycompanyother1,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyother2 != null">
+        PropertyCompanyOther2 = #{propertycompanyother2,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyother3 != null">
+        PropertyCompanyOther3 = #{propertycompanyother3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.PropertyCompany">
+    update property_company
+    set PropertyCompanyId = #{propertycompanyid,jdbcType=VARCHAR},
+    PropertyCompanyName = #{propertycompanyname,jdbcType=VARCHAR},
+    PropertyCompanyState = #{propertycompanystate,jdbcType=VARCHAR},
+    PropertyCompanyCreateUserId = #{propertycompanycreateuserid,jdbcType=VARCHAR},
+    PropertyCompanyCreateTime = #{propertycompanycreatetime,jdbcType=TIMESTAMP},
+    PropertyCompanyUpdateUserId = #{propertycompanyupdateuserid,jdbcType=VARCHAR},
+    PropertyCompanyUpdateTime = #{propertycompanyupdatetime,jdbcType=TIMESTAMP},
+    PropertyCompanyRemark = #{propertycompanyremark,jdbcType=VARCHAR},
+    PropertyCompanyOther1 = #{propertycompanyother1,jdbcType=VARCHAR},
+    PropertyCompanyOther2 = #{propertycompanyother2,jdbcType=VARCHAR},
+    PropertyCompanyOther3 = #{propertycompanyother3,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from property_company
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from property_company
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 根据PropertyCompany实体添加 -->
+  <insert id="insertByPropertyCompany" parameterType="sun.bz1.entity.PropertyCompany">
+    insert into property_company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="propertycompanyid != null">
+        PropertyCompanyId,
+      </if>
+      <if test="propertycompanyname != null">
+        PropertyCompanyName,
+      </if>
+      <if test="propertycompanystate != null">
+        PropertyCompanyState,
+      </if>
+      <if test="propertycompanycreateuserid != null">
+        PropertyCompanyCreateUserId,
+      </if>
+      <if test="propertycompanycreatetime != null">
+        PropertyCompanyCreateTime,
+      </if>
+      <if test="propertycompanyupdateuserid != null">
+        PropertyCompanyUpdateUserId,
+      </if>
+      <if test="propertycompanyupdatetime != null">
+        PropertyCompanyUpdateTime,
+      </if>
+      <if test="propertycompanyremark != null">
+        PropertyCompanyRemark,
+      </if>
+      <if test="propertycompanyother1 != null">
+        PropertyCompanyOther1,
+      </if>
+      <if test="propertycompanyother2 != null">
+        PropertyCompanyOther2,
+      </if>
+      <if test="propertycompanyother3 != null">
+        PropertyCompanyOther3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="propertycompanyid != null">
+        #{propertycompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyname != null">
+        #{propertycompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanystate != null">
+        #{propertycompanystate,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanycreateuserid != null">
+        #{propertycompanycreateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanycreatetime != null">
+        #{propertycompanycreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertycompanyupdateuserid != null">
+        #{propertycompanyupdateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyupdatetime != null">
+        #{propertycompanyupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertycompanyremark != null">
+        #{propertycompanyremark,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyother1 != null">
+        #{propertycompanyother1,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyother2 != null">
+        #{propertycompanyother2,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyother3 != null">
+        #{propertycompanyother3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 根据PropertyCompany实体更新 -->
+  <update id="updateByPropertyCompany" parameterType="sun.bz1.entity.PropertyCompany">
+    update property_company
+    <set>
+      <if test="propertycompanyid != null">
+        PropertyCompanyId = #{propertycompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyname != null">
+        PropertyCompanyName = #{propertycompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanystate != null">
+        PropertyCompanyState = #{propertycompanystate,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanycreateuserid != null">
+        PropertyCompanyCreateUserId = #{propertycompanycreateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanycreatetime != null">
+        PropertyCompanyCreateTime = #{propertycompanycreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertycompanyupdateuserid != null">
+        PropertyCompanyUpdateUserId = #{propertycompanyupdateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyupdatetime != null">
+        PropertyCompanyUpdateTime = #{propertycompanyupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertycompanyremark != null">
+        PropertyCompanyRemark = #{propertycompanyremark,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyother1 != null">
+        PropertyCompanyOther1 = #{propertycompanyother1,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyother2 != null">
+        PropertyCompanyOther2 = #{propertycompanyother2,jdbcType=VARCHAR},
+      </if>
+      <if test="propertycompanyother3 != null">
+        PropertyCompanyOther3 = #{propertycompanyother3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="propertycompanyid != null and propertycompanyid != ''">
+          and PropertyCompanyId = #{propertycompanyid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+
+  <!-- 根据PropertyCompany实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByPropertyCompany" parameterType="sun.bz1.entity.PropertyCompany" resultType="java.lang.Integer">
+    select count(*) from property_company
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="propertycompanyid != null and propertycompanyid != ''">
+          and PropertyCompanyId = #{propertycompanyid,jdbcType=VARCHAR}
+        </if>
+        <if test="propertycompanystate != null and propertycompanystate != ''">
+          and PropertyCompanyState = #{propertycompanystate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据PropertyCompany实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量  -->
+  <select id="selectByPropertyCompany" parameterType="sun.bz1.entity.PropertyCompany" resultMap="BaseResultMap">
+    select * from property_company
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="propertycompanyid != null and propertycompanyid != ''">
+          and PropertyCompanyId = #{propertycompanyid,jdbcType=VARCHAR}
+        </if>
+        <if test="propertycompanystate != null and propertycompanystate != ''">
+          and PropertyCompanyState = #{propertycompanystate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+  <!-- 根据PropertyCompany实体模糊查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountBySelectData" parameterType="sun.bz1.entity.PropertyCompany" resultType="java.lang.Integer">
+    select count(*) from property_company
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="propertycompanyid != null and propertycompanyid != ''">
+          and PropertyCompanyId = #{propertycompanyid,jdbcType=VARCHAR}
+        </if>
+        <if test="propertycompanyname != null and propertycompanyname != ''">
+          and PropertyCompanyName like CONCAT('%',#{propertycompanyname,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="propertycompanystate != null and propertycompanystate != ''">
+          and PropertyCompanyState = #{propertycompanystate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据PropertyCompany实体模糊查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量  -->
+  <select id="selectBySelectData" parameterType="sun.bz1.entity.PropertyCompany" resultMap="BaseResultMap">
+    select * from property_company
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="propertycompanyid != null and propertycompanyid != ''">
+          and PropertyCompanyId = #{propertycompanyid,jdbcType=VARCHAR}
+        </if>
+        <if test="propertycompanyname != null and propertycompanyname != ''">
+          and PropertyCompanyName like CONCAT('%',#{propertycompanyname,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="propertycompanystate != null and propertycompanystate != ''">
+          and PropertyCompanyState = #{propertycompanystate,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+</mapper>

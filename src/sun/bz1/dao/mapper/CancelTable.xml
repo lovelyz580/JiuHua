@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 客户取消维修单表(客户取消维修单时在该表中添加数据) -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.CancelTable">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.CancelTable">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="CancelId" jdbcType="VARCHAR" property="cancelid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="CancelContent" jdbcType="VARCHAR" property="cancelcontent" />
+		<result column="CancelState" jdbcType="VARCHAR" property="cancelstate" />
+		<result column="CancelHappenedMoney" jdbcType="DOUBLE" property="cancelhappenedmoney" />
+		<result column="CancelDefaultMoney" jdbcType="DOUBLE" property="canceldefaultmoney" />
+		<result column="CancelUserId" jdbcType="VARCHAR" property="canceluserid" />
+		<result column="CancelTime" jdbcType="TIMESTAMP" property="canceltime" />
+		<result column="CancelRemark" jdbcType="VARCHAR" property="cancelremark" />
+	</resultMap>
+
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.CancelTableAndOrderTableAndUser">
+		<!-- 客户取消维修单表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="CancelId" jdbcType="VARCHAR" property="cancelid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="CancelContent" jdbcType="VARCHAR" property="cancelcontent" />
+		<result column="CancelState" jdbcType="VARCHAR" property="cancelstate" />
+		<result column="CancelHappenedMoney" jdbcType="DOUBLE" property="cancelhappenedmoney" />
+		<result column="CancelDefaultMoney" jdbcType="DOUBLE" property="canceldefaultmoney" />
+		<result column="CancelUserId" jdbcType="VARCHAR" property="canceluserid" />
+		<result column="CancelTime" jdbcType="TIMESTAMP" property="canceltime" />
+		<result column="CancelRemark" jdbcType="VARCHAR" property="cancelremark" />
+
+		<!-- 维修单表 -->
+		<result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+		<result column="OrderContactPerson" jdbcType="VARCHAR" property="ordercontactperson" />
+		<result column="OrderContactPhone" jdbcType="VARCHAR" property="ordercontactphone" />
+		<result column="OrderAddress" jdbcType="VARCHAR" property="orderaddress" />
+		<result column="BuildingTypeId" jdbcType="VARCHAR" property="buildingtypeid" />
+		<result column="OrderPlanTime" jdbcType="TIMESTAMP" property="orderplantime" />
+		<result column="OrderBiddingEndTime" jdbcType="TIMESTAMP" property="orderbiddingendtime" />
+		<result column="OrderProjectType" jdbcType="VARCHAR" property="orderprojecttype" />
+		<result column="OrderPosition" jdbcType="VARCHAR" property="orderposition" />
+		<result column="OrderLatitude" jdbcType="DOUBLE" property="orderlatitude" />
+		<result column="OrderLongitude" jdbcType="DOUBLE" property="orderlongitude" />
+		<result column="OrderDistance" jdbcType="DOUBLE" property="orderdistance" />
+		<result column="OrderInterceptTotalMoney" jdbcType="DOUBLE" property="orderintercepttotalmoney" />
+		<result column="OrderInterceptTravelTotalMoney" jdbcType="DOUBLE" property="orderintercepttraveltotalmoney" />
+		<result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+		<result column="OrderTravelTotalMoney" jdbcType="DOUBLE" property="ordertraveltotalmoney" />
+		<result column="OrderType" jdbcType="VARCHAR" property="ordertype" />
+		<result column="OrderState" jdbcType="VARCHAR" property="orderstate" />
+		<result column="OrderServiceUserId" jdbcType="VARCHAR" property="orderserviceuserid" />
+		<result column="OrderCreateUserId" jdbcType="VARCHAR" property="ordercreateuserid" />
+		<result column="OrderCreateTime" jdbcType="TIMESTAMP" property="ordercreatetime" />
+		<result column="OrderUpdateUserId" jdbcType="VARCHAR" property="orderupdateuserid" />
+		<result column="OrderUpdateTime" jdbcType="TIMESTAMP" property="orderupdatetime" />
+		<result column="OrderApplyCheckUserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+		<result column="OrderApplyCheckTime" jdbcType="TIMESTAMP" property="orderapplychecktime" />
+		<result column="OrderRemark" jdbcType="VARCHAR" property="orderremark" />
+		<result column="OrderCheckAllState" jdbcType="VARCHAR" property="ordercheckallstate" />
+
+		<!-- 维修取消人员(用户表) -->
+		<result column="UserName" jdbcType="VARCHAR" property="username" />
+		<result column="UserPassword" jdbcType="VARCHAR" property="userpassword" />
+		<result column="UserSalt" jdbcType="VARCHAR" property="usersalt" />
+		<result column="UserEncryptPassword" jdbcType="VARCHAR" property="userencryptpassword" />
+		<result column="UserRealName" jdbcType="VARCHAR" property="userrealname" />
+		<result column="UserSex" jdbcType="VARCHAR" property="usersex" />
+		<result column="UserPhone" jdbcType="VARCHAR" property="userphone" />
+		<result column="UserCodeId" jdbcType="VARCHAR" property="usercodeid" />
+		<result column="UserEmail" jdbcType="VARCHAR" property="useremail" />
+		<result column="UserRole" jdbcType="VARCHAR" property="userrole" />
+		<result column="UserState" jdbcType="VARCHAR" property="userstate" />
+		<result column="UserCredit" jdbcType="DOUBLE" property="usercredit" />
+		<result column="UserMoney" jdbcType="DOUBLE" property="usermoney" />
+		<result column="UserSMS" jdbcType="VARCHAR" property="usersms" />
+		<result column="UserSMSTime" jdbcType="TIMESTAMP" property="usersmstime" />
+		<result column="UserOpenId" jdbcType="VARCHAR" property="useropenid" />
+		<result column="UserPosition" jdbcType="VARCHAR" property="userposition" />
+		<result column="UserLatitude" jdbcType="DOUBLE" property="userlatitude" />
+		<result column="UserLongitude" jdbcType="DOUBLE" property="userlongitude" />
+		<result column="UserCreateUserId" jdbcType="VARCHAR" property="usercreateuserid" />
+		<result column="UserCreateTime" jdbcType="TIMESTAMP" property="usercreatetime" />
+		<result column="UserUpdateUserId" jdbcType="VARCHAR" property="userupdateuserid" />
+		<result column="UserUpdateTime" jdbcType="TIMESTAMP" property="userupdatetime" />
+		<result column="UserRemark" jdbcType="VARCHAR" property="userremark" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		ID, CancelId, OrderId, CancelContent, CancelState, CancelHappenedMoney,
+		CancelDefaultMoney, CancelUserId, CancelTime, CancelRemark
+	</sql>
+
+	<insert id="insert" parameterType="sun.bz1.entity.CancelTable">
+		insert into cancel_table (ID, CancelId, OrderId, CancelContent, CancelState, 
+		CancelHappenedMoney, CancelDefaultMoney, CancelUserId, CancelTime, CancelRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{cancelid,jdbcType=VARCHAR},
+		#{orderid,jdbcType=VARCHAR},
+		#{cancelcontent,jdbcType=VARCHAR}, 
+		#{cancelstate,jdbcType=VARCHAR},
+		#{cancelhappenedmoney,jdbcType=DOUBLE},
+		#{canceldefaultmoney,jdbcType=DOUBLE},
+		#{canceluserid,jdbcType=VARCHAR}, 
+		#{canceltime,jdbcType=TIMESTAMP},
+		#{cancelremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.CancelTable">
+		insert into cancel_table
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="cancelid != null">
+				CancelId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="cancelcontent != null">
+				CancelContent,
+			</if>
+			<if test="cancelstate != null">
+				CancelState,
+			</if>
+			<if test="cancelhappenedmoney != null">
+				CancelHappenedMoney,
+			</if>
+			<if test="canceldefaultmoney != null">
+				CancelDefaultMoney,
+			</if>
+			<if test="canceluserid != null">
+				CancelUserId,
+			</if>
+			<if test="canceltime != null">
+				CancelTime,
+			</if>
+			<if test="cancelremark != null">
+				CancelRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="cancelid != null">
+				#{cancelid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelcontent != null">
+				#{cancelcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelstate != null">
+				#{cancelstate,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelhappenedmoney != null">
+				#{cancelhappenedmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="canceldefaultmoney != null">
+				#{canceldefaultmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="canceluserid != null">
+				#{canceluserid,jdbcType=VARCHAR},
+			</if>
+			<if test="canceltime != null">
+				#{canceltime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cancelremark != null">
+				#{cancelremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.CancelTable">
+		update cancel_table
+		<set>
+			<if test="cancelid != null">
+				CancelId = #{cancelid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelcontent != null">
+				CancelContent = #{cancelcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelstate != null">
+				CancelState = #{cancelstate,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelhappenedmoney != null">
+				CancelHappenedMoney = #{cancelhappenedmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="canceldefaultmoney != null">
+				CancelDefaultMoney = #{canceldefaultmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="canceluserid != null">
+				CancelUserId = #{canceluserid,jdbcType=VARCHAR},
+			</if>
+			<if test="canceltime != null">
+				CancelTime = #{canceltime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cancelremark != null">
+				CancelRemark = #{cancelremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.CancelTable">
+		update cancel_table
+		set CancelId = #{cancelid,jdbcType=VARCHAR},
+		OrderId = #{orderid,jdbcType=VARCHAR},
+		CancelContent = #{cancelcontent,jdbcType=VARCHAR},
+		CancelState = #{cancelstate,jdbcType=VARCHAR},
+		CancelHappenedMoney = #{cancelhappenedmoney,jdbcType=DOUBLE},
+		CancelDefaultMoney = #{canceldefaultmoney,jdbcType=DOUBLE},
+		CancelUserId = #{canceluserid,jdbcType=VARCHAR},
+		CancelTime = #{canceltime,jdbcType=TIMESTAMP},
+		CancelRemark = #{cancelremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from cancel_table
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from cancel_table
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from cancel_table
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<!-- 根据CancelTable实体添加 -->
+	<insert id="insertByCancelTable" parameterType="sun.bz1.entity.CancelTable">
+		insert into cancel_table
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="cancelid != null">
+				CancelId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="cancelcontent != null">
+				CancelContent,
+			</if>
+			<if test="cancelstate != null">
+				CancelState,
+			</if>
+			<if test="cancelhappenedmoney != null">
+				CancelHappenedMoney,
+			</if>
+			<if test="canceldefaultmoney != null">
+				CancelDefaultMoney,
+			</if>
+			<if test="canceluserid != null">
+				CancelUserId,
+			</if>
+			<if test="canceltime != null">
+				CancelTime,
+			</if>
+			<if test="cancelremark != null">
+				CancelRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="cancelid != null">
+				#{cancelid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelcontent != null">
+				#{cancelcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelstate != null">
+				#{cancelstate,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelhappenedmoney != null">
+				#{cancelhappenedmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="canceldefaultmoney != null">
+				#{canceldefaultmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="canceluserid != null">
+				#{canceluserid,jdbcType=VARCHAR},
+			</if>
+			<if test="canceltime != null">
+				#{canceltime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cancelremark != null">
+				#{cancelremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 根据CancelTable实体更新 -->
+	<update id="updateByCancelTable" parameterType="sun.bz1.entity.CancelTable">
+		update cancel_table
+		<set>
+			<if test="cancelid != null">
+				CancelId = #{cancelid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelcontent != null">
+				CancelContent = #{cancelcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelstate != null">
+				CancelState = #{cancelstate,jdbcType=VARCHAR},
+			</if>
+			<if test="cancelhappenedmoney != null">
+				CancelHappenedMoney = #{cancelhappenedmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="canceldefaultmoney != null">
+				CancelDefaultMoney = #{canceldefaultmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="canceluserid != null">
+				CancelUserId = #{canceluserid,jdbcType=VARCHAR},
+			</if>
+			<if test="canceltime != null">
+				CancelTime = #{canceltime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cancelremark != null">
+				CancelRemark = #{cancelremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="cancelid != null and cancelid != ''">
+					and CancelId = #{cancelid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+
+	<!-- 根据CancelTableAndOrderTableAndUser实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountByUnionData" parameterType="sun.bz1.entity.CancelTableAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from cancel_table a
+		inner join order_table b on a.OrderId = b.OrderId
+		INNER JOIN user c on a.CancelUserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="cancelid != null and cancelid != ''">
+					and a.CancelId = #{cancelid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="canceluserid != null and canceluserid != ''">
+					and a.CancelUserId = #{canceluserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectcancelstarttime != null and selectcancelstarttime != '' 
+						and selectcancelendtime != null and selectcancelendtime != ''">
+					and a.CancelTime &gt;= #{selectcancelstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.CancelTime &lt;= #{selectcancelendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userrole != null and userrole != ''">
+					and c.UserRole = #{userrole,jdbcType=VARCHAR}
+				</if>
+				<if test="userstate != null and userstate != ''">
+					and c.UserState = #{userstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据sun.bz1.entity.CancelTableAndOrderTableAndUser实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量 -->
+	<select id="selectThreeTablesByUnionData" parameterType="sun.bz1.entity.CancelTableAndOrderTableAndUser" resultType="java.lang.Integer">
+		select * from cancel_table a
+		inner join order_table b on a.OrderId = b.OrderId
+		INNER JOIN user c on a.CancelUserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="cancelid != null and cancelid != ''">
+					and a.CancelId = #{cancelid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="canceluserid != null and canceluserid != ''">
+					and a.CancelUserId = #{canceluserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectcancelstarttime != null and selectcancelstarttime != '' 
+						and selectcancelendtime != null and selectcancelendtime != ''">
+					and a.CancelTime &gt;= #{selectcancelstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.CancelTime &lt;= #{selectcancelendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userrole != null and userrole != ''">
+					and c.UserRole = #{userrole,jdbcType=VARCHAR}
+				</if>
+				<if test="userstate != null and userstate != ''">
+					and c.UserState = #{userstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<!-- 根据CancelTableAndOrderTableAndUser实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountBySelectData" parameterType="sun.bz1.entity.CancelTableAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from cancel_table a
+		inner join order_table b on a.OrderId = b.OrderId
+		INNER JOIN user c on a.CancelUserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="cancelid != null and cancelid != ''">
+					and a.CancelId = #{cancelid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="canceluserid != null and canceluserid != ''">
+					and a.CancelUserId = #{canceluserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectcancelstarttime != null and selectcancelstarttime != '' 
+						and selectcancelendtime != null and selectcancelendtime != ''">
+					and a.CancelTime &gt;= #{selectcancelstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.CancelTime &lt;= #{selectcancelendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="username != null and username != ''">
+					or c.UserName like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userrealname != null">
+					or c.UserRealName like CONCAT('%',#{userrealname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userphone != null">
+					or c.UserPhone like CONCAT('%',#{userphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userrole != null and userrole != ''">
+					and c.UserRole = #{userrole,jdbcType=VARCHAR}
+				</if>
+				<if test="userstate != null and userstate != ''">
+					and c.UserState = #{userstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据CancelTableAndOrderTableAndUser实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量 -->
+	<select id="selectThreeTablesBySelectData" parameterType="sun.bz1.entity.CancelTableAndOrderTableAndUser" resultType="java.lang.Integer">
+		select * from cancel_table a
+		inner join order_table b on a.OrderId = b.OrderId
+		INNER JOIN user c on a.CancelUserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="cancelid != null and cancelid != ''">
+					and a.CancelId = #{cancelid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="canceluserid != null and canceluserid != ''">
+					and a.CancelUserId = #{canceluserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectcancelstarttime != null and selectcancelstarttime != '' 
+						and selectcancelendtime != null and selectcancelendtime != ''">
+					and a.CancelTime &gt;= #{selectcancelstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.CancelTime &lt;= #{selectcancelendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="username != null and username != ''">
+					or c.UserName like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userrealname != null">
+					or c.UserRealName like CONCAT('%',#{userrealname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userphone != null">
+					or c.UserPhone like CONCAT('%',#{userphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="userrole != null and userrole != ''">
+					and c.UserRole = #{userrole,jdbcType=VARCHAR}
+				</if>
+				<if test="userstate != null and userstate != ''">
+					and c.UserState = #{userstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<!-- 根据CancelTable实体删除 -->
+	<delete id="deleteByCancelTable" parameterType="sun.bz1.entity.CancelTable">
+		delete from cancel_table
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="cancelid != null and cancelid != ''">
+					and CancelId = #{cancelid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+
+</mapper>

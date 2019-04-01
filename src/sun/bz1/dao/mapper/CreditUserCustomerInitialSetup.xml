@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 信用值_用户_客户_初始值_设置表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.CreditUserCustomerInitialSetup">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.CreditUserCustomerInitialSetup">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="CreditUserCustomerRealName" jdbcType="INTEGER" property="creditusercustomerrealname" />
+		<result column="CreditUserCustomerSex" jdbcType="INTEGER" property="creditusercustomersex" />
+		<result column="CreditUserCustomerPhone" jdbcType="INTEGER" property="creditusercustomerphone" />
+		<result column="CreditUserCustomerCodeId" jdbcType="INTEGER" property="creditusercustomercodeid" />
+		<result column="CreditUserCustomerEmail" jdbcType="INTEGER" property="creditusercustomeremail" />
+		<result column="CreditUserCustomerCity" jdbcType="INTEGER" property="creditusercustomercity" />
+		<result column="CreditUserCustomerCompany" jdbcType="INTEGER" property="creditusercustomercompany" />
+		<result column="CreditUserCustomerOrganization" jdbcType="INTEGER" property="creditusercustomerorganization" />
+		<result column="CreditUserCustomerAddress" jdbcType="INTEGER" property="creditusercustomeraddress" />
+		<result column="CreditUserCustomerUpdateUserId" jdbcType="VARCHAR" property="creditusercustomerupdateuserid" />
+		<result column="CreditUserCustomerUpdateTime" jdbcType="TIMESTAMP" property="creditusercustomerupdatetime" />
+		<result column="CreditUserCustomerRemark" jdbcType="VARCHAR" property="creditusercustomerremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, CreditUserCustomerRealName, CreditUserCustomerSex, CreditUserCustomerPhone, 
+		CreditUserCustomerCodeId, CreditUserCustomerEmail, CreditUserCustomerCity, 
+		CreditUserCustomerCompany, CreditUserCustomerOrganization, CreditUserCustomerAddress, 
+		CreditUserCustomerUpdateUserId, CreditUserCustomerUpdateTime, CreditUserCustomerRemark
+	</sql>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.CreditUserCustomerInitialSetup">
+		update credit_user_customer_initial_setup
+		<set>
+			<if test="creditusercustomerrealname != null">
+				CreditUserCustomerRealName = #{creditusercustomerrealname,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomersex != null">
+				CreditUserCustomerSex = #{creditusercustomersex,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomerphone != null">
+				CreditUserCustomerPhone = #{creditusercustomerphone,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomercodeid != null">
+				CreditUserCustomerCodeId = #{creditusercustomercodeid,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomeremail != null">
+				CreditUserCustomerEmail = #{creditusercustomeremail,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomercity != null">
+				CreditUserCustomerCity = #{creditusercustomercity,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomercompany != null">
+				CreditUserCustomerCompany = #{creditusercustomercompany,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomerorganization != null">
+				CreditUserCustomerOrganization = #{creditusercustomerorganization,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomeraddress != null">
+				CreditUserCustomerAddress = #{creditusercustomeraddress,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomerupdateuserid != null">
+				CreditUserCustomerUpdateUserId = #{creditusercustomerupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="creditusercustomerupdatetime != null">
+				CreditUserCustomerUpdateTime = #{creditusercustomerupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="creditusercustomerremark != null">
+				CreditUserCustomerRemark = #{creditusercustomerremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.CreditUserCustomerInitialSetup">
+		update credit_user_customer_initial_setup
+		set CreditUserCustomerRealName = #{creditusercustomerrealname,jdbcType=INTEGER},
+		CreditUserCustomerSex = #{creditusercustomersex,jdbcType=INTEGER},
+		CreditUserCustomerPhone = #{creditusercustomerphone,jdbcType=INTEGER},
+		CreditUserCustomerCodeId = #{creditusercustomercodeid,jdbcType=INTEGER},
+		CreditUserCustomerEmail = #{creditusercustomeremail,jdbcType=INTEGER},
+		CreditUserCustomerCity = #{creditusercustomercity,jdbcType=INTEGER},
+		CreditUserCustomerCompany = #{creditusercustomercompany,jdbcType=INTEGER},
+		CreditUserCustomerOrganization = #{creditusercustomerorganization,jdbcType=INTEGER},
+		CreditUserCustomerAddress = #{creditusercustomeraddress,jdbcType=INTEGER},
+		CreditUserCustomerUpdateUserId = #{creditusercustomerupdateuserid,jdbcType=VARCHAR},
+		CreditUserCustomerUpdateTime = #{creditusercustomerupdatetime,jdbcType=TIMESTAMP},
+		CreditUserCustomerRemark = #{creditusercustomerremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from credit_user_customer_initial_setup
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from credit_user_customer_initial_setup
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据CreditUserCustomerInitialSetup实体更新 -->
+	<update id="updateBySetup" parameterType="sun.bz1.entity.CreditUserCustomerInitialSetup">
+		update credit_user_customer_initial_setup
+		<set>
+			<if test="creditusercustomerrealname != null">
+				CreditUserCustomerRealName = #{creditusercustomerrealname,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomersex != null">
+				CreditUserCustomerSex = #{creditusercustomersex,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomerphone != null">
+				CreditUserCustomerPhone = #{creditusercustomerphone,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomercodeid != null">
+				CreditUserCustomerCodeId = #{creditusercustomercodeid,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomeremail != null">
+				CreditUserCustomerEmail = #{creditusercustomeremail,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomercity != null">
+				CreditUserCustomerCity = #{creditusercustomercity,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomercompany != null">
+				CreditUserCustomerCompany = #{creditusercustomercompany,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomerorganization != null">
+				CreditUserCustomerOrganization = #{creditusercustomerorganization,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomeraddress != null">
+				CreditUserCustomerAddress = #{creditusercustomeraddress,jdbcType=INTEGER},
+			</if>
+			<if test="creditusercustomerupdateuserid != null">
+				CreditUserCustomerUpdateUserId = #{creditusercustomerupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="creditusercustomerupdatetime != null">
+				CreditUserCustomerUpdateTime = #{creditusercustomerupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="creditusercustomerremark != null">
+				CreditUserCustomerRemark = #{creditusercustomerremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据CreditUserCustomerInitialSetup实体查询 -->
+	<select id="selectBySetup" parameterType="sun.bz1.entity.CreditUserCustomerInitialSetup" resultMap="BaseResultMap">
+		select * from credit_user_customer_initial_setup
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+</mapper>

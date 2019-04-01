@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.DispatchMode">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.DispatchMode">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="DispatchMode" jdbcType="VARCHAR" property="dispatchmode" />
+    <result column="DispatchModeUserId" jdbcType="VARCHAR" property="dispatchmodeuserid" />
+    <result column="DispatchModeUpdateTime" jdbcType="TIMESTAMP" property="dispatchmodeupdatetime" />
+    <result column="DispatchModeRemark" jdbcType="VARCHAR" property="dispatchmoderemark" />
+    <result column="DispatchModeOther1" jdbcType="VARCHAR" property="dispatchmodeother1" />
+    <result column="DispatchModeOther2" jdbcType="VARCHAR" property="dispatchmodeother2" />
+    <result column="DispatchModeOther3" jdbcType="VARCHAR" property="dispatchmodeother3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, DispatchMode, DispatchModeUserId, DispatchModeUpdateTime, DispatchModeRemark, 
+    DispatchModeOther1, DispatchModeOther2, DispatchModeOther3
+  </sql>
+
+  <insert id="insert" parameterType="sun.bz1.entity.DispatchMode">
+    insert into dispatch_mode (ID, DispatchMode, DispatchModeUserId,
+    DispatchModeUpdateTime, DispatchModeRemark,
+    DispatchModeOther1, DispatchModeOther2,
+    DispatchModeOther3)
+    values (#{id,jdbcType=INTEGER}, #{dispatchmode,jdbcType=VARCHAR}, #{dispatchmodeuserid,jdbcType=VARCHAR},
+    #{dispatchmodeupdatetime,jdbcType=TIMESTAMP}, #{dispatchmoderemark,jdbcType=VARCHAR},
+    #{dispatchmodeother1,jdbcType=VARCHAR}, #{dispatchmodeother2,jdbcType=VARCHAR},
+    #{dispatchmodeother3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sun.bz1.entity.DispatchMode">
+    insert into dispatch_mode
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="dispatchmode != null">
+        DispatchMode,
+      </if>
+      <if test="dispatchmodeuserid != null">
+        DispatchModeUserId,
+      </if>
+      <if test="dispatchmodeupdatetime != null">
+        DispatchModeUpdateTime,
+      </if>
+      <if test="dispatchmoderemark != null">
+        DispatchModeRemark,
+      </if>
+      <if test="dispatchmodeother1 != null">
+        DispatchModeOther1,
+      </if>
+      <if test="dispatchmodeother2 != null">
+        DispatchModeOther2,
+      </if>
+      <if test="dispatchmodeother3 != null">
+        DispatchModeOther3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dispatchmode != null">
+        #{dispatchmode,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeuserid != null">
+        #{dispatchmodeuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeupdatetime != null">
+        #{dispatchmodeupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dispatchmoderemark != null">
+        #{dispatchmoderemark,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeother1 != null">
+        #{dispatchmodeother1,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeother2 != null">
+        #{dispatchmodeother2,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeother3 != null">
+        #{dispatchmodeother3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.DispatchMode">
+    update dispatch_mode
+    <set>
+      <if test="dispatchmode != null">
+        DispatchMode = #{dispatchmode,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeuserid != null">
+        DispatchModeUserId = #{dispatchmodeuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeupdatetime != null">
+        DispatchModeUpdateTime = #{dispatchmodeupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dispatchmoderemark != null">
+        DispatchModeRemark = #{dispatchmoderemark,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeother1 != null">
+        DispatchModeOther1 = #{dispatchmodeother1,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeother2 != null">
+        DispatchModeOther2 = #{dispatchmodeother2,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeother3 != null">
+        DispatchModeOther3 = #{dispatchmodeother3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.DispatchMode">
+    update dispatch_mode
+    set DispatchMode = #{dispatchmode,jdbcType=VARCHAR},
+    DispatchModeUserId = #{dispatchmodeuserid,jdbcType=VARCHAR},
+    DispatchModeUpdateTime = #{dispatchmodeupdatetime,jdbcType=TIMESTAMP},
+    DispatchModeRemark = #{dispatchmoderemark,jdbcType=VARCHAR},
+    DispatchModeOther1 = #{dispatchmodeother1,jdbcType=VARCHAR},
+    DispatchModeOther2 = #{dispatchmodeother2,jdbcType=VARCHAR},
+    DispatchModeOther3 = #{dispatchmodeother3,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dispatch_mode
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dispatch_mode
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!--根据DispatchMode实体添加-->
+  <insert id="insertByDispatchMode" parameterType="sun.bz1.entity.DispatchMode">
+    insert into dispatch_mode
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="dispatchmode != null">
+        DispatchMode,
+      </if>
+      <if test="dispatchmodeuserid != null">
+        DispatchModeUserId,
+      </if>
+      <if test="dispatchmodeupdatetime != null">
+        DispatchModeUpdateTime,
+      </if>
+      <if test="dispatchmoderemark != null">
+        DispatchModeRemark,
+      </if>
+      <if test="dispatchmodeother1 != null">
+        DispatchModeOther1,
+      </if>
+      <if test="dispatchmodeother2 != null">
+        DispatchModeOther2,
+      </if>
+      <if test="dispatchmodeother3 != null">
+        DispatchModeOther3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dispatchmode != null">
+        #{dispatchmode,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeuserid != null">
+        #{dispatchmodeuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeupdatetime != null">
+        #{dispatchmodeupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dispatchmoderemark != null">
+        #{dispatchmoderemark,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeother1 != null">
+        #{dispatchmodeother1,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeother2 != null">
+        #{dispatchmodeother2,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeother3 != null">
+        #{dispatchmodeother3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!--根据DispatchMode实体更新-->
+  <update id="updateByDispatchMode" parameterType="sun.bz1.entity.DispatchMode">
+    update dispatch_mode
+    <set>
+      <if test="dispatchmode != null">
+        DispatchMode = #{dispatchmode,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeuserid != null">
+        DispatchModeUserId = #{dispatchmodeuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeupdatetime != null">
+        DispatchModeUpdateTime = #{dispatchmodeupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dispatchmoderemark != null">
+        DispatchModeRemark = #{dispatchmoderemark,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeother1 != null">
+        DispatchModeOther1 = #{dispatchmodeother1,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeother2 != null">
+        DispatchModeOther2 = #{dispatchmodeother2,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchmodeother3 != null">
+        DispatchModeOther3 = #{dispatchmodeother3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+  <!-- 根据DispatchMode实体查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountByDispatchMode" parameterType="sun.bz1.entity.DispatchMode" resultType="java.lang.Integer">
+    select count(*) from dispatch_mode
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null and id != ''">
+          and ID = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="dispatchmode != null and dispatchmode != ''">
+          and DispatchMode = #{dispatchmode,jdbcType=VARCHAR}
+        </if>
+        <if test="dispatchmodeuserid != null and dispatchmodeuserid != ''">
+          and DispatchModeUserId = #{dispatchmodeuserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据DispatchMode实体查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectByDispatchMode" parameterType="sun.bz1.entity.DispatchMode" resultMap="BaseResultMap">
+    select * from dispatch_mode
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null and id != ''">
+          and ID = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="dispatchmode != null and dispatchmode != ''">
+          and DispatchMode = #{dispatchmode,jdbcType=VARCHAR}
+        </if>
+        <if test="dispatchmodeuserid != null and dispatchmodeuserid != ''">
+          and DispatchModeUserId = #{dispatchmodeuserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据News实体模糊查询 -->
+  <!-- 查询数量 -->
+  <select id="selectCountBySelectData" parameterType="sun.bz1.entity.DispatchMode" resultType="java.lang.Integer">
+    select count(*) from dispatch_mode
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null and id != ''">
+          and ID = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="dispatchmode != null and dispatchmode != ''">
+          and DispatchMode = #{dispatchmode,jdbcType=VARCHAR}
+        </if>
+        <if test="dispatchmodeuserid != null and dispatchmodeuserid != ''">
+          and DispatchModeUserId = #{dispatchmodeuserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <!-- 根据DispatchMode实体模糊查询 -->
+  <!-- 可以进行分页查询 -->
+  <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+  <!-- pageSize 每页的数据量 -->
+  <select id="selectBySelectData" parameterType="sun.bz1.entity.DispatchMode" resultMap="BaseResultMap">
+    select * from dispatch_mode
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null and id != ''">
+          and ID = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="dispatchmode != null and dispatchmode != ''">
+          and DispatchMode = #{dispatchmode,jdbcType=VARCHAR}
+        </if>
+        <if test="dispatchmodeuserid != null and dispatchmodeuserid != ''">
+          and DispatchModeUserId = #{dispatchmodeuserid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <!-- 分页 -->
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 根据DispatchMode实体删除 -->
+  <delete id="deleteByDispatchMode" parameterType="sun.bz1.entity.DispatchMode">
+    delete from dispatch_mode
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null and id != ''">
+          and ID = #{id,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+
+</mapper>

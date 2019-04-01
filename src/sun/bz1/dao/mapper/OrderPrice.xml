@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 维修单对应维修单价表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.OrderPrice">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.OrderPrice">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="OrderPriceUpdateUserId" jdbcType="VARCHAR" property="orderpriceupdateuserid" />
+		<result column="GoodsId" jdbcType="VARCHAR" property="goodsid" />
+		<result column="ProjectId" jdbcType="VARCHAR" property="projectid" />
+		<result column="OrderPriceType" jdbcType="VARCHAR" property="orderpricetype" />
+		<result column="OrderPriceMoney" jdbcType="DOUBLE" property="orderpricemoney" />
+		<result column="OrderPriceState" jdbcType="VARCHAR" property="orderpricestate" />
+		<result column="OrderPriceCreateUserId" jdbcType="VARCHAR" property="orderpricecreateuserid" />
+		<result column="OrderPriceCreateTime" jdbcType="TIMESTAMP" property="orderpricecreatetime" />
+		<result column="OrderPriceUpdateTime" jdbcType="TIMESTAMP" property="orderpriceupdatetime" />
+		<result column="OrderPriceRemark" jdbcType="VARCHAR" property="orderpriceremark" />
+		<result column="OrderPriceAreaProvinceCode" jdbcType="VARCHAR" property="orderpriceareaprovincecode" />
+		<result column="AreaProvince" jdbcType="VARCHAR" property="orderpriceareaprovincename" />
+		<result column="OrderPriceAreaCode" jdbcType="VARCHAR" property="orderpriceareacode" />
+		<result column="AreaProvince2" jdbcType="VARCHAR" property="orderpriceareaname" />
+		<result column="OrderPriceBuildingTypeId" jdbcType="VARCHAR" property="orderpricebuildingtypeid" />
+		<result column="BuildingTypeName" jdbcType="VARCHAR" property="orderpricebuildingtypename" />
+		<result column="OrderPricePropertyCompanyId" jdbcType="VARCHAR" property="orderpricepropertycompanyid" />
+		<result column="PropertyCompanyName" jdbcType="VARCHAR" property="orderpricepropertycompanyname" />
+	</resultMap>
+	
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.OrderPriceAndGoodsAndProjectAndUser">
+		<!-- 维修单对应维修单价表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="OrderPriceUpdateUserId" jdbcType="VARCHAR" property="orderpriceupdateuserid" />
+		<result column="GoodsId" jdbcType="VARCHAR" property="goodsid" />
+		<result column="ProjectId" jdbcType="VARCHAR" property="projectid" />
+		<result column="OrderPriceType" jdbcType="VARCHAR" property="orderpricetype" />
+		<result column="OrderPriceMoney" jdbcType="DOUBLE" property="orderpricemoney" />
+		<result column="OrderPriceState" jdbcType="VARCHAR" property="orderpricestate" />
+		<result column="OrderPriceCreateUserId" jdbcType="VARCHAR" property="orderpricecreateuserid" />
+		<result column="OrderPriceCreateTime" jdbcType="TIMESTAMP" property="orderpricecreatetime" />
+		<result column="OrderPriceUpdateTime" jdbcType="TIMESTAMP" property="orderpriceupdatetime" />
+		<result column="OrderPriceRemark" jdbcType="VARCHAR" property="orderpriceremark" />
+		<result column="OrderPriceAreaProvinceCode" jdbcType="VARCHAR" property="orderpriceareaprovincecode" />
+		<result column="AreaProvince" jdbcType="VARCHAR" property="orderpriceareaprovincename" />
+		<result column="OrderPriceAreaCode" jdbcType="VARCHAR" property="orderpriceareacode" />
+		<result column="AreaProvince2" jdbcType="VARCHAR" property="orderpriceareaname" />
+		<result column="OrderPriceBuildingTypeId" jdbcType="VARCHAR" property="orderpricebuildingtypeid" />
+		<result column="BuildingTypeName" jdbcType="VARCHAR" property="orderpricebuildingtypename" />
+		<result column="OrderPricePropertyCompanyId" jdbcType="VARCHAR" property="orderpricepropertycompanyid" />
+		<result column="PropertyCompanyName" jdbcType="VARCHAR" property="orderpricepropertycompanyname" />
+		
+		<!-- 产品表 -->
+		<result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+		<result column="GoodsType" jdbcType="VARCHAR" property="goodstype" />
+		<result column="GoodsState" jdbcType="VARCHAR" property="goodsstate" />
+		<result column="GoodsRemark" jdbcType="VARCHAR" property="goodsremark" />
+		
+		<!-- 项目表 -->
+		<result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
+		<result column="ProjectType" jdbcType="VARCHAR" property="projecttype" />
+		<result column="ProjectState" jdbcType="VARCHAR" property="projectstate" />
+		<result column="ProjectRemark" jdbcType="VARCHAR" property="projectremark" />
+		
+		<!-- 维修单价维护人员(维修工、安装队)(用户表) -->
+		<result column="UserName" jdbcType="VARCHAR" property="priceupdateuser_username" />
+		<result column="UserRealName" jdbcType="VARCHAR" property="priceupdateuser_userrealname" />
+		<result column="UserSex" jdbcType="VARCHAR" property="priceupdateuser_usersex" />
+		<result column="UserPhone" jdbcType="VARCHAR" property="priceupdateuser_userphone" />
+		<result column="UserCodeId" jdbcType="VARCHAR" property="priceupdateuser_usercodeid" />
+		<result column="UserEmail" jdbcType="VARCHAR" property="priceupdateuser_useremail" />
+		<result column="UserRole" jdbcType="VARCHAR" property="priceupdateuser_userrole" />
+		<result column="UserState" jdbcType="VARCHAR" property="priceupdateuser_userstate" />
+		<result column="UserCredit" jdbcType="DOUBLE" property="priceupdateuser_usercredit" />
+		<result column="UserMoney" jdbcType="DOUBLE" property="priceupdateuser_usermoney" />
+		<result column="UserOpenId" jdbcType="VARCHAR" property="priceupdateuser_useropenid" />
+		<result column="UserPosition" jdbcType="VARCHAR" property="priceupdateuser_userposition" />
+		<result column="UserLatitude" jdbcType="DOUBLE" property="priceupdateuser_userlatitude" />
+		<result column="UserLongitude" jdbcType="DOUBLE" property="priceupdateuser_userlongitude" />
+		<result column="UserRemark" jdbcType="VARCHAR" property="priceupdateuser_userremark" />
+	</resultMap>
+	
+	<!-- 查询单价 --> 
+	<!-- 各个维修工维修或者没有维修项目的单价 -->
+	<resultMap id="ProjectAndGoodsMap" type="sun.bz1.entity.ProjectAndGoods">
+		<result column="ProjectId" jdbcType="VARCHAR" property="projectid" />
+		<result column="PriceId" jdbcType="VARCHAR" property="priceid" />
+		<result column="GoodsId" jdbcType="VARCHAR" property="goodsid" />
+		<result column="goodsName" jdbcType="VARCHAR" property="goodsname" />
+		<result column="GoodsType" jdbcType="VARCHAR" property="goodstype" />
+		<result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
+		<result column="ProjectType" jdbcType="VARCHAR" property="projecttype" />
+		<result column="InterceptMoney" jdbcType="DOUBLE" property="interceptmoney" />
+		<result column="PriceMoney" jdbcType="DOUBLE" property="pricemoney" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, OrderId, OrderPriceUpdateUserId, GoodsId, ProjectId, 
+		OrderPriceType, OrderPriceMoney, OrderPriceState, OrderPriceCreateUserId, 
+		OrderPriceCreateTime, OrderPriceUpdateTime, OrderPriceRemark,OrderPriceAreaProvinceCode,OrderPriceAreaCode,OrderPriceBuildingTypeId,OrderPricePropertyCompanyId
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.OrderPrice">
+		insert into order_price (ID, OrderId, OrderPriceUpdateUserId, GoodsId, 
+		ProjectId, OrderPriceType, OrderPriceMoney, OrderPriceState, OrderPriceCreateUserId, 
+		OrderPriceCreateTime, OrderPriceUpdateTime, OrderPriceRemark,OrderPriceAreaProvinceCode,OrderPriceAreaCode,OrderPriceBuildingTypeId,OrderPricePropertyCompanyId)
+		values (#{id,jdbcType=INTEGER}, 
+		#{orderid,jdbcType=VARCHAR},
+		#{orderpriceupdateuserid,jdbcType=VARCHAR},
+		#{goodsid,jdbcType=VARCHAR},
+		#{projectid,jdbcType=VARCHAR},
+		#{orderpricetype,jdbcType=VARCHAR},
+		#{orderpricemoney,jdbcType=DOUBLE},
+		#{orderpricestate,jdbcType=VARCHAR},
+		#{orderpricecreateuserid,jdbcType=VARCHAR},
+		#{orderpricecreatetime,jdbcType=TIMESTAMP},
+		#{orderpriceupdatetime,jdbcType=TIMESTAMP},
+		#{orderpriceremark,jdbcType=VARCHAR},
+		#{orderpriceareaprovincecode,jdbcType=VARCHAR},
+		#{orderpriceareacode,jdbcType=VARCHAR},
+		#{orderpricebuildingtypeid,jdbcType=VARCHAR},
+		#{orderpricepropertycompanyid,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.OrderPrice">
+		insert into order_price
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="orderpriceupdateuserid != null">
+				OrderPriceUpdateUserId,
+			</if>
+			<if test="goodsid != null">
+				GoodsId,
+			</if>
+			<if test="projectid != null">
+				ProjectId,
+			</if>
+			<if test="orderpricetype != null">
+				OrderPriceType,
+			</if>
+			<if test="orderpricemoney != null">
+				OrderPriceMoney,
+			</if>
+			<if test="orderpricestate != null">
+				OrderPriceState,
+			</if>
+			<if test="orderpricecreateuserid != null">
+				OrderPriceCreateUserId,
+			</if>
+			<if test="orderpricecreatetime != null">
+				OrderPriceCreateTime,
+			</if>
+			<if test="orderpriceupdatetime != null">
+				OrderPriceUpdateTime,
+			</if>
+			<if test="orderpriceremark != null">
+				OrderPriceRemark,
+			</if>
+			<if test="orderpriceareaprovincecode != null">
+				OrderPriceAreaProvinceCode,
+			</if>
+			<if test="orderpriceareacode != null">
+				OrderPriceAreaCode,
+			</if>
+			<if test="orderpricebuildingtypeid != null">
+				OrderPriceBuildingTypeId,
+			</if>
+			<if test="orderpricepropertycompanyid != null">
+				OrderPricePropertyCompanyId,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpriceupdateuserid != null">
+				#{orderpriceupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsid != null">
+				#{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectid != null">
+				#{projectid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricetype != null">
+				#{orderpricetype,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricemoney != null">
+				#{orderpricemoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderpricestate != null">
+				#{orderpricestate,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricecreateuserid != null">
+				#{orderpricecreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricecreatetime != null">
+				#{orderpricecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderpriceupdatetime != null">
+				#{orderpriceupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderpriceremark != null">
+				#{orderpriceremark,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpriceareaprovincecode != null">
+				#{orderpriceareaprovincecode,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpriceareacode != null">
+				#{orderpriceareacode,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricebuildingtypeid != null">
+				#{orderpricebuildingtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricepropertycompanyid != null">
+				#{orderpricepropertycompanyid,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.OrderPrice">
+		update order_price
+		<set>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpriceupdateuserid != null">
+				OrderPriceUpdateUserId = #{orderpriceupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsid != null">
+				GoodsId = #{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectid != null">
+				ProjectId = #{projectid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricetype != null">
+				OrderPriceType = #{orderpricetype,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricemoney != null">
+				OrderPriceMoney = #{orderpricemoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderpricestate != null">
+				OrderPriceState = #{orderpricestate,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricecreateuserid != null">
+				OrderPriceCreateUserId = #{orderpricecreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricecreatetime != null">
+				OrderPriceCreateTime = #{orderpricecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderpriceupdatetime != null">
+				OrderPriceUpdateTime = #{orderpriceupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderpriceremark != null">
+				OrderPriceRemark = #{orderpriceremark,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpriceareaprovincecode != null">
+				OrderPriceAreaProvinceCode = #{orderpriceareaprovincecode,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpriceareacode != null">
+				OrderPriceAreaCode = #{orderpriceareacode,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricebuildingtypeid != null">
+				OrderPriceBuildingTypeId = #{orderpricebuildingtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricepropertycompanyid != null">
+				OrderPricePropertyCompanyId = #{orderpricepropertycompanyid,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.OrderPrice">
+		update order_price
+		set OrderId = #{orderid,jdbcType=VARCHAR},
+		OrderPriceUpdateUserId = #{orderpriceupdateuserid,jdbcType=VARCHAR},
+		GoodsId = #{goodsid,jdbcType=VARCHAR},
+		ProjectId = #{projectid,jdbcType=VARCHAR},
+		OrderPriceType = #{orderpricetype,jdbcType=VARCHAR},
+		OrderPriceMoney = #{orderpricemoney,jdbcType=DOUBLE},
+		OrderPriceState = #{orderpricestate,jdbcType=VARCHAR},
+		OrderPriceCreateUserId = #{orderpricecreateuserid,jdbcType=VARCHAR},
+		OrderPriceCreateTime = #{orderpricecreatetime,jdbcType=TIMESTAMP},
+		OrderPriceUpdateTime = #{orderpriceupdatetime,jdbcType=TIMESTAMP},
+		OrderPriceRemark = #{orderpriceremark,jdbcType=VARCHAR},
+		OrderPriceAreaProvinceCode = #{orderpriceareaprovincecode,jdbcType=VARCHAR},
+		OrderPriceAreaCode = #{orderpriceareacode,jdbcType=VARCHAR},
+		OrderPriceBuildingTypeId = #{orderpricebuildingtypeid,jdbcType=VARCHAR},
+		OrderPricePropertyCompanyId = #{orderpricepropertycompanyid,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from order_price
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from order_price
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据OrderPrice实体添加 -->
+	<insert id="insertByOrderPrice" parameterType="sun.bz1.entity.OrderPrice">
+		insert into order_price
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="orderpriceupdateuserid != null">
+				OrderPriceUpdateUserId,
+			</if>
+			<if test="goodsid != null">
+				GoodsId,
+			</if>
+			<if test="projectid != null">
+				ProjectId,
+			</if>
+			<if test="orderpricetype != null">
+				OrderPriceType,
+			</if>
+			<if test="orderpricemoney != null">
+				OrderPriceMoney,
+			</if>
+			<if test="orderpricestate != null">
+				OrderPriceState,
+			</if>
+			<if test="orderpricecreateuserid != null">
+				OrderPriceCreateUserId,
+			</if>
+			<if test="orderpricecreatetime != null">
+				OrderPriceCreateTime,
+			</if>
+			<if test="orderpriceupdatetime != null">
+				OrderPriceUpdateTime,
+			</if>
+			<if test="orderpriceremark != null">
+				OrderPriceRemark,
+			</if>
+			<if test="orderpriceareaprovincecode != null">
+				OrderPriceAreaProvinceCode,
+			</if>
+			<if test="orderpriceareacode != null">
+				OrderPriceAreaCode,
+			</if>
+			<if test="orderpricebuildingtypeid != null">
+				OrderPriceBuildingTypeId,
+			</if>
+			<if test="orderpricepropertycompanyid != null">
+				OrderPricePropertyCompanyId,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpriceupdateuserid != null">
+				#{orderpriceupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsid != null">
+				#{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectid != null">
+				#{projectid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricetype != null">
+				#{orderpricetype,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricemoney != null">
+				#{orderpricemoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderpricestate != null">
+				#{orderpricestate,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricecreateuserid != null">
+				#{orderpricecreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricecreatetime != null">
+				#{orderpricecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderpriceupdatetime != null">
+				#{orderpriceupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderpriceremark != null">
+				#{orderpriceremark,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpriceareaprovincecode != null">
+				#{orderpriceareaprovincecode,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpriceareacode != null">
+				#{orderpriceareacode,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricebuildingtypeid != null">
+				#{orderpricebuildingtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricepropertycompanyid != null">
+				#{orderpricepropertycompanyid,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据OrderPrice实体更新 -->
+	<update id="updateByOrderPrice" parameterType="sun.bz1.entity.OrderPrice">
+		update order_price
+		<set>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpriceupdateuserid != null">
+				OrderPriceUpdateUserId = #{orderpriceupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsid != null">
+				GoodsId = #{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectid != null">
+				ProjectId = #{projectid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricetype != null">
+				OrderPriceType = #{orderpricetype,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricemoney != null">
+				OrderPriceMoney = #{orderpricemoney,jdbcType=DOUBLE},
+			</if>
+			<if test="orderpricestate != null">
+				OrderPriceState = #{orderpricestate,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricecreateuserid != null">
+				OrderPriceCreateUserId = #{orderpricecreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricecreatetime != null">
+				OrderPriceCreateTime = #{orderpricecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderpriceupdatetime != null">
+				OrderPriceUpdateTime = #{orderpriceupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="orderpriceremark != null">
+				OrderPriceRemark = #{orderpriceremark,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpriceareaprovincecode != null">
+				OrderPriceAreaProvinceCode = #{orderpriceareaprovincecode,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpriceareacode != null">
+				OrderPriceAreaCode = #{orderpriceareacode,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricebuildingtypeid != null">
+				OrderPriceBuildingTypeId = #{orderpricebuildingtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderpricepropertycompanyid != null">
+				OrderPricePropertyCompanyId = #{orderpricepropertycompanyid,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据OrderPriceAndGoodsAndProjectAndUser实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="selectFourTablesCountByUnionData" parameterType="sun.bz1.entity.OrderPriceAndGoodsAndProjectAndUser" resultType="java.lang.Integer">
+		select count(*) from order_price a 
+			inner join goods b on a.GoodsId = b.GoodsId
+			inner join project c on a.ProjectId = c.ProjectId 
+			inner join user d on a.OrderPriceUpdateUserId = d.UserId
+			left join area par on a.OrderPriceAreaProvinceCode = par.AreaProvinceCode
+			left join area ar on a.OrderPriceAreaCode = ar.AreaProvinceCode
+			left join building_type bt on a.OrderPriceBuildingTypeId = bt.BuildingTypeId
+			left join property_company p on a.OrderPricePropertyCompanyId = p.PropertyCompanyId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderpriceupdateuserid != null and orderpriceupdateuserid != ''">
+					and a.OrderPriceUpdateUserId = #{orderpriceupdateuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and a.GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="projectid != null and projectid != ''">
+					and a.ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderpricetype != null and orderpricetype != ''">
+					and a.OrderPriceType = #{orderpricetype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderpricestate != null and orderpricestate != ''">
+					and a.OrderPriceState = #{orderpricestate,jdbcType=VARCHAR}
+				</if>
+                <if test="orderpriceareacode != null and orderpriceareacode != ''">
+                    and a.OrderPriceAreaCode = #{orderpriceareacode,jdbcType=VARCHAR}
+                </if>
+                <if test="orderpricebuildingtypeid != null and orderpricebuildingtypeid != ''">
+                    and a.OrderPriceBuildingTypeId = #{orderpricebuildingtypeid,jdbcType=VARCHAR}
+                </if>
+                <if test="orderpricepropertycompanyid != null and orderpricepropertycompanyid != ''">
+                    and a.OrderPricePropertyCompanyId = #{orderpricepropertycompanyid,jdbcType=VARCHAR}
+                </if>
+				<if test="goodstype != null and goodstype != ''">
+					and b.GoodsType = #{goodstype,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsstate != null and goodsstate != ''">
+					and b.GoodsState = #{goodsstate,jdbcType=VARCHAR}
+				</if>
+				<if test="projecttype != null and projecttype != ''">
+					and c.ProjectType = #{projecttype,jdbcType=VARCHAR}
+				</if>
+				<if test="projectstate != null and projectstate != ''">
+					and c.ProjectState = #{projectstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据OrderPriceAndGoodsAndProjectAndUser实体联表查询 -->
+	<select id="selectFourTablesByUnionData" parameterType="sun.bz1.entity.OrderPriceAndGoodsAndProjectAndUser" resultMap="SeniorResultMap">
+		select *,ar.AreaProvince AreaProvince2 from order_price a
+			inner join goods b on a.GoodsId = b.GoodsId
+			inner join project c on a.ProjectId = c.ProjectId 
+			inner join user d on a.OrderPriceUpdateUserId = d.UserId
+			left join area par on a.OrderPriceAreaProvinceCode = par.AreaProvinceCode
+			left join area ar on a.OrderPriceAreaCode = ar.AreaProvinceCode
+			left join building_type bt on a.OrderPriceBuildingTypeId = bt.BuildingTypeId
+			left join property_company p on a.OrderPricePropertyCompanyId = p.PropertyCompanyId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderpriceupdateuserid != null and orderpriceupdateuserid != ''">
+					and a.OrderPriceUpdateUserId = #{orderpriceupdateuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and a.GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="projectid != null and projectid != ''">
+					and a.ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderpricetype != null and orderpricetype != ''">
+					and a.OrderPriceType = #{orderpricetype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderpricestate != null and orderpricestate != ''">
+					and a.OrderPriceState = #{orderpricestate,jdbcType=VARCHAR}
+				</if>
+                <if test="orderpriceareacode != null and orderpriceareacode != ''">
+                    and a.OrderPriceAreaCode = #{orderpriceareacode,jdbcType=VARCHAR}
+                </if>
+                <if test="orderpricebuildingtypeid != null and orderpricebuildingtypeid != ''">
+                    and a.OrderPriceBuildingTypeId = #{orderpricebuildingtypeid,jdbcType=VARCHAR}
+                </if>
+                <if test="orderpricepropertycompanyid != null and orderpricepropertycompanyid != ''">
+                    and a.OrderPricePropertyCompanyId = #{orderpricepropertycompanyid,jdbcType=VARCHAR}
+                </if>
+				<if test="goodstype != null and goodstype != ''">
+					and b.GoodsType = #{goodstype,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsstate != null and goodsstate != ''">
+					and b.GoodsState = #{goodsstate,jdbcType=VARCHAR}
+				</if>
+				<if test="projecttype != null and projecttype != ''">
+					and c.ProjectType = #{projecttype,jdbcType=VARCHAR}
+				</if>
+				<if test="projectstate != null and projectstate != ''">
+					and c.ProjectState = #{projectstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据OrderPrice实体删除 -->
+	<delete id="deleteByOrderPrice" parameterType="sun.bz1.entity.OrderPrice">
+		delete from order_price
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+	
+</mapper>

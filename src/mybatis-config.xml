@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 本地连接数据库 -->
+	<environments default="d1">
+		<environment id="d1">
+			<transactionManager type="JDBC" />
+			<dataSource type="org.mybatis.c3p0.C3P0DataSourceFactory">
+				<property name="driverClass" value="com.mysql.jdbc.Driver" />
+				<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/sunweb2?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+				<property name="user" value="root" />
+				<property name="password" value="root" />
+				<property name="initialPoolSize" value="3" />
+				<property name="maxPoolSize" value="10" />
+				<property name="minPoolSize" value="3" />
+				<property name="acquireIncrement" value="5" />
+				<property name="maxIdleTime" value="30" />
+				<property name="maxStatements" value="500" />
+				<property name="maxStatementsPerConnection" value="50" />
+				<property name="numHelperThreads" value="5" />
+			</dataSource>
+		</environment>
+
+		<environment id="d2">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/fhmpt?allowMultiQueries=true" />
+				<property name="username" value="fhmpt" />
+				<property name="password" value="p4p3m5c6" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- IP地址连接数据库 -->
+<!-- 
+	<environments default="d1">
+		<environment id="d1">
+			<transactionManager type="JDBC" />
+			<dataSource type="org.mybatis.c3p0.C3P0DataSourceFactory">
+				<property name="driverClass" value="com.mysql.jdbc.Driver" />
+				<property name="jdbcUrl" value="jdbc\:mysql\://211.149.250.146\:3306/fhmpt?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+				<property name="user" value="fhmpt" />
+				<property name="password" value="p4p3m5c6" />
+				<property name="initialPoolSize" value="3" />
+				<property name="maxPoolSize" value="10" />
+				<property name="minPoolSize" value="3" />
+				<property name="acquireIncrement" value="5" />
+				<property name="maxIdleTime" value="30" />
+				<property name="maxStatements" value="500" />
+				<property name="maxStatementsPerConnection" value="50" />
+				<property name="numHelperThreads" value="5" />
+			</dataSource>
+		</environment>
+
+		<environment id="d2">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc\:mysql\://211.149.250.146\:3306/fhmpt?allowMultiQueries=true" />
+				<property name="username" value="fhmpt" />
+				<property name="password" value="p4p3m5c6" />
+			</dataSource>
+		</environment>
+	</environments>
+-->
+ 
+	<mappers>
+	</mappers>
+</configuration>

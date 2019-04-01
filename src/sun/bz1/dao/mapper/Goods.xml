@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 产品表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.Goods">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.Goods">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="GoodsId" jdbcType="VARCHAR" property="goodsid" />
+		<result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+		<result column="GoodsType" jdbcType="VARCHAR" property="goodstype" />
+		<result column="GoodsState" jdbcType="VARCHAR" property="goodsstate" />
+		<result column="GoodsCreateUserId" jdbcType="VARCHAR" property="goodscreateuserid" />
+		<result column="GoodsCreateTime" jdbcType="TIMESTAMP" property="goodscreatetime" />
+		<result column="GoodsUpdateUserId" jdbcType="VARCHAR" property="goodsupdateuserid" />
+		<result column="GoodsUpdateTime" jdbcType="TIMESTAMP" property="goodsupdatetime" />
+		<result column="GoodsRemark" jdbcType="VARCHAR" property="goodsremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, GoodsId, GoodsName, GoodsType, GoodsState, GoodsCreateUserId, GoodsCreateTime, 
+		GoodsUpdateUserId, GoodsUpdateTime, GoodsRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.Goods">
+		insert into goods (ID, GoodsId, GoodsName, GoodsType, GoodsState, 
+		GoodsCreateUserId, GoodsCreateTime, GoodsUpdateUserId, GoodsUpdateTime, GoodsRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{goodsid,jdbcType=VARCHAR},
+		#{goodsname,jdbcType=VARCHAR},
+		#{goodstype,jdbcType=VARCHAR}, 
+		#{goodsstate,jdbcType=VARCHAR},
+		#{goodscreateuserid,jdbcType=VARCHAR},
+		#{goodscreatetime,jdbcType=TIMESTAMP},
+		#{goodsupdateuserid,jdbcType=VARCHAR},
+		#{goodsupdatetime,jdbcType=TIMESTAMP},
+		#{goodsremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.Goods">
+		insert into goods
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="goodsid != null">
+				GoodsId,
+			</if>
+			<if test="goodsname != null">
+				GoodsName,
+			</if>
+			<if test="goodstype != null">
+				GoodsType,
+			</if>
+			<if test="goodsstate != null">
+				GoodsState,
+			</if>
+			<if test="goodscreateuserid != null">
+				GoodsCreateUserId,
+			</if>
+			<if test="goodscreatetime != null">
+				GoodsCreateTime,
+			</if>
+			<if test="goodsupdateuserid != null">
+				GoodsUpdateUserId,
+			</if>
+			<if test="goodsupdatetime != null">
+				GoodsUpdateTime,
+			</if>
+			<if test="goodsremark != null">
+				GoodsRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="goodsid != null">
+				#{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsname != null">
+				#{goodsname,jdbcType=VARCHAR},
+			</if>
+			<if test="goodstype != null">
+				#{goodstype,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsstate != null">
+				#{goodsstate,jdbcType=VARCHAR},
+			</if>
+			<if test="goodscreateuserid != null">
+				#{goodscreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodscreatetime != null">
+				#{goodscreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="goodsupdateuserid != null">
+				#{goodsupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsupdatetime != null">
+				#{goodsupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="goodsremark != null">
+				#{goodsremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.Goods">
+		update goods
+		<set>
+			<if test="goodsid != null">
+				GoodsId = #{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsname != null">
+				GoodsName = #{goodsname,jdbcType=VARCHAR},
+			</if>
+			<if test="goodstype != null">
+				GoodsType = #{goodstype,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsstate != null">
+				GoodsState = #{goodsstate,jdbcType=VARCHAR},
+			</if>
+			<if test="goodscreateuserid != null">
+				GoodsCreateUserId = #{goodscreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodscreatetime != null">
+				GoodsCreateTime = #{goodscreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="goodsupdateuserid != null">
+				GoodsUpdateUserId = #{goodsupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsupdatetime != null">
+				GoodsUpdateTime = #{goodsupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="goodsremark != null">
+				GoodsRemark = #{goodsremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.Goods">
+		update goods
+		set GoodsId = #{goodsid,jdbcType=VARCHAR},
+		GoodsName = #{goodsname,jdbcType=VARCHAR},
+		GoodsType = #{goodstype,jdbcType=VARCHAR},
+		GoodsState = #{goodsstate,jdbcType=VARCHAR},
+		GoodsCreateUserId = #{goodscreateuserid,jdbcType=VARCHAR},
+		GoodsCreateTime = #{goodscreatetime,jdbcType=TIMESTAMP},
+		GoodsUpdateUserId = #{goodsupdateuserid,jdbcType=VARCHAR},
+		GoodsUpdateTime = #{goodsupdatetime,jdbcType=TIMESTAMP},
+		GoodsRemark = #{goodsremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from goods
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from goods
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from goods
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据Goods实体添加 -->
+	<insert id="insertByGoods" parameterType="sun.bz1.entity.Goods">
+		insert into goods
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="goodsid != null">
+				GoodsId,
+			</if>
+			<if test="goodsname != null">
+				GoodsName,
+			</if>
+			<if test="goodstype != null">
+				GoodsType,
+			</if>
+			<if test="goodsstate != null">
+				GoodsState,
+			</if>
+			<if test="goodscreateuserid != null">
+				GoodsCreateUserId,
+			</if>
+			<if test="goodscreatetime != null">
+				GoodsCreateTime,
+			</if>
+			<if test="goodsupdateuserid != null">
+				GoodsUpdateUserId,
+			</if>
+			<if test="goodsupdatetime != null">
+				GoodsUpdateTime,
+			</if>
+			<if test="goodsremark != null">
+				GoodsRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="goodsid != null">
+				#{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsname != null">
+				#{goodsname,jdbcType=VARCHAR},
+			</if>
+			<if test="goodstype != null">
+				#{goodstype,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsstate != null">
+				#{goodsstate,jdbcType=VARCHAR},
+			</if>
+			<if test="goodscreateuserid != null">
+				#{goodscreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodscreatetime != null">
+				#{goodscreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="goodsupdateuserid != null">
+				#{goodsupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsupdatetime != null">
+				#{goodsupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="goodsremark != null">
+				#{goodsremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据Goods实体更新 -->
+	<update id="updateByGoods" parameterType="sun.bz1.entity.Goods">
+		update goods
+		<set>
+			<if test="goodsid != null">
+				GoodsId = #{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsname != null">
+				GoodsName = #{goodsname,jdbcType=VARCHAR},
+			</if>
+			<if test="goodstype != null">
+				GoodsType = #{goodstype,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsstate != null">
+				GoodsState = #{goodsstate,jdbcType=VARCHAR},
+			</if>
+			<if test="goodscreateuserid != null">
+				GoodsCreateUserId = #{goodscreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodscreatetime != null">
+				GoodsCreateTime = #{goodscreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="goodsupdateuserid != null">
+				GoodsUpdateUserId = #{goodsupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsupdatetime != null">
+				GoodsUpdateTime = #{goodsupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="goodsremark != null">
+				GoodsRemark = #{goodsremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据Goods实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByGoods" parameterType="sun.bz1.entity.Goods" resultType="java.lang.Integer">
+		select count(*) from goods
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="goodsid != null and goodsid != ''">
+					and GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodstype != null and goodstype != ''">
+					and GoodsType = #{goodstype,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsstate != null and goodsstate != ''">
+					and GoodsState = #{goodsstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据Goods实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectByGoods" parameterType="sun.bz1.entity.Goods" resultMap="BaseResultMap">
+		select * from goods
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="goodsid != null and goodsid != ''">
+					and GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodstype != null and goodstype != ''">
+					and GoodsType = #{goodstype,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsstate != null and goodsstate != ''">
+					and GoodsState = #{goodsstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据Goods实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectData" parameterType="sun.bz1.entity.Goods" resultType="java.lang.Integer">
+		select count(*) from goods
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="goodsid != null and goodsid != ''">
+					and GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsname != null and goodsname != ''">
+					or GoodsName like CONCAT('%',#{goodsname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="goodstype != null and goodstype != ''">
+					and GoodsType = #{goodstype,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsstate != null and goodsstate != ''">
+					and GoodsState = #{goodsstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据Goods实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectBySelectData" parameterType="sun.bz1.entity.Goods" resultMap="BaseResultMap">
+		select * from goods
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="goodsid != null and goodsid != ''">
+					and GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsname != null and goodsname != ''">
+					or GoodsName like CONCAT('%',#{goodsname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="goodstype != null and goodstype != ''">
+					and GoodsType = #{goodstype,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsstate != null and goodsstate != ''">
+					and GoodsState = #{goodsstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+</mapper>

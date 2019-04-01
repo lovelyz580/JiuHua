@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="sun.bz1.dao.mapper.roleMapper">
+
+    <sql id="zd">
+		rid,roleName
+	</sql>
+	
+    <!-- 根据用户名模糊查询，根据权限查询 -->
+     <select id="selectText" resultType="sun.bz1.entity.role" parameterType="sun.bz1.entity.role">
+         select <include refid="zd"/> from role
+         <where>
+             <if test=" rid == null and rid == '' and 
+                        roleName == null and roleName == ''">
+                 and 1=1
+             </if>
+             <if test="rid != null and rid !=''">
+                 and rid = #{rid} 
+             </if>     
+               <if test="roleName != null and roleName !=''">
+                 and roleName LIKE '%${roleName}%' 
+             </if> 
+                  
+         </where>
+         <if test="pagenumber != -1">
+                 limit #{pagenumber},#{pagesize}
+             </if> 
+         
+     </select>
+     
+      <!-- 查询数量-->
+     <select id="selectCount" resultType="java.lang.Integer" parameterType="sun.bz1.entity.role">
+         select count(*) from role
+         <where>
+             <if test=" rid == null and rid == '' and 
+                        roleName == null and roleName == ''">
+                 and 1=1
+             </if>
+             <if test="rid != null and rid !=''">
+                 and rid = #{rid} 
+             </if>     
+               <if test="roleName != null and roleName !=''">
+                 and roleName LIKE '%${roleName}%' 
+             </if> 
+                  
+         </where>
+     </select>
+     
+     <!-- 添加用户信息 -->
+     <insert id="addText" parameterType="sun.bz1.entity.role">
+         insert into role(roleName)
+         values
+         ( #{roleName}
+            )
+     </insert>
+     
+     <!-- 修改角色信息 -->
+      <update id="updataText" parameterType="sun.bz1.entity.role">
+          update role 
+          set roleName=#{roleName}
+               where rid=#{rid}     
+      </update>
+     
+     
+     <!-- 增删改查标签里的id:一定要和接口里对应的方法名一致 -->
+     <delete id="deletText" parameterType="java.util.List" >
+         delete from role where rid in (
+        
+			<!-- 判断传入的集合是否为空-->
+			
+				<!-- 
+					foreach标签:循环传入的集合参数
+					collection属性:传入的集合的变量名	
+					item属性:每次循环的值都放在这个变量里面
+					open属性:循环开始拼接的字符串
+					close属性:循环结束拼接的字符串
+					separator属性:循环中拼接的分隔符
+				 -->
+				<foreach collection="list" item="rid" separator=",">
+					#{rid}
+				</foreach>
+			)
+     </delete>
+     
+     
+     <!-- 查询id在其中的数据 -->
+     <select id="selectMore" resultType="sun.bz1.entity.role" parameterType="java.util.List">
+         select <include refid="zd"/> from role
+         <where>
+			<!-- 判断传入的集合是否为空-->
+			
+				<!-- 
+					foreach标签:循环传入的集合参数
+					collection属性:传入的集合的变量名	
+					item属性:每次循环的值都放在这个变量里面
+					open属性:循环开始拼接的字符串
+					close属性:循环结束拼接的字符串
+					separator属性:循环中拼接的分隔符
+				 -->
+				<foreach collection="list" item="rid" open="rid in (" close=")" separator=",">
+					#{rid}
+				</foreach>
+		</where>
+      </select>
+  </mapper>

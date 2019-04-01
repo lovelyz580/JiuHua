@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="sun.bz1.dao.mapper.departmentMapper">
+    
+     <sql id="zd">
+        did,departmentName,cid,code
+     </sql>
+     
+      <!-- 添加用户信息 -->
+     <insert id="addText" parameterType="sun.bz1.entity.department">
+         insert into department  (departmentName,cid,code)
+         values
+         (  #{departmentName},
+            #{cid},
+            #{code}
+            )
+     </insert>
+     
+      <!-- 增删改查标签里的id:一定要和接口里对应的方法名一致 -->
+     <delete id="deletText" parameterType="java.util.List" >
+         delete from department 
+         <where>
+			<!-- 判断传入的集合是否为空-->
+			
+				<!-- 
+					foreach标签:循环传入的集合参数
+					collection属性:传入的集合的变量名	
+					item属性:每次循环的值都放在这个变量里面
+					open属性:循环开始拼接的字符串
+					close属性:循环结束拼接的字符串
+					separator属性:循环中拼接的分隔符
+				 -->
+				<foreach collection="list" item="did" open="did in (" close=")" separator=",">
+					#{did}
+				</foreach>
+			
+		</where>
+     </delete>
+     
+     <!-- 修改用户信息 -->
+      <update id="updataText" parameterType="sun.bz1.entity.department">
+          update department 
+          set   
+                departmentName=#{departmentName},
+                cid=#{cid},
+                code=#{code}
+               where did=#{did}     
+      </update>
+      
+        <!-- 根据用户名模糊查询，根据权限查询 -->
+     <select id="selectText" resultType="sun.bz1.entity.department" parameterType="sun.bz1.entity.department">
+         <!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
+         select <include refid="zd"/> from department
+         <!-- 当页面没有输入用户名和选择权限，就让它的条件永远为真，就变成全查询了 -->
+         <where>
+             
+             <if test="departmentName != null and departmentName !=''">
+                 and departmentName LIKE '%${departmentName}%'
+             </if>     
+               <if test="cid != null">
+                 and cid = #{cid}
+             </if> 
+              <if test="code != null and code !=''">
+                 and code = #{code}
+             </if> 
+              <if test="did != null">
+                 and did =  #{did} 
+             </if> 
+          </where>
+             <if test="pagenumber != -1">
+                 limit #{pagenumber},#{pagesize}
+             </if>
+          
+     </select>
+     
+       <!-- 查询数量，根据权限查询 -->
+     <select id="selectTextCount" resultType="java.lang.Integer" parameterType="sun.bz1.entity.department">
+         <!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
+         select count(*) from department
+         <!-- 当页面没有输入用户名和选择权限，就让它的条件永远为真，就变成全查询了 -->
+         <where>
+             <if test="departmentName != null and departmentName !=''">
+                 and departmentName LIKE '%${departmentName}%'
+             </if>     
+               <if test="cid != null">
+                 and cid = #{cid}
+             </if> 
+              <if test="code != null and code !=''">
+                 and code = #{code}
+             </if> 
+              <if test="did != null">
+                 and did =  #{did} 
+             </if> 
+          </where>
+        
+     </select>
+ </mapper>

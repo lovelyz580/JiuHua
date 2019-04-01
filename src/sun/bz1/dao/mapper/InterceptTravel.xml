@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 差旅费(每公里)拦标价表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.InterceptTravel">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.InterceptTravel">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="InterceptTravelType" jdbcType="VARCHAR" property="intercepttraveltype" />
+		<result column="InterceptTravelMoney" jdbcType="DOUBLE" property="intercepttravelmoney" />
+		<result column="InterceptTravelRealMoney" jdbcType="DOUBLE" property="intercepttravelrealmoney" />
+		<result column="InterceptTravelState" jdbcType="VARCHAR" property="intercepttravelstate" />
+		<result column="InterceptTravelUpdateUserId" jdbcType="VARCHAR" property="intercepttravelupdateuserid" />
+		<result column="InterceptTravelUpdateTime" jdbcType="TIMESTAMP" property="intercepttravelupdatetime" />
+		<result column="InterceptTravelRemark" jdbcType="VARCHAR" property="intercepttravelremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, InterceptTravelType, InterceptTravelMoney, InterceptTravelRealMoney, InterceptTravelState, 
+		InterceptTravelUpdateUserId, InterceptTravelUpdateTime, InterceptTravelRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.InterceptTravel">
+		insert into intercept_travel (ID, InterceptTravelType, InterceptTravelMoney, 
+		InterceptTravelRealMoney, InterceptTravelState, InterceptTravelUpdateUserId, 
+		InterceptTravelUpdateTime, InterceptTravelRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{intercepttraveltype,jdbcType=VARCHAR},
+		#{intercepttravelmoney,jdbcType=DOUBLE},
+		#{intercepttravelrealmoney,jdbcType=DOUBLE},
+		#{intercepttravelstate,jdbcType=VARCHAR},
+		#{intercepttravelupdateuserid,jdbcType=VARCHAR},
+		#{intercepttravelupdatetime,jdbcType=TIMESTAMP},
+		#{intercepttravelremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.InterceptTravel">
+		insert into intercept_travel
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="intercepttraveltype != null">
+				InterceptTravelType,
+			</if>
+			<if test="intercepttravelmoney != null">
+				InterceptTravelMoney,
+			</if>
+			<if test="intercepttravelrealmoney != null">
+				InterceptTravelRealMoney,
+			</if>
+			<if test="intercepttravelstate != null">
+				InterceptTravelState,
+			</if>
+			<if test="intercepttravelupdateuserid != null">
+				InterceptTravelUpdateUserId,
+			</if>
+			<if test="intercepttravelupdatetime != null">
+				InterceptTravelUpdateTime,
+			</if>
+			<if test="intercepttravelremark != null">
+				InterceptTravelRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="intercepttraveltype != null">
+				#{intercepttraveltype,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttravelmoney != null">
+				#{intercepttravelmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="intercepttravelrealmoney != null">
+				#{intercepttravelrealmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="intercepttravelstate != null">
+				#{intercepttravelstate,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttravelupdateuserid != null">
+				#{intercepttravelupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttravelupdatetime != null">
+				#{intercepttravelupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="intercepttravelremark != null">
+				#{intercepttravelremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.InterceptTravel">
+		update intercept_travel
+		<set>
+			<if test="intercepttraveltype != null">
+				InterceptTravelType = #{intercepttraveltype,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttravelmoney != null">
+				InterceptTravelMoney = #{intercepttravelmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="intercepttravelrealmoney != null">
+				InterceptTravelRealMoney = #{intercepttravelrealmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="intercepttravelstate != null">
+				InterceptTravelState = #{intercepttravelstate,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttravelupdateuserid != null">
+				InterceptTravelUpdateUserId = #{intercepttravelupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttravelupdatetime != null">
+				InterceptTravelUpdateTime = #{intercepttravelupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="intercepttravelremark != null">
+				InterceptTravelRemark = #{intercepttravelremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.InterceptTravel">
+		update intercept_travel
+		set InterceptTravelType = #{intercepttraveltype,jdbcType=VARCHAR},
+		InterceptTravelMoney = #{intercepttravelmoney,jdbcType=DOUBLE},
+		InterceptTravelRealMoney = #{intercepttravelrealmoney,jdbcType=DOUBLE},
+		InterceptTravelState = #{intercepttravelstate,jdbcType=VARCHAR},
+		InterceptTravelUpdateUserId = #{intercepttravelupdateuserid,jdbcType=VARCHAR},
+		InterceptTravelUpdateTime = #{intercepttravelupdatetime,jdbcType=TIMESTAMP},
+		InterceptTravelRemark = #{intercepttravelremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from intercept_travel
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from intercept_travel
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据InterceptTravel实体添加 -->
+	<insert id="insertByInterceptTravel" parameterType="sun.bz1.entity.InterceptTravel">
+		insert into intercept_travel
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="intercepttraveltype != null">
+				InterceptTravelType,
+			</if>
+			<if test="intercepttravelmoney != null">
+				InterceptTravelMoney,
+			</if>
+			<if test="intercepttravelrealmoney != null">
+				InterceptTravelRealMoney,
+			</if>
+			<if test="intercepttravelstate != null">
+				InterceptTravelState,
+			</if>
+			<if test="intercepttravelupdateuserid != null">
+				InterceptTravelUpdateUserId,
+			</if>
+			<if test="intercepttravelupdatetime != null">
+				InterceptTravelUpdateTime,
+			</if>
+			<if test="intercepttravelremark != null">
+				InterceptTravelRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="intercepttraveltype != null">
+				#{intercepttraveltype,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttravelmoney != null">
+				#{intercepttravelmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="intercepttravelrealmoney != null">
+				#{intercepttravelrealmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="intercepttravelstate != null">
+				#{intercepttravelstate,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttravelupdateuserid != null">
+				#{intercepttravelupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttravelupdatetime != null">
+				#{intercepttravelupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="intercepttravelremark != null">
+				#{intercepttravelremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据InterceptTravel实体更新 -->
+	<update id="updateByInterceptTravel" parameterType="sun.bz1.entity.InterceptTravel">
+		update intercept_travel
+		<set>
+			<if test="intercepttraveltype != null">
+				InterceptTravelType = #{intercepttraveltype,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttravelmoney != null">
+				InterceptTravelMoney = #{intercepttravelmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="intercepttravelrealmoney != null">
+				InterceptTravelRealMoney = #{intercepttravelrealmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="intercepttravelstate != null">
+				InterceptTravelState = #{intercepttravelstate,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttravelupdateuserid != null">
+				InterceptTravelUpdateUserId = #{intercepttravelupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="intercepttravelupdatetime != null">
+				InterceptTravelUpdateTime = #{intercepttravelupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="intercepttravelremark != null">
+				InterceptTravelRemark = #{intercepttravelremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据InterceptTravel实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByInterceptTravel" parameterType="sun.bz1.entity.InterceptTravel" resultType="java.lang.Integer">
+		select count(*) from intercept_travel
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="intercepttraveltype != null and intercepttraveltype != ''">
+					and InterceptTravelType = #{intercepttraveltype,jdbcType=VARCHAR}
+				</if>
+				<if test="intercepttravelstate != null and intercepttravelstate != ''">
+					and InterceptTravelState = #{intercepttravelstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据InterceptTravel实体查询 -->
+	<select id="selectByInterceptTravel" parameterType="sun.bz1.entity.InterceptTravel" resultMap="BaseResultMap">
+		select * from intercept_travel
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="intercepttraveltype != null and intercepttraveltype != ''">
+					and InterceptTravelType = #{intercepttraveltype,jdbcType=VARCHAR}
+				</if>
+				<if test="intercepttravelstate != null and intercepttravelstate != ''">
+					and InterceptTravelState = #{intercepttravelstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+</mapper>

@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 新闻表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.News">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.News">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="NewsId" jdbcType="VARCHAR" property="newsid" />
+		<result column="NewsTitle" jdbcType="VARCHAR" property="newstitle" />
+		<result column="NewsContent" jdbcType="VARCHAR" property="newscontent" />
+		<result column="NewsState" jdbcType="VARCHAR" property="newsstate" />
+		<result column="NewsCreateUserId" jdbcType="VARCHAR" property="newscreateuserid" />
+		<result column="NewsCreateTime" jdbcType="TIMESTAMP" property="newscreatetime" />
+		<result column="NewsUpdateUserId" jdbcType="VARCHAR" property="newsupdateuserid" />
+		<result column="NewsUpdateTime" jdbcType="TIMESTAMP" property="newsupdatetime" />
+		<result column="NewsRemark" jdbcType="VARCHAR" property="newsremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, NewsId, NewsTitle, NewsContent, NewsState, NewsCreateUserId,
+		NewsCreateTime, NewsUpdateUserId, NewsUpdateTime, NewsRemark
+	</sql>
+
+	<insert id="insert" parameterType="sun.bz1.entity.News">
+		insert into news (ID, NewsId, NewsTitle, NewsContent, NewsState, NewsCreateUserId, 
+		NewsCreateTime, NewsUpdateUserId, NewsUpdateTime, NewsRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{newsid,jdbcType=VARCHAR},
+		#{newstitle,jdbcType=VARCHAR},
+		#{newscontent,jdbcType=VARCHAR}, 
+		#{newsstate,jdbcType=VARCHAR}, 
+		#{newscreateuserid,jdbcType=VARCHAR},
+		#{newscreatetime,jdbcType=TIMESTAMP},
+		#{newsupdateuserid,jdbcType=VARCHAR},
+		#{newsupdatetime,jdbcType=TIMESTAMP},
+		#{newsremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.News">
+		insert into news
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="newsid != null">
+				NewsId,
+			</if>
+			<if test="newstitle != null">
+				NewsTitle,
+			</if>
+			<if test="newscontent != null">
+				NewsContent,
+			</if>
+			<if test="newsstate != null">
+				NewsState,
+			</if>
+			<if test="newscreateuserid != null">
+				NewsCreateUserId,
+			</if>
+			<if test="newscreatetime != null">
+				NewsCreateTime,
+			</if>
+			<if test="newsupdateuserid != null">
+				NewsUpdateUserId,
+			</if>
+			<if test="newsupdatetime != null">
+				NewsUpdateTime,
+			</if>
+			<if test="newsremark != null">
+				NewsRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="newsid != null">
+				#{newsid,jdbcType=VARCHAR},
+			</if>
+			<if test="newstitle != null">
+				#{newstitle,jdbcType=VARCHAR},
+			</if>
+			<if test="newscontent != null">
+				#{newscontent,jdbcType=VARCHAR},
+			</if>
+			<if test="newsstate != null">
+				#{newsstate,jdbcType=VARCHAR},
+			</if>
+			<if test="newscreateuserid != null">
+				#{newscreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="newscreatetime != null">
+				#{newscreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="newsupdateuserid != null">
+				#{newsupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="newsupdatetime != null">
+				#{newsupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="newsremark != null">
+				#{newsremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.News">
+		update news
+		<set>
+			<if test="newsid != null">
+				NewsId = #{newsid,jdbcType=VARCHAR},
+			</if>
+			<if test="newstitle != null">
+				NewsTitle = #{newstitle,jdbcType=VARCHAR},
+			</if>
+			<if test="newscontent != null">
+				NewsContent = #{newscontent,jdbcType=VARCHAR},
+			</if>
+			<if test="newsstate != null">
+				NewsState = #{newsstate,jdbcType=VARCHAR},
+			</if>
+			<if test="newscreateuserid != null">
+				NewsCreateUserId = #{newscreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="newscreatetime != null">
+				NewsCreateTime = #{newscreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="newsupdateuserid != null">
+				NewsUpdateUserId = #{newsupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="newsupdatetime != null">
+				NewsUpdateTime = #{newsupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="newsremark != null">
+				NewsRemark = #{newsremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.News">
+		update news
+		set NewsId = #{newsid,jdbcType=VARCHAR},
+		NewsTitle = #{newstitle,jdbcType=VARCHAR},
+		NewsContent = #{newscontent,jdbcType=VARCHAR},
+		NewsState = #{newsstate,jdbcType=VARCHAR},
+		NewsCreateUserId = #{newscreateuserid,jdbcType=VARCHAR},
+		NewsCreateTime = #{newscreatetime,jdbcType=TIMESTAMP},
+		NewsUpdateUserId = #{newsupdateuserid,jdbcType=VARCHAR},
+		NewsUpdateTime = #{newsupdatetime,jdbcType=TIMESTAMP},
+		NewsRemark = #{newsremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from news
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from news
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from news
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<!-- 根据News实体添加 -->
+	<insert id="insertByNews" parameterType="sun.bz1.entity.News">
+		insert into news
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="newsid != null">
+				NewsId,
+			</if>
+			<if test="newstitle != null">
+				NewsTitle,
+			</if>
+			<if test="newscontent != null">
+				NewsContent,
+			</if>
+			<if test="newsstate != null">
+				NewsState,
+			</if>
+			<if test="newscreateuserid != null">
+				NewsCreateUserId,
+			</if>
+			<if test="newscreatetime != null">
+				NewsCreateTime,
+			</if>
+			<if test="newsupdateuserid != null">
+				NewsUpdateUserId,
+			</if>
+			<if test="newsupdatetime != null">
+				NewsUpdateTime,
+			</if>
+			<if test="newsremark != null">
+				NewsRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="newsid != null">
+				#{newsid,jdbcType=VARCHAR},
+			</if>
+			<if test="newstitle != null">
+				#{newstitle,jdbcType=VARCHAR},
+			</if>
+			<if test="newscontent != null">
+				#{newscontent,jdbcType=VARCHAR},
+			</if>
+			<if test="newsstate != null">
+				#{newsstate,jdbcType=VARCHAR},
+			</if>
+			<if test="newscreateuserid != null">
+				#{newscreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="newscreatetime != null">
+				#{newscreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="newsupdateuserid != null">
+				#{newsupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="newsupdatetime != null">
+				#{newsupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="newsremark != null">
+				#{newsremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 根据News实体更新 -->
+	<update id="updateByNews" parameterType="sun.bz1.entity.News">
+		update news
+		<set>
+			<if test="newsid != null">
+				NewsId = #{newsid,jdbcType=VARCHAR},
+			</if>
+			<if test="newstitle != null">
+				NewsTitle = #{newstitle,jdbcType=VARCHAR},
+			</if>
+			<if test="newscontent != null">
+				NewsContent = #{newscontent,jdbcType=VARCHAR},
+			</if>
+			<if test="newsstate != null">
+				NewsState = #{newsstate,jdbcType=VARCHAR},
+			</if>
+			<if test="newscreateuserid != null">
+				NewsCreateUserId = #{newscreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="newscreatetime != null">
+				NewsCreateTime = #{newscreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="newsupdateuserid != null">
+				NewsUpdateUserId = #{newsupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="newsupdatetime != null">
+				NewsUpdateTime = #{newsupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="newsremark != null">
+				NewsRemark = #{newsremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="newsid != null and newsid != ''">
+					and NewsId = #{newsid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+
+	<!-- 根据News实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByNews" parameterType="sun.bz1.entity.News" resultType="java.lang.Integer">
+		select count(*) from news
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="newsid != null and newsid != ''">
+					and NewsId = #{newsid,jdbcType=VARCHAR}
+				</if>
+				<if test="newsstate != null and newsstate != ''">
+					and NewsState = #{newsstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据News实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量 -->
+	<select id="selectByNews" parameterType="sun.bz1.entity.News" resultMap="BaseResultMap">
+		select * from news
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="newsid != null and newsid != ''">
+					and NewsId = #{newsid,jdbcType=VARCHAR}
+				</if>
+				<if test="newsstate != null and newsstate != ''">
+					and NewsState = #{newsstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER},
+			#{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<!-- 根据News实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectData" parameterType="sun.bz1.entity.News" resultType="java.lang.Integer">
+		select count(*) from news
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="newsid != null and newsid != ''">
+					and NewsId = #{newsid,jdbcType=VARCHAR}
+				</if>
+				<if test="newstitle != null and newstitle != ''">
+					or NewsTitle like
+					CONCAT('%',#{newstitle,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="newsstate != null and newsstate != ''">
+					and NewsState = #{newsstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据News实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量 -->
+	<select id="selectBySelectData" parameterType="sun.bz1.entity.News" resultMap="BaseResultMap">
+		select * from news
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="newsid != null and newsid != ''">
+					and NewsId = #{newsid,jdbcType=VARCHAR}
+				</if>
+				<if test="newstitle != null and newstitle != ''">
+					or NewsTitle like
+					CONCAT('%',#{newstitle,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="newsstate != null and newsstate != ''">
+					and NewsState = #{newsstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER},
+			#{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<!-- 根据News实体删除 -->
+	<delete id="deleteByNews" parameterType="sun.bz1.entity.News">
+		delete from news
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="newsid != null and newsid != ''">
+					and NewsId = #{newsid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+	
+</mapper>

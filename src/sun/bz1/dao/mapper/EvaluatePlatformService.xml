@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.bz1.dao.mapper.EvaluatePlatformService">
+  <resultMap id="BaseResultMap" type="sun.bz1.entity.EvaluatePlatformService">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="EvaluatePlatformServiceId" jdbcType="VARCHAR" property="evaluateplatformserviceid" />
+    <result column="ServiceUserId" jdbcType="VARCHAR" property="serviceuserid" />
+    <result column="CustomerUserId" jdbcType="VARCHAR" property="customeruserid" />
+    <result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="EvaluatePlatformServiceScore" jdbcType="DOUBLE" property="evaluateplatformservicescore" />
+    <result column="EvaluatePlatformServiceOpinion" jdbcType="VARCHAR" property="evaluateplatformserviceopinion" />
+    <result column="EvaluatePlatformServiceCreateTime" jdbcType="TIMESTAMP" property="evaluateplatformservicecreatetime" />
+    <result column="EvaluatePlatformServiceRemark" jdbcType="VARCHAR" property="evaluateplatformserviceremark" />
+    <result column="EvaluatePlatformServiceSetupId" jdbcType="VARCHAR" property="evaluateplatformservicesetupid" />
+    <result column="EvaluatePlatformServiceSetupName" jdbcType="VARCHAR" property="evaluateplatformservicesetupname" />
+    <result column="EvaluatePlatformServiceSetupScore" jdbcType="VARCHAR" property="evaluateplatformservicesetupscore" />
+    <result column="EvaluatePlatformServiceOther1" jdbcType="VARCHAR" property="evaluateplatformserviceother1" />
+    <result column="EvaluatePlatformServiceOther2" jdbcType="VARCHAR" property="evaluateplatformserviceother2" />
+    <result column="EvaluatePlatformServiceOther3" jdbcType="VARCHAR" property="evaluateplatformserviceother3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, EvaluatePlatformServiceId, ServiceUserId, CustomerUserId, OrderId, EvaluatePlatformServiceScore, 
+    EvaluatePlatformServiceOpinion, EvaluatePlatformServiceCreateTime, EvaluatePlatformServiceRemark, 
+    EvaluatePlatformServiceSetupId, EvaluatePlatformServiceSetupName, EvaluatePlatformServiceSetupScore, 
+    EvaluatePlatformServiceOther1, EvaluatePlatformServiceOther2, EvaluatePlatformServiceOther3
+  </sql>
+  <insert id="insert" parameterType="sun.bz1.entity.EvaluatePlatformService">
+    insert into evaluate_platform_service (ID, EvaluatePlatformServiceId, ServiceUserId,
+    CustomerUserId, OrderId, EvaluatePlatformServiceScore,
+    EvaluatePlatformServiceOpinion, EvaluatePlatformServiceCreateTime,
+    EvaluatePlatformServiceRemark, EvaluatePlatformServiceSetupId,
+    EvaluatePlatformServiceSetupName, EvaluatePlatformServiceSetupScore,
+    EvaluatePlatformServiceOther1, EvaluatePlatformServiceOther2,
+    EvaluatePlatformServiceOther3)
+    values (#{id,jdbcType=INTEGER}, #{evaluateplatformserviceid,jdbcType=VARCHAR}, #{serviceuserid,jdbcType=VARCHAR},
+    #{customeruserid,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR}, #{evaluateplatformservicescore,jdbcType=DOUBLE},
+    #{evaluateplatformserviceopinion,jdbcType=VARCHAR}, #{evaluateplatformservicecreatetime,jdbcType=TIMESTAMP},
+    #{evaluateplatformserviceremark,jdbcType=VARCHAR}, #{evaluateplatformservicesetupid,jdbcType=VARCHAR},
+    #{evaluateplatformservicesetupname,jdbcType=VARCHAR}, #{evaluateplatformservicesetupscore,jdbcType=VARCHAR},
+    #{evaluateplatformserviceother1,jdbcType=VARCHAR}, #{evaluateplatformserviceother2,jdbcType=VARCHAR},
+    #{evaluateplatformserviceother3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sun.bz1.entity.EvaluatePlatformService">
+    insert into evaluate_platform_service
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="evaluateplatformserviceid != null">
+        EvaluatePlatformServiceId,
+      </if>
+      <if test="serviceuserid != null">
+        ServiceUserId,
+      </if>
+      <if test="customeruserid != null">
+        CustomerUserId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="evaluateplatformservicescore != null">
+        EvaluatePlatformServiceScore,
+      </if>
+      <if test="evaluateplatformserviceopinion != null">
+        EvaluatePlatformServiceOpinion,
+      </if>
+      <if test="evaluateplatformservicecreatetime != null">
+        EvaluatePlatformServiceCreateTime,
+      </if>
+      <if test="evaluateplatformserviceremark != null">
+        EvaluatePlatformServiceRemark,
+      </if>
+      <if test="evaluateplatformservicesetupid != null">
+        EvaluatePlatformServiceSetupId,
+      </if>
+      <if test="evaluateplatformservicesetupname != null">
+        EvaluatePlatformServiceSetupName,
+      </if>
+      <if test="evaluateplatformservicesetupscore != null">
+        EvaluatePlatformServiceSetupScore,
+      </if>
+      <if test="evaluateplatformserviceother1 != null">
+        EvaluatePlatformServiceOther1,
+      </if>
+      <if test="evaluateplatformserviceother2 != null">
+        EvaluatePlatformServiceOther2,
+      </if>
+      <if test="evaluateplatformserviceother3 != null">
+        EvaluatePlatformServiceOther3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateplatformserviceid != null">
+        #{evaluateplatformserviceid,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceuserid != null">
+        #{serviceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="customeruserid != null">
+        #{customeruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicescore != null">
+        #{evaluateplatformservicescore,jdbcType=DOUBLE},
+      </if>
+      <if test="evaluateplatformserviceopinion != null">
+        #{evaluateplatformserviceopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicecreatetime != null">
+        #{evaluateplatformservicecreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateplatformserviceremark != null">
+        #{evaluateplatformserviceremark,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicesetupid != null">
+        #{evaluateplatformservicesetupid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicesetupname != null">
+        #{evaluateplatformservicesetupname,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicesetupscore != null">
+        #{evaluateplatformservicesetupscore,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformserviceother1 != null">
+        #{evaluateplatformserviceother1,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformserviceother2 != null">
+        #{evaluateplatformserviceother2,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformserviceother3 != null">
+        #{evaluateplatformserviceother3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.EvaluatePlatformService">
+    update evaluate_platform_service
+    <set>
+      <if test="evaluateplatformserviceid != null">
+        EvaluatePlatformServiceId = #{evaluateplatformserviceid,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceuserid != null">
+        ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="customeruserid != null">
+        CustomerUserId = #{customeruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicescore != null">
+        EvaluatePlatformServiceScore = #{evaluateplatformservicescore,jdbcType=DOUBLE},
+      </if>
+      <if test="evaluateplatformserviceopinion != null">
+        EvaluatePlatformServiceOpinion = #{evaluateplatformserviceopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicecreatetime != null">
+        EvaluatePlatformServiceCreateTime = #{evaluateplatformservicecreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateplatformserviceremark != null">
+        EvaluatePlatformServiceRemark = #{evaluateplatformserviceremark,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicesetupid != null">
+        EvaluatePlatformServiceSetupId = #{evaluateplatformservicesetupid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicesetupname != null">
+        EvaluatePlatformServiceSetupName = #{evaluateplatformservicesetupname,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicesetupscore != null">
+        EvaluatePlatformServiceSetupScore = #{evaluateplatformservicesetupscore,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformserviceother1 != null">
+        EvaluatePlatformServiceOther1 = #{evaluateplatformserviceother1,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformserviceother2 != null">
+        EvaluatePlatformServiceOther2 = #{evaluateplatformserviceother2,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformserviceother3 != null">
+        EvaluatePlatformServiceOther3 = #{evaluateplatformserviceother3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sun.bz1.entity.EvaluatePlatformService">
+    update evaluate_platform_service
+    set EvaluatePlatformServiceId = #{evaluateplatformserviceid,jdbcType=VARCHAR},
+    ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+    CustomerUserId = #{customeruserid,jdbcType=VARCHAR},
+    OrderId = #{orderid,jdbcType=VARCHAR},
+    EvaluatePlatformServiceScore = #{evaluateplatformservicescore,jdbcType=DOUBLE},
+    EvaluatePlatformServiceOpinion = #{evaluateplatformserviceopinion,jdbcType=VARCHAR},
+    EvaluatePlatformServiceCreateTime = #{evaluateplatformservicecreatetime,jdbcType=TIMESTAMP},
+    EvaluatePlatformServiceRemark = #{evaluateplatformserviceremark,jdbcType=VARCHAR},
+    EvaluatePlatformServiceSetupId = #{evaluateplatformservicesetupid,jdbcType=VARCHAR},
+    EvaluatePlatformServiceSetupName = #{evaluateplatformservicesetupname,jdbcType=VARCHAR},
+    EvaluatePlatformServiceSetupScore = #{evaluateplatformservicesetupscore,jdbcType=VARCHAR},
+    EvaluatePlatformServiceOther1 = #{evaluateplatformserviceother1,jdbcType=VARCHAR},
+    EvaluatePlatformServiceOther2 = #{evaluateplatformserviceother2,jdbcType=VARCHAR},
+    EvaluatePlatformServiceOther3 = #{evaluateplatformserviceother3,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from evaluate_platform_service
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from evaluate_platform_service
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 根据EvaluatePlatformService实体添加 -->
+  <insert id="insertByEvaluatePlatformService" parameterType="sun.bz1.entity.EvaluatePlatformService">
+    insert into evaluate_platform_service
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="evaluateplatformserviceid != null">
+        EvaluatePlatformServiceId,
+      </if>
+      <if test="serviceuserid != null">
+        ServiceUserId,
+      </if>
+      <if test="customeruserid != null">
+        CustomerUserId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="evaluateplatformservicescore != null">
+        EvaluatePlatformServiceScore,
+      </if>
+      <if test="evaluateplatformserviceopinion != null">
+        EvaluatePlatformServiceOpinion,
+      </if>
+      <if test="evaluateplatformservicecreatetime != null">
+        EvaluatePlatformServiceCreateTime,
+      </if>
+      <if test="evaluateplatformserviceremark != null">
+        EvaluatePlatformServiceRemark,
+      </if>
+      <if test="evaluateplatformservicesetupid != null">
+        EvaluatePlatformServiceSetupId,
+      </if>
+      <if test="evaluateplatformservicesetupname != null">
+        EvaluatePlatformServiceSetupName,
+      </if>
+      <if test="evaluateplatformservicesetupscore != null">
+        EvaluatePlatformServiceSetupScore,
+      </if>
+      <if test="evaluateplatformserviceother1 != null">
+        EvaluatePlatformServiceOther1,
+      </if>
+      <if test="evaluateplatformserviceother2 != null">
+        EvaluatePlatformServiceOther2,
+      </if>
+      <if test="evaluateplatformserviceother3 != null">
+        EvaluatePlatformServiceOther3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateplatformserviceid != null">
+        #{evaluateplatformserviceid,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceuserid != null">
+        #{serviceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="customeruserid != null">
+        #{customeruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicescore != null">
+        #{evaluateplatformservicescore,jdbcType=DOUBLE},
+      </if>
+      <if test="evaluateplatformserviceopinion != null">
+        #{evaluateplatformserviceopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicecreatetime != null">
+        #{evaluateplatformservicecreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateplatformserviceremark != null">
+        #{evaluateplatformserviceremark,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicesetupid != null">
+        #{evaluateplatformservicesetupid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicesetupname != null">
+        #{evaluateplatformservicesetupname,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicesetupscore != null">
+        #{evaluateplatformservicesetupscore,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformserviceother1 != null">
+        #{evaluateplatformserviceother1,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformserviceother2 != null">
+        #{evaluateplatformserviceother2,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformserviceother3 != null">
+        #{evaluateplatformserviceother3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 根据EvaluatePlatformService实体更新 -->
+  <update id="updateByEvaluatePlatformService" parameterType="sun.bz1.entity.EvaluatePlatformService">
+    update evaluate_platform_service
+    <set>
+      <if test="evaluateplatformserviceid != null">
+        EvaluatePlatformServiceId = #{evaluateplatformserviceid,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceuserid != null">
+        ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="customeruserid != null">
+        CustomerUserId = #{customeruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicescore != null">
+        EvaluatePlatformServiceScore = #{evaluateplatformservicescore,jdbcType=DOUBLE},
+      </if>
+      <if test="evaluateplatformserviceopinion != null">
+        EvaluatePlatformServiceOpinion = #{evaluateplatformserviceopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicecreatetime != null">
+        EvaluatePlatformServiceCreateTime = #{evaluateplatformservicecreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateplatformserviceremark != null">
+        EvaluatePlatformServiceRemark = #{evaluateplatformserviceremark,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicesetupid != null">
+        EvaluatePlatformServiceSetupId = #{evaluateplatformservicesetupid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicesetupname != null">
+        EvaluatePlatformServiceSetupName = #{evaluateplatformservicesetupname,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformservicesetupscore != null">
+        EvaluatePlatformServiceSetupScore = #{evaluateplatformservicesetupscore,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformserviceother1 != null">
+        EvaluatePlatformServiceOther1 = #{evaluateplatformserviceother1,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformserviceother2 != null">
+        EvaluatePlatformServiceOther2 = #{evaluateplatformserviceother2,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateplatformserviceother3 != null">
+        EvaluatePlatformServiceOther3 = #{evaluateplatformserviceother3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="id != null">
+          and ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="evaluateplatformserviceid != null and evaluateplatformserviceid != ''">
+          and EvaluatePlatformServiceId = #{evaluateplatformserviceid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderid != null and orderid != ''">
+          and OrderId = #{orderid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </update>
+
+
+
+  <!-- 根据EvaluatePlatformService实体删除 -->
+  <delete id="deleteByEvaluatePlatformService" parameterType="sun.bz1.entity.EvaluatePlatformService">
+    delete from evaluate_platform_service
+    <where>
+      <trim suffixOverrides="and|or">
+        <if test="evaluateplatformserviceid != null and evaluateplatformserviceid != ''">
+          and EvaluatePlatformServiceId = #{evaluateplatformserviceid,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </delete>
+</mapper>

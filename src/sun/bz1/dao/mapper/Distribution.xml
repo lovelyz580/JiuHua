@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 维修单分配记录表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.Distribution">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.Distribution">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="DistributionId" jdbcType="VARCHAR" property="distributionid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="ServiceUserId" jdbcType="VARCHAR" property="serviceuserid" />
+		<result column="DistributionUserId" jdbcType="VARCHAR" property="distributionuserid" />
+		<result column="DistributionTime" jdbcType="TIMESTAMP" property="distributiontime" />
+		<result column="DistributionRemark" jdbcType="VARCHAR" property="distributionremark" />
+	</resultMap>
+	
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.DistributionAndOrderTableAndUser">
+		<!-- 维修单分配记录表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="DistributionId" jdbcType="VARCHAR" property="distributionid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="ServiceUserId" jdbcType="VARCHAR" property="serviceuserid" />
+		<result column="DistributionUserId" jdbcType="VARCHAR" property="distributionuserid" />
+		<result column="DistributionTime" jdbcType="TIMESTAMP" property="distributiontime" />
+		<result column="DistributionRemark" jdbcType="VARCHAR" property="distributionremark" />
+		
+		<!-- 维修单表 -->
+		<result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+		<result column="OrderContactPerson" jdbcType="VARCHAR" property="ordercontactperson" />
+		<result column="OrderContactPhone" jdbcType="VARCHAR" property="ordercontactphone" />
+		<result column="OrderAddress" jdbcType="VARCHAR" property="orderaddress" />
+		<result column="BuildingTypeId" jdbcType="VARCHAR" property="buildingtypeid" />
+		<result column="OrderPlanTime" jdbcType="TIMESTAMP" property="orderplantime" />
+		<result column="OrderBiddingEndTime" jdbcType="TIMESTAMP" property="orderbiddingendtime" />
+		<result column="OrderProjectType" jdbcType="VARCHAR" property="orderprojecttype" />
+		<result column="OrderPosition" jdbcType="VARCHAR" property="orderposition" />
+		<result column="OrderLatitude" jdbcType="DOUBLE" property="orderlatitude" />
+		<result column="OrderLongitude" jdbcType="DOUBLE" property="orderlongitude" />
+		<result column="OrderDistance" jdbcType="DOUBLE" property="orderdistance" />
+		<result column="OrderInterceptTotalMoney" jdbcType="DOUBLE" property="orderintercepttotalmoney" />
+		<result column="OrderInterceptTravelTotalMoney" jdbcType="DOUBLE" property="orderintercepttraveltotalmoney" />
+		<result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+		<result column="OrderTravelTotalMoney" jdbcType="DOUBLE" property="ordertraveltotalmoney" />
+		<result column="OrderType" jdbcType="VARCHAR" property="ordertype" />
+		<result column="OrderState" jdbcType="VARCHAR" property="orderstate" />
+		<result column="OrderServiceUserId" jdbcType="VARCHAR" property="orderserviceuserid" />
+		<result column="OrderCreateUserId" jdbcType="VARCHAR" property="ordercreateuserid" />
+		<result column="OrderCreateTime" jdbcType="TIMESTAMP" property="ordercreatetime" />
+		<result column="OrderUpdateUserId" jdbcType="VARCHAR" property="orderupdateuserid" />
+		<result column="OrderUpdateTime" jdbcType="TIMESTAMP" property="orderupdatetime" />
+		<result column="OrderApplyCheckUserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+		<result column="OrderApplyCheckTime" jdbcType="TIMESTAMP" property="orderapplychecktime" />
+		<result column="OrderRemark" jdbcType="VARCHAR" property="orderremark" />
+		<result column="OrderCheckAllState" jdbcType="VARCHAR" property="ordercheckallstate" />
+		
+		<!-- 被分配人员(用户表) -->
+		<result column="UserName" jdbcType="VARCHAR" property="serviceuser_username" />
+		<result column="UserRealName" jdbcType="VARCHAR" property="serviceuser_userrealname" />
+		<result column="UserSex" jdbcType="VARCHAR" property="serviceuser_usersex" />
+		<result column="UserPhone" jdbcType="VARCHAR" property="serviceuser_userphone" />
+		<result column="UserCodeId" jdbcType="VARCHAR" property="serviceuser_usercodeid" />
+		<result column="UserEmail" jdbcType="VARCHAR" property="serviceuser_useremail" />
+		<result column="UserRole" jdbcType="VARCHAR" property="serviceuser_userrole" />
+		<result column="UserState" jdbcType="VARCHAR" property="serviceuser_userstate" />
+		<result column="UserCredit" jdbcType="DOUBLE" property="serviceuser_usercredit" />
+		<result column="UserMoney" jdbcType="DOUBLE" property="serviceuser_usermoney" />
+		<result column="UserOpenId" jdbcType="VARCHAR" property="serviceuser_useropenid" />
+		<result column="UserPosition" jdbcType="VARCHAR" property="serviceuser_userposition" />
+		<result column="UserLatitude" jdbcType="DOUBLE" property="serviceuser_userlatitude" />
+		<result column="UserLongitude" jdbcType="DOUBLE" property="serviceuser_userlongitude" />
+		<result column="UserRemark" jdbcType="VARCHAR" property="serviceuser_userremark" />
+		
+		<!-- 分配人员(用户表) -->
+		<result column="UserName1" jdbcType="VARCHAR" property="distributionuser_username" />
+		<result column="UserRealName1" jdbcType="VARCHAR" property="distributionuser_userrealname" />
+		<result column="UserSex1" jdbcType="VARCHAR" property="distributionuser_usersex" />
+		<result column="UserPhone1" jdbcType="VARCHAR" property="distributionuser_userphone" />
+		<result column="UserCodeId1" jdbcType="VARCHAR" property="distributionuser_usercodeid" />
+		<result column="UserEmail1" jdbcType="VARCHAR" property="distributionuser_useremail" />
+		<result column="UserRole1" jdbcType="VARCHAR" property="distributionuser_userrole" />
+		<result column="UserState1" jdbcType="VARCHAR" property="distributionuser_userstate" />
+		<result column="UserCredit1" jdbcType="DOUBLE" property="distributionuser_usercredit" />
+		<result column="UserMoney1" jdbcType="DOUBLE" property="distributionuser_usermoney" />
+		<result column="UserOpenId1" jdbcType="VARCHAR" property="distributionuser_useropenid" />
+		<result column="UserPosition1" jdbcType="VARCHAR" property="distributionuser_userposition" />
+		<result column="UserLatitude1" jdbcType="DOUBLE" property="distributionuser_userlatitude" />
+		<result column="UserLongitude1" jdbcType="DOUBLE" property="distributionuser_userlongitude" />
+		<result column="UserRemark1" jdbcType="VARCHAR" property="distributionuser_userremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, DistributionId, OrderId, ServiceUserId, 
+		DistributionUserId, DistributionTime, DistributionRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.Distribution">
+		insert into distribution (ID, DistributionId, OrderId, ServiceUserId, 
+		DistributionUserId, DistributionTime, DistributionRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{distributionid,jdbcType=VARCHAR},
+		#{orderid,jdbcType=VARCHAR},
+		#{serviceuserid,jdbcType=VARCHAR}, 
+		#{distributionuserid,jdbcType=VARCHAR},
+		#{distributiontime,jdbcType=TIMESTAMP},
+		#{distributionremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.Distribution">
+		insert into distribution
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="distributionid != null">
+				DistributionId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId,
+			</if>
+			<if test="distributionuserid != null">
+				DistributionUserId,
+			</if>
+			<if test="distributiontime != null">
+				DistributionTime,
+			</if>
+			<if test="distributionremark != null">
+				DistributionRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="distributionid != null">
+				#{distributionid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				#{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="distributionuserid != null">
+				#{distributionuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="distributiontime != null">
+				#{distributiontime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="distributionremark != null">
+				#{distributionremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.Distribution">
+		update distribution
+		<set>
+			<if test="distributionid != null">
+				DistributionId = #{distributionid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="distributionuserid != null">
+				DistributionUserId = #{distributionuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="distributiontime != null">
+				DistributionTime = #{distributiontime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="distributionremark != null">
+				DistributionRemark = #{distributionremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.Distribution">
+		update distribution
+		set DistributionId = #{distributionid,jdbcType=VARCHAR},
+		OrderId = #{orderid,jdbcType=VARCHAR},
+		ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+		DistributionUserId = #{distributionuserid,jdbcType=VARCHAR},
+		DistributionTime = #{distributiontime,jdbcType=TIMESTAMP},
+		DistributionRemark = #{distributionremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from distribution
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from distribution
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from distribution
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据Distribution实体添加 -->
+	<insert id="insertByDistribution" parameterType="sun.bz1.entity.Distribution">
+		insert into distribution
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="distributionid != null">
+				DistributionId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId,
+			</if>
+			<if test="distributionuserid != null">
+				DistributionUserId,
+			</if>
+			<if test="distributiontime != null">
+				DistributionTime,
+			</if>
+			<if test="distributionremark != null">
+				DistributionRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="distributionid != null">
+				#{distributionid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				#{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="distributionuserid != null">
+				#{distributionuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="distributiontime != null">
+				#{distributiontime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="distributionremark != null">
+				#{distributionremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据Distribution实体更新 -->
+	<update id="updateByDistribution" parameterType="sun.bz1.entity.Distribution">
+		update distribution
+		<set>
+			<if test="distributionid != null">
+				DistributionId = #{distributionid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="distributionuserid != null">
+				DistributionUserId = #{distributionuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="distributiontime != null">
+				DistributionTime = #{distributiontime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="distributionremark != null">
+				DistributionRemark = #{distributionremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="distributionid != null and distributionid != ''">
+					and DistributionId = #{distributionid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据DistributionAndOrderTableAndUser实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountByUnionData" parameterType="sun.bz1.entity.DistributionAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from distribution a 
+			inner join order_table b on a.OrderId = b.OrderId
+			left join user c on a.ServiceUserId = c.UserId
+			left join user d on a.DistributionId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="distributionid != null and distributionid != ''">
+					and a.DistributionId = #{distributionid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="distributionuserid != null and distributionuserid != ''">
+					and a.DistributionUserId = #{distributionuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectdistributionstarttime != null and selectdistributionstarttime != '' 
+						and selectdistributionendtime != null and selectdistributionendtime != ''">
+					and a.DistributionTime &gt;= #{selectdistributionstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.DistributionTime &lt;= #{selectdistributionendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据DistributionAndOrderTableAndUser实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesByUnionData" parameterType="sun.bz1.entity.DistributionAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from distribution a 
+			inner join order_table b on a.OrderId = b.OrderId
+			left join user c on a.ServiceUserId = c.UserId
+			left join user d on a.DistributionId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="distributionid != null and distributionid != ''">
+					and a.DistributionId = #{distributionid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="distributionuserid != null and distributionuserid != ''">
+					and a.DistributionUserId = #{distributionuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectdistributionstarttime != null and selectdistributionstarttime != '' 
+						and selectdistributionendtime != null and selectdistributionendtime != ''">
+					and a.DistributionTime &gt;= #{selectdistributionstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.DistributionTime &lt;= #{selectdistributionendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据DistributionAndOrderTableAndUser实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountBySelectData" parameterType="sun.bz1.entity.DistributionAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from distribution a 
+			inner join order_table b on a.OrderId = b.OrderId
+			left join user c on a.ServiceUserId = c.UserId
+			left join user d on a.DistributionId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="distributionid != null and distributionid != ''">
+					and a.DistributionId = #{distributionid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="distributionuserid != null and distributionuserid != ''">
+					and a.DistributionUserId = #{distributionuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectdistributionstarttime != null and selectdistributionstarttime != '' 
+						and selectdistributionendtime != null and selectdistributionendtime != ''">
+					and a.DistributionTime &gt;= #{selectdistributionstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.DistributionTime &lt;= #{selectdistributionendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuser_username != null and serviceuser_username != ''">
+					or c.UserName like CONCAT('%',#{serviceuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userrealname != null and serviceuser_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{serviceuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userphone != null and serviceuser_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{serviceuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="distributionuser_username != null and distributionuser_username != ''">
+					or d.UserName like CONCAT('%',#{distributionuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="distributionuser_userrealname != null and distributionuser_userrealname != ''">
+					or d.UserRealName like CONCAT('%',#{distributionuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="distributionuser_userphone != null and distributionuser_userphone != ''">
+					or d.UserPhone like CONCAT('%',#{distributionuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据DistributionAndOrderTableAndUser实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesBySelectData" parameterType="sun.bz1.entity.DistributionAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from distribution a 
+			inner join order_table b on a.OrderId = b.OrderId
+			left join user c on a.ServiceUserId = c.UserId
+			left join user d on a.DistributionId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="distributionid != null and distributionid != ''">
+					and a.DistributionId = #{distributionid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="distributionuserid != null and distributionuserid != ''">
+					and a.DistributionUserId = #{distributionuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectdistributionstarttime != null and selectdistributionstarttime != '' 
+						and selectdistributionendtime != null and selectdistributionendtime != ''">
+					and a.DistributionTime &gt;= #{selectdistributionstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.DistributionTime &lt;= #{selectdistributionendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					and b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					and b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					and b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					and b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuser_username != null and serviceuser_username != ''">
+					and c.UserName like CONCAT('%',#{serviceuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userrealname != null and serviceuser_userrealname != ''">
+					and c.UserRealName like CONCAT('%',#{serviceuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userphone != null and serviceuser_userphone != ''">
+					and c.UserPhone like CONCAT('%',#{serviceuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="distributionuser_username != null and distributionuser_username != ''">
+					and d.UserName like CONCAT('%',#{distributionuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="distributionuser_userrealname != null and distributionuser_userrealname != ''">
+					and d.UserRealName like CONCAT('%',#{distributionuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="distributionuser_userphone != null and distributionuser_userphone != ''">
+					and d.UserPhone like CONCAT('%',#{distributionuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据Distribution实体删除 -->
+	<delete id="deleteByDistribution" parameterType="sun.bz1.entity.Distribution">
+		delete from distribution
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="distributionid != null and distributionid != ''">
+					and DistributionId = #{distributionid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+	
+</mapper>

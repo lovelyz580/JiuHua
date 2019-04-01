@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 用户_提现表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.UserExtractMoney">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.UserExtractMoney">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="UserExtractMoneyId" jdbcType="VARCHAR" property="userextractmoneyid" />
+		<result column="UserExtractMoneyUserId" jdbcType="VARCHAR" property="userextractmoneyuserid" />
+		<result column="UserExtractMoney" jdbcType="DOUBLE" property="userextractmoney" />
+		<result column="UserExtractMoneyName" jdbcType="VARCHAR" property="userextractmoneyname" />
+		<result column="UserExtractMoneyBankCard" jdbcType="VARCHAR" property="userextractmoneybankcard" />
+		<result column="UserExtractMoneyBankAddress" jdbcType="VARCHAR" property="userextractmoneybankaddress" />
+		<result column="UserExtractMoneyState" jdbcType="VARCHAR" property="userextractmoneystate" />
+		<result column="UserExtractMoneyTime" jdbcType="TIMESTAMP" property="userextractmoneytime" />
+		<result column="UserExtractMoneyCheckUserId" jdbcType="VARCHAR" property="userextractmoneycheckuserid" />
+		<result column="UserExtractMoneyCheckState" jdbcType="VARCHAR" property="userextractmoneycheckstate" />
+		<result column="UserExtractMoneyCheckContent" jdbcType="VARCHAR" property="userextractmoneycheckcontent" />
+		<result column="UserExtractMoneyCheckTime" jdbcType="TIMESTAMP" property="userextractmoneychecktime" />
+		<result column="UserExtractMoneyRemark" jdbcType="VARCHAR" property="userextractmoneyremark" />
+	</resultMap>
+	
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.UserExtractMoneyAndUser">
+		<!-- 用户_提现表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="UserExtractMoneyId" jdbcType="VARCHAR" property="userextractmoneyid" />
+		<result column="UserExtractMoneyUserId" jdbcType="VARCHAR" property="userextractmoneyuserid" />
+		<result column="UserExtractMoney" jdbcType="DOUBLE" property="userextractmoney" />
+		<result column="UserExtractMoneyName" jdbcType="VARCHAR" property="userextractmoneyname" />
+		<result column="UserExtractMoneyBankCard" jdbcType="VARCHAR" property="userextractmoneybankcard" />
+		<result column="UserExtractMoneyBankAddress" jdbcType="VARCHAR" property="userextractmoneybankaddress" />
+		<result column="UserExtractMoneyState" jdbcType="VARCHAR" property="userextractmoneystate" />
+		<result column="UserExtractMoneyTime" jdbcType="TIMESTAMP" property="userextractmoneytime" />
+		<result column="UserExtractMoneyCheckUserId" jdbcType="VARCHAR" property="userextractmoneycheckuserid" />
+		<result column="UserExtractMoneyCheckState" jdbcType="VARCHAR" property="userextractmoneycheckstate" />
+		<result column="UserExtractMoneyCheckContent" jdbcType="VARCHAR" property="userextractmoneycheckcontent" />
+		<result column="UserExtractMoneyCheckTime" jdbcType="TIMESTAMP" property="userextractmoneychecktime" />
+		<result column="UserExtractMoneyRemark" jdbcType="VARCHAR" property="userextractmoneyremark" />
+		
+		<!-- 提现人员(用户表) -->
+		<result column="UserName" jdbcType="VARCHAR" property="userextract_username" />
+		<result column="UserRealName" jdbcType="VARCHAR" property="userextract_userrealname" />
+		<result column="UserSex" jdbcType="VARCHAR" property="userextract_usersex" />
+		<result column="UserPhone" jdbcType="VARCHAR" property="userextract_userphone" />
+		<result column="UserCodeId" jdbcType="VARCHAR" property="userextract_usercodeid" />
+		<result column="UserEmail" jdbcType="VARCHAR" property="userextract_useremail" />
+		<result column="UserRole" jdbcType="VARCHAR" property="userextract_userrole" />
+		<result column="UserState" jdbcType="VARCHAR" property="userextract_userstate" />
+		<result column="UserCredit" jdbcType="DOUBLE" property="userextract_usercredit" />
+		<result column="UserMoney" jdbcType="DOUBLE" property="userextract_usermoney" />
+		<result column="UserOpenId" jdbcType="VARCHAR" property="userextract_useropenid" />
+		<result column="UserPosition" jdbcType="VARCHAR" property="userextract_userposition" />
+		<result column="UserLatitude" jdbcType="DOUBLE" property="userextract_userlatitude" />
+		<result column="UserLongitude" jdbcType="DOUBLE" property="userextract_userlongitude" />
+		<result column="UserRemark" jdbcType="VARCHAR" property="userextract_userremark" />
+		
+		<!-- 提现审核人员(用户表) -->
+		<result column="UserName1" jdbcType="VARCHAR" property="userextractmoneycheck_username" />
+		<result column="UserRealName1" jdbcType="VARCHAR" property="userextractmoneycheck_userrealname" />
+		<result column="UserSex1" jdbcType="VARCHAR" property="userextractmoneycheck_usersex" />
+		<result column="UserPhone1" jdbcType="VARCHAR" property="userextractmoneycheck_userphone" />
+		<result column="UserCodeId1" jdbcType="VARCHAR" property="userextractmoneycheck_usercodeid" />
+		<result column="UserEmail1" jdbcType="VARCHAR" property="userextractmoneycheck_useremail" />
+		<result column="UserRole1" jdbcType="VARCHAR" property="userextractmoneycheck_userrole" />
+		<result column="UserState1" jdbcType="VARCHAR" property="userextractmoneycheck_userstate" />
+		<result column="UserCredit1" jdbcType="DOUBLE" property="userextractmoneycheck_usercredit" />
+		<result column="UserMoney1" jdbcType="DOUBLE" property="userextractmoneycheck_usermoney" />
+		<result column="UserOpenId1" jdbcType="VARCHAR" property="userextractmoneycheck_useropenid" />
+		<result column="UserPosition1" jdbcType="VARCHAR" property="userextractmoneycheck_userposition" />
+		<result column="UserLatitude1" jdbcType="DOUBLE" property="userextractmoneycheck_userlatitude" />
+		<result column="UserLongitude1" jdbcType="DOUBLE" property="userextractmoneycheck_userlongitude" />
+		<result column="UserRemark1" jdbcType="VARCHAR" property="userextractmoneycheck_userremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, UserExtractMoneyId, UserExtractMoneyUserId, UserExtractMoney, UserExtractMoneyName, 
+		UserExtractMoneyBankCard, UserExtractMoneyBankAddress, UserExtractMoneyState, 
+		UserExtractMoneyTime, UserExtractMoneyCheckUserId, UserExtractMoneyCheckState, 
+		UserExtractMoneyCheckContent, UserExtractMoneyCheckTime, UserExtractMoneyRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.UserExtractMoney">
+		insert into user_extract_money (ID, UserExtractMoneyId, UserExtractMoneyUserId, 
+		UserExtractMoney, UserExtractMoneyName, UserExtractMoneyBankCard, 
+		UserExtractMoneyBankAddress, UserExtractMoneyState, UserExtractMoneyTime, 
+		UserExtractMoneyCheckUserId, UserExtractMoneyCheckState, 
+		UserExtractMoneyCheckContent, UserExtractMoneyCheckTime, UserExtractMoneyRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{userextractmoneyid,jdbcType=VARCHAR},
+		#{userextractmoneyuserid,jdbcType=VARCHAR},
+		#{userextractmoney,jdbcType=DOUBLE},
+		#{userextractmoneyname,jdbcType=VARCHAR},
+		#{userextractmoneybankcard,jdbcType=VARCHAR},
+		#{userextractmoneybankaddress,jdbcType=VARCHAR},
+		#{userextractmoneystate,jdbcType=VARCHAR},
+		#{userextractmoneytime,jdbcType=TIMESTAMP},
+		#{userextractmoneycheckuserid,jdbcType=VARCHAR},
+		#{userextractmoneycheckstate,jdbcType=VARCHAR},
+		#{userextractmoneycheckcontent,jdbcType=VARCHAR},
+		#{userextractmoneychecktime,jdbcType=TIMESTAMP},
+		#{userextractmoneyremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.UserExtractMoney">
+		insert into user_extract_money
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="userextractmoneyid != null">
+				UserExtractMoneyId,
+			</if>
+			<if test="userextractmoneyuserid != null">
+				UserExtractMoneyUserId,
+			</if>
+			<if test="userextractmoney != null">
+				UserExtractMoney,
+			</if>
+			<if test="userextractmoneyname != null">
+				UserExtractMoneyName,
+			</if>
+			<if test="userextractmoneybankcard != null">
+				UserExtractMoneyBankCard,
+			</if>
+			<if test="userextractmoneybankaddress != null">
+				UserExtractMoneyBankAddress,
+			</if>
+			<if test="userextractmoneystate != null">
+				UserExtractMoneyState,
+			</if>
+			<if test="userextractmoneytime != null">
+				UserExtractMoneyTime,
+			</if>
+			<if test="userextractmoneycheckuserid != null">
+				UserExtractMoneyCheckUserId,
+			</if>
+			<if test="userextractmoneycheckstate != null">
+				UserExtractMoneyCheckState,
+			</if>
+			<if test="userextractmoneycheckcontent != null">
+				UserExtractMoneyCheckContent,
+			</if>
+			<if test="userextractmoneychecktime != null">
+				UserExtractMoneyCheckTime,
+			</if>
+			<if test="userextractmoneyremark != null">
+				UserExtractMoneyRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="userextractmoneyid != null">
+				#{userextractmoneyid,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneyuserid != null">
+				#{userextractmoneyuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoney != null">
+				#{userextractmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="userextractmoneyname != null">
+				#{userextractmoneyname,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneybankcard != null">
+				#{userextractmoneybankcard,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneybankaddress != null">
+				#{userextractmoneybankaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneystate != null">
+				#{userextractmoneystate,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneytime != null">
+				#{userextractmoneytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userextractmoneycheckuserid != null">
+				#{userextractmoneycheckuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneycheckstate != null">
+				#{userextractmoneycheckstate,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneycheckcontent != null">
+				#{userextractmoneycheckcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneychecktime != null">
+				#{userextractmoneychecktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userextractmoneyremark != null">
+				#{userextractmoneyremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.UserExtractMoney">
+		update user_extract_money
+		<set>
+			<if test="userextractmoneyid != null">
+				UserExtractMoneyId = #{userextractmoneyid,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneyuserid != null">
+				UserExtractMoneyUserId = #{userextractmoneyuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoney != null">
+				UserExtractMoney = #{userextractmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="userextractmoneyname != null">
+				UserExtractMoneyName = #{userextractmoneyname,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneybankcard != null">
+				UserExtractMoneyBankCard = #{userextractmoneybankcard,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneybankaddress != null">
+				UserExtractMoneyBankAddress = #{userextractmoneybankaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneystate != null">
+				UserExtractMoneyState = #{userextractmoneystate,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneytime != null">
+				UserExtractMoneyTime = #{userextractmoneytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userextractmoneycheckuserid != null">
+				UserExtractMoneyCheckUserId = #{userextractmoneycheckuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneycheckstate != null">
+				UserExtractMoneyCheckState = #{userextractmoneycheckstate,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneycheckcontent != null">
+				UserExtractMoneyCheckContent = #{userextractmoneycheckcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneychecktime != null">
+				UserExtractMoneyCheckTime = #{userextractmoneychecktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userextractmoneyremark != null">
+				UserExtractMoneyRemark = #{userextractmoneyremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.UserExtractMoney">
+		update user_extract_money
+		set UserExtractMoneyId = #{userextractmoneyid,jdbcType=VARCHAR},
+		UserExtractMoneyUserId = #{userextractmoneyuserid,jdbcType=VARCHAR},
+		UserExtractMoney = #{userextractmoney,jdbcType=DOUBLE},
+		UserExtractMoneyName = #{userextractmoneyname,jdbcType=VARCHAR},
+		UserExtractMoneyBankCard = #{userextractmoneybankcard,jdbcType=VARCHAR},
+		UserExtractMoneyBankAddress = #{userextractmoneybankaddress,jdbcType=VARCHAR},
+		UserExtractMoneyState = #{userextractmoneystate,jdbcType=VARCHAR},
+		UserExtractMoneyTime = #{userextractmoneytime,jdbcType=TIMESTAMP},
+		UserExtractMoneyCheckUserId = #{userextractmoneycheckuserid,jdbcType=VARCHAR},
+		UserExtractMoneyCheckState = #{userextractmoneycheckstate,jdbcType=VARCHAR},
+		UserExtractMoneyCheckContent = #{userextractmoneycheckcontent,jdbcType=VARCHAR},
+		UserExtractMoneyCheckTime = #{userextractmoneychecktime,jdbcType=TIMESTAMP},
+		UserExtractMoneyRemark = #{userextractmoneyremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from user_extract_money
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from user_extract_money
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from user_extract_money
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据UserExtractMoney实体添加 -->
+	<insert id="insertByUserExtractMoney" parameterType="sun.bz1.entity.UserExtractMoney">
+		insert into user_extract_money
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userextractmoneyid != null">
+				UserExtractMoneyId,
+			</if>
+			<if test="userextractmoneyuserid != null">
+				UserExtractMoneyUserId,
+			</if>
+			<if test="userextractmoney != null">
+				UserExtractMoney,
+			</if>
+			<if test="userextractmoneyname != null">
+				UserExtractMoneyName,
+			</if>
+			<if test="userextractmoneybankcard != null">
+				UserExtractMoneyBankCard,
+			</if>
+			<if test="userextractmoneybankaddress != null">
+				UserExtractMoneyBankAddress,
+			</if>
+			<if test="userextractmoneystate != null">
+				UserExtractMoneyState,
+			</if>
+			<if test="userextractmoneytime != null">
+				UserExtractMoneyTime,
+			</if>
+			<if test="userextractmoneycheckuserid != null">
+				UserExtractMoneyCheckUserId,
+			</if>
+			<if test="userextractmoneycheckstate != null">
+				UserExtractMoneyCheckState,
+			</if>
+			<if test="userextractmoneycheckcontent != null">
+				UserExtractMoneyCheckContent,
+			</if>
+			<if test="userextractmoneychecktime != null">
+				UserExtractMoneyCheckTime,
+			</if>
+			<if test="userextractmoneyremark != null">
+				UserExtractMoneyRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userextractmoneyid != null">
+				#{userextractmoneyid,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneyuserid != null">
+				#{userextractmoneyuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoney != null">
+				#{userextractmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="userextractmoneyname != null">
+				#{userextractmoneyname,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneybankcard != null">
+				#{userextractmoneybankcard,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneybankaddress != null">
+				#{userextractmoneybankaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneystate != null">
+				#{userextractmoneystate,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneytime != null">
+				#{userextractmoneytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userextractmoneycheckuserid != null">
+				#{userextractmoneycheckuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneycheckstate != null">
+				#{userextractmoneycheckstate,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneycheckcontent != null">
+				#{userextractmoneycheckcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneychecktime != null">
+				#{userextractmoneychecktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userextractmoneyremark != null">
+				#{userextractmoneyremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据UserExtractMoney实体更新 -->
+	<update id="updateByUserExtractMoney" parameterType="sun.bz1.entity.UserExtractMoney">
+		update user_extract_money
+		<set>
+			<if test="userextractmoneyid != null">
+				UserExtractMoneyId = #{userextractmoneyid,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneyuserid != null">
+				UserExtractMoneyUserId = #{userextractmoneyuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoney != null">
+				UserExtractMoney = #{userextractmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="userextractmoneyname != null">
+				UserExtractMoneyName = #{userextractmoneyname,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneybankcard != null">
+				UserExtractMoneyBankCard = #{userextractmoneybankcard,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneybankaddress != null">
+				UserExtractMoneyBankAddress = #{userextractmoneybankaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneystate != null">
+				UserExtractMoneyState = #{userextractmoneystate,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneytime != null">
+				UserExtractMoneyTime = #{userextractmoneytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userextractmoneycheckuserid != null">
+				UserExtractMoneyCheckUserId = #{userextractmoneycheckuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneycheckstate != null">
+				UserExtractMoneyCheckState = #{userextractmoneycheckstate,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneycheckcontent != null">
+				UserExtractMoneyCheckContent = #{userextractmoneycheckcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="userextractmoneychecktime != null">
+				UserExtractMoneyCheckTime = #{userextractmoneychecktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userextractmoneyremark != null">
+				UserExtractMoneyRemark = #{userextractmoneyremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="userextractmoneyid != null and userextractmoneyid != ''">
+					and UserExtractMoneyId = #{userextractmoneyid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据UserExtractMoneyAndUser实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="selectTwoTablesCountByUnionData" parameterType="sun.bz1.entity.UserExtractMoneyAndUser" resultType="java.lang.Integer">
+		select count(*) from user_extract_money a 
+			left join user b on a.UserExtractMoneyUserId = b.UserId 
+			left join user c on a.UserExtractMoneyCheckUserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userextractmoneyid != null and userextractmoneyid != ''">
+					and a.UserExtractMoneyId = #{userextractmoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="userextractmoneyuserid != null and userextractmoneyuserid != ''">
+					and a.UserExtractMoneyUserId = #{userextractmoneyuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userextractmoneystate != null and userextractmoneystate != ''">
+					and a.UserExtractMoneyState = #{userextractmoneystate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectuserextractmoneystarttime != null and selectuserextractmoneystarttime != '' 
+						and selectuserextractmoneyendtime != null and selectuserextractmoneyendtime != ''">
+					and a.UserExtractMoneyTime &gt;= #{selectuserextractmoneystarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.UserExtractMoneyTime &lt;= #{selectuserextractmoneyendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="userextractmoneycheckuserid != null and userextractmoneycheckuserid != ''">
+					and a.UserExtractMoneyCheckUserId = #{userextractmoneycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userextractmoneycheckstate != null and userextractmoneycheckstate != ''">
+					and a.UserExtractMoneyCheckState = #{userextractmoneycheckstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectuserextractmoneycheckstarttime != null and selectuserextractmoneycheckstarttime != '' 
+						and selectuserextractmoneycheckendtime != null and selectuserextractmoneycheckendtime != ''">
+					and a.UserExtractMoneyCheckTime &gt;= #{selectuserextractmoneycheckstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.UserExtractMoneyCheckTime &lt;= #{selectuserextractmoneycheckendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据UserExtractMoneyAndUser实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectTwoTablesByUnionData" parameterType="sun.bz1.entity.UserExtractMoneyAndUser" resultMap="SeniorResultMap">
+		select * from user_extract_money a 
+			left join user b on a.UserExtractMoneyUserId = b.UserId 
+			left join user c on a.UserExtractMoneyCheckUserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userextractmoneyid != null and userextractmoneyid != ''">
+					and a.UserExtractMoneyId = #{userextractmoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="userextractmoneyuserid != null and userextractmoneyuserid != ''">
+					and a.UserExtractMoneyUserId = #{userextractmoneyuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userextractmoneystate != null and userextractmoneystate != ''">
+					and a.UserExtractMoneyState = #{userextractmoneystate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectuserextractmoneystarttime != null and selectuserextractmoneystarttime != '' 
+						and selectuserextractmoneyendtime != null and selectuserextractmoneyendtime != ''">
+					and a.UserExtractMoneyTime &gt;= #{selectuserextractmoneystarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.UserExtractMoneyTime &lt;= #{selectuserextractmoneyendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="userextractmoneycheckuserid != null and userextractmoneycheckuserid != ''">
+					and a.UserExtractMoneyCheckUserId = #{userextractmoneycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userextractmoneycheckstate != null and userextractmoneycheckstate != ''">
+					and a.UserExtractMoneyCheckState = #{userextractmoneycheckstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectuserextractmoneycheckstarttime != null and selectuserextractmoneycheckstarttime != '' 
+						and selectuserextractmoneycheckendtime != null and selectuserextractmoneycheckendtime != ''">
+					and a.UserExtractMoneyCheckTime &gt;= #{selectuserextractmoneycheckstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.UserExtractMoneyCheckTime &lt;= #{selectuserextractmoneycheckendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据UserExtractMoneyAndUser实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectTwoTablesCountBySelectData" parameterType="sun.bz1.entity.UserExtractMoneyAndUser" resultType="java.lang.Integer">
+		select count(*) from user_extract_money a 
+			left join user b on a.UserExtractMoneyUserId = b.UserId 
+			left join user c on a.UserExtractMoneyCheckUserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userextractmoneyid != null and userextractmoneyid != ''">
+					and a.UserExtractMoneyId = #{userextractmoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="userextractmoneyuserid != null and userextractmoneyuserid != ''">
+					and a.UserExtractMoneyUserId = #{userextractmoneyuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userextractmoneyname != null and userextractmoneyname != ''">
+					or a.UserExtractMoneyName like CONCAT('%',#{userextractmoneyname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="userextractmoneystate != null and userextractmoneystate != ''">
+					and a.UserExtractMoneyState = #{userextractmoneystate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectuserextractmoneystarttime != null and selectuserextractmoneystarttime != '' 
+						and selectuserextractmoneyendtime != null and selectuserextractmoneyendtime != ''">
+					and a.UserExtractMoneyTime &gt;= #{selectuserextractmoneystarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.UserExtractMoneyTime &lt;= #{selectuserextractmoneyendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="userextractmoneycheckuserid != null and userextractmoneycheckuserid != ''">
+					and a.UserExtractMoneyCheckUserId = #{userextractmoneycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userextractmoneycheckstate != null and userextractmoneycheckstate != ''">
+					and a.UserExtractMoneyCheckState = #{userextractmoneycheckstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectuserextractmoneycheckstarttime != null and selectuserextractmoneycheckstarttime != '' 
+						and selectuserextractmoneycheckendtime != null and selectuserextractmoneycheckendtime != ''">
+					and a.UserExtractMoneyCheckTime &gt;= #{selectuserextractmoneycheckstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.UserExtractMoneyCheckTime &lt;= #{selectuserextractmoneycheckendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="userextract_username != null and userextract_username != ''">
+					or b.UserName like CONCAT('%',#{userextract_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="userextract_userrealname != null and userextract_userrealname != ''">
+					or b.UserRealName like CONCAT('%',#{userextract_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="userextract_userphone != null and userextract_userphone != ''">
+					or b.UserPhone like CONCAT('%',#{userextract_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="userextractmoneycheck_username != null and userextractmoneycheck_username != ''">
+					or c.UserName like CONCAT('%',#{userextractmoneycheck_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="userextractmoneycheck_userrealname != null and userextractmoneycheck_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{userextractmoneycheck_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="userextractmoneycheck_userphone != null and userextractmoneycheck_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{userextractmoneycheck_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据UserExtractMoneyAndUser实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectTwoTablesBySelectData" parameterType="sun.bz1.entity.UserExtractMoneyAndUser" resultMap="SeniorResultMap">
+		select * from user_extract_money a 
+			left join user b on a.UserExtractMoneyUserId = b.UserId 
+			left join user c on a.UserExtractMoneyCheckUserId = c.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="userextractmoneyid != null and userextractmoneyid != ''">
+					and a.UserExtractMoneyId = #{userextractmoneyid,jdbcType=VARCHAR}
+				</if>
+				<if test="userextractmoneyuserid != null and userextractmoneyuserid != ''">
+					and a.UserExtractMoneyUserId = #{userextractmoneyuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userextractmoneyname != null and userextractmoneyname != ''">
+					or a.UserExtractMoneyName like CONCAT('%',#{userextractmoneyname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="userextractmoneystate != null and userextractmoneystate != ''">
+					and a.UserExtractMoneyState = #{userextractmoneystate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectuserextractmoneystarttime != null and selectuserextractmoneystarttime != '' 
+						and selectuserextractmoneyendtime != null and selectuserextractmoneyendtime != ''">
+					and a.UserExtractMoneyTime &gt;= #{selectuserextractmoneystarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.UserExtractMoneyTime &lt;= #{selectuserextractmoneyendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="userextractmoneycheckuserid != null and userextractmoneycheckuserid != ''">
+					and a.UserExtractMoneyCheckUserId = #{userextractmoneycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="userextractmoneycheckstate != null and userextractmoneycheckstate != ''">
+					and a.UserExtractMoneyCheckState = #{userextractmoneycheckstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectuserextractmoneycheckstarttime != null and selectuserextractmoneycheckstarttime != '' 
+						and selectuserextractmoneycheckendtime != null and selectuserextractmoneycheckendtime != ''">
+					and a.UserExtractMoneyCheckTime &gt;= #{selectuserextractmoneycheckstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.UserExtractMoneyCheckTime &lt;= #{selectuserextractmoneycheckendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="userextract_username != null and userextract_username != ''">
+					or b.UserName like CONCAT('%',#{userextract_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="userextract_userrealname != null and userextract_userrealname != ''">
+					or b.UserRealName like CONCAT('%',#{userextract_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="userextract_userphone != null and userextract_userphone != ''">
+					or b.UserPhone like CONCAT('%',#{userextract_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="userextractmoneycheck_username != null and userextractmoneycheck_username != ''">
+					or c.UserName like CONCAT('%',#{userextractmoneycheck_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="userextractmoneycheck_userrealname != null and userextractmoneycheck_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{userextractmoneycheck_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="userextractmoneycheck_userphone != null and userextractmoneycheck_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{userextractmoneycheck_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+</mapper>

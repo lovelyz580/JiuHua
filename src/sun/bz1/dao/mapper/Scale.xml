@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 接单规模表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.Scale">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.Scale">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="ScaleId" jdbcType="VARCHAR" property="scaleid" />
+		<result column="ScaleMin" jdbcType="DOUBLE" property="scalemin" />
+		<result column="ScaleMax" jdbcType="DOUBLE" property="scalemax" />
+		<result column="ScaleState" jdbcType="VARCHAR" property="scalestate" />
+		<result column="ScaleCreateUserId" jdbcType="VARCHAR" property="scalecreateuserid" />
+		<result column="ScaleCreateTime" jdbcType="TIMESTAMP" property="scalecreatetime" />
+		<result column="ScaleUpdateUserId" jdbcType="VARCHAR" property="scaleupdateuserid" />
+		<result column="ScaleUpdateTime" jdbcType="TIMESTAMP" property="scaleupdatetime" />
+		<result column="ScaleRemark" jdbcType="VARCHAR" property="scaleremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, ScaleId, ScaleMin, ScanMax, ScaleState, ScaleCreateUserId, ScaleCreateTime,
+		ScaleUpdateUserId, ScaleUpdateTime, ScaleRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.Scale">
+		insert into scale (ID, ScaleId, ScaleMin, ScanMax, ScaleState, 
+		ScaleCreateUserId, ScaleCreateTime, ScaleUpdateUserId, ScaleUpdateTime, ScaleRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{scaleid,jdbcType=VARCHAR},
+		#{scalemin,jdbcType=DOUBLE},
+		#{scalemax,jdbcType=DOUBLE},
+		#{scalestate,jdbcType=VARCHAR}, 
+		#{scalecreateuserid,jdbcType=VARCHAR},
+		#{scalecreatetime,jdbcType=TIMESTAMP},
+		#{scaleupdateuserid,jdbcType=VARCHAR},
+		#{scaleupdatetime,jdbcType=TIMESTAMP}, 
+		#{scaleremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.Scale">
+		insert into scale
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="scaleid != null">
+				ScaleId,
+			</if>
+			<if test="scalemin != null">
+				ScaleMin,
+			</if>
+			<if test="scalemax != null">
+				ScaleMax,
+			</if>
+			<if test="scalestate != null">
+				ScaleState,
+			</if>
+			<if test="scalecreateuserid != null">
+				ScaleCreateUserId,
+			</if>
+			<if test="scalecreatetime != null">
+				ScaleCreateTime,
+			</if>
+			<if test="scaleupdateuserid != null">
+				ScaleUpdateUserId,
+			</if>
+			<if test="scaleupdatetime != null">
+				ScaleUpdateTime,
+			</if>
+			<if test="scaleremark != null">
+				ScaleRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="scaleid != null">
+				#{scaleid,jdbcType=VARCHAR},
+			</if>
+			<if test="scalemin != null">
+				#{scalenmin,jdbcType=DOUBLE},
+			</if>
+			<if test="scalemax != null">
+				#{scalenmax,jdbcType=DOUBLE},
+			</if>
+			<if test="scalestate != null">
+				#{scalestate,jdbcType=VARCHAR},
+			</if>
+			<if test="scalecreateuserid != null">
+				#{scalecreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="scalecreatetime != null">
+				#{scalecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="scaleupdateuserid != null">
+				#{scaleupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="scaleupdatetime != null">
+				#{scaleupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="scaleremark != null">
+				#{scaleremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.Scale">
+		update scale
+		<set>
+			<if test="scaleid != null">
+				ScaleId = #{scaleid,jdbcType=VARCHAR},
+			</if>
+			<if test="scalemin != null">
+				ScaleMin = #{scalemin,jdbcType=DOUBLE},
+			</if>
+			<if test="scalemax != null">
+				ScaleMax = #{scalemax,jdbcType=DOUBLE},
+			</if>
+			<if test="scalestate != null">
+				ScaleState = #{scalestate,jdbcType=VARCHAR},
+			</if>
+			<if test="scalecreateuserid != null">
+				ScaleCreateUserId = #{scalecreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="scalecreatetime != null">
+				ScaleCreateTime = #{scalecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="scaleupdateuserid != null">
+				ScaleUpdateUserId = #{scaleupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="scaleupdatetime != null">
+				ScaleUpdateTime = #{scaleupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="scaleremark != null">
+				ScaleRemark = #{scaleremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.Scale">
+		update scale
+		set ScaleId = #{scaleid,jdbcType=VARCHAR},
+		ScaleMin = #{scalemin,jdbcType=DOUBLE},
+		ScaleMax = #{scalemax,jdbcType=DOUBLE},
+		ScaleState = #{scalestate,jdbcType=VARCHAR},
+		ScaleCreateUserId = #{scalecreateuserid,jdbcType=VARCHAR},
+		ScaleCreateTime = #{scalecreatetime,jdbcType=TIMESTAMP},
+		ScaleUpdateUserId = #{scaleupdateuserid,jdbcType=VARCHAR},
+		ScaleUpdateTime = #{scaleupdatetime,jdbcType=TIMESTAMP},
+		ScaleRemark = #{scaleremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from scale
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from scale
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from scale
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据Scale实体添加 -->
+	<insert id="insertByScale" parameterType="sun.bz1.entity.Scale">
+		insert into scale
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="scaleid != null">
+				ScaleId,
+			</if>
+			<if test="scalemin != null">
+				ScaleMin,
+			</if>
+			<if test="scalemax != null">
+				ScaleMax,
+			</if>
+			<if test="scalestate != null">
+				ScaleState,
+			</if>
+			<if test="scalecreateuserid != null">
+				ScaleCreateUserId,
+			</if>
+			<if test="scalecreatetime != null">
+				ScaleCreateTime,
+			</if>
+			<if test="scaleupdateuserid != null">
+				ScaleUpdateUserId,
+			</if>
+			<if test="scaleupdatetime != null">
+				ScaleUpdateTime,
+			</if>
+			<if test="scaleremark != null">
+				ScaleRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="scaleid != null">
+				#{scaleid,jdbcType=VARCHAR},
+			</if>
+			<if test="scalemin != null">
+				#{scalemin,jdbcType=DOUBLE},
+			</if>
+			<if test="scalemax != null">
+				#{scalemax,jdbcType=DOUBLE},
+			</if>
+			<if test="scalestate != null">
+				#{scalestate,jdbcType=VARCHAR},
+			</if>
+			<if test="scalecreateuserid != null">
+				#{scalecreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="scalecreatetime != null">
+				#{scalecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="scaleupdateuserid != null">
+				#{scaleupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="scaleupdatetime != null">
+				#{scaleupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="scaleremark != null">
+				#{scaleremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据Scale实体更新 -->
+	<update id="updateByScale" parameterType="sun.bz1.entity.Scale">
+		update scale
+		<set>
+			<if test="scaleid != null">
+				ScaleId = #{scaleid,jdbcType=VARCHAR},
+			</if>
+			<if test="scalemin != null">
+				ScaleMin = #{scalemin,jdbcType=DOUBLE},
+			</if>
+			<if test="scalemax != null">
+				ScaleMax = #{scalemax,jdbcType=DOUBLE},
+			</if>
+			<if test="scalestate != null">
+				ScaleState = #{scalestate,jdbcType=VARCHAR},
+			</if>
+			<if test="scalecreateuserid != null">
+				ScaleCreateUserId = #{scalecreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="scalecreatetime != null">
+				ScaleCreateTime = #{scalecreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="scaleupdateuserid != null">
+				ScaleUpdateUserId = #{scaleupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="scaleupdatetime != null">
+				ScaleUpdateTime = #{scaleupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="scaleremark != null">
+				ScaleRemark = #{scaleremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="scaleid != null and scaleid != ''">
+					and ScaleId = #{scaleid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据Scale实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByScale" parameterType="sun.bz1.entity.Scale" resultType="java.lang.Integer">
+		select count(*) from scale
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="scaleid != null and scaleid != ''">
+					and ScaleId = #{scaleid,jdbcType=VARCHAR}
+				</if>
+				<if test="scalestate != null and scalestate != ''">
+					and ScaleState = #{scalestate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据Scale实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectByScale" parameterType="sun.bz1.entity.Scale" resultMap="BaseResultMap">
+		select * from scale
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="scaleid != null and scaleid != ''">
+					and ScaleId = #{scaleid,jdbcType=VARCHAR}
+				</if>
+				<if test="scalestate != null and scalestate != ''">
+					and ScaleState = #{scalestate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据Scale实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectData" parameterType="sun.bz1.entity.Scale" resultType="java.lang.Integer">
+		select count(*) from scale
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="scaleid != null and scaleid != ''">
+					and ScaleId = #{scaleid,jdbcType=VARCHAR}
+				</if>
+				<if test="scalestate != null and scalestate != ''">
+					and ScaleState = #{scalestate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据Scale实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectBySelectData" parameterType="sun.bz1.entity.Scale" resultMap="BaseResultMap">
+		select * from scale
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="scaleid != null and scaleid != ''">
+					and ScaleId = #{scaleid,jdbcType=VARCHAR}
+				</if>
+				<if test="scalestate != null and scalestate != ''">
+					and ScaleState = #{scalestate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+</mapper>

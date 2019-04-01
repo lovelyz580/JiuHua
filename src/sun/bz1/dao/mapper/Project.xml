@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 项目表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.Project">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.Project">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="ProjectId" jdbcType="VARCHAR" property="projectid" />
+		<result column="GoodsId" jdbcType="VARCHAR" property="goodsid" />
+		<result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
+		<result column="ProjectType" jdbcType="VARCHAR" property="projecttype" />
+		<result column="ProjectState" jdbcType="VARCHAR" property="projectstate" />
+		<result column="ProjectCreateUserId" jdbcType="VARCHAR" property="projectcreateuserid" />
+		<result column="ProjectCreateTime" jdbcType="TIMESTAMP" property="projectcreatetime" />
+		<result column="ProjectUpdateUserId" jdbcType="VARCHAR" property="projectupdateuserid" />
+		<result column="ProjectUpdateTime" jdbcType="TIMESTAMP" property="projectupdatetime" />
+		<result column="ProjectRemark" jdbcType="VARCHAR" property="projectremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, ProjectId, GoodsId, ProjectName, ProjectType, ProjectState, ProjectCreateUserId, 
+		ProjectCreateTime, ProjectUpdateUserId, ProjectUpdateTime, ProjectRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.Project">
+		insert into project (ID, ProjectId, GoodsId, ProjectName, ProjectType, ProjectState, 
+		ProjectCreateUserId, ProjectCreateTime, ProjectUpdateUserId, ProjectUpdateTime, ProjectRemark)
+		values (#{id,jdbcType=INTEGER}, 
+		#{projectid,jdbcType=VARCHAR},
+		#{goodsid,jdbcType=VARCHAR},
+		#{projectname,jdbcType=VARCHAR},
+		#{projecttype,jdbcType=VARCHAR}, 
+		#{projectstate,jdbcType=VARCHAR},
+		#{projectcreateuserid,jdbcType=VARCHAR},
+		#{projectcreatetime,jdbcType=TIMESTAMP},
+		#{projectupdateuserid,jdbcType=VARCHAR},
+		#{projectupdatetime,jdbcType=TIMESTAMP},
+		#{projectremark,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.Project">
+		insert into project
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="projectid != null">
+				ProjectId,
+			</if>
+			<if test="goodsid != null">
+				GoodsId,
+			</if>
+			<if test="projectname != null">
+				ProjectName,
+			</if>
+			<if test="projecttype != null">
+				ProjectType,
+			</if>
+			<if test="projectstate != null">
+				ProjectState,
+			</if>
+			<if test="projectcreateuserid != null">
+				ProjectCreateUserId,
+			</if>
+			<if test="projectcreatetime != null">
+				ProjectCreateTime,
+			</if>
+			<if test="projectupdateuserid != null">
+				ProjectUpdateUserId,
+			</if>
+			<if test="projectupdatetime != null">
+				ProjectUpdateTime,
+			</if>
+			<if test="projectremark != null">
+				ProjectRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="projectid != null">
+				#{projectid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsid != null">
+				#{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectname != null">
+				#{projectname,jdbcType=VARCHAR},
+			</if>
+			<if test="projecttype != null">
+				#{projecttype,jdbcType=VARCHAR},
+			</if>
+			<if test="projectstate != null">
+				#{projectstate,jdbcType=VARCHAR},
+			</if>
+			<if test="projectcreateuserid != null">
+				#{projectcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectcreatetime != null">
+				#{projectcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="projectupdateuserid != null">
+				#{projectupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectupdatetime != null">
+				#{projectupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="projectremark != null">
+				#{projectremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.Project">
+		update project
+		<set>
+			<if test="projectid != null">
+				ProjectId = #{projectid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsid != null">
+				GoodsId = #{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectname != null">
+				ProjectName = #{projectname,jdbcType=VARCHAR},
+			</if>
+			<if test="projecttype != null">
+				ProjectType = #{projecttype,jdbcType=VARCHAR},
+			</if>
+			<if test="projectstate != null">
+				ProjectState = #{projectstate,jdbcType=VARCHAR},
+			</if>
+			<if test="projectcreateuserid != null">
+				ProjectCreateUserId = #{projectcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectcreatetime != null">
+				ProjectCreateTime = #{projectcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="projectupdateuserid != null">
+				ProjectUpdateUserId = #{projectupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectupdatetime != null">
+				ProjectUpdateTime = #{projectupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="projectremark != null">
+				ProjectRemark = #{projectremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.Project">
+		update project
+		set ProjectId = #{projectid,jdbcType=VARCHAR},
+		GoodsId = #{goodsid,jdbcType=VARCHAR},
+		ProjectName = #{projectname,jdbcType=VARCHAR},
+		ProjectType = #{projecttype,jdbcType=VARCHAR},
+		ProjectState = #{projectstate,jdbcType=VARCHAR},
+		ProjectCreateUserId = #{projectcreateuserid,jdbcType=VARCHAR},
+		ProjectCreateTime = #{projectcreatetime,jdbcType=TIMESTAMP},
+		ProjectUpdateUserId = #{projectupdateuserid,jdbcType=VARCHAR},
+		ProjectUpdateTime = #{projectupdatetime,jdbcType=TIMESTAMP},
+		ProjectRemark = #{projectremark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from project
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from project
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from project
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据Project实体添加 -->
+	<insert id="insertByProject" parameterType="sun.bz1.entity.Project">
+		insert into project
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="projectid != null">
+				ProjectId,
+			</if>
+			<if test="goodsid != null">
+				GoodsId,
+			</if>
+			<if test="projectname != null">
+				ProjectName,
+			</if>
+			<if test="projecttype != null">
+				ProjectType,
+			</if>
+			<if test="projectstate != null">
+				ProjectState,
+			</if>
+			<if test="projectcreateuserid != null">
+				ProjectCreateUserId,
+			</if>
+			<if test="projectcreatetime != null">
+				ProjectCreateTime,
+			</if>
+			<if test="projectupdateuserid != null">
+				ProjectUpdateUserId,
+			</if>
+			<if test="projectupdatetime != null">
+				ProjectUpdateTime,
+			</if>
+			<if test="projectremark != null">
+				ProjectRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="projectid != null">
+				#{projectid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsid != null">
+				#{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectname != null">
+				#{projectname,jdbcType=VARCHAR},
+			</if>
+			<if test="projecttype != null">
+				#{projecttype,jdbcType=VARCHAR},
+			</if>
+			<if test="projectstate != null">
+				#{projectstate,jdbcType=VARCHAR},
+			</if>
+			<if test="projectcreateuserid != null">
+				#{projectcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectcreatetime != null">
+				#{projectcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="projectupdateuserid != null">
+				#{projectupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectupdatetime != null">
+				#{projectupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="projectremark != null">
+				#{projectremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据Project实体更新 -->
+	<update id="updateByProject" parameterType="sun.bz1.entity.Project">
+		update project
+		<set>
+			<if test="projectid != null">
+				ProjectId = #{projectid,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsid != null">
+				GoodsId = #{goodsid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectname != null">
+				ProjectName = #{projectname,jdbcType=VARCHAR},
+			</if>
+			<if test="projecttype != null">
+				ProjectType = #{projecttype,jdbcType=VARCHAR},
+			</if>
+			<if test="projectstate != null">
+				ProjectState = #{projectstate,jdbcType=VARCHAR},
+			</if>
+			<if test="projectcreateuserid != null">
+				ProjectCreateUserId = #{projectcreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectcreatetime != null">
+				ProjectCreateTime = #{projectcreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="projectupdateuserid != null">
+				ProjectUpdateUserId = #{projectupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="projectupdatetime != null">
+				ProjectUpdateTime = #{projectupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="projectremark != null">
+				ProjectRemark = #{projectremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="projectid != null and projectid != ''">
+					and ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据Project实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByProject" parameterType="sun.bz1.entity.Project" resultType="java.lang.Integer">
+		select count(*) from project
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="projectid != null and projectid != ''">
+					and ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="projecttype != null and projecttype != ''">
+					and ProjectType = #{projecttype,jdbcType=VARCHAR}
+				</if>
+				<if test="projectstate != null and projectstate != ''">
+					and ProjectState = #{projectstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据Project实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectByProject" parameterType="sun.bz1.entity.Project" resultMap="BaseResultMap">
+		select * from project
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="projectid != null and projectid != ''">
+					and ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="projecttype != null and projecttype != ''">
+					and ProjectType = #{projecttype,jdbcType=VARCHAR}
+				</if>
+				<if test="projectstate != null and projectstate != ''">
+					and ProjectState = #{projectstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据Project实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectData" parameterType="sun.bz1.entity.Project" resultType="java.lang.Integer">
+		select count(*) from project
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="projectid != null and projectid != ''">
+					and ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="projectname != null and projectname != ''">
+					or ProjectName like CONCAT('%',#{projectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="projecttype != null and projecttype != ''">
+					and ProjectType = #{projecttype,jdbcType=VARCHAR}
+				</if>
+				<if test="projectstate != null and projectstate != ''">
+					and ProjectState = #{projectstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据Project实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectBySelectData" parameterType="sun.bz1.entity.Project" resultMap="BaseResultMap">
+		select * from project
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="projectid != null and projectid != ''">
+					and ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+				<if test="projectname != null and projectname != ''">
+					or ProjectName like CONCAT('%',#{projectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="projecttype != null and projecttype != ''">
+					and ProjectType = #{projecttype,jdbcType=VARCHAR}
+				</if>
+				<if test="projectstate != null and projectstate != ''">
+					and ProjectState = #{projectstate,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+
+
+	<!-- 根据Project实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectDataReport" parameterType="sun.bz1.entity.Project" resultType="java.lang.Integer">
+		select count(*) from project p
+		LEFT JOIN goods g ON p.GoodsId = g.GoodsId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="projectid != null and projectid != ''">
+					and p.ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and p.GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+
+				<if test="projecttype != null and projecttype != ''">
+					and p.ProjectType = #{projecttype,jdbcType=VARCHAR}
+				</if>
+				<if test="projectstate != null and projectstate != ''">
+					and p.ProjectState = #{projectstate,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsname != null and goodsname != ''">
+					and (g.GoodsName like CONCAT('%',#{goodsname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="projectname != null and projectname != ''">
+					or p.ProjectName like CONCAT('%',#{projectname,jdbcType=VARCHAR},'%'))
+				</if>
+			</trim>
+		</where>
+	</select>
+
+    <!-- 根据Project实体查询 (生成报表) -->
+    <!-- 可以进行分页查询 -->
+    <!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+    <!-- pageSize 每页的数据量  -->
+    <select id="selectBySelectDataReport" parameterType="sun.bz1.entity.Project" resultMap="BaseResultMap">
+        SELECT p.ProjectId,p.ProjectState, g.GoodsName goodsname, p.ProjectName, IFNULL(i.InterceptMoney,0) interceptmoney, IFNULL(i.InterceptRealMoney,0) interceptrealmoney,
+		IFNULL(( SELECT round( ( ( sum( CASE WHEN ot.OrderType = "PD" THEN od.OrderDetailInterceptTotalMoney
+	ELSE 0 END ) + sum( CASE WHEN ot.OrderType = "QD" THEN od.OrderDetailNumber * op.OrderPriceMoney
+	 ELSE 0 END ) ) / SUM(od.OrderDetailNumber) ), 2 ) averagetransactionmoney FROM order_table ot
+		LEFT JOIN order_price op ON ot.OrderId = op.OrderId LEFT JOIN order_detail od ON ot.OrderId = od.OrderId
+		AND op.ProjectId = od.ProjectId WHERE ot.OrderState = "DDJS" AND op.ProjectId = p.ProjectId
+		<trim suffixOverrides="and|or">
+		<if test="areacode != null and areacode != ''">
+			and ot.OrderPosition like CONCAT(#{areacode,jdbcType=VARCHAR},'%')
+		</if>
+			<if test="starttime != null and starttime != ''">
+				and ot.OrderCreateTime &gt;= #{starttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			</if>
+			<if test="endtime != null and endtime != ''">
+				and ot.OrderPlanTime &lt;= #{endtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+		</trim>
+		),0) averagetransactionmoney,
+		IFNULL(( SELECT round( ( SUM( op.OrderPriceMoney * od.OrderDetailNumber ) / SUM(od.OrderDetailNumber) ), 2 ) averagetransactionmoney
+		FROM order_table ot LEFT JOIN order_price op ON ot.OrderId = op.OrderId LEFT JOIN order_detail od ON ot.OrderId = od.OrderId
+		AND op.ProjectId = od.ProjectId WHERE ot.OrderState = "DDJS" AND op.ProjectId = p.ProjectId
+		<trim suffixOverrides="and|or">
+			<if test="areacode != null and areacode != ''">
+				and ot.OrderPosition like CONCAT(#{areacode,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="starttime != null and starttime != ''">
+				and ot.OrderCreateTime &gt;= #{starttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			</if>
+			<if test="endtime != null and endtime != ''">
+				and ot.OrderPlanTime &lt;= #{endtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+		</trim>
+		),0) averagepurchasemoney,
+		IFNULL(( SELECT round( SUM(pri.PriceMoney) / COUNT(*), 2 ) FROM price pri WHERE pri.ProjectId = p.ProjectId ),0) averageservicenmoney,
+		IFNULL(( SELECT SUM(od.OrderDetailNumber) FROM order_table ot LEFT JOIN order_detail od ON ot.OrderId = od.OrderId
+		WHERE ot.OrderState = "DDJS" AND od.ProjectId = p.ProjectId
+		<trim suffixOverrides="and|or">
+			<if test="areacode != null and areacode != ''">
+				and ot.OrderPosition like CONCAT(#{areacode,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="starttime != null and starttime != ''">
+				and ot.OrderCreateTime &gt;= #{starttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			</if>
+			<if test="endtime != null and endtime != ''">
+				and ot.OrderPlanTime &lt;= #{endtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+		</trim>
+		),0) repairnumber,
+		IFNULL(( SELECT ( sum( CASE WHEN ot.OrderType = "PD" THEN od.OrderDetailInterceptTotalMoney ELSE 0 END ) + sum(
+		 CASE WHEN ot.OrderType = "QD" THEN od.OrderDetailNumber * op.OrderPriceMoney ELSE 0 END ) )
+		FROM order_table ot LEFT JOIN order_price op ON ot.OrderId = op.OrderId LEFT JOIN order_detail od ON ot.OrderId = od.OrderId
+		AND op.ProjectId = od.ProjectId WHERE ot.OrderState = "DDJS" AND op.ProjectId = p.ProjectId
+		<trim suffixOverrides="and|or">
+			<if test="areacode != null and areacode != ''">
+				and ot.OrderPosition like CONCAT(#{areacode,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="starttime != null and starttime != ''">
+				and ot.OrderCreateTime &gt;= #{starttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			</if>
+			<if test="endtime != null and endtime != ''">
+				and ot.OrderPlanTime &lt;= #{endtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+		</trim>
+		),0) repairtotalmoney,
+		IFNULL(( SELECT SUM( op.OrderPriceMoney * od.OrderDetailNumber ) FROM order_table ot LEFT JOIN order_price op ON ot.OrderId = op.OrderId
+		LEFT JOIN order_detail od ON ot.OrderId = od.OrderId AND op.ProjectId = od.ProjectId WHERE ot.OrderState = "DDJS"
+		AND op.ProjectId = p.ProjectId
+		<trim suffixOverrides="and|or">
+			<if test="areacode != null and areacode != ''">
+				and ot.OrderPosition like CONCAT(#{areacode,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="starttime != null and starttime != ''">
+				and ot.OrderCreateTime &gt;= #{starttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			</if>
+			<if test="endtime != null and endtime != ''">
+				and ot.OrderPlanTime &lt;= #{endtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+		</trim>
+		),0) paytotalmoney, IFNULL(( SELECT ( sum( CASE WHEN ot.OrderType = "PD" THEN od.OrderDetailInterceptTotalMoney
+		 ELSE 0 END ) + sum( CASE WHEN ot.OrderType = "QD" THEN od.OrderDetailNumber * op.OrderPriceMoney ELSE 0 END ) ) - SUM(
+		 op.OrderPriceMoney * od.OrderDetailNumber ) FROM order_table ot LEFT JOIN order_price op ON ot.OrderId = op.OrderId
+		LEFT JOIN order_detail od ON ot.OrderId = od.OrderId AND op.ProjectId = od.ProjectId WHERE ot.OrderState = "DDJS"
+		AND op.ProjectId = p.ProjectId
+		<trim suffixOverrides="and|or">
+			<if test="areacode != null and areacode != ''">
+				and ot.OrderPosition like CONCAT(#{areacode,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="starttime != null and starttime != ''">
+				and ot.OrderCreateTime &gt;= #{starttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			</if>
+			<if test="endtime != null and endtime != ''">
+				and ot.OrderPlanTime &lt;= #{endtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+		</trim>
+		),0) profittotalmoney FROM project p LEFT JOIN intercept i ON p.ProjectId = i.ProjectId LEFT JOIN goods g ON p.GoodsId = g.GoodsId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="projectstate != null and projectstate != ''">
+					and p.ProjectState = #{projectstate,jdbcType=VARCHAR}
+				</if>
+
+				<if test="projectid != null and projectid != ''">
+					and p.ProjectId = #{projectid,jdbcType=VARCHAR}
+				</if>
+				<if test="goodsid != null and goodsid != ''">
+					and p.GoodsId = #{goodsid,jdbcType=VARCHAR}
+				</if>
+
+				<if test="goodsname != null and goodsname != ''">
+					and (g.GoodsName like CONCAT('%',#{goodsname,jdbcType=VARCHAR},'%')
+				</if>
+
+				<if test="projectname != null and projectname != ''">
+					or p.ProjectName like CONCAT('%',#{projectname,jdbcType=VARCHAR},'%'))
+				</if>
+
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+    </select>
+
+
+
+
+	<!-- 根据Project实体模糊查询(查询平均成交价的详情数据) -->
+	<!-- 查询数量 -->
+	<select id="selectProjectDetailCountByProjectReport" parameterType="sun.bz1.entity.Project" resultType="java.lang.Integer">
+		SELECT count(*) FROM order_detail od
+		LEFT JOIN order_table ot ON od.OrderId = ot.OrderId
+		LEFT JOIN project p ON od.ProjectId = p.ProjectId
+		LEFT JOIN order_price op ON od.ProjectId = op.ProjectId
+		AND od.OrderId = op.OrderId
+		LEFT JOIN user u on ot.OrderServiceUserId = u.UserId
+		WHERE
+		ot.OrderState = "DDJS" AND od.ProjectId =  #{projectid,jdbcType=VARCHAR}
+
+	</select>
+
+	<!-- 根据Project实体模糊查询(查询平均成交价的详情数据)-->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectProjectDetailByProjectReport" parameterType="sun.bz1.entity.Project" resultMap="BaseResultMap">
+		SELECT
+		ot.OrderId,
+		ot.OrderProjectName orderprojectname,
+		p.ProjectName projectname,
+		ot.OrderContactPerson ordercontactperson,
+		od.OrderDetailNumber orderdetailnumber,
+		u.UserRealName username,
+		ot.OrderCreateTime ordercreatetime,
+		(CASE
+		WHEN ot.OrderType = "PD" THEN
+		od.OrderDetailInterceptTotalMoney/od.OrderDetailNumber
+		ELSE
+		op.OrderPriceMoney
+		END)
+		orderpricemoney,
+		op.OrderPriceMoney purchasemoney,
+		(CASE
+		WHEN ot.OrderType = "PD" THEN
+		od.OrderDetailInterceptTotalMoney
+		ELSE
+		op.OrderPriceMoney*od.OrderDetailNumber
+		END)
+		orderpricetotalmoney,
+		(op.OrderPriceMoney*od.OrderDetailNumber) purchasetotalmoney,
+		((CASE WHEN ot.OrderType = "PD" THEN od.OrderDetailInterceptTotalMoney
+		ELSE op.OrderPriceMoney*od.OrderDetailNumber  END) -
+		(op.OrderPriceMoney*od.OrderDetailNumber))profittotalmoney
+		FROM
+		order_detail od
+		LEFT JOIN order_table ot ON od.OrderId = ot.OrderId
+		LEFT JOIN project p ON od.ProjectId = p.ProjectId
+		LEFT JOIN order_price op ON od.ProjectId = op.ProjectId
+		AND od.OrderId = op.OrderId
+		LEFT JOIN user u on ot.OrderServiceUserId = u.UserId
+		WHERE
+		ot.OrderState = "DDJS" AND od.ProjectId =  #{projectid,jdbcType=VARCHAR}
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+
+</mapper>

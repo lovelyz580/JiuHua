@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 接单区域表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.Area">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.Area">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="AreaId" jdbcType="VARCHAR" property="areaid" />
+		<result column="AreaName" jdbcType="VARCHAR" property="areaname" />
+		<result column="AreaState" jdbcType="VARCHAR" property="areastate" />
+		<result column="AreaCreateUserId" jdbcType="VARCHAR" property="areacreateuserid" />
+		<result column="AreaCreateTime" jdbcType="TIMESTAMP" property="areacreatetime" />
+		<result column="AreaUpdateUserId" jdbcType="VARCHAR" property="areaupdateuserid" />
+		<result column="AreaUpdateTime" jdbcType="TIMESTAMP" property="areaupdatetime" />
+		<result column="AreaRemark" jdbcType="VARCHAR" property="arearemark" />
+		<result column="AreaProvince" jdbcType="VARCHAR" property="areaprovince" />
+		<result column="AreaProvinceCode" jdbcType="VARCHAR" property="areaprovincecode" />
+		<result column="AreaCity" jdbcType="VARCHAR" property="areacity" />
+		<result column="AreaCityCode" jdbcType="VARCHAR" property="areacitycode" />
+	</resultMap>
+
+	<!-- 查询区域报表 -->
+	<resultMap id="ResultAreaReport" type="sun.bz1.entity.Area">
+		<result column="AreaState" jdbcType="VARCHAR" property="areastate" />
+		<result column="AreaProvince" jdbcType="VARCHAR" property="areaprovince" />
+		<result column="AreaCityCode" jdbcType="VARCHAR" property="areacitycode" />
+		<result column="ordernumber" jdbcType="INTEGER" property="ordertablenumber" />
+		<result column="wxNumber" jdbcType="INTEGER" property="wxnumber" />
+		<result column="azNumber" jdbcType="VARCHAR" property="aznumber" />
+		<result column="areapricetotalmoney" jdbcType="DOUBLE" property="areapricetotalmoney" />
+		<result column="expendituremoney" jdbcType="DOUBLE" property="expendituremoney" />
+		<result column="profitmoney" jdbcType="DOUBLE" property="profitmoney" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, AreaId, AreaName, AreaState, AreaCreateUserId, AreaCreateTime,
+		AreaUpdateUserId, AreaUpdateTime, AreaRemark, AreaProvince, AreaProvinceCode, AreaCity, AreaCityCode
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.Area">
+		insert into area (ID, AreaId, AreaName, AreaState, AreaCreateUserId, AreaCreateTime,
+		AreaUpdateUserId, AreaUpdateTime, AreaRemark,AreaProvince, AreaProvinceCode, AreaCity,
+      AreaCityCode)
+		values
+		(#{id,jdbcType=INTEGER}, 
+		#{areaid,jdbcType=VARCHAR},
+		#{areaname,jdbcType=VARCHAR},
+		#{areastate,jdbcType=VARCHAR},
+		#{areacreateuserid,jdbcType=VARCHAR},
+		#{areacreatetime,jdbcType=TIMESTAMP},
+		#{areaupdateuserid,jdbcType=VARCHAR},
+		#{areaupdatetime,jdbcType=TIMESTAMP}, 
+		#{arearemark,jdbcType=VARCHAR},
+		#{areaprovince,jdbcType=VARCHAR}, #{areaprovincecode,jdbcType=VARCHAR}, #{areacity,jdbcType=VARCHAR},
+      #{areacitycode,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.Area">
+		insert into area
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="areaid != null">
+				AreaId,
+			</if>
+			<if test="areaname != null">
+				AreaName,
+			</if>
+			<if test="areastate != null">
+				AreaState,
+			</if>
+			<if test="areacreateuserid != null">
+				AreaCreateUserId,
+			</if>
+			<if test="areacreatetime != null">
+				AreaCreateTime,
+			</if>
+			<if test="areaupdateuserid != null">
+				AreaUpdateUserId,
+			</if>
+			<if test="areaupdatetime != null">
+				AreaUpdateTime,
+			</if>
+			<if test="arearemark != null">
+				AreaRemark,
+			</if>
+			<if test="areaprovince != null">
+				AreaProvince,
+			</if>
+			<if test="areaprovincecode != null">
+				AreaProvinceCode,
+			</if>
+			<if test="areacity != null">
+				AreaCity,
+			</if>
+			<if test="areacitycode != null">
+				AreaCityCode,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="areaid != null">
+				#{areaid,jdbcType=VARCHAR},
+			</if>
+			<if test="areaname != null">
+				#{areaname,jdbcType=VARCHAR},
+			</if>
+			<if test="areastate != null">
+				#{areastate,jdbcType=VARCHAR},
+			</if>
+			<if test="areacreateuserid != null">
+				#{areacreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="areacreatetime != null">
+				#{areacreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="areaupdateuserid != null">
+				#{areaupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="areaupdatetime != null">
+				#{areaupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="arearemark != null">
+				#{arearemark,jdbcType=VARCHAR},
+			</if>
+			<if test="areaprovince != null">
+				#{areaprovince,jdbcType=VARCHAR},
+			</if>
+			<if test="areaprovincecode != null">
+				#{areaprovincecode,jdbcType=VARCHAR},
+			</if>
+			<if test="areacity != null">
+				#{areacity,jdbcType=VARCHAR},
+			</if>
+			<if test="areacitycode != null">
+				#{areacitycode,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.Area">
+		update area
+		<set>
+			<if test="areaid != null">
+				AreaId = #{areaid,jdbcType=VARCHAR},
+			</if>
+			<if test="areaname != null">
+				AreaName = #{areaname,jdbcType=VARCHAR},
+			</if>
+			<if test="areastate != null">
+				AreaState = #{areastate,jdbcType=VARCHAR},
+			</if>
+			<if test="areacreateuserid != null">
+				AreaCreateUserId = #{areacreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="areacreatetime != null">
+				AreaCreateTime = #{areacreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="areaupdateuserid != null">
+				AreaUpdateUserId = #{areaupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="areaupdatetime != null">
+				AreaUpdateTime = #{areaupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="arearemark != null">
+				AreaRemark = #{arearemark,jdbcType=VARCHAR},
+			</if>
+			<if test="areaprovince != null">
+				AreaProvince = #{areaprovince,jdbcType=VARCHAR},
+			</if>
+			<if test="areaprovincecode != null">
+				AreaProvinceCode = #{areaprovincecode,jdbcType=VARCHAR},
+			</if>
+			<if test="areacity != null">
+				AreaCity = #{areacity,jdbcType=VARCHAR},
+			</if>
+			<if test="areacitycode != null">
+				AreaCityCode = #{areacitycode,jdbcType=VARCHAR},
+			</if>
+
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.Area">
+		update area
+		set
+		AreaId = #{areaid,jdbcType=VARCHAR},
+		AreaName =
+		#{areaname,jdbcType=VARCHAR},
+		AreaState =
+		#{areastate,jdbcType=VARCHAR},
+		AreaCreateUserId =
+		#{areacreateuserid,jdbcType=VARCHAR},
+		AreaCreateTime =
+		#{areacreatetime,jdbcType=TIMESTAMP},
+		AreaUpdateUserId =
+		#{areaupdateuserid,jdbcType=VARCHAR},
+		AreaUpdateTime =
+		#{areaupdatetime,jdbcType=TIMESTAMP},
+		AreaRemark =
+		#{arearemark,jdbcType=VARCHAR},
+		AreaProvince = #{areaprovince,jdbcType=VARCHAR},
+      AreaProvinceCode = #{areaprovincecode,jdbcType=VARCHAR},
+      AreaCity = #{areacity,jdbcType=VARCHAR},
+      AreaCityCode = #{areacitycode,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from area
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from area
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from area
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据Area实体添加 -->
+	<insert id="insertByArea" parameterType="sun.bz1.entity.Area">
+		insert into area
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="areaid != null">
+				AreaId,
+			</if>
+			<if test="areaname != null">
+				AreaName,
+			</if>
+			<if test="areastate != null">
+				AreaState,
+			</if>
+			<if test="areacreateuserid != null">
+				AreaCreateUserId,
+			</if>
+			<if test="areacreatetime != null">
+				AreaCreateTime,
+			</if>
+			<if test="areaupdateuserid != null">
+				AreaUpdateUserId,
+			</if>
+			<if test="areaupdatetime != null">
+				AreaUpdateTime,
+			</if>
+			<if test="arearemark != null">
+				AreaRemark,
+			</if>
+			<if test="areaprovince != null">
+				AreaProvince,
+			</if>
+			<if test="areaprovincecode != null">
+				AreaProvinceCode,
+			</if>
+			<if test="areacity != null">
+				AreaCity,
+			</if>
+			<if test="areacitycode != null">
+				AreaCityCode,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="areaid != null">
+				#{areaid,jdbcType=VARCHAR},
+			</if>
+			<if test="areaname != null">
+				#{areaname,jdbcType=VARCHAR},
+			</if>
+			<if test="areastate != null">
+				#{areastate,jdbcType=VARCHAR},
+			</if>
+			<if test="areacreateuserid != null">
+				#{areacreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="areacreatetime != null">
+				#{areacreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="areaupdateuserid != null">
+				#{areaupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="areaupdatetime != null">
+				#{areaupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="arearemark != null">
+				#{arearemark,jdbcType=VARCHAR},
+			</if>
+			<if test="areaprovince != null">
+				#{areaprovince,jdbcType=VARCHAR},
+			</if>
+			<if test="areaprovincecode != null">
+				#{areaprovincecode,jdbcType=VARCHAR},
+			</if>
+			<if test="areacity != null">
+				#{areacity,jdbcType=VARCHAR},
+			</if>
+			<if test="areacitycode != null">
+				#{areacitycode,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据Area实体更新 -->
+	<update id="updateByArea" parameterType="sun.bz1.entity.Area">
+		update area
+		<set>
+			<if test="areaid != null">
+				AreaId = #{areaid,jdbcType=VARCHAR},
+			</if>
+			<if test="areaname != null">
+				AreaName = #{areaname,jdbcType=VARCHAR},
+			</if>
+			<if test="areastate != null">
+				AreaState = #{areastate,jdbcType=VARCHAR},
+			</if>
+			<if test="areacreateuserid != null">
+				AreaCreateUserId = #{areacreateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="areacreatetime != null">
+				AreaCreateTime = #{areacreatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="areaupdateuserid != null">
+				AreaUpdateUserId = #{areaupdateuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="areaupdatetime != null">
+				AreaUpdateTime = #{areaupdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="arearemark != null">
+				AreaRemark = #{arearemark,jdbcType=VARCHAR},
+			</if>
+			<if test="areaprovince != null">
+				AreaProvince = #{areaprovince,jdbcType=VARCHAR},
+			</if>
+			<if test="areaprovincecode != null">
+				AreaProvinceCode = #{areaprovincecode,jdbcType=VARCHAR},
+			</if>
+			<if test="areacity != null">
+				AreaCity = #{areacity,jdbcType=VARCHAR},
+			</if>
+			<if test="areacitycode != null">
+				AreaCityCode = #{areacitycode,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="areaid != null and areaid != ''">
+					and AreaId = #{areaid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据Area实体查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountByArea" parameterType="sun.bz1.entity.Area" resultType="java.lang.Integer">
+		select count(*) from area
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="areaid != null and areaid != ''">
+					and AreaId = #{areaid,jdbcType=VARCHAR}
+				</if>
+				<if test="areastate != null and areastate != ''">
+					and AreaState = #{areastate,jdbcType=VARCHAR}
+				</if>
+				<if test="areaprovincecode != null and areaprovincecode != ''">
+					and AreaProvinceCode = #{areaprovincecode,jdbcType=VARCHAR}
+				</if>
+				<if test="areacitycode != null and areacitycode != ''">
+					and AreaCityCode = #{areacitycode,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据Area实体查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectByArea" parameterType="sun.bz1.entity.Area" resultMap="BaseResultMap">
+		select * from area
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="areaid != null and areaid != ''">
+					and AreaId = #{areaid,jdbcType=VARCHAR}
+				</if>
+				<if test="areastate != null and areastate != ''">
+					and AreaState = #{areastate,jdbcType=VARCHAR}
+				</if>
+				<if test="areaprovincecode != null and areaprovincecode != ''">
+					and AreaProvinceCode = #{areaprovincecode,jdbcType=VARCHAR}
+				</if>
+				<if test="areacitycode != null and areacitycode != ''">
+					and AreaCityCode = #{areacitycode,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+	
+	<!-- 根据Area实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectData" parameterType="sun.bz1.entity.Area" resultType="java.lang.Integer">
+		select count(*) from area
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="areaid != null and areaid != ''">
+					and AreaId = #{areaid,jdbcType=VARCHAR}
+				</if>
+				<if test="areaname != null and areaname != ''">
+					or AreaName like CONCAT('%',#{areaname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="areastate != null and areastate != ''">
+					and AreaState = #{areastate,jdbcType=VARCHAR}
+				</if>
+				<if test="areaprovincecode != null and areaprovincecode != ''">
+					and AreaProvinceCode = #{areaprovincecode,jdbcType=VARCHAR}
+				</if>
+				<if test="areacitycode != null and areacitycode != ''">
+					and AreaCityCode = #{areacitycode,jdbcType=VARCHAR}
+				</if>
+				<if test="areaprovince != null and areaprovince != ''">
+					or AreaProvince like CONCAT('%',#{areaprovince,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="areacity != null and areacity != ''">
+					or AreaCity like CONCAT('%',#{areacity,jdbcType=VARCHAR},'%')
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据Area实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectBySelectData" parameterType="sun.bz1.entity.Area" resultMap="BaseResultMap">
+		select * from area
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="areaid != null and areaid != ''">
+					and AreaId = #{areaid,jdbcType=VARCHAR}
+				</if>
+				<if test="areaname != null and areaname != ''">
+					and AreaName like CONCAT('%',#{areaname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="areastate != null and areastate != ''">
+					and AreaState = #{areastate,jdbcType=VARCHAR}
+				</if>
+				<if test="areaprovincecode != null and areaprovincecode != ''">
+					and AreaProvinceCode = #{areaprovincecode,jdbcType=VARCHAR}
+				</if>
+				<if test="areacitycode != null and areacitycode != ''">
+					and AreaCityCode = #{areacitycode,jdbcType=VARCHAR}
+				</if>
+				<if test="areaprovince != null and areaprovince != ''">
+					and AreaProvince like CONCAT('%',#{areaprovince,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="areacity != null and areacity != ''">
+					and AreaCity like CONCAT('%',#{areacity,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="selectareaprovincecode != null and selectareaprovincecode != ''">
+					and AreaProvinceCode like CONCAT(#{selectareaprovincecode,jdbcType=VARCHAR},'%')
+				</if>
+			</trim>
+		</where>
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+
+	<!-- 根据Area实体模糊查询 （区域报表）-->
+	<!-- 查询数量 -->
+	<select id="selectCountBySelectDataReport" parameterType="sun.bz1.entity.Area" resultType="java.lang.Integer">
+		select count(*) from area
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="areaid != null and areaid != ''">
+					and AreaId = #{areaid,jdbcType=VARCHAR}
+				</if>
+				<if test="areaname != null and areaname != ''">
+					and AreaName like CONCAT('%',#{areaname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="areastate != null and areastate != ''">
+					and AreaState = #{areastate,jdbcType=VARCHAR}
+				</if>
+				<if test="areaprovincecode != null and areaprovincecode != ''">
+					and AreaProvinceCode like CONCAT('%',#{areaprovincecode,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="areacitycode != null and areacitycode != ''">
+					and AreaCityCode = #{areacitycode,jdbcType=VARCHAR}
+				</if>
+				<if test="areaprovince != null and areaprovince != ''">
+					and AreaProvince like CONCAT('%',#{areaprovince,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="areacity != null and areacity != ''">
+					and AreaCity like CONCAT('%',#{areacity,jdbcType=VARCHAR},'%')
+				</if>
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据Area实体模糊查询  （区域报表） -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectBySelectDataReportCount" parameterType="sun.bz1.entity.Area" resultMap="ResultAreaReport">
+		SELECT
+		ar.areastate areastate,
+		ar.areaprovince areaprovince,
+		ar.areaprovincecode areaprovincecode,
+		ar.areacitycode areacitycode,
+		ar.ordernumber ordernumber,
+		ar.wxnumber wxnumber,
+		ar.aznumber aznumber,
+		IFNULL(ar.cometotalmoeny, 0) as areapricetotalmoney,
+		IFNULL(ar.zhichutotalmoeny, 0) as expendituremoney,
+		IFNULL(ar.cometotalmoeny - ar.zhichutotalmoeny, 0) as profitmoney
+		FROM
+		(
+		SELECT
+		a.AreaState areastate,
+		a.AreaProvince areaprovince,
+		a.AreaProvinceCode areaprovincecode,
+		a.AreaCityCode areacitycode,
+		(
+		SELECT
+		count(*)
+		FROM
+		order_table ot
+		WHERE
+		ot.OrderState = "DDJS"
+		AND
+		ot.OrderPosition = a.AreaProvinceCode
+		) ordernumber,
+		(
+		SELECT
+		count(*)
+		FROM
+		USER u
+		LEFT JOIN user_service us ON u.UserId = us.UserId
+		WHERE
+		us.AreaCode LIKE CONCAT('%', a.AreaProvinceCode, '%')
+		AND (
+		u.UserRole = 'WX,'
+		OR u.UserRole = 'WX,AZ,'
+		OR u.UserRole = 'AZ,WX,'
+		)
+		) wxnumber,
+		(
+		SELECT
+		count(*)
+		FROM
+		USER u
+		LEFT JOIN user_service us ON u.UserId = us.UserId
+		WHERE
+		us.AreaCode LIKE CONCAT('%', a.AreaProvinceCode, '%')
+		AND (
+		u.UserRole = 'AZ,'
+		OR u.UserRole = 'WX,AZ,'
+		OR u.UserRole = 'AZ,WX,'
+		)
+		) aznumber,
+		(
+		SELECT
+		sum(
+		case when  ot.OrderType = "PD" then ot.OrderInterceptTotalMoney + ot.OrderTravelTotalMoney
+		else
+		ot.OrderPriceTotalMoney + ot.OrderTravelTotalMoney
+		end
+		)
+
+		FROM
+		order_table ot
+		WHERE
+		ot.OrderState = "DDJS"
+		AND ot.OrderPosition = a.AreaProvinceCode
+		) cometotalmoeny,
+		(
+		SELECT
+		sum(
+		ot.OrderPriceTotalMoney + ot.OrderTravelTotalMoney
+		)
+		FROM
+		order_table ot
+		WHERE
+		ot.OrderState = "DDJS"
+		AND ot.OrderPosition = a.AreaProvinceCode
+		) zhichutotalmoeny
+		FROM
+		area a
+		<where>
+			<trim suffixOverrides="and|or">
+
+				<if test="areastate != null and areastate != ''">
+					and a.AreaState = #{areastate,jdbcType=VARCHAR}
+				</if>
+				<if test="areaprovincecode != null and areaprovincecode != ''">
+					and a.AreaProvinceCode like CONCAT(#{areaprovincecode,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="areacitycode != null and areacitycode != ''">
+					and a.AreaCityCode = #{areacitycode,jdbcType=VARCHAR}
+				</if>
+				<if test="areaprovince != null and areaprovince != ''">
+					and a.AreaProvince like CONCAT('%',#{areaprovince,jdbcType=VARCHAR},'%')
+				</if>
+
+			</trim>
+		</where>
+		) ar
+
+
+	</select>
+
+	<!-- 根据Area实体模糊查询  （区域报表） -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectBySelectDataReport" parameterType="sun.bz1.entity.Area" resultMap="ResultAreaReport">
+		SELECT
+	ar.areastate areastate,
+	ar.areaprovince areaprovince,
+	ar.areaprovincecode areaprovincecode,
+	ar.areacitycode areacitycode,
+	ar.ordernumber ordernumber,
+	ar.wxnumber wxnumber,
+	ar.aznumber aznumber,
+	IFNULL(ar.cometotalmoeny, 0) as areapricetotalmoney,
+	IFNULL(ar.zhichutotalmoeny, 0) as expendituremoney,
+	IFNULL(ar.cometotalmoeny - ar.zhichutotalmoeny, 0) as profitmoney
+FROM
+	(
+		SELECT
+			a.AreaState areastate,
+			a.AreaProvince areaprovince,
+			a.AreaProvinceCode areaprovincecode,
+			a.AreaCityCode areacitycode,
+			(
+				SELECT
+					count(*)
+				FROM
+					order_table ot
+				WHERE
+				ot.OrderState = "DDJS"
+				AND
+					ot.OrderPosition = a.AreaProvinceCode
+		<trim suffixOverrides="and|or">
+
+			<if test="selectorderstarttime != null and selectorderstarttime != ''">
+				and ot.OrderCreateTime &gt;= #{selectorderstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			</if>
+			<if test="selectorderendtime != null and selectorderendtime != ''">
+				and ot.OrderPlanTime &lt;= #{selectorderendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+		</trim>
+			) ordernumber,
+			(
+				SELECT
+					count(*)
+				FROM
+					USER u
+				LEFT JOIN user_service us ON u.UserId = us.UserId
+				WHERE
+					us.AreaCode LIKE CONCAT('%', a.AreaProvinceCode, '%')
+				AND (
+					u.UserRole = 'WX,'
+					OR u.UserRole = 'WX,AZ,'
+					OR u.UserRole = 'AZ,WX,'
+				)
+			) wxnumber,
+			(
+				SELECT
+					count(*)
+				FROM
+					USER u
+				LEFT JOIN user_service us ON u.UserId = us.UserId
+				WHERE
+					us.AreaCode LIKE CONCAT('%', a.AreaProvinceCode, '%')
+				AND (
+					u.UserRole = 'AZ,'
+					OR u.UserRole = 'WX,AZ,'
+					OR u.UserRole = 'AZ,WX,'
+				)
+			) aznumber,
+				(
+					SELECT
+						sum(
+							case when  ot.OrderType = "PD" then ot.OrderInterceptTotalMoney + ot.OrderTravelTotalMoney
+								    else
+                         ot.OrderPriceTotalMoney + ot.OrderTravelTotalMoney
+							end
+						)
+
+					FROM
+						order_table ot
+					WHERE
+						ot.OrderState = "DDJS"
+					AND ot.OrderPosition = a.AreaProvinceCode
+		<trim suffixOverrides="and|or">
+
+			<if test="selectorderstarttime != null and selectorderstarttime != ''">
+				and ot.OrderCreateTime &gt;= #{selectorderstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			</if>
+			<if test="selectorderendtime != null and selectorderendtime != ''">
+				and ot.OrderPlanTime &lt;= #{selectorderendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+		</trim>
+				) cometotalmoeny,
+				(
+					SELECT
+						sum(
+							ot.OrderPriceTotalMoney + ot.OrderTravelTotalMoney
+						)
+					FROM
+						order_table ot
+					WHERE
+						ot.OrderState = "DDJS"
+					AND ot.OrderPosition = a.AreaProvinceCode
+		<trim suffixOverrides="and|or">
+
+			<if test="selectorderstarttime != null and selectorderstarttime != ''">
+				and ot.OrderCreateTime &gt;= #{selectorderstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+			</if>
+			<if test="selectorderendtime != null and selectorderendtime != ''">
+				and ot.OrderPlanTime &lt;= #{selectorderendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+			</if>
+		</trim>
+				) zhichutotalmoeny
+		FROM
+			area a
+		<where>
+			<trim suffixOverrides="and|or">
+
+				<if test="areastate != null and areastate != ''">
+					and a.AreaState = #{areastate,jdbcType=VARCHAR}
+				</if>
+				<if test="areaprovincecode != null and areaprovincecode != ''">
+					and a.AreaProvinceCode like CONCAT(#{areaprovincecode,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="areacitycode != null and areacitycode != ''">
+					and a.AreaCityCode = #{areacitycode,jdbcType=VARCHAR}
+				</if>
+				<if test="areaprovince != null and areaprovince != ''">
+					and a.AreaProvince like CONCAT('%',#{areaprovince,jdbcType=VARCHAR},'%')
+				</if>
+
+			</trim>
+		</where>
+	) ar
+
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+	
+</mapper>

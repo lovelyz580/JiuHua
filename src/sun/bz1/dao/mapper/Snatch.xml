@@ -1,0 +1,1047 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 维修单抢单记录表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sun.bz1.dao.mapper.Snatch">
+	<resultMap id="BaseResultMap" type="sun.bz1.entity.Snatch">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="SnatchId" jdbcType="VARCHAR" property="snatchid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="ServiceUserId" jdbcType="VARCHAR" property="serviceuserid" />
+		<result column="ServiceMoney" jdbcType="DOUBLE" property="servicemoney" />
+		<result column="SnatchTravelMoney" jdbcType="DOUBLE" property="snatchtravelmoney" />
+		<result column="SnatchState" jdbcType="VARCHAR" property="snatchstate" />
+		<result column="SnatchEnrollTime" jdbcType="TIMESTAMP" property="snatchenrolltime" />
+		<result column="SnatchConfirmUserId" jdbcType="VARCHAR" property="snatchconfirmuserid" />
+		<result column="SnatchConfirmTime" jdbcType="TIMESTAMP" property="snatchconfirmtime" />
+		<result column="SnatchRemark" jdbcType="VARCHAR" property="snatchremark" />
+		<result column="SnatchDayMoney" jdbcType="DOUBLE" property="snatchdaymoney" />
+		<result column="SnatchDay" jdbcType="INTEGER" property="snatchday" />
+		<result column="SnatchPeopleNumber" jdbcType="INTEGER" property="snatchpeoplenumber" />
+		<result column="SnatchMaterialMoney" jdbcType="DOUBLE" property="snatchmaterialmoney" />
+	</resultMap>
+	
+	<resultMap id="SeniorResultMap" type="sun.bz1.entity.SnatchAndOrderTableAndUser">
+		<!-- 维修单抢单记录表 -->
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="SnatchId" jdbcType="VARCHAR" property="snatchid" />
+		<result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="ServiceUserId" jdbcType="VARCHAR" property="serviceuserid" />
+		<result column="ServiceMoney" jdbcType="DOUBLE" property="servicemoney" />
+		<result column="SnatchTravelMoney" jdbcType="DOUBLE" property="snatchtravelmoney" />
+		<result column="SnatchState" jdbcType="VARCHAR" property="snatchstate" />
+		<result column="SnatchEnrollTime" jdbcType="TIMESTAMP" property="snatchenrolltime" />
+		<result column="SnatchConfirmUserId" jdbcType="VARCHAR" property="snatchconfirmuserid" />
+		<result column="SnatchConfirmTime" jdbcType="TIMESTAMP" property="snatchconfirmtime" />
+		<result column="SnatchRemark" jdbcType="VARCHAR" property="snatchremark" />
+		<result column="SnatchDayMoney" jdbcType="DOUBLE" property="snatchdaymoney" />
+		<result column="SnatchDay" jdbcType="INTEGER" property="snatchday" />
+		<result column="SnatchPeopleNumber" jdbcType="INTEGER" property="snatchpeoplenumber" />
+		<result column="SnatchMaterialMoney" jdbcType="DOUBLE" property="snatchmaterialmoney" />
+		
+		<!-- 维修单表 -->
+		<result column="OrderProjectName" jdbcType="VARCHAR" property="orderprojectname" />
+		<result column="OrderContactPerson" jdbcType="VARCHAR" property="ordercontactperson" />
+		<result column="OrderContactPhone" jdbcType="VARCHAR" property="ordercontactphone" />
+		<result column="OrderAddress" jdbcType="VARCHAR" property="orderaddress" />
+		<result column="BuildingTypeId" jdbcType="VARCHAR" property="buildingtypeid" />
+		<result column="OrderPlanTime" jdbcType="TIMESTAMP" property="orderplantime" />
+		<result column="OrderBiddingEndTime" jdbcType="TIMESTAMP" property="orderbiddingendtime" />
+		<result column="OrderInterceptTotalMoney" jdbcType="DOUBLE" property="orderintercepttotalmoney" />
+		<result column="OrderPriceTotalMoney" jdbcType="DOUBLE" property="orderpricetotalmoney" />
+		<result column="OrderTravelTotalMoney" jdbcType="DOUBLE" property="ordertraveltotalmoney" />
+		<result column="OrderType" jdbcType="VARCHAR" property="ordertype" />
+		<result column="OrderState" jdbcType="VARCHAR" property="orderstate" />
+		<result column="OrderServiceUserId" jdbcType="VARCHAR" property="orderserviceuserid" />
+		<result column="OrderCreateUserId" jdbcType="VARCHAR" property="ordercreateuserid" />
+		<result column="OrderCreateTime" jdbcType="TIMESTAMP" property="ordercreatetime" />
+		<result column="OrderUpdateUserId" jdbcType="VARCHAR" property="orderupdateuserid" />
+		<result column="OrderUpdateTime" jdbcType="TIMESTAMP" property="orderupdatetime" />
+		<result column="OrderApplyCheckUserId" jdbcType="VARCHAR" property="orderapplycheckuserid" />
+		<result column="OrderApplyCheckTime" jdbcType="TIMESTAMP" property="orderapplychecktime" />
+		<result column="OrderRemark" jdbcType="VARCHAR" property="orderremark" />
+		<result column="OrderCheckAllState" jdbcType="VARCHAR" property="ordercheckallstate" />
+		<result column="OrderPropertyCompanyId" jdbcType="VARCHAR" property="orderpropertycompanyid" />
+		<result column="OrderPaymentMethodContent" jdbcType="VARCHAR" property="orderpaymentmethodcontent" />
+		
+		<!-- 抢单人员(维修工、安装队)(用户表) -->
+		<result column="UserName" jdbcType="VARCHAR" property="serviceuser_username" />
+		<result column="UserRealName" jdbcType="VARCHAR" property="serviceuser_userrealname" />
+		<result column="UserSex" jdbcType="VARCHAR" property="serviceuser_usersex" />
+		<result column="UserPhone" jdbcType="VARCHAR" property="serviceuser_userphone" />
+		<result column="UserCodeId" jdbcType="VARCHAR" property="serviceuser_usercodeid" />
+		<result column="UserEmail" jdbcType="VARCHAR" property="serviceuser_useremail" />
+		<result column="UserRole" jdbcType="VARCHAR" property="serviceuser_userrole" />
+		<result column="UserState" jdbcType="VARCHAR" property="serviceuser_userstate" />
+		<result column="UserCredit" jdbcType="DOUBLE" property="serviceuser_usercredit" />
+		<result column="UserMoney" jdbcType="DOUBLE" property="serviceuser_usermoney" />
+		<result column="UserOpenId" jdbcType="VARCHAR" property="serviceuser_useropenid" />
+		<result column="UserPosition" jdbcType="VARCHAR" property="serviceuser_userposition" />
+		<result column="UserLatitude" jdbcType="DOUBLE" property="serviceuser_userlatitude" />
+		<result column="UserLongitude" jdbcType="DOUBLE" property="serviceuser_userlongitude" />
+		<result column="UserRemark" jdbcType="VARCHAR" property="serviceuser_userremark" />
+		
+		<!-- 抢单确认人员(用户表) -->
+		<result column="UserName1" jdbcType="VARCHAR" property="snatchconfirmuser_username" />
+		<result column="UserRealName1" jdbcType="VARCHAR" property="snatchconfirmuser_userrealname" />
+		<result column="UserSex1" jdbcType="VARCHAR" property="snatchconfirmuser_usersex" />
+		<result column="UserPhone1" jdbcType="VARCHAR" property="snatchconfirmuser_userphone" />
+		<result column="UserCodeId1" jdbcType="VARCHAR" property="snatchconfirmuser_usercodeid" />
+		<result column="UserEmail1" jdbcType="VARCHAR" property="snatchconfirmuser_useremail" />
+		<result column="UserRole1" jdbcType="VARCHAR" property="snatchconfirmuser_userrole" />
+		<result column="UserState1" jdbcType="VARCHAR" property="snatchconfirmuser_userstate" />
+		<result column="UserCredit1" jdbcType="DOUBLE" property="snatchconfirmuser_usercredit" />
+		<result column="UserMoney1" jdbcType="DOUBLE" property="snatchconfirmuser_usermoney" />
+		<result column="UserOpenId1" jdbcType="VARCHAR" property="snatchconfirmuser_useropenid" />
+		<result column="UserPosition1" jdbcType="VARCHAR" property="snatchconfirmuser_userposition" />
+		<result column="UserLatitude1" jdbcType="DOUBLE" property="snatchconfirmuser_userlatitude" />
+		<result column="UserLongitude1" jdbcType="DOUBLE" property="snatchconfirmuser_userlongitude" />
+		<result column="UserRemark1" jdbcType="VARCHAR" property="snatchconfirmuser_userremark" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, SnatchId, OrderId, ServiceUserId, SnatchMoney, SnatchTravelMoney, 
+		SnatchState, SnatchEnrollTime, SnatchConfirmUserId, SnatchConfirmTime, SnatchRemark
+	</sql>
+	
+	<insert id="insert" parameterType="sun.bz1.entity.Snatch">
+		insert into snatch (ID, SnatchId, OrderId, ServiceUserId, SnatchMoney, SnatchTravelMoney, 
+		SnatchState, SnatchEnrollTime, SnatchConfirmUserId, SnatchConfirmTime, SnatchRemark,SnatchDayMoney,SnatchDay,SnatchPeopleNumber)
+		values (#{id,jdbcType=INTEGER}, 
+		#{snatchid,jdbcType=VARCHAR},
+		#{orderid,jdbcType=VARCHAR},
+		#{serviceuserid,jdbcType=VARCHAR}, 
+		#{snatchmoney,jdbcType=DOUBLE}, 
+		#{snatchtravelmoney,jdbcType=DOUBLE},
+		#{snatchstate,jdbcType=VARCHAR},
+		#{snatchenrolltime,jdbcType=TIMESTAMP},
+		#{snatchconfirmuserid,jdbcType=VARCHAR},
+		#{snatchconfirmtime,jdbcType=TIMESTAMP},
+		#{snatchremark,jdbcType=VARCHAR},
+		#{snatchdaymoney,jdbcType=DOUBLE},
+		#{snatchday,jdbcType=INTEGER},
+		#{snatchpeoplenumber,jdbcType=INTEGER},
+		#{snatchmaterialmoney,jdbcType=DOUBLE})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="sun.bz1.entity.Snatch">
+		insert into snatch
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="snatchid != null">
+				SnatchId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId,
+			</if>
+			<if test="snatchmoney != null">
+				SnatchMoney,
+			</if>
+			<if test="snatchtravelmoney != null">
+				SnatchTravelMoney,
+			</if>
+			<if test="snatchstate != null">
+				SnatchState,
+			</if>
+			<if test="snatchenrolltime != null">
+				SnatchEnrollTime,
+			</if>
+			<if test="snatchconfirmuserid != null">
+				SnatchConfirmUserId,
+			</if>
+			<if test="snatchconfirmtime != null">
+				SnatchConfirmTime,
+			</if>
+			<if test="snatchremark != null">
+				SnatchRemark,
+			</if>
+			<if test="snatchdaymoney != null">
+				SnatchDayMoney,
+			</if>
+			<if test="snatchday != null">
+				SnatchDay,
+			</if>
+			<if test="snatchpeoplenumber != null">
+				SnatchPeopleNumber,
+			</if>
+			<if test="snatchmaterialmoney != null">
+				SnatchMaterialMoney,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="snatchid != null">
+				#{snatchid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				#{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchmoney != null">
+				#{snatchmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="snatchtravelmoney != null">
+				#{snatchtravelmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="snatchstate != null">
+				#{snatchstate,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchenrolltime != null">
+				#{snatchenrolltime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="snatchconfirmuserid != null">
+				#{snatchconfirmuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchconfirmtime != null">
+				#{snatchconfirmtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="snatchremark != null">
+				#{snatchremark,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchdaymoney != null">
+				#{snatchdaymoney,jdbcType=DOUBLE},
+			</if>
+			<if test="snatchday != null">
+				#{snatchday,jdbcType=INTEGER},
+			</if>
+			<if test="snatchpeoplenumber != null">
+				#{snatchpeoplenumber,jdbcType=INTEGER},
+			</if>
+			<if test="snatchmaterialmoney != null">
+				#{snatchmaterialmoney,jdbcType=DOUBLE},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="sun.bz1.entity.Snatch">
+		update snatch
+		<set>
+			<if test="snatchid != null">
+				SnatchId = #{snatchid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchmoney != null">
+				SnatchMoney = #{snatchmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="snatchtravelmoney != null">
+				SnatchTravelMoney = #{snatchtravelmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="snatchstate != null">
+				SnatchState = #{snatchstate,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchenrolltime != null">
+				SnatchEnrollTime = #{snatchenrolltime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="snatchconfirmuserid != null">
+				SnatchConfirmUserId = #{snatchconfirmuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchconfirmtime != null">
+				SnatchConfirmTime = #{snatchconfirmtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="snatchremark != null">
+				SnatchRemark = #{snatchremark,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchdaymoney != null">
+				SnatchDayMoney = #{snatchdaymoney,jdbcType=DOUBLE},
+			</if>
+			<if test="snatchday != null">
+				SnatchDay = #{snatchday,jdbcType=INTEGER},
+			</if>
+			<if test="snatchpeoplenumber != null">
+				SnatchPeopleNumber = #{snatchpeoplenumber,jdbcType=INTEGER},
+			</if>
+			<if test="snatchmaterialmoney != null">
+				SnatchMaterialMoney = #{snatchmaterialmoney,jdbcType=DOUBLE},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="sun.bz1.entity.Snatch">
+		update snatch
+		set SnatchId = #{snatchid,jdbcType=VARCHAR},
+		OrderId = #{orderid,jdbcType=VARCHAR},
+		ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+		SnatchMoney = #{snatchmoney,jdbcType=DOUBLE},
+		SnatchTravelMoney = #{snatchtravelmoney,jdbcType=DOUBLE},
+		SnatchState = #{snatchstate,jdbcType=VARCHAR},
+		SnatchEnrollTime = #{snatchenrolltime,jdbcType=TIMESTAMP},
+		SnatchConfirmUserId = #{snatchconfirmuserid,jdbcType=VARCHAR},
+		SnatchConfirmTime = #{snatchconfirmtime,jdbcType=TIMESTAMP},
+		SnatchRemark = #{snatchremark,jdbcType=VARCHAR},
+		SnatchDayMoney = #{snatchdaymoney,jdbcType=DOUBLE},
+		SnatchDay = #{snatchday,jdbcType=INTEGER},
+		SnatchPeopleNumber = #{snatchpeoplenumber,jdbcType=INTEGER},
+		SnatchMaterialMoney = #{snatchmaterialmoney,jdbcType=DOUBLE}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectCountByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from snatch
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select * from snatch
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from snatch
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据Snatch实体添加 -->
+	<insert id="insertBySnatch" parameterType="sun.bz1.entity.Snatch">
+		insert into snatch
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="snatchid != null">
+				SnatchId,
+			</if>
+			<if test="orderid != null">
+				OrderId,
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId,
+			</if>
+			<if test="snatchmoney != null">
+				SnatchMoney,
+			</if>
+			<if test="snatchtravelmoney != null">
+				SnatchTravelMoney,
+			</if>
+			<if test="snatchstate != null">
+				SnatchState,
+			</if>
+			<if test="snatchenrolltime != null">
+				SnatchEnrollTime,
+			</if>
+			<if test="snatchconfirmuserid != null">
+				SnatchConfirmUserId,
+			</if>
+			<if test="snatchconfirmtime != null">
+				SnatchConfirmTime,
+			</if>
+			<if test="snatchremark != null">
+				SnatchRemark,
+			</if>
+			<if test="snatchdaymoney != null">
+				SnatchDayMoney,
+			</if>
+			<if test="snatchday != null">
+				SnatchDay,
+			</if>
+			<if test="snatchpeoplenumber != null">
+				SnatchPeopleNumber,
+			</if>
+			<if test="snatchmaterialmoney != null">
+				SnatchMaterialMoney,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="snatchid != null">
+				#{snatchid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				#{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				#{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchmoney != null">
+				#{snatchmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="snatchtravelmoney != null">
+				#{snatchtravelmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="snatchstate != null">
+				#{snatchstate,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchenrolltime != null">
+				#{snatchenrolltime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="snatchconfirmuserid != null">
+				#{snatchconfirmuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchconfirmtime != null">
+				#{snatchconfirmtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="snatchremark != null">
+				#{snatchremark,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchdaymoney != null">
+				#{snatchdaymoney,jdbcType=DOUBLE},
+			</if>
+			<if test="snatchday != null">
+				#{snatchday,jdbcType=INTEGER},
+			</if>
+			<if test="snatchpeoplenumber != null">
+				#{snatchpeoplenumber,jdbcType=INTEGER},
+			</if>
+			<if test="snatchmaterialmoney != null">
+				#{snatchmaterialmoney,jdbcType=DOUBLE},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据Snatch实体更新 -->
+	<update id="updateBySnatch" parameterType="sun.bz1.entity.Snatch">
+		update snatch
+		<set>
+			<if test="snatchid != null">
+				SnatchId = #{snatchid,jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null">
+				OrderId = #{orderid,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceuserid != null">
+				ServiceUserId = #{serviceuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchmoney != null">
+				SnatchMoney = #{snatchmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="snatchtravelmoney != null">
+				SnatchTravelMoney = #{snatchtravelmoney,jdbcType=DOUBLE},
+			</if>
+			<if test="snatchstate != null">
+				SnatchState = #{snatchstate,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchenrolltime != null">
+				SnatchEnrollTime = #{snatchenrolltime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="snatchconfirmuserid != null">
+				SnatchConfirmUserId = #{snatchconfirmuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchconfirmtime != null">
+				SnatchConfirmTime = #{snatchconfirmtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="snatchremark != null">
+				SnatchRemark = #{snatchremark,jdbcType=VARCHAR},
+			</if>
+			<if test="snatchdaymoney != null">
+				SnatchDayMoney = #{snatchdaymoney,jdbcType=DOUBLE},
+			</if>
+			<if test="snatchday != null">
+				SnatchDay = #{snatchday,jdbcType=INTEGER},
+			</if>
+			<if test="snatchpeoplenumber != null">
+				SnatchPeopleNumber = #{snatchpeoplenumber,jdbcType=INTEGER},
+			</if>
+			<if test="snatchmaterialmoney != null">
+				SnatchMaterialMoney = #{snatchmaterialmoney,jdbcType=DOUBLE},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="id != null">
+					and ID = #{id,jdbcType=INTEGER}
+				</if>
+				<if test="snatchid != null and snatchid != ''">
+					and SnatchId = #{snatchid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</update>
+	
+	<!-- 根据SnatchAndOrderTableAndUser实体联表查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountByUnionData" parameterType="sun.bz1.entity.SnatchAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from snatch a 
+			inner join order_table b on a.OrderId = b.OrderId
+			left join user c on a.ServiceUserId = c.UserId
+			left join user d on a.SnatchConfirmUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="snatchid != null and snatchid != ''">
+					and a.SnatchId = #{snatchid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="snatchstate != null and snatchstate != ''">
+					and a.SnatchState = #{snatchstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchenrollstarttime != null and selectsnatchenrollstarttime != '' 
+						and selectsnatchenrollendtime != null and selectsnatchenrollendtime != ''">
+					and a.SnatchEnrollTime &gt;= #{selectsnatchenrollstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchEnrollTime &lt;= #{selectsnatchenrollendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="snatchconfirmuserid != null and snatchconfirmuserid != ''">
+					and a.SnatchConfirmUserId = #{snatchconfirmuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchconfirmstarttime != null and selectsnatchconfirmstarttime != '' 
+						and selectsnatchconfirmendtime != null and selectsnatchconfirmendtime != ''">
+					and a.SnatchConfirmTime &gt;= #{selectsnatchconfirmstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchConfirmTime &lt;= #{selectsnatchconfirmendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据SnatchAndOrderTableAndUser实体联表查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesByUnionData" parameterType="sun.bz1.entity.SnatchAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from snatch a 
+			inner join order_table b on a.OrderId = b.OrderId
+			left join user c on a.ServiceUserId = c.UserId
+			left join user d on a.SnatchConfirmUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="snatchid != null and snatchid != ''">
+					and a.SnatchId = #{snatchid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="snatchstate != null and snatchstate != ''">
+					and a.SnatchState = #{snatchstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchenrollstarttime != null and selectsnatchenrollstarttime != '' 
+						and selectsnatchenrollendtime != null and selectsnatchenrollendtime != ''">
+					and a.SnatchEnrollTime &gt;= #{selectsnatchenrollstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchEnrollTime &lt;= #{selectsnatchenrollendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="snatchconfirmuserid != null and snatchconfirmuserid != ''">
+					and a.SnatchConfirmUserId = #{snatchconfirmuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchconfirmstarttime != null and selectsnatchconfirmstarttime != '' 
+						and selectsnatchconfirmendtime != null and selectsnatchconfirmendtime != ''">
+					and a.SnatchConfirmTime &gt;= #{selectsnatchconfirmstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchConfirmTime &lt;= #{selectsnatchconfirmendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 按照信用值倒序排序 -->
+		order by a.SnatchMoney asc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+
+
+	<!-- 根据SnatchAndOrderTableAndUser实体联表查询 按时间排序 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountByUnionDataByTime" parameterType="sun.bz1.entity.SnatchAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from snatch a
+		inner join order_table b on a.OrderId = b.OrderId
+		left join user c on a.ServiceUserId = c.UserId
+		left join user d on a.SnatchConfirmUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="snatchid != null and snatchid != ''">
+					and a.SnatchId = #{snatchid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="snatchstate != null and snatchstate != ''">
+					and a.SnatchState = #{snatchstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchenrollstarttime != null and selectsnatchenrollstarttime != ''
+						and selectsnatchenrollendtime != null and selectsnatchenrollendtime != ''">
+					and a.SnatchEnrollTime &gt;= #{selectsnatchenrollstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchEnrollTime &lt;= #{selectsnatchenrollendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="snatchconfirmuserid != null and snatchconfirmuserid != ''">
+					and a.SnatchConfirmUserId = #{snatchconfirmuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchconfirmstarttime != null and selectsnatchconfirmstarttime != ''
+						and selectsnatchconfirmendtime != null and selectsnatchconfirmendtime != ''">
+					and a.SnatchConfirmTime &gt;= #{selectsnatchconfirmstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchConfirmTime &lt;= #{selectsnatchconfirmendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != ''
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != ''
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</select>
+
+	<!-- 根据SnatchAndOrderTableAndUser实体联表查询 按时间排序 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesByUnionDataByTime" parameterType="sun.bz1.entity.SnatchAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from snatch a
+		inner join order_table b on a.OrderId = b.OrderId
+		left join user c on a.ServiceUserId = c.UserId
+		left join user d on a.SnatchConfirmUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="snatchid != null and snatchid != ''">
+					and a.SnatchId = #{snatchid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="snatchstate != null and snatchstate != ''">
+					and a.SnatchState = #{snatchstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchenrollstarttime != null and selectsnatchenrollstarttime != ''
+						and selectsnatchenrollendtime != null and selectsnatchenrollendtime != ''">
+					and a.SnatchEnrollTime &gt;= #{selectsnatchenrollstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchEnrollTime &lt;= #{selectsnatchenrollendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="snatchconfirmuserid != null and snatchconfirmuserid != ''">
+					and a.SnatchConfirmUserId = #{snatchconfirmuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchconfirmstarttime != null and selectsnatchconfirmstarttime != ''
+						and selectsnatchconfirmendtime != null and selectsnatchconfirmendtime != ''">
+					and a.SnatchConfirmTime &gt;= #{selectsnatchconfirmstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchConfirmTime &lt;= #{selectsnatchconfirmendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != ''
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != ''
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+		<!-- 订单时间排序 -->
+		order by b.OrderCreateTime desc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+	
+	<!-- 根据SnatchAndOrderTableAndUser实体模糊查询 -->
+	<!-- 查询数量 -->
+	<select id="selectThreeTablesCountBySelectData" parameterType="sun.bz1.entity.SnatchAndOrderTableAndUser" resultType="java.lang.Integer">
+		select count(*) from snatch a 
+			inner join order_table b on a.OrderId = b.OrderId
+			left join user c on a.ServiceUserId = c.UserId
+			left join user d on a.SnatchConfirmUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="snatchid != null and snatchid != ''">
+					and a.SnatchId = #{snatchid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="snatchstate != null and snatchstate != ''">
+					and a.SnatchState = #{snatchstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchenrollstarttime != null and selectsnatchenrollstarttime != '' 
+						and selectsnatchenrollendtime != null and selectsnatchenrollendtime != ''">
+					and a.SnatchEnrollTime &gt;= #{selectsnatchenrollstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchEnrollTime &lt;= #{selectsnatchenrollendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="snatchconfirmuserid != null and snatchconfirmuserid != ''">
+					and a.SnatchConfirmUserId = #{snatchconfirmuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchconfirmstarttime != null and selectsnatchconfirmstarttime != '' 
+						and selectsnatchconfirmendtime != null and selectsnatchconfirmendtime != ''">
+					and a.SnatchConfirmTime &gt;= #{selectsnatchconfirmstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchConfirmTime &lt;= #{selectsnatchconfirmendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuser_username != null and serviceuser_username != ''">
+					or c.UserName like CONCAT('%',#{serviceuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userrealname != null and serviceuser_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{serviceuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userphone != null and serviceuser_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{serviceuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="snatchconfirmuser_username != null and snatchconfirmuser_username != ''">
+					or d.UserName like CONCAT('%',#{snatchconfirmuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="snatchconfirmuser_userrealname != null and snatchconfirmuser_userrealname != ''">
+					or d.UserRealName like CONCAT('%',#{snatchconfirmuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="snatchconfirmuser_userphone != null and snatchconfirmuser_userphone != ''">
+					or d.UserPhone like CONCAT('%',#{snatchconfirmuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 根据SnatchAndOrderTableAndUser实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesBySelectData" parameterType="sun.bz1.entity.SnatchAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from snatch a 
+			inner join order_table b on a.OrderId = b.OrderId
+			left join user c on a.ServiceUserId = c.UserId
+			left join user d on a.SnatchConfirmUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="snatchid != null and snatchid != ''">
+					and a.SnatchId = #{snatchid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="snatchstate != null and snatchstate != ''">
+					and a.SnatchState = #{snatchstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchenrollstarttime != null and selectsnatchenrollstarttime != '' 
+						and selectsnatchenrollendtime != null and selectsnatchenrollendtime != ''">
+					and a.SnatchEnrollTime &gt;= #{selectsnatchenrollstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchEnrollTime &lt;= #{selectsnatchenrollendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="snatchconfirmuserid != null and snatchconfirmuserid != ''">
+					and a.SnatchConfirmUserId = #{snatchconfirmuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchconfirmstarttime != null and selectsnatchconfirmstarttime != '' 
+						and selectsnatchconfirmendtime != null and selectsnatchconfirmendtime != ''">
+					and a.SnatchConfirmTime &gt;= #{selectsnatchconfirmstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchConfirmTime &lt;= #{selectsnatchconfirmendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != '' 
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != '' 
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuser_username != null and serviceuser_username != ''">
+					or c.UserName like CONCAT('%',#{serviceuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userrealname != null and serviceuser_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{serviceuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="serviceuser_userphone != null and serviceuser_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{serviceuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+				<if test="snatchconfirmuser_username != null and snatchconfirmuser_username != ''">
+					or d.UserName like CONCAT('%',#{snatchconfirmuser_username,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="snatchconfirmuser_userrealname != null and snatchconfirmuser_userrealname != ''">
+					or d.UserRealName like CONCAT('%',#{snatchconfirmuser_userrealname,jdbcType=VARCHAR},'%') 
+				</if>
+				<if test="snatchconfirmuser_userphone != null and snatchconfirmuser_userphone != ''">
+					or d.UserPhone like CONCAT('%',#{snatchconfirmuser_userphone,jdbcType=VARCHAR},'%')  
+				</if>
+			</trim>
+		</where>
+		<!-- 按照信用值倒序排序 -->
+		order by a.SnatchMoney asc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}   
+		</if>
+	</select>
+
+	<!-- 根据SnatchAndOrderTableAndUser实体模糊查询 -->
+	<!-- 可以进行分页查询 -->
+	<!-- pageNumber 当前页数(如果不进行分页，该条数据默认为-1) -->
+	<!-- pageSize 每页的数据量  -->
+	<select id="selectThreeTablesBySelectDataByTime" parameterType="sun.bz1.entity.SnatchAndOrderTableAndUser" resultMap="SeniorResultMap">
+		select * from snatch a
+		inner join order_table b on a.OrderId = b.OrderId
+		left join user c on a.ServiceUserId = c.UserId
+		left join user d on a.SnatchConfirmUserId = d.UserId
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="snatchid != null and snatchid != ''">
+					and a.SnatchId = #{snatchid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and a.OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuserid != null and serviceuserid != ''">
+					and a.ServiceUserId = #{serviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="snatchstate != null and snatchstate != ''">
+					and a.SnatchState = #{snatchstate,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchenrollstarttime != null and selectsnatchenrollstarttime != ''
+						and selectsnatchenrollendtime != null and selectsnatchenrollendtime != ''">
+					and a.SnatchEnrollTime &gt;= #{selectsnatchenrollstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchEnrollTime &lt;= #{selectsnatchenrollendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="snatchconfirmuserid != null and snatchconfirmuserid != ''">
+					and a.SnatchConfirmUserId = #{snatchconfirmuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectsnatchconfirmstarttime != null and selectsnatchconfirmstarttime != ''
+						and selectsnatchconfirmendtime != null and selectsnatchconfirmendtime != ''">
+					and a.SnatchConfirmTime &gt;= #{selectsnatchconfirmstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and a.SnatchConfirmTime &lt;= #{selectsnatchconfirmendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="orderprojectname != null and orderprojectname != ''">
+					or b.OrderProjectName like CONCAT('%',#{orderprojectname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactperson != null and ordercontactperson != ''">
+					or b.OrderContactPerson like CONCAT('%',#{ordercontactperson,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="ordercontactphone != null and ordercontactphone != ''">
+					or b.OrderContactPhone like CONCAT('%',#{ordercontactphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="orderaddress != null and orderaddress != ''">
+					or b.OrderAddress like CONCAT('%',#{orderaddress,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="buildingtypeid != null and buildingtypeid != ''">
+					and b.BuildingTypeId = #{buildingtypeid,jdbcType=VARCHAR}
+				</if>
+				<if test="selectorderplanstarttime != null and selectorderplanstarttime != ''
+						and selectorderplanendtime != null and selectorderplanendtime != ''">
+					and b.OrderPlanTime &gt;= #{selectorderplanstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderPlanTime &lt;= #{selectorderplanendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="selectorderbiddingendstarttime != null and selectorderbiddingendstarttime != ''
+						and selectorderbiddingendendtime != null and selectorderbiddingendendtime != ''">
+					and b.OrderBiddingEndTime &gt;= #{selectorderbiddingendstarttime,jdbcType=VARCHAR} <!-- 大于等于 -->
+					and b.OrderBiddingEndTime &lt;= #{selectorderbiddingendendtime,jdbcType=VARCHAR} <!-- 小于等于 -->
+				</if>
+				<if test="ordertype != null and ordertype != ''">
+					and b.OrderType = #{ordertype,jdbcType=VARCHAR}
+				</if>
+				<if test="orderstate != null and orderstate != ''">
+					and b.OrderState = #{orderstate,jdbcType=VARCHAR}
+				</if>
+				<if test="orderserviceuserid != null and orderserviceuserid != ''">
+					and b.OrderServiceUserId = #{orderserviceuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderapplycheckuserid != null and orderapplycheckuserid != ''">
+					and b.OrderApplyCheckUserId = #{orderapplycheckuserid,jdbcType=VARCHAR}
+				</if>
+				<if test="serviceuser_username != null and serviceuser_username != ''">
+					or c.UserName like CONCAT('%',#{serviceuser_username,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="serviceuser_userrealname != null and serviceuser_userrealname != ''">
+					or c.UserRealName like CONCAT('%',#{serviceuser_userrealname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="serviceuser_userphone != null and serviceuser_userphone != ''">
+					or c.UserPhone like CONCAT('%',#{serviceuser_userphone,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="snatchconfirmuser_username != null and snatchconfirmuser_username != ''">
+					or d.UserName like CONCAT('%',#{snatchconfirmuser_username,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="snatchconfirmuser_userrealname != null and snatchconfirmuser_userrealname != ''">
+					or d.UserRealName like CONCAT('%',#{snatchconfirmuser_userrealname,jdbcType=VARCHAR},'%')
+				</if>
+				<if test="snatchconfirmuser_userphone != null and snatchconfirmuser_userphone != ''">
+					or d.UserPhone like CONCAT('%',#{snatchconfirmuser_userphone,jdbcType=VARCHAR},'%')
+				</if>
+			</trim>
+		</where>
+		<!-- 订单时间排序 -->
+		order by b.OrderCreateTime desc
+		<!-- 分页 -->
+		<if test="pagenumber != -1">
+			limit #{pagenumber,jdbcType=INTEGER}, #{pagesize,jdbcType=INTEGER}
+		</if>
+	</select>
+	
+	<!-- 根据Distribution实体删除 -->
+	<delete id="deleteBySnatch" parameterType="sun.bz1.entity.Snatch">
+		delete from snatch
+		<where>
+			<trim suffixOverrides="and|or">
+				<if test="snatchid != null and snatchid != ''">
+					and SnatchId = #{snatchid,jdbcType=VARCHAR}
+				</if>
+				<if test="orderid != null and orderid != ''">
+					and OrderId = #{orderid,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</delete>
+	
+</mapper>
