@@ -84,10 +84,10 @@ public class Config {
 	/**
 	 * 短信相关数据
 	 */
-	public static final String SMS_KEYID = "LTAIhHjnd3E10Nx7";
-	public static final String SMS_KEYSECRET = "EVgY3Nuhlzlm25mvg9TEb467pGFd2G";
-	public static final String SMS_SIGNNAME = "九安防火门"; // 短信签名
-	public static final String SMS_TEMPLATECODE = "SMS_144185016"; // 短信模板 注册时
-	public static final String SMS_TEMPLATECODEFORGETPASSWORD = "SMS_144185015"; // 短信模板 忘记密码时
+	public static final String SMS_KEYID = "Lx7";
+	public static final String SMS_KEYSECRET = "EVGFd2G";
+	public static final String SMS_SIGNNAME = ""; // 短信签名
+	public static final String SMS_TEMPLATECODE = ""; // 短信模板 注册时
+	public static final String SMS_TEMPLATECODEFORGETPASSWORD = "SM5015"; // 短信模板 忘记密码时
 	
 }
